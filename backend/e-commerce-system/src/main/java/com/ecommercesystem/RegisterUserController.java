@@ -24,10 +24,10 @@ public class RegisterUserController {
 
 
         @PostMapping ("/register") //HTTP GET method
-        public String getUser(@RequestParam String name) {
+        public User getUser(@RequestBody User user) {
 
             //get the user from the database
-            return registeruser.registerUsername(name);
+            return registeruser.registerUsername(user);
         }
 
         /*

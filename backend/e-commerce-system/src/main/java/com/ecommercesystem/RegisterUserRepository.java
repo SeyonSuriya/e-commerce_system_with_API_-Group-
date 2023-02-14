@@ -8,7 +8,8 @@ public class RegisterUserRepository implements RegisterUser{
 
 
     @Override
-    public String registerUsername(String name) {
-        return name;
+    public User registerUsername(User user) {
+
+        return user;
     }
 }

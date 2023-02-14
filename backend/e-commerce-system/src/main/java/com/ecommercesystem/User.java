@@ -13,4 +13,6 @@ public class User {
     public String addressline1;
     public String addressline2;
 
+
+
 }
