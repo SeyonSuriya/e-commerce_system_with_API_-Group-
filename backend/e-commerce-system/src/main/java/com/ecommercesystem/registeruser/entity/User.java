@@ -32,6 +32,8 @@ public class User {
     private String province;
     @Column(name = "postalCode",length = 10,nullable = false)
     private String postalCode;
+    @Column(name = "password",length = 10,nullable = false)
+    private String password;
 
 
 
@@ -43,7 +45,7 @@ public class User {
 
     }
 
-    public User(int userid, String firstName, String secondName, String email, String mobile, String addressLine1, String addressLine2, String district, String province, String postalCode) {
+    public User(int userid, String firstName, String secondName, String email, String mobile, String addressLine1, String addressLine2, String district, String province, String postalCode,String password) {
         this.userId = userid;
         this.firstName = firstName;
         this.secondName = secondName;
@@ -54,6 +56,7 @@ public class User {
         this.district = district;
         this.province = province;
         this.postalCode = postalCode;
+        this.password = password;
     }
 
     public int getUserId() {
@@ -135,4 +138,13 @@ public class User {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
 }

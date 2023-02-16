@@ -28,7 +28,8 @@ public class RegisterUserService implements RegisterUser{
                 UserDto.getAddressline2(),
                 UserDto.getDistrict(),
                 UserDto.getProvince(),
-                UserDto.getPostalcode()
+                UserDto.getPostalcode(),
+                UserDto.getPassword()
 
                // UserDto.isActiveState()
         );

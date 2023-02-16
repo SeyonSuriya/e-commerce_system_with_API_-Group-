@@ -12,7 +12,7 @@ public class UserDto {
     private static String email;
 
     private static String mobile;
-    private String password;
+    private static String password;
     private String country;
     private static String district;
     private static String province;
@@ -96,7 +96,7 @@ public class UserDto {
         this.mobile = mobile;
     }
 
-    public String getPassword() {
+    public static String getPassword() {
         return password;
     }
 
