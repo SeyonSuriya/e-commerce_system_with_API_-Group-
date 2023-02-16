@@ -1,9 +1,7 @@
 
-
 package com.ecommercesystem.registeruser.entity;
 
 import jakarta.persistence.*;
-
 
 @Entity
 @Table(name = "Users")
@@ -12,16 +10,17 @@ public class User {
 
     @Id
 
-    @Column(name = "userId",length = 5)
+    @Column(name = "userid",length = 5)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
-    @Column(name = "firstname",length = 50,nullable = false)
-    private String firstname;
-    @Column(name = "secondname",length = 50,nullable = false)
-    private String secondname;
+
+    @Column(name = "firstName",length = 50,nullable = false)
+    private String firstName;
+    @Column(name = "secondName",length = 50,nullable = false)
+    private String secondName;
     @Column(name = "email",length = 30,nullable = false)
     private String email;
-    @Column(name = "mobile",length = 29,nullable = false)
+    @Column(name = "mobile",length = 10,nullable = false)
     private String mobile;
     @Column(name = "addressLine1",length = 70)
     private String addressLine1;
@@ -44,15 +43,15 @@ public class User {
 
     }
 
-    public User(int userId, String firstname, String secondname, String email, String mobile, String addressLine1, String addressLine2, String city, String province, String postalCode) {
-        this.userId = userId;
-        this.firstname = firstname;
-        this.secondname = secondname;
+    public User(int userid, String firstName, String secondName, String email, String mobile, String addressLine1, String addressLine2, String district, String province, String postalCode) {
+        this.userId = userid;
+        this.firstName = firstName;
+        this.secondName = secondName;
         this.email = email;
         this.mobile = mobile;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
-        this.district = city;
+        this.district = district;
         this.province = province;
         this.postalCode = postalCode;
     }
@@ -66,19 +65,19 @@ public class User {
     }
 
     public String getFirstname() {
-        return firstname;
+        return firstName;
     }
 
     public void setFirstname(String firstname) {
-        this.firstname = firstname;
+        this.firstName = firstname;
     }
 
     public String getSecondname() {
-        return secondname;
+        return secondName;
     }
 
     public void setSecondname(String secondname) {
-        this.secondname = secondname;
+        this.secondName = secondname;
     }
 
     public String getEmail() {
@@ -97,19 +96,19 @@ public class User {
         this.mobile = mobile;
     }
 
-    public String getAddressLine1() {
+    public String getAddressline1() {
         return addressLine1;
     }
 
-    public void setAddressLine1(String addressLine1) {
+    public void setAddressline1(String addressLine1) {
         this.addressLine1 = addressLine1;
     }
 
-    public String getAddressLine2() {
+    public String getAddressline2() {
         return addressLine2;
     }
 
-    public void setAddressLine2(String addressLine2) {
+    public void setAddressline2(String addressLine2) {
         this.addressLine2 = addressLine2;
     }
 

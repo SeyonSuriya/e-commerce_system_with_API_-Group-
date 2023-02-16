@@ -22,12 +22,12 @@ public class RegisterUserService implements RegisterUser{
                 UserDto.getUserId(),
                 UserDto.getFirstname(),
                 UserDto.getSecondname(),
+                UserDto.getEmail(),
+                UserDto.getMobile(),
                 UserDto.getAddressline1(),
                 UserDto.getAddressline2(),
-                UserDto.getMobile(),
-                UserDto.getEmail(),
-                UserDto.getProvince(),
                 UserDto.getDistrict(),
+                UserDto.getProvince(),
                 UserDto.getPostalcode()
 
                // UserDto.isActiveState()
