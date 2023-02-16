@@ -11,10 +11,18 @@ import java.util.List;
 @EnableJpaRepositories
 @Repository
 public interface UserRepo extends JpaRepository<User,Integer> {
+
+
+    // Register User Queries
     @Query(value="select * from users a where a.email=:Email", nativeQuery=true)
     List<User> findUserByEmail(String Email);
-
     @Query(value="select * from users a where a.mobile=:Mobile", nativeQuery=true)
     List<User> findUserByMobile(String Mobile);
+
+
+    // Login user Queries
+    @Query(value="select * from users a where a.email=?1 AND a.password=?2 ", nativeQuery=true)
+    List<User> findUserByLoginCredentials(String Email,String Password);
+
 
 }

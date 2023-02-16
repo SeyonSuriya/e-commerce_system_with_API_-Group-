@@ -36,8 +36,6 @@ public class User {
     private String password;
 
 
-
-
     //@Column(name = "active_state",columnDefinition = "TINYINT default 1")
    // private boolean activeState;
 
@@ -58,6 +56,8 @@ public class User {
         this.postalCode = postalCode;
         this.password = password;
     }
+
+
 
     public int getUserId() {
         return userId;
