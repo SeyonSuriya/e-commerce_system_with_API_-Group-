@@ -32,7 +32,7 @@ public class User {
     private String province;
     @Column(name = "postalCode",length = 10,nullable = false)
     private String postalCode;
-    @Column(name = "password",length = 10,nullable = false)
+    @Column(name = "password",length = 200,nullable = false)
     private String password;
 
 

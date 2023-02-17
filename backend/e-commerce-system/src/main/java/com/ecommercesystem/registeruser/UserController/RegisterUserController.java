@@ -21,7 +21,7 @@ public class RegisterUserController
         String id = registeruser.addUser(userDto);
         return id;
     }
-    
+
     @PostMapping(path = "/login")
     public String authenticateUser(@RequestBody LoginUser loginUser)
     {

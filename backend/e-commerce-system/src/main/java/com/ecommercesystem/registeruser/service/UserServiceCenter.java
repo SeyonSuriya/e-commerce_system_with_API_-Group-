@@ -5,6 +5,7 @@ import com.ecommercesystem.registeruser.dto.UserDto;
 import com.ecommercesystem.registeruser.entity.User;
 import com.ecommercesystem.registeruser.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public class UserServiceCenter implements UserService {
 
     @Override
     public String addUser(UserDto userdto) {
+        BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
+        String encPassword=bCrypt.encode(UserDto.getPassword());
+        System.out.println();
 
         User user = new User(
 
@@ -33,11 +37,14 @@ public class UserServiceCenter implements UserService {
                 UserDto.getPostalcode(),
                 UserDto.getPassword()
 
+
                // UserDto.isActiveState()
         );
+        user.setPassword(encPassword);
 
         List<User> Emailtaken = userRepo.findUserByEmail(UserDto.getEmail());
         System.out.println("Can t register email is already registered");
+
         List<User> Mobiletaken = userRepo.findUserByMobile(UserDto.getMobile());
         System.out.println("Can t register mobile number is already registered");
 
@@ -57,15 +64,32 @@ public class UserServiceCenter implements UserService {
     }
 
     public String validateUserDetails(String email,String password) {
+        List<User> IsUserAvailable = userRepo.findUserByEmail(email);
+        BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
 
-        List<User> Authentification = userRepo.findUserByLoginCredentials(email,password);
-        System.out.println(Authentification.size());
 
-        if (Authentification.size()!=0){
-            return "Login Granted";
+        String userpassword= userRepo.findUserByLoginCredentials(email);
+
+        System.out.println(userpassword);
+      //  System.out.println(UserDto.getPassword());
+        if (IsUserAvailable.size()!=0 ){
+            System.out.println(password);
+
+          //  if (bCrypt.matches(password,userRepo.))
+
+           System.out.println(bCrypt.matches(password,userpassword));
+
+            if (bCrypt.matches(password,userpassword)){
+                return "Login Granted";
+            }else {
+                return "Incorrect Password";
+            }
+
         }else {
-            return "login details not maching";
+            return "No user Registered for this email";
         }
+
+
 
     }
 }
