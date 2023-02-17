@@ -68,18 +68,9 @@ public class UserServiceCenter implements UserService {
         BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
 
 
-        String userpassword= userRepo.findUserByLoginCredentials(email);
-
-        System.out.println(userpassword);
-      //  System.out.println(UserDto.getPassword());
         if (IsUserAvailable.size()!=0 ){
-            System.out.println(password);
 
-          //  if (bCrypt.matches(password,userRepo.))
-
-           System.out.println(bCrypt.matches(password,userpassword));
-
-            if (bCrypt.matches(password,userpassword)){
+            if (bCrypt.matches(password,userRepo.findUserByLoginCredentials(email))){
                 return "Login Granted";
             }else {
                 return "Incorrect Password";
@@ -88,8 +79,6 @@ public class UserServiceCenter implements UserService {
         }else {
             return "No user Registered for this email";
         }
-
-
 
     }
 }
