@@ -184,12 +184,19 @@ CREATE TABLE IF NOT EXISTS `orders` (
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `userid` int NOT NULL,
+  `address_line1` varchar(70) DEFAULT NULL,
+  `address_line2` varchar(70) DEFAULT NULL,
+  `district` varchar(20) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `first_name` varchar(20) NOT NULL,
+  `mobile` varchar(10) NOT NULL,
+  `password` varchar(15) NOT NULL,
+  `postal_code` varchar(10) NOT NULL,
+  `province` varchar(20) NOT NULL,
+  `second_name` varchar(30) NOT NULL,
+  PRIMARY KEY (`userid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
