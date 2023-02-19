@@ -1,10 +1,13 @@
 package com.ecommercesystem.registeruser.repository;
 
 import com.ecommercesystem.registeruser.entity.User;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
+
 
 import java.util.List;
 
@@ -26,5 +29,9 @@ public interface UserRepo extends JpaRepository<User,Integer> {
     @Query(value="SELECT password from users a WHERE a.email=:Email", nativeQuery=true)
     String findUserByLoginCredentials(String Email);
 
+    @Transactional
+    @Modifying
+    @Query(value="update users a set a.password=?2 WHERE a.email=?1", nativeQuery=true)
+    Integer changePassword(String Email,String password);
 
 }

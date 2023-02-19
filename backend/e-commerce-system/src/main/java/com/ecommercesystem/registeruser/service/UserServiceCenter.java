@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
+
 @Service
 public class UserServiceCenter implements UserService {
 
@@ -21,7 +22,7 @@ public class UserServiceCenter implements UserService {
     public String addUser(UserDto userdto) {
         BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
         String encPassword=bCrypt.encode(UserDto.getPassword());
-        System.out.println();
+        System.out.println(encPassword);
 
         User user = new User(
 
@@ -43,10 +44,10 @@ public class UserServiceCenter implements UserService {
         user.setPassword(encPassword);
 
         List<User> Emailtaken = userRepo.findUserByEmail(UserDto.getEmail());
-        System.out.println("Can t register email is already registered");
+
 
         List<User> Mobiletaken = userRepo.findUserByMobile(UserDto.getMobile());
-        System.out.println("Can t register mobile number is already registered");
+
 
         if (Emailtaken .size()==0){
             if (Mobiletaken.size()==0){
@@ -71,7 +72,10 @@ public class UserServiceCenter implements UserService {
         if (IsUserAvailable.size()!=0 ){
 
             if (bCrypt.matches(password,userRepo.findUserByLoginCredentials(email))){
+
+
                 return "Login Granted";
+
             }else {
                 return "Incorrect Password";
             }

@@ -1,12 +1,17 @@
 package com.ecommercesystem.registeruser.UserController;
+import com.ecommercesystem.registeruser.Email.Email;
+import com.ecommercesystem.registeruser.Otp.Otp;
 import com.ecommercesystem.registeruser.LoginUser.LoginUser;
+import com.ecommercesystem.registeruser.PasswordReset.PasswordReset;
+import com.ecommercesystem.registeruser.service.ResetPassword;
 import com.ecommercesystem.registeruser.dto.UserDto;
 import com.ecommercesystem.registeruser.service.EmailService;
+import com.ecommercesystem.registeruser.service.OtpGeneratorService;
+
 import com.ecommercesystem.registeruser.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.event.EventListener;
+
 import org.springframework.web.bind.annotation.*;
 
 
@@ -19,7 +24,10 @@ public class RegisterUserController
     private UserService registeruser;
     @Autowired
     private EmailService emailService;
-
+    @Autowired
+    private OtpGeneratorService otpGeneratorService;
+    @Autowired
+    private ResetPassword resetPassword;
 
 
     @PostMapping(path = "/register")
@@ -36,13 +44,50 @@ public class RegisterUserController
         return result;
     }
 
-    @EventListener(ApplicationReadyEvent.class)
+    Integer otp=0;
     @PostMapping(path = "/validateemail")
-    public String emailSend(/* @RequestBody String email,String body,String subject */)
+    public String validateWithOtp(@RequestBody Email email)
     {
-        emailService.sendEmail("basnayakasanjeewa3@gmail.com","My first email","Registration");
-        return "Email sent ";
+        otp = otpGeneratorService.generateOtp();
+        System.out.println(email.emailAddress);
+        emailService.sendEmail(email.emailAddress, "Your otp for TechWorld"+otp.toString(), "Registration");
+        return "Email sent";
     }
 
+    @PostMapping(path = "/validateemailByOtp")
+    public String validateemailByOtp(@RequestBody Otp otpCode)
+    {
+        if (otpCode.otpcode.equals(otp.toString())){
+            return "Email Verified";
+        }else {
+            return "Entered otp is not correct";
+        }
+    }
+
+    @PostMapping(path = "/resetpassword")
+    public String resetPassword(@RequestBody Email email)
+    {
+        otp = otpGeneratorService.generateOtp();
+        System.out.println(email.emailAddress);
+        emailService.sendEmail(email.emailAddress, "Your otp for resetting your password for TechWorld"+otp.toString(), "Reset Your Password");
+        return "An otp sent to your email to reset your password ";
+    }
+
+    @PostMapping(path = "/resetpasswordwithotp")
+    public String resetpasswordwithotp(@RequestBody Otp otpCode)
+    {
+        if (otpCode.otpcode.equals(otp.toString())){
+            return "Enter new Password";
+        }else {
+            return "Entered otp is not correct";
+        }
+    }
+
+    @PostMapping(path = "/addnewpassword")
+    public String addnewpassword(@RequestBody PasswordReset passwordReset)
+    {
+        resetPassword.addNewPassword(passwordReset);
+        return "Password changed";
+    }
 
 }

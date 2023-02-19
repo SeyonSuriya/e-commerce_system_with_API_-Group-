@@ -14,9 +14,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
 
-    @Column(name = "firstName",length = 50,nullable = false)
+    @Column(name = "firstName",length = 20,nullable = false)
     private String firstName;
-    @Column(name = "secondName",length = 50,nullable = false)
+    @Column(name = "secondName",length = 30,nullable = false)
     private String secondName;
     @Column(name = "email",length = 30,nullable = false)
     private String email;
@@ -26,13 +26,13 @@ public class User {
     private String addressLine1;
     @Column(name = "addressLine2",length = 70)
     private String addressLine2;
-    @Column(name = "district",length = 30,nullable = false)
+    @Column(name = "district",length = 20,nullable = false)
     private String district;
     @Column(name = "province",length = 20,nullable = false)
     private String province;
     @Column(name = "postalCode",length = 10,nullable = false)
     private String postalCode;
-    @Column(name = "password",length = 200,nullable = false)
+    @Column(name = "password",length = 100,nullable = false)
     private String password;
 
 
