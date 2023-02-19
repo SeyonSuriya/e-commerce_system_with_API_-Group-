@@ -35,9 +35,8 @@ public class User {
     @Column(name = "password",length = 100,nullable = false)
     private String password;
 
-
-    //@Column(name = "active_state",columnDefinition = "TINYINT default 1")
-   // private boolean activeState;
+    @Column(name = "active_status",columnDefinition = "TINYINT default 0")
+    private boolean activeStatus;
 
     public User() {
 

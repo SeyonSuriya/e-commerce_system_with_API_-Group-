@@ -3,12 +3,13 @@ import com.ecommercesystem.registeruser.Email.Email;
 import com.ecommercesystem.registeruser.Otp.Otp;
 import com.ecommercesystem.registeruser.LoginUser.LoginUser;
 import com.ecommercesystem.registeruser.PasswordReset.PasswordReset;
-import com.ecommercesystem.registeruser.service.ResetPassword;
+import com.ecommercesystem.registeruser.service.AccountStatusService.AccountStatusService;
+import com.ecommercesystem.registeruser.service.ResetPassword.ResetPassword;
 import com.ecommercesystem.registeruser.dto.UserDto;
-import com.ecommercesystem.registeruser.service.EmailService;
-import com.ecommercesystem.registeruser.service.OtpGeneratorService;
+import com.ecommercesystem.registeruser.service.EmailService.EmailService;
+import com.ecommercesystem.registeruser.service.OtpGenerator.OtpGeneratorService;
 
-import com.ecommercesystem.registeruser.service.UserService;
+import com.ecommercesystem.registeruser.service.UserServices.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,6 +29,8 @@ public class RegisterUserController
     private OtpGeneratorService otpGeneratorService;
     @Autowired
     private ResetPassword resetPassword;
+    @Autowired
+    private AccountStatusService accountStatusService;
 
 
     @PostMapping(path = "/register")
@@ -45,11 +48,12 @@ public class RegisterUserController
     }
 
     Integer otp=0;
+    String emailAddress="";
     @PostMapping(path = "/validateemail")
     public String validateWithOtp(@RequestBody Email email)
     {
         otp = otpGeneratorService.generateOtp();
-        System.out.println(email.emailAddress);
+        emailAddress=email.emailAddress;
         emailService.sendEmail(email.emailAddress, "Your otp for TechWorld"+otp.toString(), "Registration");
         return "Email sent";
     }
@@ -58,6 +62,8 @@ public class RegisterUserController
     public String validateemailByOtp(@RequestBody Otp otpCode)
     {
         if (otpCode.otpcode.equals(otp.toString())){
+
+            accountStatusService.activateAccount(emailAddress);
             return "Email Verified";
         }else {
             return "Entered otp is not correct";
@@ -68,7 +74,6 @@ public class RegisterUserController
     public String resetPassword(@RequestBody Email email)
     {
         otp = otpGeneratorService.generateOtp();
-        System.out.println(email.emailAddress);
         emailService.sendEmail(email.emailAddress, "Your otp for resetting your password for TechWorld"+otp.toString(), "Reset Your Password");
         return "An otp sent to your email to reset your password ";
     }
@@ -88,6 +93,12 @@ public class RegisterUserController
     {
         resetPassword.addNewPassword(passwordReset);
         return "Password changed";
+    }
+
+    @PostMapping(path = "/deactivateAccount")
+    public String deactivateAccount() {
+        accountStatusService.deactivateAccount(emailAddress);
+        return "Account is Deactivated ";
     }
 
 }
