@@ -185,6 +185,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `userid` int NOT NULL,
+   `active_status` tinyint DEFAULT '0',
   `address_line1` varchar(70) DEFAULT NULL,
   `address_line2` varchar(70) DEFAULT NULL,
   `district` varchar(20) NOT NULL,
