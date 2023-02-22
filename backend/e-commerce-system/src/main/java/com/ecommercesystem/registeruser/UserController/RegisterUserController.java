@@ -11,9 +11,10 @@ import com.ecommercesystem.registeruser.service.OtpGenerator.OtpGeneratorService
 
 import com.ecommercesystem.registeruser.service.UserServices.UserService;
 
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.* ;
 
 
 @RestController
@@ -50,8 +51,7 @@ public class RegisterUserController
     Integer otp=0;
     String emailAddress="";
     @PostMapping(path = "/validateemail")
-    public String validateWithOtp(@RequestBody Email email)
-    {
+    public String validateWithOtp(@RequestBody Email email) throws MessagingException {
         otp = otpGeneratorService.generateOtp();
         emailAddress=email.emailAddress;
         emailService.sendEmail(email.emailAddress, "Your otp for TechWorld"+otp.toString(), "Registration");
@@ -71,8 +71,7 @@ public class RegisterUserController
     }
 
     @PostMapping(path = "/resetpassword")
-    public String resetPassword(@RequestBody Email email)
-    {
+    public String resetPassword(@RequestBody Email email) throws MessagingException {
         otp = otpGeneratorService.generateOtp();
         emailService.sendEmail(email.emailAddress, "Your otp for resetting your password for TechWorld"+otp.toString(), "Reset Your Password");
         return "An otp sent to your email to reset your password ";

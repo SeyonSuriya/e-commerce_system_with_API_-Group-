@@ -28,8 +28,8 @@ public class EmailServiceCenter implements EmailService{
 
 
         // to do add html codes here
-        
-        helper.setText(body+"<html><h1>Hello<h2></html>",true);
+
+        helper.setText(body+" <html><h1>Hello<h2></html>",true);
 
         mailSender.send(message);
 
