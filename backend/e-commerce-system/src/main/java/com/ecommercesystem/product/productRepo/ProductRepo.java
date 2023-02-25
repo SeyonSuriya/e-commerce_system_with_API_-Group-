@@ -27,21 +27,6 @@ public interface ProductRepo extends JpaRepository<product,Integer> {
 
 
 
-    @Query(value="select * from wishlist a where a.item_id=?1 And userid=?2", nativeQuery=true)
-    String  checkwishes(Integer item_id, Integer userid);
-    @Transactional
-    @Modifying
-    @Query(value="INSERT INTO wishlist (userid, item_id)\n" +
-            "VALUES (?2,?1);", nativeQuery=true)
-    void addWish(Integer item_id, Integer userid);
-
-
-
-    @Transactional
-    @Modifying
-    @Query(value="delete  from wishlist where item_id=?1 and userid=?2", nativeQuery=true)
-    void removeWish(Integer item_id, Integer userid);
-
 
 
 

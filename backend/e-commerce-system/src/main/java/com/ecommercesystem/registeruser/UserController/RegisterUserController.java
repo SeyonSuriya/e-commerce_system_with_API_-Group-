@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.* ;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin()
 @RequestMapping("ecommerce")
 public class RegisterUserController
 {
@@ -32,7 +32,6 @@ public class RegisterUserController
     private ResetPassword resetPassword;
     @Autowired
     private AccountStatusService accountStatusService;
-
 
     @PostMapping(path = "/register")
     public String saveUser(@RequestBody UserDto userDto)
@@ -54,7 +53,7 @@ public class RegisterUserController
     public String validateWithOtp(@RequestBody Email email) throws MessagingException {
         otp = otpGeneratorService.generateOtp();
         emailAddress=email.emailAddress;
-        emailService.sendEmail(email.emailAddress, "Your otp for TechWorld"+otp.toString(), "Registration");
+        emailService.sendEmail(email.emailAddress, otp.toString(), "Registration");
         return "Email sent";
     }
 
