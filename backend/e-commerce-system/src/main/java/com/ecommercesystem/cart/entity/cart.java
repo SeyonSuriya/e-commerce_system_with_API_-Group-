@@ -1,9 +1,25 @@
 package com.ecommercesystem.cart.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+
+@Entity
+@Table(name = "cart")
 public class cart {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id",length = 5)
+    private int id;
+
+    @Column(name = "userid",length = 5)
+    private int userid;
+
+    @Column(name = "item_id",length = 5)
+    private int item_id;
+
+    @Column(name = "quantity",length = 5)
+    private int quantity;
 
     public cart(int id, int userid, int item_id, int quantity) {
         this.id = id;
@@ -12,10 +28,7 @@ public class cart {
         this.quantity = quantity;
     }
 
-    @Id
-    @Column(name = "id",length = 5)
-    // @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+
 
     public int getId() {
         return id;
@@ -49,14 +62,7 @@ public class cart {
         this.quantity = quantity;
     }
 
-    @Column(name = "userid",length = 5)
-    private int userid;
 
-    @Column(name = "item_id",length = 5)
-    private int item_id;
-
-    @Column(name = "quantity",length = 5)
-    private int quantity;
 
 
 
