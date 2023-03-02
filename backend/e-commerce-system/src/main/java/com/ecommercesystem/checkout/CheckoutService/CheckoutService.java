@@ -1,10 +1,10 @@
 package com.ecommercesystem.checkout.CheckoutService;
 
-import com.ecommercesystem.checkout.CheckoutDto;
-import com.ecommercesystem.product.entity.product;
+import com.ecommercesystem.checkout.CheckOutProductsDto;
+import com.ecommercesystem.checkout.SelectedProductsDto;
 
 import java.util.List;
 
 public interface CheckoutService {
-    List<CheckOutProductsDto>  showCheckoutItems(List<CheckoutDto> checkoutDto, Integer userid);
+    List<CheckOutProductsDto>  showCheckoutItems(List<SelectedProductsDto> selectedProductsDto, Integer userid);
 }

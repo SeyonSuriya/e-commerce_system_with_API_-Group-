@@ -74,6 +74,7 @@ public class User {
         this.firstName = firstname;
     }
 
+
     public String getSecondname() {
         return secondName;
     }

@@ -2,7 +2,6 @@ package com.ecommercesystem.checkout;
 
 public class AddressDto {
 
-
     public AddressDto(String firstname, String secondname, String addressline1, String addressline2, String mobile, String district, String province, String postalcode) {
         this.firstname = firstname;
         this.secondname = secondname;
@@ -14,10 +13,6 @@ public class AddressDto {
         this.postalcode = postalcode;
     }
 
-    private  String firstname;
-    private  String secondname;
-    private  String addressline1;
-    private  String addressline2;
 
     public String getFirstname() {
         return firstname;
@@ -84,6 +79,10 @@ public class AddressDto {
         this.postalcode = postalcode;
     }
 
+    private  String firstname;
+    private  String secondname;
+    private  String addressline1;
+    private  String addressline2;
     private  String mobile;
 
     private  String district;

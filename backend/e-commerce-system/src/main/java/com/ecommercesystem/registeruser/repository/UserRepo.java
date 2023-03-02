@@ -1,6 +1,6 @@
 package com.ecommercesystem.registeruser.repository;
 
-import com.ecommercesystem.registeruser.dto.AddressDto;
+import com.ecommercesystem.checkout.AddressDto;
 import com.ecommercesystem.registeruser.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -41,6 +41,14 @@ public interface UserRepo extends JpaRepository<User,Integer> {
     void changeActiveStatus(int i,String email);
 
     // Get User Address
-    @Query(value="select * from users a where a.userid=:userid", nativeQuery=true)
+    @Query(value="select * from users where userid=:userid", nativeQuery=true)
     List<AddressDto> getAddressBYId(Integer userid);
+
+    // Change default address
+    @Transactional
+    @Modifying
+    @Query(value="update users  set first_name=?1, second_name=?2 , address_line1=?3 , address_line2=?4  , district=?5 , district=?6 , postal_code=?7 , province=?8  WHERE userid=?9", nativeQuery=true)
+    void changeUserAddress(String firstname,String secondname,String address_line1,String address_line2,String district,String postal_code,String mobile,String province,Integer userid);
+
+
 }
