@@ -1,5 +1,6 @@
 package com.ecommercesystem.registeruser.repository;
 
+import com.ecommercesystem.registeruser.dto.AddressDto;
 import com.ecommercesystem.registeruser.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -38,4 +39,8 @@ public interface UserRepo extends JpaRepository<User,Integer> {
     @Modifying
     @Query(value="update users a set a.active_status=?1 WHERE a.email=?2", nativeQuery=true)
     void changeActiveStatus(int i,String email);
+
+    // Get User Address
+    @Query(value="select * from users a where a.userid=:userid", nativeQuery=true)
+    List<AddressDto> getAddressBYId(Integer userid);
 }

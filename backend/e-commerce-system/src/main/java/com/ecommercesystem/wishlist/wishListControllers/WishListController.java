@@ -5,7 +5,6 @@ package com.ecommercesystem.wishlist.wishListControllers;
 import com.ecommercesystem.wishlist.entity.wishlist;
 import com.ecommercesystem.wishlist.services.WishListService;
 
-import com.ecommercesystem.wishlist.wishListDto.wishListDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

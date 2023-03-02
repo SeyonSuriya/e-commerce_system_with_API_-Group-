@@ -1,9 +1,7 @@
 package com.ecommercesystem.cart.CartRepo;
 
 
-
 import com.ecommercesystem.cart.entity.cart;
-import com.ecommercesystem.product.entity.product;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
