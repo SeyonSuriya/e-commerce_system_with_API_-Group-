@@ -1,10 +1,8 @@
 package com.ecommercesystem.product.productRepo;
 
-import com.ecommercesystem.product.entity.product;
-import jakarta.transaction.Transactional;
+import com.ecommercesystem.product.entity.items;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
@@ -14,7 +12,7 @@ import java.util.List;
 
 @EnableJpaRepositories
 @Repository
-public interface ProductRepo extends JpaRepository<product,Integer> {
+public interface ProductRepo extends JpaRepository<items,Integer> {
 
 
 
@@ -23,9 +21,10 @@ public interface ProductRepo extends JpaRepository<product,Integer> {
 
 
        @Query(value="select * from items a where a.item_id=:item_id", nativeQuery=true)
-      List<product>  getProductDetails(Integer item_id);
+      List<items>  getProductDetails(Integer item_id);
 
-
+      // @Query(value = "select num_of_units from items where item_id=:item_id")
+    //  Integer getAvailableUnits(Integer item_id);
 
 
 

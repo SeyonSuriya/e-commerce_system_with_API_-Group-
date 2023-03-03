@@ -1,7 +1,6 @@
 package com.ecommercesystem.checkout.CheckOutRepositories;
 
-import com.ecommercesystem.product.entity.product;
-import com.ecommercesystem.registeruser.entity.User;
+import com.ecommercesystem.product.entity.items;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -9,19 +8,21 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 
 @EnableJpaRepositories
 @Repository
-public interface CheckoutRepo extends JpaRepository<product,Integer> {
+public interface CheckoutRepo extends JpaRepository<items,Integer> {
 
 
-
-
-    // Retriving product details that selected from cart
+    // Retriving items details that selected from cart
     @Query(value="select * from items a where a.item_id=:item_id", nativeQuery=true)
-    product getProductDetails(Integer item_id);
+    items getProductDetails(Integer item_id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE items a SET a.num_of_units=:availableUnits WHERE a.item_id=:item_id")
+    Integer updateAvailableUnits(Integer item_id, Integer availableUnits);
+
 
 
     // add order to orders

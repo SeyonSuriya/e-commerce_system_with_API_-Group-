@@ -2,7 +2,7 @@ package com.ecommercesystem.product.productControllers;
 
 import com.ecommercesystem.cart.CartServices.CartService;
 import com.ecommercesystem.product.services.productinfo.ProductInfoService;
-import com.ecommercesystem.product.entity.product;
+import com.ecommercesystem.product.entity.items;
 
 import com.ecommercesystem.wishlist.services.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("ecommerce/product")
+@RequestMapping("ecommerce/items")
 public class ProductController {
     @Autowired
     private ProductInfoService productInfoService;
@@ -23,7 +23,7 @@ public class ProductController {
     private CartService cartService;
     @PostMapping(path = "/details")
     @ResponseBody
-    public List<product> ShowProduct(@RequestParam Integer item_id) {
+    public List<items> ShowProduct(@RequestParam Integer item_id) {
         return productInfoService.getItemPrice(item_id);
     }
 

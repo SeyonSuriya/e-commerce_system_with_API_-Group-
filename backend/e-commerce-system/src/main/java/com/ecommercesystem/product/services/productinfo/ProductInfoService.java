@@ -1,13 +1,13 @@
 package com.ecommercesystem.product.services.productinfo;
 
-import com.ecommercesystem.product.entity.product;
+import com.ecommercesystem.product.entity.items;
 
 import java.util.List;
 
 public interface ProductInfoService {
 
 
-   List<product> getItemPrice(Integer item_id);
+   List<items> getItemPrice(Integer item_id);
 
 
 

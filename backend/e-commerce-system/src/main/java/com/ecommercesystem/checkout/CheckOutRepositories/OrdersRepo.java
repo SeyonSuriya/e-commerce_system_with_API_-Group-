@@ -14,8 +14,9 @@ public interface OrdersRepo extends JpaRepository<orders,Integer> {
 
     @Transactional
     @Modifying
-    @Query(value=" Insert into orders (address,item_id,item_price,item_units,order_status,userid) Values(?1,?2,?3,?4,'Placed',?5)", nativeQuery=true)
-    Integer purchaceItem(String address,Integer item_id,Integer Product_price,Integer Units,Integer userid);
+    @Query(value=" Insert into orders (address,item_id,item_price,item_units,order_status,orderid,userid) Values(?1,?2,?3,?4,'Placed',?5,?6)", nativeQuery=true)
+    Integer purchaceItem(String address,Integer item_id,Integer Product_price,Integer Units,Integer orderid,Integer userid);
 
-
+    @Query(value = "Select orderid from orders ORDER BY orderid DESC Limit 1")
+    Integer getNextOrderId();
 }
