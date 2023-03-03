@@ -1,7 +1,10 @@
 package com.ecommercesystem.checkout.CheckoutService;
-import com.ecommercesystem.checkout.CheckOutProductsDto;
-import com.ecommercesystem.checkout.SelectedProductsDto;
-import com.ecommercesystem.checkout.CheckoutRepo;
+
+import com.ecommercesystem.checkout.CheckOutRepositories.CheckoutRepo;
+import com.ecommercesystem.checkout.CheckOutRepositories.OrdersRepo;
+import com.ecommercesystem.checkout.CheckoutDtos.CheckOutProductsDto;
+import com.ecommercesystem.checkout.CheckoutDtos.SelectedProductsDto;
+import com.ecommercesystem.checkout.entity.PurchaceDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -11,16 +14,31 @@ import java.util.List;
 public class CheckoutServiceImpl implements CheckoutService{
     @Autowired
     private CheckoutRepo checkoutRepo;
-    private CheckOutProductsDto checkOutProductDto= new CheckOutProductsDto();
+    @Autowired
+    private OrdersRepo ordersRepo;
+
+    List<CheckOutProductsDto> purchasingProducts=new ArrayList<CheckOutProductsDto>();
     @Override
     public List<CheckOutProductsDto> showCheckoutItems(List<SelectedProductsDto> selectedProductsDto, Integer userid) {
 
         List<CheckOutProductsDto> products=new ArrayList<CheckOutProductsDto>();
         for (int i = 0; i< selectedProductsDto.size(); i++){
+            CheckOutProductsDto checkOutProductDto= new CheckOutProductsDto();
             checkOutProductDto.setProduct(checkoutRepo.getProductDetails(selectedProductsDto.get(i).getItem_id()));
             checkOutProductDto.setUnits(selectedProductsDto.get(i).getUnits());
             products.add(checkOutProductDto);
         }
+
+        purchasingProducts=products;
         return products;
+    }
+
+    @Override
+    public String placeorder(PurchaceDetails purchaceDetails) {
+
+        for (int i = 0; i< purchaceDetails.getPurchaceitems().size(); i++){
+           ordersRepo.purchaceItem(purchaceDetails.getAddress(),purchaceDetails.getPurchaceitems().get(i).getItem_id(),purchasingProducts.get(i).getProduct().getProduct_price()*purchaceDetails.getPurchaceitems().get(i).getUnits(),purchaceDetails.getPurchaceitems().get(i).getUnits(),purchaceDetails.getUserid());
+        }
+        return "Order placed";
     }
 }
