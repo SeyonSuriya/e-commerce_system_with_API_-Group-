@@ -5,6 +5,8 @@ import Layout from './components/Layout';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
+import Loginform from "./components/loginform";
+
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    <div className="page">
+      <Loginform />
+      </div>
 
     </>
   );
