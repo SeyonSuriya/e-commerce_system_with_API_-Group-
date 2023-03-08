@@ -1,6 +1,6 @@
 package com.ecommercesystem.registeruser.repository;
 
-import com.ecommercesystem.checkout.AddressDto;
+
 import com.ecommercesystem.registeruser.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -42,7 +42,7 @@ public interface UserRepo extends JpaRepository<User,Integer> {
 
     // Get User Address
     @Query(value="select * from users where userid=:userid", nativeQuery=true)
-    List<AddressDto> getAddressBYId(Integer userid);
+    List<User> getAddressBYId(Integer userid);
 
     // Change default address
     @Transactional

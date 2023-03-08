@@ -1,7 +1,6 @@
 package com.ecommercesystem.registeruser.service.AddressService;
 
-import com.ecommercesystem.checkout.AddressDto;
-import com.ecommercesystem.checkout.CheckoutRepo;
+import com.ecommercesystem.checkout.CheckoutDtos.AddressDto;
 import com.ecommercesystem.registeruser.entity.User;
 import com.ecommercesystem.registeruser.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ public class AddressServiceImpl implements AddressService{
 
 
     @Override
-    public List<AddressDto> getAddressBYId(Integer userid) {
+    public List<User> getAddressBYId(Integer userid) {
         return userRepo.getAddressBYId(userid);
     }
 
