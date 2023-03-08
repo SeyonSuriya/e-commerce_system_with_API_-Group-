@@ -16,7 +16,7 @@ import java.util.List;
 public interface cartRepo extends JpaRepository<cart,Integer> {
 
 
-    //Get items in cart
+    //Get books in cart
     @Query(value="select * from cart where userid=:userid", nativeQuery=true)
     List<cart> showcart(Integer userid);
 
