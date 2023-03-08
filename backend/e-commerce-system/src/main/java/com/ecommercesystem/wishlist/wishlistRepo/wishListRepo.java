@@ -2,7 +2,7 @@ package com.ecommercesystem.wishlist.wishlistRepo;
 
 
 import com.ecommercesystem.wishlist.entity.wishlist;
-import com.ecommercesystem.wishlist.wishListDto.wishListDto;
+
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
