@@ -1,6 +1,6 @@
 package com.ecommercesystem.checkout.CheckoutDtos;
 
-import com.ecommercesystem.product.entity.items;
+import com.ecommercesystem.product.entity.books;
 
 public class CheckOutProductsDto {
 
@@ -10,12 +10,12 @@ public class CheckOutProductsDto {
 
 
 
-    public items getProduct() {
-        return items;
+    public books getProduct() {
+        return books;
     }
 
-    public void setProduct(items items) {
-        this.items = items;
+    public void setProduct(books books) {
+        this.books = books;
     }
 
     public Integer getUnits() {
@@ -26,13 +26,13 @@ public class CheckOutProductsDto {
         this.units = units;
     }
 
-    public CheckOutProductsDto(items items, Integer units) {
+    public CheckOutProductsDto(books books, Integer units) {
 
-        this.items = items;
+        this.books = books;
         this.units = units;
     }
 
 
-    private items items;
+    private books books;
     private Integer units ;
 }
