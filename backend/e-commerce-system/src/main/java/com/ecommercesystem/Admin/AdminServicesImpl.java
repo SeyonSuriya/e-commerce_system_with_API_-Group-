@@ -1,6 +1,9 @@
 package com.ecommercesystem.Admin;
 
 
+import com.ecommercesystem.Admin.entities.Admin;
+import com.ecommercesystem.Admin.entities.LoginAdminDto;
+import com.ecommercesystem.Admin.entities.RegisterAdminDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

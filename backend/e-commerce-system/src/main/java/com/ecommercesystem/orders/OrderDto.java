@@ -1,18 +1,18 @@
 package com.ecommercesystem.orders;
 
 import com.ecommercesystem.checkout.entity.orders;
-import com.ecommercesystem.product.entity.items;
+import com.ecommercesystem.product.entity.books;
 
 public class OrderDto {
-    private items Items;
+    private books books;
     private orders Orders;
 
-    public items getItems() {
-        return Items;
+    public books getItems() {
+        return books;
     }
 
-    public void setItems(items items) {
-        Items = items;
+    public void setItems(books books) {
+        this.books = books;
     }
 
     public orders getOrders() {
@@ -23,8 +23,8 @@ public class OrderDto {
         Orders = orders;
     }
 
-    public OrderDto(items items, orders orders) {
-        Items = items;
+    public OrderDto(books books, orders orders) {
+        this.books = books;
         Orders = orders;
     }
 

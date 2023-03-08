@@ -1,10 +1,11 @@
 package com.ecommercesystem.orders;
 
 
+import com.ecommercesystem.Admin.entities.ChangeOrderDto;
 import com.ecommercesystem.checkout.CheckOutRepositories.OrdersRepo;
 
 import com.ecommercesystem.checkout.entity.orders;
-import com.ecommercesystem.product.productRepo.ProductRepo;
+import com.ecommercesystem.product.productRepo.Booksrepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.List;
 public class OrdersServiceImpl implements OrdersService{
 
     @Autowired
-    private ProductRepo productRepo;
+    private Booksrepo booksrepo;
     @Autowired
     private OrdersRepo ordersRepo;
 
@@ -30,7 +31,7 @@ public class OrdersServiceImpl implements OrdersService{
         Orders = ordersRepo.getorders(userid);
 
         for (int i=0;i<Orders.size();i++){
-            orderDto1.setItems(productRepo.getItemDetails(Orders.get(i).getItem_id()));
+            orderDto1.setItems(booksrepo.getItemDetails(Orders.get(i).getBook_id()));
             orderDto1.setOrders(Orders.get(i));
             orderDto.add(orderDto1);
         }
@@ -47,5 +48,21 @@ public class OrdersServiceImpl implements OrdersService{
     public List<OrderDto> canselItem(CanselItemDto canselItemDto) {
         ordersRepo.canselItem(canselItemDto.getUserid(),canselItemDto.getReference());
         return getOrders(canselItemDto.getUserid());
+    }
+    @Override
+    public List<orders> getAllOrders() {
+        return ordersRepo.getAllOrders();
+    }
+
+    @Override
+    public List<orders> changeOrder(ChangeOrderDto changeOrderDto) {
+        if (changeOrderDto.getOrderid()!=0){
+            ordersRepo.changeOrderStatus(changeOrderDto.getOrderid(),changeOrderDto.getNewStatus());
+            return ordersRepo.getAllOrders();
+        }else if (changeOrderDto.getReference()!=0){
+            ordersRepo.changeReferenceStatus(changeOrderDto.getReference(),changeOrderDto.getNewStatus());
+            return ordersRepo.getAllOrders();
+        }
+        return ordersRepo.getAllOrders();
     }
 }
