@@ -5,7 +5,7 @@ import com.ecommercesystem.Admin.entities.Admin;
 import com.ecommercesystem.Admin.entities.LoginAdminDto;
 import com.ecommercesystem.Admin.entities.RegisterAdminDto;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,8 +17,8 @@ public class AdminServicesImpl implements AdminServices{
 
     @Override
     public String registerAdmin(RegisterAdminDto registerAdminDto) {
-
-        String encPassword=registerAdminDto.getPassword();
+        BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
+        String encPassword=bCrypt.encode(registerAdminDto.getPassword());
 
 
         Admin admin1=new Admin(
@@ -47,13 +47,13 @@ public class AdminServicesImpl implements AdminServices{
 
     @Override
     public String adminLogin(LoginAdminDto loginAdminDto) {
-
+        BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
         Admin admin=adminRepo.loginAdmin(loginAdminDto.getEmail());
         if (admin!=null){
-            if (loginAdminDto.getPassword()==admin.getPassword()){
+            if (bCrypt.matches(loginAdminDto.getPassword(),admin.getPassword())){
                 return admin.getEmail();
             }else {
-               return  "Password wrong";
+                return  "Password wrong";
             }
         }else {
             return "Invalid Credentials";

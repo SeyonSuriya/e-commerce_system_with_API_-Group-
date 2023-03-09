@@ -5,6 +5,7 @@ import com.ecommercesystem.registeruser.dto.UserDto;
 import com.ecommercesystem.registeruser.entity.User;
 import com.ecommercesystem.registeruser.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +18,12 @@ public class UserServiceCenter implements UserService {
 
     @Override
     public String addUser(UserDto userdto) {
-
-        String encPassword=UserDto.getPassword();
+        BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
+        String encPassword=bCrypt.encode(UserDto.getPassword());
         System.out.println(encPassword);
 
         User user = new User(
+
                 UserDto.getUserId(),
                 UserDto.getFirstname(),
                 UserDto.getSecondname(),
@@ -33,12 +35,17 @@ public class UserServiceCenter implements UserService {
                 UserDto.getProvince(),
                 UserDto.getPostalcode(),
                 UserDto.getPassword()
-               // UserDto.isActiveState()
+
+
+                // UserDto.isActiveState()
         );
         user.setPassword(encPassword);
 
         List<User> Emailtaken = userRepo.findUserByEmail(UserDto.getEmail());
+
+
         List<User> Mobiletaken = userRepo.findUserByMobile(UserDto.getMobile());
+
 
         if (Emailtaken .size()==0){
             if (Mobiletaken.size()==0){
@@ -56,10 +63,11 @@ public class UserServiceCenter implements UserService {
 
     public String validateUserDetails(String email,String password) {
         List<User> IsUserAvailable = userRepo.findUserByEmail(email);
+        BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
 
         if (IsUserAvailable.size()!=0 ){
 
-            if (password==userRepo.findUserByLoginCredentials(email)){
+            if (bCrypt.matches(password,userRepo.findUserByLoginCredentials(email))){
                 return "Login Granted";
 
             }else {
