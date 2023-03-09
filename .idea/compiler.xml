@@ -9,6 +9,10 @@
         <module name="e-commerce-system" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="e-commerce-system.main" target="17" />
+      <module name="e-commerce-system.test" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
