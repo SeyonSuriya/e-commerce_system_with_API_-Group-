@@ -1,0 +1,32 @@
+.containerfooter{
+    height: 300px;
+    background-color: #232f3e;
+}
+.containerfooter{
+   display: flex;
+   justify-content: space-between;
+   
+}
+.firstline{
+    color: white;
+    margin-left: 3%;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+.secondline{
+   color: white;
+   margin-top: 1%;
+   margin-left: 0%;
+   padding-left: 0%;
+}
+.thirdline{
+   color: white;
+   margin-top: 1%;
+   margin-left: 2%;
+}
+.sendmassage{
+   color: white;
+   margin-top: 1%;
+   margin-right: 4%;
+   margin-left: 2%;
+}
