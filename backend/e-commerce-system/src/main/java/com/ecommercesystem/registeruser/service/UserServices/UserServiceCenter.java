@@ -23,6 +23,7 @@ public class UserServiceCenter implements UserService {
         System.out.println(encPassword);
 
         User user = new User(
+
                 UserDto.getUserId(),
                 UserDto.getFirstname(),
                 UserDto.getSecondname(),
@@ -34,12 +35,17 @@ public class UserServiceCenter implements UserService {
                 UserDto.getProvince(),
                 UserDto.getPostalcode(),
                 UserDto.getPassword()
-               // UserDto.isActiveState()
+
+
+                // UserDto.isActiveState()
         );
         user.setPassword(encPassword);
 
         List<User> Emailtaken = userRepo.findUserByEmail(UserDto.getEmail());
+
+
         List<User> Mobiletaken = userRepo.findUserByMobile(UserDto.getMobile());
+
 
         if (Emailtaken .size()==0){
             if (Mobiletaken.size()==0){

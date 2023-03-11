@@ -53,7 +53,7 @@ public class AdminServicesImpl implements AdminServices{
             if (bCrypt.matches(loginAdminDto.getPassword(),admin.getPassword())){
                 return admin.getEmail();
             }else {
-               return  "Password wrong";
+                return  "Password wrong";
             }
         }else {
             return "Invalid Credentials";
