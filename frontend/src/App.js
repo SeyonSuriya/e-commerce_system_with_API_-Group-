@@ -8,6 +8,8 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import WishList from './pages/WishList';
 import Orders from './pages/Orders';
+import Store from './pages/Store';
+import LoginPage from './pages/LoginPage';
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Route path="/orders" element={<Orders />}/>
         <Route path="/aboutUs" element={<About />}/>
         <Route path="/contactUs" element={<Contact />}/>
+        <Route path="/store" element={<Store />}/>
+        <Route path="/login" element={<LoginPage />}/>
       </Routes>
     </BrowserRouter>
     </div>

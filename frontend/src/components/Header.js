@@ -54,15 +54,14 @@ const Header = () => {
                     </Link>
                    
           
-                      <Link className='icontag'>
+                      <Link className='icontag' to="/wishlist">
                       <img src="images/wishlist.svg" alt="wishlist" />
                       <p>
                        Favourite <br /> wishlist
                       </p>
                       </Link>
                    
-                   
-                      <Link className='icontag'>
+                      <Link className='icontag' to="/login">
                       <img src="images/user.svg" alt="user" />
                       <p>
                         Log in <br />  Account
@@ -70,14 +69,12 @@ const Header = () => {
                       </Link>
                    
                    <div>
-                      <Link className='icontag'>
+                      <Link className='icontag' to="/cart">
                       <img src="images/cart.svg" alt="cart" />
                      <div className='d-flex flex-column gap-10'>
                         <span className='badge'>0</span>
                         <p className='totalprice'>$ 000</p>
                      </div> 
-                     
-                      
                       </Link>
                    </div>
                 </div>
@@ -90,25 +87,24 @@ const Header = () => {
         <div className='menu-bottom'>
           <div>
           <div class="dropdown">
-          
                  <button class="btn btn-secondary dropdown-toggle bg-transparent" 
                   type="button" data-bs-toggle="dropdown" 
                    aria-expanded="false">
                     Shop Categories
                       </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="mobilephone.js">Mobile Phone</a></li>
-    <li><a class="dropdown-item" href="laptopcomputers.js">Laptop Computers</a></li>
-    <li><a class="dropdown-item" href="desktopcomputer.js">Desktop Computers</a></li>
+    <li><a class="dropdown-item" href="Store?query=Science">Science</a></li>
+    <li><a class="dropdown-item" href="Store?query=Mathematic">Mathematics</a></li>
+    <li><a class="dropdown-item" href="Store?query=Novel">Novels</a></li>
   </ul>
 </div>
           </div>
           <div className='menu-links'>
             <div className='d-flexx'>
                 <NavLink className="pageslink" to="/">Home</NavLink>
-                <NavLink className="pageslink" to="/">Store</NavLink>
-                <NavLink className="pageslink" to="/">About Us</NavLink>
-                <NavLink className="pageslink" to="/contact">Contact</NavLink>
+                <NavLink className="pageslink" to="/store">Store</NavLink>
+                <NavLink className="pageslink" to="/aboutUs">About Us</NavLink>
+                <NavLink className="pageslink" to="/contactUs">Contact</NavLink>
             </div>
           </div>
         </div>
@@ -117,5 +113,4 @@ const Header = () => {
     </>
   )
 }
-
 export default Header;
