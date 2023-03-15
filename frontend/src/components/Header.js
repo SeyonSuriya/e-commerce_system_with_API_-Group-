@@ -86,16 +86,16 @@ const Header = () => {
        <div className='contain-bottom'>
         <div className='menu-bottom'>
           <div>
-          <div class="dropdown">
-                 <button class="btn btn-secondary dropdown-toggle bg-transparent" 
+          <div className="dropdown">
+                 <button className="btn btn-secondary dropdown-toggle bg-transparent" 
                   type="button" data-bs-toggle="dropdown" 
                    aria-expanded="false">
                     Shop Categories
                       </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="Store?query=Science">Science</a></li>
-    <li><a class="dropdown-item" href="Store?query=Mathematic">Mathematics</a></li>
-    <li><a class="dropdown-item" href="Store?query=Novel">Novels</a></li>
+  <ul className="dropdown-menu">
+    <li><a className="dropdown-item" href="Store?query=Science">Science</a></li>
+    <li><a className="dropdown-item" href="Store?query=Mathematic">Mathematics</a></li>
+    <li><a className="dropdown-item" href="Store?query=Novel">Novels</a></li>
   </ul>
 </div>
           </div>

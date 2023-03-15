@@ -17,112 +17,105 @@ export default function RegisterPage() {
   const [password,setPassword]=useState(' ');
   const [password2,setPassword2]=useState(' ');
 
-  // function Validate(e) {
-  //   document.getElementById('firstNameError').innerHTML="Please enter your firstname<br/>";
-  //   return false;
-  // }
-
-  // function onCreate(e) {
-
-  //     e.preventDefault();
-      
-
-  //     const postData = {
-  //       firstname,
-  //       secondname,
-  //       addressline1,
-  //       addressline2,
-  //       district,
-  //       province,
-  //       mobilenumber,
-  //       postalcode,
-  //       email,
-  //       password,
-  //     };
-  //     axios.post(
-  //       'http://localhost:8080/ecommerce/register',
-  //       postData,
-  //       ).then(response=>{
-  //         console.log(response.data)
-  //         if (response.data === email) {
-  //          // document.getElementById('errorMessage').innerHTML=response.data;
-  //           document.getElementById("LoginPage").click();
-  //         }else{
-  //           document.getElementById('errorMessage').innerHTML=response.data;
-  //         }
-  //       })
-  //   }
-  // }
-  function RemoveError(event) {
-    
-    document.getElementById(event).innerHTML=" ";
-    
-  }
  
+  function onCreate() {
+      const postData = {
+        firstname,
+        secondname,
+        addressline1,
+        addressline2,
+        district,
+        province,
+        mobilenumber,
+        postalcode,
+        email,
+        password,
+      };
+      axios.post(
+        'http://localhost:8080/ecommerce/register',
+        postData,
+        ).then(response=>{
+          console.log(response.data)
+          if (response.data === email) {
+            document.getElementById("EmailVerification").click();
+          }else{
+            document.getElementById('errorMessage').innerHTML=response.data;
+          }
+        })
+    }
 
+  function RemoveError(event) {
+    document.getElementById(event).innerHTML=" ";
+    document.getElementById('passwordRequirements').innerHTML=" ";
+    if (event==='passwordError') {
+      document.getElementById('passwordRequirements').innerHTML="<br/>Password should contain at least 6 characters";
+    }
+  }
   function handleSubmit (event) {
     var phoneno = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
-
-   
-    
+  
 if (firstname===' ') {
-      document.getElementById('firstnameError').innerHTML="Please enter your firstname";
+      document.getElementById('firstnameError').innerHTML="<br/>Please enter your firstname";
       event.preventDefault();
     }else if (secondname===' ') {
-      document.getElementById('secondnameError').innerHTML="Please enter your secondname";
+      document.getElementById('secondnameError').innerHTML="<br/>Please enter your secondname";
       event.preventDefault();
      
      
     }else if (email===' ') {
-      document.getElementById('emailError').innerHTML="Please enter your email";
+      document.getElementById('emailError').innerHTML="<br/>Please enter your email";
       event.preventDefault();
  
     }
     // Add emial validation here
     else if (addressline1===' ') {
-      document.getElementById('addressline1Error').innerHTML="Please enter AddressLine 1";
+      document.getElementById('addressline1Error').innerHTML="<br/>Please enter AddressLine 1";
       event.preventDefault();
      
     }
     else if (addressline2===' ') {
-      document.getElementById('addressline2Error').innerHTML="Please enter AddressLine 2";
+      document.getElementById('addressline2Error').innerHTML="<br/>Please enter AddressLine 2";
       event.preventDefault();
    
     }else if (district===' ') {
-      document.getElementById('districtError').innerHTML="Please enter your district";
+      document.getElementById('districtError').innerHTML="<br/>Please enter your district";
       event.preventDefault();
      
     }else if (province===' ') {
-      document.getElementById('provinceError').innerHTML="Please enter your province";
+      document.getElementById('provinceError').innerHTML="<br/>Please enter your province";
       event.preventDefault();
       
     }else if (postalcode===' ') {
-      document.getElementById('postalcodeError').innerHTML="Please enter your postalcode";
+      document.getElementById('postalcodeError').innerHTML="<br/>Please enter your postalcode";
       event.preventDefault();
    
     }else if (mobilenumber===' ') {
-      document.getElementById('mobilenumberError').innerHTML="Please enter your mobilenumber";
+      document.getElementById('mobilenumberError').innerHTML="<br/>Please enter your mobilenumber";
       event.preventDefault();
    
-    }else if (mobilenumber.length<10) {
-      document.getElementById('mobilenumberError').innerHTML="Mobile number should contain 10 characters";
-     
-      event.preventDefault();
     }else if( !phoneno.test(mobilenumber)){
-      document.getElementById('mobilenumberError').innerHTML="Entered Mobile is Worng";
+      document.getElementById('mobilenumberError').innerHTML="<br/>Please Enter a valid Mobile Number";
+      event.preventDefault();
+    }
+    else if (mobilenumber.length<10) {
+      document.getElementById('mobilenumberError').innerHTML="<br/>Mobile number should contain 10 characters";
       event.preventDefault();
     }
     else if (password===' ') {
-      document.getElementById('passwordError').innerHTML="Please enter your password";
+      document.getElementById('passwordError').innerHTML="<br/>Please enter your password";
+      event.preventDefault();
+    }else if (password.length<6) {
+      document.getElementById('passwordError').innerHTML="<br/>Password should contain at least 6 characters";
       event.preventDefault();
     }else if (password2===' ') {
-      document.getElementById('password2Error').innerHTML="Please enter your password again";
+      document.getElementById('password2Error').innerHTML="<br/>Please enter your password again";
       event.preventDefault();
     }else if (password2!==password) {
-      document.getElementById('password2Error').innerHTML="Passwords not maching";
+      document.getElementById('password2Error').innerHTML="<br/>Passwords not maching";
       event.preventDefault();
     }
-    event.preventDefault();
+    onCreate();
+   
     // to do Password requirements
   }
       
@@ -149,9 +142,9 @@ return (
    <span id='postalcodeError'></span><br />
    Enter your Mobile Number: <input  type='tel' max="9999999999" name='mobilenumber' maxLength='10' value={mobilenumber} onClick={(event)=>RemoveError('mobilenumberError')} onChange={(e)=>setMobile(e.target.value)}></input>
    <span id='mobilenumberError'></span><br />
-   Enter your Password : <input type='text' name='password' maxLength={9} value={password} onClick={(event)=>RemoveError('passwordError')} onChange={(e)=>setPassword(e.target.value)}></input>
-   <span id='passwordError'></span><br />
-   Confirm your Password : <input type='text' name='password2' value={password2} onClick={(event)=>RemoveError('password2Error')} onChange={(e)=>setPassword2(e.target.value)}></input>
+   Enter your Password : <input type='text' name='password' maxLength={15} value={password} onClick={(event)=>RemoveError('passwordError')} onChange={(e)=>setPassword(e.target.value)}></input>
+   <span id='passwordError'></span><span id='passwordRequirements'></span><br/>
+   Confirm your Password : <input type='text' name='password2' maxLength={15} value={password2} onClick={(event)=>RemoveError('password2Error')} onChange={(e)=>setPassword2(e.target.value)}></input>
    <span id='password2Error'></span><br />
 
 
@@ -161,12 +154,9 @@ return (
                  <button type='submit'>Sign up</button>
              </div>
        </form>       
-             <p className="text"> OR LOGIN USING</p>
-             <div className="extra-Log">
-                 <div className="Facebook"></div>
-                 <div className="Google"></div>
-             </div>
-             <a href='/login' type="hidden" id="LoginPage" >Click Here</a>
+             Already have an account ?   <br/>
+             <a href='/emailverification' id="EmailVerification" > </a>
+             <a href='/login' type="hidden" id="LoginPage" >  Click Here to Login</a>
     </div>
 )
 }

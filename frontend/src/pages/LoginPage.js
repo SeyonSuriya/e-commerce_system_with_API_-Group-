@@ -7,6 +7,7 @@ export default function LoginPage() {
     <div>     
     <div className="page">
     <Loginform/>
+    
     </div>
 
     </div>
