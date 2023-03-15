@@ -47,3 +47,12 @@
 .Facebook{
     Background-image: url("https://icons8.com/icon/118466/facebook");
 }
+.Log-btn{
+    text-align: center;
+}
+.reg{
+    text-align: center;
+    background-color: #ded0b7;
+    width: 70%;
+    margin-left: 15%;
+}

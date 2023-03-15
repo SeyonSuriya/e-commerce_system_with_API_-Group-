@@ -1,25 +1,77 @@
-import React from "react";
+import React, { useState } from 'react'
+import axios from 'axios';
 import "./loginform.css"
 
-const Loginform =()=>{
-    return(
-    <div className ="log">
-            <h1> LOGIN</h1>
-            <input type ="email" placeholder="Email"/>
-            <input type ="password" placeholder="password"/>   
+export default function Loginform(props) {
+  const [email,setEmail]=useState(' ');
+  const [password,setPassword]=useState(' ');
 
-        <div className="Log-btn">LOGIN</div>
+  function RemoveErrorMessages(){
+    document.getElementById('ErrorMessage').innerHTML=" "
+  }
+
+  function onCreate(e) {
+    e.preventDefault();
+
+     if (email===' ') {
+      document.getElementById('ErrorMessage').innerHTML="Please Enter Login Credentials"
+      e.preventDefault();
+     }else if (password===' ') {
+      document.getElementById('ErrorMessage').innerHTML="Please Enter Password"
+      e.preventDefault();
+     }else  {
+
+      const postData = {
+        email,
+        password,
+      };
+
+        axios.post(
+          'http://localhost:8080/ecommerce/login',
+          postData,
+          ).then(response=>{
+            if (response.data === 'Login Granted') {
+               document.getElementById("Homepage").click();
+             }else{
+               document.getElementById('ErrorMessage').innerHTML=response.data;
+             }
+           }
+            )
+     }
+   
+    }
+
+  return (
+       <div className ="log">
+         <h1> LOGIN</h1>
+         <form onSubmit={onCreate}>
+
+      Email  : <input type='email' id='email' value={email} onClick={RemoveErrorMessages} onChange={(e)=>setEmail(e.target.value)}></input><br />
+      Password : <input type='text' value={password} onClick={RemoveErrorMessages} onChange={(e)=>setPassword(e.target.value)}></input><br />
         
-        <p className="text"> OR LOGIN USING</p>
+      <span id='ErrorMessage' className='ErrorMessage'></span>
+                <div className="Log-btn">
+                    <br/>
+                    <button type='submit'>Log in</button>
+                </div>
+                
+          </form>       
+          {
+            // *******   Login through Google Accounts ********
+            // <p className="text"> OR LOGIN USING</p>
+            // <div className="extra-Log">
+            //     <div className="Facebook"></div>
+            //     <div className="Google"></div>
+            // </div> 
+          }
+                <a href='/' type="hidden" id="Homepage" > </a>
+                Don't have an account ? <a href='/register'> Sign up here</a> 
 
-        <div className="extra-Log">
-             <div className="Facebook"></div>
-             
-             <div className="Google"></div>
-        </div>
+                <a href='/resetpassword'> Forgot password</a>
 
-    </div>
-    )
+                            
+       </div>
+  )
 }
 
-export default Loginform;
+
