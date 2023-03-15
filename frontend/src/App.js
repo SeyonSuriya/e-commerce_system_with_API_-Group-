@@ -10,6 +10,7 @@ import WishList from './pages/WishList';
 import Orders from './pages/Orders';
 import Store from './pages/Store';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/contactUs" element={<Contact />}/>
         <Route path="/store" element={<Store />}/>
         <Route path="/login" element={<LoginPage />}/>
+        <Route path="/register" element={<RegisterPage />}/>
       </Routes>
     </BrowserRouter>
     </div>

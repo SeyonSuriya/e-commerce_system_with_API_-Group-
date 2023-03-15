@@ -2,14 +2,13 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import "./loginform.css"
 
-
 export default function Loginform(props) {
   const [email,setEmail]=useState(' ');
   const [password,setPassword]=useState(' ');
 
   function onCreate(e) {
     e.preventDefault();
-    console.log(email);
+   // console.log(email);
     console.log(password);
 
     const postData = {
@@ -22,7 +21,8 @@ export default function Loginform(props) {
       ).then(response=>{
         console.log(response.data)
         if (response.data === 'Login Granted') {
-           document.getElementById('errorMessage').innerHTML=response.data;
+         // document.getElementById('errorMessage').innerHTML=response.data;
+          document.getElementById("Homepage").click();
         }else{
           document.getElementById('errorMessage').innerHTML=response.data;
         }
@@ -33,7 +33,7 @@ export default function Loginform(props) {
          <h1> LOGIN</h1>
          <form onSubmit={onCreate}>
 
-      Enter your name : <input type='text' name='username' value={email} onChange={(e)=>setEmail(e.target.value)}></input><br />
+      Enter your name : <input type='email' name='username' value={email} onChange={(e)=>setEmail(e.target.value)}></input><br />
       Enter your Password : <input type='text' name='password' value={password} onChange={(e)=>setPassword(e.target.value)}></input><br />
         
       <span id='errorMessage' className='ErrorMessage'></span>
@@ -47,6 +47,7 @@ export default function Loginform(props) {
                     <div className="Facebook"></div>
                     <div className="Google"></div>
                 </div>
+                <a href='/' type="hidden" id="Homepage" >Click Here</a>
        </div>
   )
 }
