@@ -20,8 +20,7 @@ import org.springframework.web.bind.annotation.* ;
 @RestController
 @CrossOrigin()
 @RequestMapping("ecommerce")
-public class RegisterUserController
-{
+public class RegisterUserController {
     @Autowired
     private UserService registeruser;
     @Autowired
@@ -36,14 +35,18 @@ public class RegisterUserController
     @PostMapping(path = "/register")
     public String saveUser(@RequestBody UserDto userDto)
     {
-        String id = registeruser.addUser(userDto);
-        return id;
+        String k=registeruser.addUser(userDto);
+        System.out.println(k);
+        return k;
     }
 
     @PostMapping(path = "/login")
     public String authenticateUser(@RequestBody LoginUser loginUser)
     {
         String result = registeruser.validateUserDetails(loginUser.email,loginUser.password);
+        System.out.println(loginUser.email);
+        System.out.println(loginUser.password);
+        System.out.println(result);
         return result;
     }
 

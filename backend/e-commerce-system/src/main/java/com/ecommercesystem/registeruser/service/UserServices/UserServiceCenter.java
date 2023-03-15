@@ -20,7 +20,7 @@ public class UserServiceCenter implements UserService {
     public String addUser(UserDto userdto) {
         BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
         String encPassword=bCrypt.encode(UserDto.getPassword());
-        System.out.println(encPassword);
+
 
         User user = new User(
 
@@ -42,15 +42,12 @@ public class UserServiceCenter implements UserService {
         user.setPassword(encPassword);
 
         List<User> Emailtaken = userRepo.findUserByEmail(UserDto.getEmail());
-
-
         List<User> Mobiletaken = userRepo.findUserByMobile(UserDto.getMobile());
-
 
         if (Emailtaken .size()==0){
             if (Mobiletaken.size()==0){
                 userRepo.save(user);
-                return user.getFirstname();
+                return "Registration Successful";
             }else {
                 return "Mobile number is already registered";
             }
@@ -58,25 +55,18 @@ public class UserServiceCenter implements UserService {
         else {
             return "email is already registered";
         }
-
     }
-
     public String validateUserDetails(String email,String password) {
         List<User> IsUserAvailable = userRepo.findUserByEmail(email);
         BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
-
         if (IsUserAvailable.size()!=0 ){
-
             if (bCrypt.matches(password,userRepo.findUserByLoginCredentials(email))){
                 return "Login Granted";
-
             }else {
                 return "Incorrect Password";
             }
-
         }else {
             return "No user Registered for this email";
         }
-
     }
 }
