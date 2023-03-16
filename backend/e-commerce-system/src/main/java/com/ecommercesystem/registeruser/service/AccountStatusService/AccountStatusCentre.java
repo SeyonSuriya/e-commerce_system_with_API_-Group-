@@ -13,9 +13,11 @@ public class AccountStatusCentre implements AccountStatusService{
     private UserRepo userRepo;
 
     public void activateAccount(String email){
-            userRepo.changeActiveStatus(1,email);
+        //  userRepo.changeActiveStatus(email);
+        // Removed functions when Making verify link add the functions again
     }
     public void deactivateAccount(String email){
-        userRepo.changeActiveStatus(0,email);
+        //userRepo.changeActiveStatus(0,email);
+        // Removed functions when Making verify link add the functions again
     }
 }

@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.* ;
 
+import java.io.UnsupportedEncodingException;
+
 
 @RestController
 @CrossOrigin()
@@ -33,8 +35,7 @@ public class RegisterUserController {
     private AccountStatusService accountStatusService;
 
     @PostMapping(path = "/register")
-    public String saveUser(@RequestBody UserDto userDto)
-    {
+    public String saveUser(@RequestBody UserDto userDto) throws MessagingException, UnsupportedEncodingException {
         String k=registeruser.addUser(userDto);
         System.out.println(k);
         return k;
@@ -52,13 +53,18 @@ public class RegisterUserController {
 
     Integer otp=0;
     String emailAddress="";
-    @PostMapping(path = "/validateemail")
-    public String validateWithOtp(@RequestBody Email email) throws MessagingException {
-        otp = otpGeneratorService.generateOtp();
-        emailAddress=email.emailAddress;
-        emailService.sendEmail(email.emailAddress, otp.toString(), "Registration");
-        return "Email sent";
+    @GetMapping(path = "/validateemail/verify")
+    public String validateWithOtp(@RequestParam String email,Integer otp) throws MessagingException {
+        return emailService.verifyEmail(email,otp);
     }
+
+    @GetMapping(path = "/validateemail/resendlink")
+    public String validateWithOtp(@RequestBody String email) throws MessagingException {
+        return " Yet to develop";
+    }
+
+
+
 
     @PostMapping(path = "/validateemailByOtp")
     public String validateemailByOtp(@RequestBody Otp otpCode)

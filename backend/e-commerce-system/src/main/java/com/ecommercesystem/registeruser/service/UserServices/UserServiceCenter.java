@@ -4,10 +4,13 @@ package com.ecommercesystem.registeruser.service.UserServices;
 import com.ecommercesystem.registeruser.dto.UserDto;
 import com.ecommercesystem.registeruser.entity.User;
 import com.ecommercesystem.registeruser.repository.UserRepo;
+import com.ecommercesystem.registeruser.service.EmailService.EmailService;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Service
@@ -15,9 +18,11 @@ public class UserServiceCenter implements UserService {
 
     @Autowired
     private UserRepo userRepo;
+    @Autowired
+    private EmailService emailService;
 
     @Override
-    public String addUser(UserDto userdto) {
+    public String addUser(UserDto userdto) throws MessagingException, UnsupportedEncodingException {
         BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
         String encPassword=bCrypt.encode(UserDto.getPassword());
 
@@ -47,6 +52,7 @@ public class UserServiceCenter implements UserService {
         if (Emailtaken .size()==0){
             if (Mobiletaken.size()==0){
                 userRepo.save(user);
+                emailService.sendEmailVerification(user.getEmail());
                 return "Registration Successful";
             }else {
                 return "Mobile number is already registered";

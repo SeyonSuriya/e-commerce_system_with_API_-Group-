@@ -23,9 +23,7 @@ public interface UserRepo extends JpaRepository<User,Integer> {
     @Query(value="select * from users a where a.mobile=:Mobile", nativeQuery=true)
     List<User> findUserByMobile(String Mobile);
 
-
     // Login user Queries
-
 
     @Query(value="SELECT password from users a WHERE a.email=:Email", nativeQuery=true)
     String findUserByLoginCredentials(String Email);
@@ -35,10 +33,11 @@ public interface UserRepo extends JpaRepository<User,Integer> {
     @Query(value="update users a set a.password=?2 WHERE a.email=?1", nativeQuery=true)
     Integer changePassword(String Email,String password);
 
+
     @Transactional
     @Modifying
-    @Query(value="update users a set a.active_status=?1 WHERE a.email=?2", nativeQuery=true)
-    void changeActiveStatus(int i,String email);
+    @Query(value="update users a set a.active_status=1 WHERE a.email=?1", nativeQuery=true)
+    void changeActiveStatus(String email);
 
     // Get User Address
     @Query(value="select * from users where userid=:userid", nativeQuery=true)
