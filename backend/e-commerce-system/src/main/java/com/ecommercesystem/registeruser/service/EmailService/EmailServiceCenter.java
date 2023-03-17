@@ -30,25 +30,6 @@ public class EmailServiceCenter implements EmailService{
     private UserRepo userRepo;
 
     Integer otp=0;
-    public String sendEmail(String toEmail,
-                         String body,
-                         String subject) throws MessagingException {
-
-
-        MimeMessage message=mailSender.createMimeMessage();
-        MimeMessageHelper helper=new MimeMessageHelper(message,true);
-        helper.setTo(toEmail);
-        helper.setSubject(subject);
-        // to do add html codes here
-        helper.setText(body+" <html><h1>Hello<h2><</html>",true);
-
-       // String attachment="/Users/hiran/Downloads";
-        //FileSystemResource file = new FileSystemResource(attachment);
-//       helper.addInline(attachment, file);
-        mailSender.send(message);
-        System.out.println("Mail send Successfully");
-        return "Mail send Successfully";
-    }
     @Override
     public String sendEmailVerification(String email) throws MessagingException, UnsupportedEncodingException {
         MimeMessage message = mailSender.createMimeMessage();
@@ -71,21 +52,22 @@ public class EmailServiceCenter implements EmailService{
         helper.setSubject(subject);
 
         content = content.replace("[[name]]", user.get(0).getFirstname()+user.get(0).getSecondname());
-        String verifyURL = "http://localhost:8080/ecommerce/validateemail/verify?email="+email+"&otp="+otp;
+        String verifyURL = "http://localhost:3000/verifyemail?email="+email+"&otp="+otp;
+        if (otpRepo.validateEmail(email)!=null){
+            otpRepo.deletePreviousOtp(email);
+        }
         otpRepo.saveOtp(user.get(0).getEmail(),otp);
-
         content = content.replace("[[URL]]",verifyURL);
-
         helper.setText(content, true);
-
         mailSender.send(message);
-
-        return "Email Sent";
+        return "Email verification link sent";
     }
 
     @Override
     public String verifyEmail(String email, Integer otp) {
         Integer otp1=otpRepo.validateEmail(email).getOtp();
+        System.out.println(otp1);
+        System.out.println(otp);
         if (otp1.equals(otp)){
             userRepo.changeActiveStatus(email);
             return "Email Verified";
@@ -94,4 +76,46 @@ public class EmailServiceCenter implements EmailService{
 
     }
 
+    @Override
+    public String resetPasswordEmail(String email) throws MessagingException, UnsupportedEncodingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        otp = otpGeneratorService.generateOtp();
+        List<User> user = userRepo.findUserByEmail(email);
+
+        String toAddress = email;
+        String fromAddress = "basnayakasanjeewa3@gmail.com";
+        String senderName = "Book World";
+        String subject = "Please Reset Your Password";
+        String content = "Dear [[name]],<br>"
+                + "Please click the link below to reset your password:<br>"
+                + "<h3><a href=\"[[URL]]\" target=\"_self\">Reset</a></h3>"
+                + "Thank you,<br>"
+                + "Tech World.";
+        helper.setFrom(fromAddress, senderName);
+        helper.setTo(toAddress);
+        helper.setSubject(subject);
+
+        content = content.replace("[[name]]", user.get(0).getFirstname()+user.get(0).getSecondname());
+        String resetPasswordURL = "http://localhost:3000/changepassword?email="+email+"&otp="+otp;
+        if (otpRepo.validateEmail(email)!=null){
+            otpRepo.deletePreviousOtp(email);
+        }
+        otpRepo.saveOtp(user.get(0).getEmail(),otp);
+        content = content.replace("[[URL]]",resetPasswordURL);
+        helper.setText(content, true);
+        mailSender.send(message);
+        return "Reset Password link sent";
+    }
+
+    @Override
+    public String ValidateResetLink(String email, Integer otp) {
+        Integer otp1=otpRepo.validateEmail(email).getOtp();
+        if (otp1.equals(otp)){
+            return "Create new password";
+        }
+        return "System error";
+
+    }
 }

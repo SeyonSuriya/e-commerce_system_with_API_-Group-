@@ -1,6 +1,7 @@
 package com.ecommercesystem.registeruser.service.ResetPassword;
 
 import com.ecommercesystem.registeruser.PasswordReset.PasswordReset;
+import com.ecommercesystem.registeruser.dto.PasswordResetDto;
 import com.ecommercesystem.registeruser.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,12 +13,11 @@ public class ResetPasswordCentre implements ResetPassword{
     private UserRepo userRepo;
 
     @Override
-    public String addNewPassword(PasswordReset passwordReset) {
+    public String addNewPassword(PasswordResetDto passwordResetDto) {
         BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
-        String newpassword=bCrypt.encode(passwordReset.newpassword);
+        String newpassword=bCrypt.encode(passwordResetDto.password);
 
-        Integer akk= userRepo.changePassword(passwordReset.email,newpassword);
-        return "Passsword changed";
+        Integer akk= userRepo.changePassword(passwordResetDto.email,newpassword);
+        return "Passsword Reset Success";
     }
-
 }

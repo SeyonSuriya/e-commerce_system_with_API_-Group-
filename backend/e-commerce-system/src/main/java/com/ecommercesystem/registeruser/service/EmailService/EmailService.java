@@ -6,8 +6,12 @@ import jakarta.mail.MessagingException;
 import java.io.UnsupportedEncodingException;
 
 public interface EmailService {
-    String sendEmail(String toEmail,String body, String subject) throws MessagingException;
+
     String sendEmailVerification(String email) throws MessagingException, UnsupportedEncodingException;
 
     String verifyEmail(String email, Integer otp);
+
+    String resetPasswordEmail(String email) throws MessagingException, UnsupportedEncodingException;
+
+    String ValidateResetLink(String email, Integer otp);
 }

@@ -36,7 +36,7 @@ public interface UserRepo extends JpaRepository<User,Integer> {
 
     @Transactional
     @Modifying
-    @Query(value="update users a set a.active_status=1 WHERE a.email=?1", nativeQuery=true)
+    @Query(value="update users a set a.active_status='1' WHERE a.email=?1", nativeQuery=true)
     void changeActiveStatus(String email);
 
     // Get User Address

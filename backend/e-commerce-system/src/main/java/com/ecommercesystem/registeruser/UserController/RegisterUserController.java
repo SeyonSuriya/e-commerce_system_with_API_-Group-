@@ -3,6 +3,8 @@ import com.ecommercesystem.registeruser.Email.Email;
 import com.ecommercesystem.registeruser.Otp.Otp;
 import com.ecommercesystem.registeruser.LoginUser.LoginUser;
 import com.ecommercesystem.registeruser.PasswordReset.PasswordReset;
+import com.ecommercesystem.registeruser.dto.PasswordResetDto;
+import com.ecommercesystem.registeruser.entity.VerificationDto;
 import com.ecommercesystem.registeruser.service.AccountStatusService.AccountStatusService;
 import com.ecommercesystem.registeruser.service.ResetPassword.ResetPassword;
 import com.ecommercesystem.registeruser.dto.UserDto;
@@ -36,9 +38,7 @@ public class RegisterUserController {
 
     @PostMapping(path = "/register")
     public String saveUser(@RequestBody UserDto userDto) throws MessagingException, UnsupportedEncodingException {
-        String k=registeruser.addUser(userDto);
-        System.out.println(k);
-        return k;
+        return registeruser.addUser(userDto);
     }
 
     @PostMapping(path = "/login")
@@ -51,60 +51,34 @@ public class RegisterUserController {
         return result;
     }
 
-    Integer otp=0;
-    String emailAddress="";
-    @GetMapping(path = "/validateemail/verify")
-    public String validateWithOtp(@RequestParam String email,Integer otp) throws MessagingException {
-        return emailService.verifyEmail(email,otp);
+
+    @PostMapping(path = "/validateemail/verify")
+    public String validateWithOtp(@RequestBody VerificationDto verificationDto) throws MessagingException {
+        return emailService.verifyEmail(verificationDto.email,verificationDto.otp);
     }
 
-    @GetMapping(path = "/validateemail/resendlink")
-    public String validateWithOtp(@RequestBody String email) throws MessagingException {
-        return " Yet to develop";
-    }
-
-
-
-
-    @PostMapping(path = "/validateemailByOtp")
-    public String validateemailByOtp(@RequestBody Otp otpCode)
-    {
-        if (otpCode.otpcode.equals(otp.toString())){
-
-            accountStatusService.activateAccount(emailAddress);
-            return "Email Verified";
-        }else {
-            return "Entered otp is not correct";
-        }
+    @GetMapping(path = "/resendverificationlink")
+    public String validateWithOtp(@RequestBody Email email) throws MessagingException, UnsupportedEncodingException {
+        return emailService.sendEmailVerification(email.getEmailAddress());
     }
 
     @PostMapping(path = "/resetpassword")
-    public String resetPassword(@RequestBody Email email) throws MessagingException {
-        otp = otpGeneratorService.generateOtp();
-        emailService.sendEmail(email.emailAddress, "Your otp for resetting your password for TechWorld"+otp.toString(), "Reset Your Password");
-        return "An otp sent to your email to reset your password ";
+    public String resetPassword(@RequestBody Email email) throws MessagingException, UnsupportedEncodingException {
+        return emailService.resetPasswordEmail(email.getEmailAddress());
+    }
+    @PostMapping(path = "/changepassword")
+    public String changepassword(@RequestBody VerificationDto verificationDto) throws MessagingException, UnsupportedEncodingException {
+        return emailService.ValidateResetLink(verificationDto.email,verificationDto.otp);
+    }
+    @PostMapping(path = "addnewpassword")
+    public String addNewPassword(@RequestBody PasswordResetDto passwordResetDto){
+        return resetPassword.addNewPassword(passwordResetDto);
     }
 
-    @PostMapping(path = "/resetpasswordwithotp")
-    public String resetpasswordwithotp(@RequestBody Otp otpCode)
-    {
-        if (otpCode.otpcode.equals(otp.toString())){
-            return "Enter new Password";
-        }else {
-            return "Entered otp is not correct";
-        }
-    }
-
-    @PostMapping(path = "/addnewpassword")
-    public String addnewpassword(@RequestBody PasswordReset passwordReset)
-    {
-        resetPassword.addNewPassword(passwordReset);
-        return "Password changed";
-    }
 
     @PostMapping(path = "/deactivateAccount")
-    public String deactivateAccount() {
-        accountStatusService.deactivateAccount(emailAddress);
+    public String deactivateAccount(String email) {
+        accountStatusService.deactivateAccount(email);
         return "Account is Deactivated ";
     }
 
