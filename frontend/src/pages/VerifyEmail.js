@@ -29,7 +29,7 @@ export default function VerifyEmail() {
     <div>
         <Header/>
         <span id='Message'> </span><br/>
-        <a href='/'>Homepage</a>
+        <a href='/login'>Please Login to your account</a>
     </div>
   )
 }

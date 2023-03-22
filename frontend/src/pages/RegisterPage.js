@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import "../components/loginform.css"
+import { useCookies } from 'react-cookie';
 
 export default function RegisterPage() {
 
@@ -12,37 +13,13 @@ export default function RegisterPage() {
   const [district,setDistrict]=useState(' ');
   const [province,setProvince]=useState(' ');
   const [postalcode,setPostalcode]=useState(' ');
-  const [mobilenumber,setMobile]=useState(' ');
+  const [mobile,setMobile]=useState(' ');
   const [email,setEmail]=useState(' ');
   const [password,setPassword]=useState(' ');
   const [password2,setPassword2]=useState(' ');
+  const [Email,setCookie] = useCookies(['user']);
 
- 
-  function onCreate() {
-      const postData = {
-        firstname,
-        secondname,
-        addressline1,
-        addressline2,
-        district,
-        province,
-        mobilenumber,
-        postalcode,
-        email,
-        password,
-      };
-      axios.post(
-        'http://localhost:8080/ecommerce/register',
-        postData,
-        ).then(response=>{
-          console.log(response.data)
-          if (response.data === email) {
-            document.getElementById("EmailVerification").click();
-          }else{
-            document.getElementById('errorMessage').innerHTML=response.data;
-          }
-        })
-    }
+    
 
   function RemoveError(event) {
     document.getElementById(event).innerHTML=" ";
@@ -51,13 +28,18 @@ export default function RegisterPage() {
       document.getElementById('passwordRequirements').innerHTML="<br/>Password should contain at least 6 characters";
     }
   }
+
+
   function handleSubmit (event) {
+   event.preventDefault();
     var phoneno = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
   
 if (firstname===' ') {
+  setCookie('email', email, { path: '/'});
       document.getElementById('firstnameError').innerHTML="<br/>Please enter your firstname";
       event.preventDefault();
-    }else if (secondname===' ') {
+    }
+    else if (secondname===' ') {
       document.getElementById('secondnameError').innerHTML="<br/>Please enter your secondname";
       event.preventDefault();
      
@@ -89,15 +71,15 @@ if (firstname===' ') {
       document.getElementById('postalcodeError').innerHTML="<br/>Please enter your postalcode";
       event.preventDefault();
    
-    }else if (mobilenumber===' ') {
+    }else if (mobile===' ') {
       document.getElementById('mobilenumberError').innerHTML="<br/>Please enter your mobilenumber";
       event.preventDefault();
    
-    }else if( !phoneno.test(mobilenumber)){
+    }else if( !phoneno.test(mobile)){
       document.getElementById('mobilenumberError').innerHTML="<br/>Please Enter a valid Mobile Number";
       event.preventDefault();
     }
-    else if (mobilenumber.length<10) {
+    else if (mobile.length<10) {
       document.getElementById('mobilenumberError').innerHTML="<br/>Mobile number should contain 10 characters";
       event.preventDefault();
     }
@@ -113,11 +95,38 @@ if (firstname===' ') {
     }else if (password2!==password) {
       document.getElementById('password2Error').innerHTML="<br/>Passwords not maching";
       event.preventDefault();
+    }else {
+      const postData = {
+        firstname,
+        secondname,
+        addressline1,
+        addressline2,
+        district,
+        province,
+        mobile,
+        postalcode,
+        email,
+        password,
+      };
+      setCookie('email', email, { path: '/' });
+      axios.post(
+        'http://localhost:8080/ecommerce/register',
+        postData,
+        ).then(response=>{
+          console.log(response.data)
+          if (response.data === 'Registration Successful') {
+            
+            document.getElementById("EmailVerification").click();
+          }else {
+            document.getElementById('ErrorMessage').innerHTML="<br/>"+response.data+"<br/>";
+          }
+        }
+         )
     }
-    onCreate();
    
-    // to do Password requirements
   }
+    // to do Password requirements
+  
       
 
 return (
@@ -140,7 +149,7 @@ return (
    <span id='provinceError'></span><br />
    Enter your Postal code: <input type='text' name='postalcode' value={postalcode} onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
    <span id='postalcodeError'></span><br />
-   Enter your Mobile Number: <input  type='tel' max="9999999999" name='mobilenumber' maxLength='10' value={mobilenumber} onClick={(event)=>RemoveError('mobilenumberError')} onChange={(e)=>setMobile(e.target.value)}></input>
+   Enter your Mobile Number: <input  type='tel' max="9999999999" name='mobilenumber' maxLength='10' value={mobile} onClick={(event)=>RemoveError('mobilenumberError')} onChange={(e)=>setMobile(e.target.value)}></input>
    <span id='mobilenumberError'></span><br />
    Enter your Password : <input type='text' name='password' maxLength={15} value={password} onClick={(event)=>RemoveError('passwordError')} onChange={(e)=>setPassword(e.target.value)}></input>
    <span id='passwordError'></span><span id='passwordRequirements'></span><br/>
@@ -148,28 +157,15 @@ return (
    <span id='password2Error'></span><br />
 
 
-   <span id='errorMessage' className='ErrorMessage'></span>
+   <span id='ErrorMessage' className='ErrorMessage'></span>
              <div className="Log-btn">
-                 <br/>
                  <button type='submit'>Sign up</button>
              </div>
        </form>       
              Already have an account ?   <br/>
-             <a href='/emailverification' id="EmailVerification" > </a>
+             <a href='/emailverification' id="EmailVerification"> </a>
              <a href='/login' type="hidden" id="LoginPage" >  Click Here to Login</a>
     </div>
 )
 }
-
-
-
-// To do   
-
-
-
-
-
-
-
-
 
