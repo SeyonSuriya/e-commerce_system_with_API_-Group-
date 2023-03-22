@@ -54,7 +54,6 @@
 			<artifactId>spring-session-jdbc</artifactId>
 		</dependency>-->
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -63,5 +62,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

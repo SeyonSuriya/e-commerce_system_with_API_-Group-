@@ -12,8 +12,7 @@ import org.springframework.stereotype.Repository;
 @EnableJpaRepositories
 @Repository
 public interface CheckoutRepo extends JpaRepository<books,Integer> {
-
-
+    
     // Retriving books details that selected from cart
     @Query(value="select * from books a where a.book_id=:Book_id", nativeQuery=true)
     books getProductDetails(Integer Book_id);

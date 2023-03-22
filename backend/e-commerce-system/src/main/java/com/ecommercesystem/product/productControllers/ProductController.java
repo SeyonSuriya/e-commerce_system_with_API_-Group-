@@ -21,7 +21,7 @@ public class ProductController {
     private WishListService wishListService;
     @Autowired
     private CartService cartService;
-    @PostMapping(path = "/details")
+    @GetMapping(path = "/details")
     @ResponseBody
     public List<books> ShowProduct(@RequestParam Integer book_id) {
         return productInfoService.getItemPrice(book_id);

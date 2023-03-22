@@ -19,11 +19,10 @@ public interface Booksrepo extends JpaRepository<books,Integer> {
 
     // Register User Queries
 
-
-       @Query(value="select * from books a where a.item_id=:item_id", nativeQuery=true)
+       @Query(value="select * from books a where a.book_id=:item_id", nativeQuery=true)
       List<books>  getProductDetails(Integer item_id);
 
-    @Query(value="select * from books a where a.item_id=:item_id", nativeQuery=true)
+    @Query(value="select * from books a where a.book_id=:item_id", nativeQuery=true)
     books getItemDetails(Integer item_id);
 
       // @Query(value = "select num_of_units from books where item_id=:item_id")

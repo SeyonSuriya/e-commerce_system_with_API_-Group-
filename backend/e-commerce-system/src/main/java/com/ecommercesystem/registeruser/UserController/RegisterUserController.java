@@ -56,7 +56,6 @@ public class RegisterUserController {
     public String validateWithOtp(@RequestBody VerificationDto verificationDto) throws MessagingException {
         return emailService.verifyEmail(verificationDto.email,verificationDto.otp);
     }
-
     @GetMapping(path = "/resendverificationlink")
     public String validateWithOtp(@RequestBody Email email) throws MessagingException, UnsupportedEncodingException {
         return emailService.sendEmailVerification(email.getEmailAddress());
