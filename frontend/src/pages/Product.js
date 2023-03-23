@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
 
+
 export default function Product() {
   const [cookies, setCookie] = useCookies(['user']);
   // Remove this Set Cookie after because this will be created form registration page
@@ -16,21 +17,23 @@ export default function Product() {
     axios.get(
       'http://localhost:8080/ecommerce/books/details?book_id='+book_id,
       ).then(response=>{
-        console.log(response.data);
+        console.log(response.data[0].book_title);
         document.getElementById('book_name').innerHTML=response.data[0].book_title
+        document.getElementById('product_image').innerHTML="<img src={require('../Images/"+response.data[0].book_title+".jpg')} alt='product'/>" 
         document.getElementById('book_description').innerHTML=response.data[0].long_description
         document.getElementById('no_of_units').innerHTML=response.data[0].num_of_units
         document.getElementById('book_author').innerHTML=response.data[0].author
         document.getElementById('book_publisher').innerHTML=response.data[0].publisher
         document.getElementById('book_category').innerHTML=response.data[0].category
         document.getElementById('book_price').innerHTML=response.data[0].book_price
+
       }
        )
   
   return (
     <div>
       <Header/>
-      <img src="E-COMMERCE_SYSTEM_WITH_API/frontend/src/Images/FLYING ANGELS.jpg" alt="FLYING ANGELS" />
+      <span id='product_image'></span>
       <span id='book_name'>Book Name</span><br/>
       <span id='book_description'>Book Discription</span><br/>
       Author : <span id='book_author'>Book Author</span><br/>
