@@ -16,9 +16,26 @@ export default function Product() {
     const book_id = queryParameters.get("bookid")
     var units=1
     var available_units=0
+    
 
-      setCookie('wishlistimage', 'heart2.png', { path: '/product'});
-  
+    // Checking if the product in the wish list or not and select the heart image
+    function changeWishListImage() {
+      axios.post(
+        'http://localhost:8080/ecommerce/books/checkwishes?book_id='+book_id+'&userid='+cookies.userid,
+        ).then(response=>{
+          if (response.data==='wished') {
+            document.getElementById('wish_list_image').src=require("../Images/heart2.png")
+            document.getElementById('wish_list_image').value=1
+          }else{
+            document.getElementById('wish_list_image').src=require("../Images/heart1.png")
+            document.getElementById('wish_list_image').value=0
+          }
+         }
+          )
+    }
+    changeWishListImage()
+    
+
     axios.get(
       'http://localhost:8080/ecommerce/books/details?book_id='+book_id,
       ).then(response=>{
@@ -57,70 +74,69 @@ export default function Product() {
 
        // Wish List Handling
        function WishListHandler() {
-        
-        document.getElementById('wish_list_image').src=require("../Images/"+cookies.wishlistimage)
-        if (cookies.wishlistimage==='heart2.png') {
-                  cookies.wishlistimage='heart1.png'
-                  axios.post(
-                    'http://localhost:8080/ecommerce/books/addtowishlist?book_id='+book_id+'&userid='+cookies.userid,
-                    ).then(response=>{
-                      console.log(response.data)
-                     }
-                      )
+        if (document.getElementById('wish_list_image').value===0) {
+          axios.post(
+            'http://localhost:8080/ecommerce/books/addtowishlist?book_id='+book_id+'&userid='+cookies.userid,
+            ).then(response=>{
+              changeWishListImage()
+             }
+              )
         }else{
-          cookies.wishlistimage='heart2.png'
-        }
-        
+          axios.post(
+            'http://localhost:8080/ecommerce/books/removefromwishlist?book_id='+book_id+'&userid='+cookies.userid,
+            ).then(response=>{
+              changeWishListImage()
+             }
+              )
+        }                 
        }
 
        // Add to cart function
-       function AddtoCart(e) {
-        e.preventDefault();
+       function AddtoCart() {
+        axios.post(
+          'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+units+'&userid='+cookies.userid,
+          ).then(response=>{
+            // When the user clicks on div, open the popup
 
-      
-      var userid=cookies.userid
-         const postData = {
-           book_id,
-           units,
-           userid,
-         };
-   
-           axios.post(
-             'http://localhost:8080/ecommerce/login',
-             postData,
-             ).then(response=>{
-               if (response.data === 'Login Granted') {
-                  document.getElementById("Homepage").click();
-                }else{
-                  document.getElementById('ErrorMessage').innerHTML=response.data;
-                }
-              }
-               )
-        }
+              var popup = document.getElementById("myPopup");
+              popup.classList.toggle("show");
+
+           }
+            )
+       }
        
-
   return (
-    <div>
+    <div >
       <Header/>
       
-      <img id='product_image' src=' ' alt='product'/>
-      
+      <div className='image_div'>
+      <img className='product_image' id='product_image' src=' ' alt='product'/>
+      </div>
+      <div className='product_content_div'>
       <span id='book_name'>Book Name</span><br/>
       <span id='book_description'>Book Discription</span><br/>
       Author : <span id='book_author'>Book Author</span><br/>
       Publisher :<span id='book_publisher'>Book publisher</span><br/>
       <span id='book_category'>Book Category</span><br/>
-      <span id='book_price'>Book Price</span>$<br/>
+      Price : <span id='book_price'>Book Price</span>$<br/>
       <span id='no_of_orders'>Number of Orders</span><br/>
       Units Available :<span id='no_of_units'>Book Units</span><br/>
-
       <span id='change_units'>
       <img id='remove' className="minus_button" src={require("../Images/-.jpeg")} alt='minus img' onClick={RemoveUnits}/>
       <span id='units'>1</span>&nbsp;&nbsp;&nbsp;&nbsp;
       <img id='add' className="add_button" src={require("../Images/+.jpeg")} alt='plus img' onClick={addUnits}/><br/>
       </span><br/>
+      <img id='wish_list_image' className='wish_list_img' src={require("../Images/heart1.png")} alt='product' onClick={WishListHandler}/><br/>
+      <div className="popup">
+      <span className="popuptext" id="myPopup">A Simple Popup!</span>
       <button id='CartButton' onClick={AddtoCart}>Add to Cart</button>
-      <img id='wish_list_image' className='wish_list_img' src={require("../Images/heart1.png")} alt='product' onClick={WishListHandler}/>
+      </div>
+      <button>
+      <a href='/'> Home Page</a>
+      </button>
+      </div>
+      
+      
       <Footer/>
     </div>
   )
