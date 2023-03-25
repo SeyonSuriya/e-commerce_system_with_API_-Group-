@@ -21,13 +21,13 @@ public class cart {
     @Column(name = "quantity",length = 5)
     private int quantity;
 
+
     public cart(int id, int userid, int item_id, int quantity) {
         this.id = id;
         this.userid = userid;
         this.item_id = item_id;
         this.quantity = quantity;
     }
-
 
 
     public int getId() {

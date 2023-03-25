@@ -10,7 +10,6 @@ public interface WishListService {
     List<wishlist> getWishedItems(Integer userid);
     String checkwishes(Integer item_id, Integer userid);
 
-
     String addToWishList(Integer item_id, Integer userid);
 
     String removeFromWishList(Integer item_id, Integer userid);

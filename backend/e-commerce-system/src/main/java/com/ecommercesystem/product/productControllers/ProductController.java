@@ -27,24 +27,28 @@ public class ProductController {
         return productInfoService.getItemPrice(book_id);
     }
 
+    @PostMapping(path = "/checkwishes")
+    @ResponseBody
+    public String checkwishes(@RequestParam Integer book_id, Integer userid) {
+        return wishListService.checkwishes(book_id, userid);
+    }
+
     @PostMapping(path = "/addtowishlist")
     @ResponseBody
     public String addtowishlist(@RequestParam Integer book_id, Integer userid) {
         return wishListService.addToWishList(book_id, userid);
     }
+
     @PostMapping(path = "/removefromwishlist")
     @ResponseBody
     public String removeWish(@RequestParam Integer book_id, Integer userid) {
         return wishListService.removeFromWishList(book_id, userid);
     }
+
     @PostMapping(path = "/addtocart")
     @ResponseBody
     public String Addtocart(@RequestParam Integer book_id,Integer units, Integer userid) {
+
         return cartService.addToCart(book_id,units,userid);
     }
-
-
-
-
-
 }

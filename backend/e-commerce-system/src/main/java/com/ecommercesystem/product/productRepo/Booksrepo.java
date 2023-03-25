@@ -15,12 +15,10 @@ import java.util.List;
 public interface Booksrepo extends JpaRepository<books,Integer> {
 
 
-
-
     // Register User Queries
 
-       @Query(value="select * from books a where a.book_id=:item_id", nativeQuery=true)
-      List<books>  getProductDetails(Integer item_id);
+    @Query(value="select * from books a where a.book_id=:item_id", nativeQuery=true)
+    List<books>  getProductDetails(Integer item_id);
 
     @Query(value="select * from books a where a.book_id=:item_id", nativeQuery=true)
     books getItemDetails(Integer item_id);

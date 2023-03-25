@@ -45,12 +45,8 @@ public class RegisterUserController {
     public String authenticateUser(@RequestBody LoginUser loginUser)
     {
         String result = registeruser.validateUserDetails(loginUser.email,loginUser.password);
-        System.out.println(loginUser.email);
-        System.out.println(loginUser.password);
-        System.out.println(result);
         return result;
     }
-
 
     @PostMapping(path = "/validateemail/verify")
     public String validateWithOtp(@RequestBody VerificationDto verificationDto) throws MessagingException {

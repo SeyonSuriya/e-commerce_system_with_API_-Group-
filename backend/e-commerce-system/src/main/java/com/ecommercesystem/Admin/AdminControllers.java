@@ -22,7 +22,6 @@ public class AdminControllers {
 
     @PostMapping(path = "/registeradmin")
     public String registerAdmin(@RequestBody RegisterAdminDto registerAdminDto){
-
         return adminServices.registerAdmin(registerAdminDto);
     }
     @PostMapping(path = "/loginadmin")

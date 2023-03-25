@@ -2,7 +2,6 @@ package com.ecommercesystem.cart.CartServices;
 
 
 
-
 import com.ecommercesystem.cart.entity.cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +11,9 @@ import java.util.List;
 @Service
 public class CartServiceImpl implements CartService{
 
+
     @Autowired
     private com.ecommercesystem.cart.CartRepo.cartRepo cartRepo;
-
 
     @Override
     public List<cart> showCart (Integer userid) {
@@ -28,7 +27,6 @@ public class CartServiceImpl implements CartService{
             cartRepo.addToCart(item_id,units,userid);
         }else {
             Integer Units=cartRepo.getExistingUnits(item_id,userid);
-
             cartRepo.updateCart(item_id,units+Units,userid);
         }
         return "Item added to cart";
@@ -38,5 +36,4 @@ public class CartServiceImpl implements CartService{
         cartRepo.removeFromcart(item_id,userid);
         return cartRepo.showcart(userid);
     }
-
 }

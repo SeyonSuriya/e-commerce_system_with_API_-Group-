@@ -2,7 +2,6 @@ package com.ecommercesystem.cart.CartDto;
 
 public class cartDto {
 
-
     public cartDto() {
     }
 
