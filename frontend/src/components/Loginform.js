@@ -45,12 +45,11 @@ export default function Loginform(props) {
   return (
     <section className="Login-container">  
     
-    <div className="Login-background">
-    <img src={LoginBackgroundimg} alt="Login image" height="566px"/>
-    </div> 
+   
     
-    <div className ="login-content">
-        
+    <div className ="login-image">
+
+     <div className="login-content">
     <h1> LOGIN</h1><br/>
         
 <form onSubmit={onCreate}>
@@ -84,7 +83,8 @@ export default function Loginform(props) {
 
                        
           
-        </div>     
+        </div>
+        </div>        
       
        </section>
 
