@@ -47,35 +47,40 @@ export default function Loginform(props) {
     
     <div className="Login-background">
     <img src={LoginBackgroundimg} alt="Login image" height="566px"/>
-    </div>     
+    </div> 
     
     <div className ="login-content">
         
-        <h1> LOGIN</h1>
-         <form onSubmit={onCreate}>
-
-      Email  : <input type='email' id='email' value={email} onClick={RemoveErrorMessages} onChange={(e)=>setEmail(e.target.value)}></input><br />
-      Password : <input type='text' value={password} onClick={RemoveErrorMessages} onChange={(e)=>setPassword(e.target.value)}></input><br />
+    <h1> LOGIN</h1><br/>
         
+<form onSubmit={onCreate}>
+
+    <div className="form">
+      <label>Email</label><br/>
+      <input type="email" className="form input" placeholder="Enter Your Email" id='email' value={email} onClick={RemoveErrorMessages} onChange={(e)=>setEmail(e.target.value)}></input><br/>
+    </div>
+
+    <br/>
+
+    <div className="form">
+      <label>Password</label><br/>
+      <input type="password" className="form input" placeholder="Enter Your Password" value={password} onClick={RemoveErrorMessages} onChange={(e)=>setPassword(e.target.value)}></input>     
+  </div>
+          
       <span id='ErrorMessage' className='ErrorMessage'></span>
-                <div className="Log-btn">
-                    <br/>
-                    <button type='submit'>Log in</button>
+                <div className="form">
+                    
+                    <button type="submit" className="form_login">Login</button>
                 </div>
                 
-          </form>       
-          {
-            // *******   Login through Google Accounts ********
-            // <p className="text"> OR LOGIN USING</p>
-            // <div className="extra-Log">
-            //     <div className="Facebook"></div>
-            //     <div className="Google"></div>
-            // </div> 
-          }
-                <a href='/' type="hidden" id="Homepage" > </a>
-                Don't have an account ? <a href='/register'> Sign up here</a> 
+  </form>       
+            
+            
+            
+            <a href='/' type="hidden" id="Homepage" > </a>
+                Don't have an account ? <a style={{textDecoration:'none'}} href='/register'> Sign up here</a> 
 
-                <a href='/resetpassword'> Forgot password</a>
+                <a style={{textDecoration:'none'}} href='/resetpassword'> Forgot password</a>
 
                        
           
