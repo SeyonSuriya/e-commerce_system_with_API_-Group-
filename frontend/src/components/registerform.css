@@ -1,0 +1,8 @@
+.signup_container{   
+    max-width:978px; 
+    width: 100vw;
+    border: 1px solid purple;
+    background-color: lightseagreen;
+    display: flex;
+    border-radius:5px;
+}

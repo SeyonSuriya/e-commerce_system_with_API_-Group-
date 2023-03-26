@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import "./loginform.css";
-import LoginBackgroundimg from "../assests/Login Background img.jpg";
+
 
 export default function Loginform(props) {
   const [email,setEmail]=useState(' ');
@@ -44,9 +44,7 @@ export default function Loginform(props) {
 
   return (
     <section className="Login-container">  
-    
-   
-    
+  
     <div className ="login-image">
 
      <div className="login-content">
@@ -54,20 +52,20 @@ export default function Loginform(props) {
         
 <form onSubmit={onCreate}>
 
-    <div className="form">
+    <div className="login_form">
       <label>Email</label><br/>
       <input type="email" className="form input" placeholder="Enter Your Email" id='email' value={email} onClick={RemoveErrorMessages} onChange={(e)=>setEmail(e.target.value)}></input><br/>
     </div>
 
     <br/>
 
-    <div className="form">
+    <div className="login_form">
       <label>Password</label><br/>
       <input type="password" className="form input" placeholder="Enter Your Password" value={password} onClick={RemoveErrorMessages} onChange={(e)=>setPassword(e.target.value)}></input>     
   </div>
           
       <span id='ErrorMessage' className='ErrorMessage'></span>
-                <div className="form">
+                <div className="login_form">
                     
                     <button type="submit" className="form_login">Login</button>
                 </div>
