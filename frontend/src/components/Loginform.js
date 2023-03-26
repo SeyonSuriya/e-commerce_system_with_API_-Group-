@@ -61,12 +61,12 @@ export default function Loginform(props) {
 
     <div className="login_form">
       <label>Password</label><br/>
+      
       <input type="password" className="form input" placeholder="Enter Your Password" value={password} onClick={RemoveErrorMessages} onChange={(e)=>setPassword(e.target.value)}></input>     
   </div>
           
       <span id='ErrorMessage' className='ErrorMessage'></span>
                 <div className="login_form">
-                    
                     <button type="submit" className="form_login">Login</button>
                 </div>
                 
