@@ -1,58 +1,61 @@
-*{
-    margin:0;
-    box-sizing: border-box;
-    font-family : "Sans-serif";
+
+.Login-container{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
 }
 
-.page{
-    height : 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.login-image{
+    background-image: url('../assests/Login Background img.jpg');
+    width:100%;
+    height:650px;
 }
-.log{
-    background-color: #ded0b7;
-    width:  400px;
-    height: 400px;
+
+.login-content{
+    background-color:white;
+    width: 350px;
+    height: 430px;
+    margin-right: 50%;
+    margin-left: 35%;
+    margin-top: 90px;
     border-radius: 1em;
     box-shadow: 0 0.180em 1.60em rgb(156, 156, 156);
     display: flex;
     flex-direction: column;
-    align-items: center;
     position: relative;
+    align-items: center; 
     justify-content: space-around;
+    
+   
 }
-.extra-Log{
-    width: 80px;
-    height:3em;
-    display: flex;
-    justify-content: space-around;
+.login-content h1{
+   font-family:"Georgia";
+   font-weight: bolder;
+}
+.form input{
+    padding:4px;
+}
+.form_login{
+    display:inline-block;
+    background-color: yellow;
+    padding:0.5rem 1.8rem;
+    text-decoration: none;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color:black;
+    box-shadow: 2px 2px 5px #2c0202;
+    transition: 0.2s ease-in; 
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Gill Sans MT;
+    margin-left: 45px;
+     border-radius: 1em ;
+  
 }
 
-.extra-Log div{
-    width: 45%;
-    height: 90%;
-    border-radius: 0.25em;
-    background-color: white;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
-}
+.form_login:hover{
+    background-color: rgb(255, 94, 0);
+    border-radius: 1em ;
 
-.Google{ background-image: url("https://icons8.com/icon/60984/google");
-}
-
-.Facebook{
-    Background-image: url("https://icons8.com/icon/118466/facebook");
-}
-.Log-btn{
-    text-align: center;
-}
-.reg{
-    text-align: center;
-    background-color: #ded0b7;
-    width: 70%;
-    margin-left: 15%;
 }
