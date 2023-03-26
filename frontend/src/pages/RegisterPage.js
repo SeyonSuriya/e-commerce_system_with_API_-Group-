@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import axios from 'axios';
-import "../components/loginform.css"
+import "../components/registerform.css"
 
 export default function RegisterPage() {
 
@@ -121,13 +121,24 @@ if (firstname===' ') {
       
 
 return (
-    <div className ="reg">
-      <h1> Register </h1>
-      <form onSubmit={handleSubmit}>
-   Enter your Firstname : <input type='text' name='firstname' value={firstname} onClick={(event)=>RemoveError('firstnameError')}  onChange={(e)=>setFirstName(e.target.value) }></input>
-   <span id='firstnameError'></span><br/>
-   Enter your Secondname : <input type='text' name='secondname' value={secondname} onClick={(event)=>RemoveError('secondnameError')} onChange={(e)=>setSecondName(e.target.value)}></input>
-   <span id='secondnameError'></span><br />
+  <section>
+    
+    <div className="signup_container">
+
+    <div className="signup content col-01">
+      <h1>SignUp</h1>
+      <span>Open the door to the world of Books</span>
+
+      <form id='form' className="signup_form"onSubmit={handleSubmit}>
+    
+    <label>First Name</label><br/>
+    <input type="email"  placeholder="Enter Your Email"  value={firstname} onClick={(event)=>RemoveError('firstnameError')}  onChange={(e)=>setFirstName(e.target.value) }></input>
+    <span id='firstnameError'></span><br />
+
+    <label>Second Name</label><br/>
+    <input type="email"  placeholder="Enter Your Email" value={secondname} onClick={(event)=>RemoveError('secondnameError')} onChange={(e)=>setSecondName(e.target.value)}></input>
+    <span id='secondnameError'></span><br />
+
    Enter your email : <input type='email' name='email' value={email} onClick={(event)=>RemoveError('emailError')} onChange={(e)=>setEmail(e.target.value)}></input>
    <span id='emailError'></span><br />
    Enter your AddressLine 1: <input type='text' name='addressline1' value={addressline1} onClick={(event)=>RemoveError('addressline1Error')} onChange={(e)=>setAddressLine1(e.target.value)}></input>
@@ -157,7 +168,19 @@ return (
              Already have an account ?   <br/>
              <a href='/emailverification' id="EmailVerification" > </a>
              <a href='/login' type="hidden" id="LoginPage" >  Click Here to Login</a>
+    
     </div>
+   
+    <div className="signup content col-02">
+
+     
+      
+  </div>
+  </div>
+  
+  </section>
+
+    
 )
 }
 
