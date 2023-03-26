@@ -1,23 +1,18 @@
 package com.ecommercesystem.registeruser.UserController;
+
 import com.ecommercesystem.registeruser.Email.Email;
-import com.ecommercesystem.registeruser.Otp.Otp;
 import com.ecommercesystem.registeruser.LoginUser.LoginUser;
-import com.ecommercesystem.registeruser.PasswordReset.PasswordReset;
 import com.ecommercesystem.registeruser.dto.PasswordResetDto;
-import com.ecommercesystem.registeruser.entity.VerificationDto;
+import com.ecommercesystem.registeruser.dto.VerificationDto;
 import com.ecommercesystem.registeruser.service.AccountStatusService.AccountStatusService;
 import com.ecommercesystem.registeruser.service.ResetPassword.ResetPassword;
 import com.ecommercesystem.registeruser.dto.UserDto;
 import com.ecommercesystem.registeruser.service.EmailService.EmailService;
 import com.ecommercesystem.registeruser.service.OtpGenerator.OtpGeneratorService;
-
 import com.ecommercesystem.registeruser.service.UserServices.UserService;
-
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.* ;
-
 import java.io.UnsupportedEncodingException;
 
 
@@ -56,7 +51,6 @@ public class RegisterUserController {
     public String validateWithOtp(@RequestBody Email email) throws MessagingException, UnsupportedEncodingException {
         return emailService.sendEmailVerification(email.getEmailAddress());
     }
-
     @PostMapping(path = "/resetpassword")
     public String resetPassword(@RequestBody Email email) throws MessagingException, UnsupportedEncodingException {
         return emailService.resetPasswordEmail(email.getEmailAddress());
@@ -69,7 +63,6 @@ public class RegisterUserController {
     public String addNewPassword(@RequestBody PasswordResetDto passwordResetDto){
         return resetPassword.addNewPassword(passwordResetDto);
     }
-
 
     @PostMapping(path = "/deactivateAccount")
     public String deactivateAccount(String email) {

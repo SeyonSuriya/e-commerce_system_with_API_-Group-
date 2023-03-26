@@ -48,7 +48,6 @@ public class ProductController {
     @PostMapping(path = "/addtocart")
     @ResponseBody
     public String Addtocart(@RequestParam Integer book_id,Integer units, Integer userid) {
-
         return cartService.addToCart(book_id,units,userid);
     }
 }

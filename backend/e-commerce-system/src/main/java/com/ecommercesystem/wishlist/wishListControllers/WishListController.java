@@ -20,7 +20,6 @@ public class WishListController {
     @Autowired
     private WishListService wishListService;
 
-
     @PostMapping(path="wishes")
     @ResponseBody
     public List<wishlist> showWishList(@RequestParam Integer userid)
