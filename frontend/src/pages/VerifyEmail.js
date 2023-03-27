@@ -28,7 +28,9 @@ export default function VerifyEmail() {
   return (
     <div>
         <Header/>
-
+        <div className ="verified-image"></div>
+        <span id='Message'>Email Verified Successfully </span><br/>
+        
         <a href='/login'>Please Login to your account</a>
     </div>
   )

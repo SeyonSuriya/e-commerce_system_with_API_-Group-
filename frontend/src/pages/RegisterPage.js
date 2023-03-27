@@ -123,10 +123,8 @@ if (firstname===' ') {
 
 return (
   <section>
-
-   
   <div className="signup_container">
-
+  
         <div className="signup-image">
           <img src={LoginBackgroundimg03} alt=""/>   
         </div>
@@ -186,7 +184,7 @@ return (
               
                   <label>Confirm Password</label><br/>
                   <input type='password' placeholder="Confirm Password" className='signup_placeholder' maxLength={15} value={password2} onClick={(event)=>RemoveError('password2Error')} onChange={(e)=>setPassword2(e.target.value)}></input>
-                  <span id='password2Error'></span><span id='passwordRequirements'></span><br/>
+                  <span id='password2Error'></span><br/>
               </form>
             </div>
             </div>
@@ -197,13 +195,11 @@ return (
                   <button type='submit' className="signup_button">Sign up</button>
                   <br/>
              
-                <p>Already have an account ?  </p>
+                <p>Already have an account ?  <br/>
                   <a  href='/emailverification' id="EmailVerification" > </a>
-                  <a  style={{textDecoration:'none', marginLeft:'48px', margintop:'2px'}} href='/login'  id = "LoginPage" >  Click Here to Login</a>
-            </div>
+                  <a  style={{textDecoration:'none'}} href='/login'  id = "LoginPage" >  Click Here to Login</a>
+                  </p></div>
        
-    
- 
       
         </div>
     
