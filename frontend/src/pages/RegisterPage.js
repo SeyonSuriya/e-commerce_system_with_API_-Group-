@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import "../components/registerform.css"
+import LoginBackgroundimg03 from "../assests/Login Background img 03.jpg";
 
 export default function RegisterPage() {
 
@@ -122,43 +123,41 @@ if (firstname===' ') {
 
 return (
   <section>
-    
+   
     <div className="signup_container">
-
-    <div className="signup content col-01">
-      <h1>SignUp</h1>
-      <span>Open the door to the world of Books</span>
-
-      <form id='form' className="signup_form"onSubmit={handleSubmit}>
+  
+    <div className="signup-image">
+    <img src={LoginBackgroundimg03}/>
+    </div>
     
-    <label>First Name</label><br/>
-    <input type="email"  placeholder="Enter Your Email"  value={firstname} onClick={(event)=>RemoveError('firstnameError')}  onChange={(e)=>setFirstName(e.target.value) }></input>
-    <span id='firstnameError'></span><br />
+    <div className="signup_content_col-01">
+    <h1>SignUp</h1>
+     
+    <span>Open the door to the world of Books</span>
 
-    <label>Second Name</label><br/>
-    <input type="email"  placeholder="Enter Your Email" value={secondname} onClick={(event)=>RemoveError('secondnameError')} onChange={(e)=>setSecondName(e.target.value)}></input>
+    <form id='form' className="signup_form" onSubmit={handleSubmit}>
+    
+    <label>Name</label><br/>
+    <input type='text'  placeholder="First Name" className="signup_placeholder"  value={firstname} onClick={(event)=>RemoveError('firstnameError')}  onChange={(e)=>setFirstName(e.target.value) }></input>
+    <span id='firstnameError'></span><br/>
+    <input type='text'  placeholder="Second Name" className="signup_placeholder"value={secondname} onClick={(event)=>RemoveError('secondnameError')} onChange={(e)=>setSecondName(e.target.value)}></input>
     <span id='secondnameError'></span><br />
 
-   Enter your email : <input type='email' name='email' value={email} onClick={(event)=>RemoveError('emailError')} onChange={(e)=>setEmail(e.target.value)}></input>
-   <span id='emailError'></span><br />
-   Enter your AddressLine 1: <input type='text' name='addressline1' value={addressline1} onClick={(event)=>RemoveError('addressline1Error')} onChange={(e)=>setAddressLine1(e.target.value)}></input>
+    <label>Email</label><br/>
+    <input type='email' placeholder="Email" className="signup_placeholder" value={email} onClick={(event)=>RemoveError('emailError')} onChange={(e)=>setEmail(e.target.value)}></input>
+    <span id='emailError'></span><br />
+
+   <label>Address</label><br/>
+   <input type='text' placeholder="Address Line 01" className="signup_placeholder"  value={addressline1} onClick={(event)=>RemoveError('addressline1Error')} onChange={(e)=>setAddressLine1(e.target.value)}></input>
    <span id='addressline1Error'></span><br />
-   Enter your AddressLine 2: <input type='text' name='addressline2' value={addressline2} onClick={(event)=>RemoveError('addressline2Error')} onChange={(e)=>setAddressLine2(e.target.value)}></input>
+   <input type='text' placeholder="Address Line 02" className="signup_placeholder" value={addressline2} onClick={(event)=>RemoveError('addressline2Error')} onChange={(e)=>setAddressLine2(e.target.value)}></input>
    <span id='addressline2Error'></span><br />
-   Enter your District: <input type='text' name='district' value={district} onClick={(event)=>RemoveError('districtError')} onChange={(e)=>setDistrict(e.target.value)}></input>
-   <span id='districtError'></span><br />
-   Enter your province: <input type='text' name='province' value={province} onClick={(event)=>RemoveError('provinceError')} onChange={(e)=>setProvince(e.target.value)}></input>
-   <span id='provinceError'></span><br />
-   Enter your Postal code: <input type='text' name='postalcode' value={postalcode} onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
-   <span id='postalcodeError'></span><br />
-   Enter your Mobile Number: <input  type='tel' max="9999999999" name='mobilenumber' maxLength='10' value={mobilenumber} onClick={(event)=>RemoveError('mobilenumberError')} onChange={(e)=>setMobile(e.target.value)}></input>
-   <span id='mobilenumberError'></span><br />
-   Enter your Password : <input type='text' name='password' maxLength={15} value={password} onClick={(event)=>RemoveError('passwordError')} onChange={(e)=>setPassword(e.target.value)}></input>
-   <span id='passwordError'></span><span id='passwordRequirements'></span><br/>
-   Confirm your Password : <input type='text' name='password2' maxLength={15} value={password2} onClick={(event)=>RemoveError('password2Error')} onChange={(e)=>setPassword2(e.target.value)}></input>
-   <span id='password2Error'></span><br />
 
+  <label>District</label><br/>
+  <input type='text' placeholder="District" ClassName="signup_placeholder" value={district} onClick={(event)=>RemoveError('districtError')} onChange={(e)=>setDistrict(e.target.value)}></input>
+  <span id='districtError'></span><br />
 
+ 
    <span id='errorMessage' className='ErrorMessage'></span>
              <div className="Log-btn">
                  <br/>
@@ -171,7 +170,28 @@ return (
     
     </div>
    
-    <div className="signup content col-02">
+  <div className="signup content col-03">
+
+  <label>Province</label><br/>
+  <input type='text' placeholder="Province" className='signup_placeholder' value={province} onClick={(event)=>RemoveError('provinceError')} onChange={(e)=>setProvince(e.target.value)}></input>
+  <span id='provinceError'></span><br />
+
+  <label>Postal Code</label><br/> 
+  <input type='text' placeholder="Postal Code" className='signup_placeholder' value={postalcode} onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
+  <span id='postalcodeError'></span><br />
+
+  <label>Mobile Number</label><br/>
+  <input  type='tel' placeholder="Mobile Number" max="9999999999" className='signup_placeholder' maxLength='10' value={mobilenumber} onClick={(event)=>RemoveError('mobilenumberError')} onChange={(e)=>setMobile(e.target.value)}></input>
+  <span id='mobilenumberError'></span><br />
+
+ <label>Password</label><br/>
+ <input type='password' placeholder="Password" className='signup_placeholder' maxLength={15} value={password} onClick={(event)=>RemoveError('passwordError')} onChange={(e)=>setPassword(e.target.value)}></input>
+ <span id='passwordError'></span><span id='passwordRequirements'></span><br/>
+  
+  <label>Confirm Password</label><br/>
+  <input type='password' placeholder="Confirm Password" className='signup_placeholder' maxLength={15} value={password2} onClick={(event)=>RemoveError('password2Error')} onChange={(e)=>setPassword2(e.target.value)}></input>
+  <span id='password2Error'></span><br />
+
 
      
       
