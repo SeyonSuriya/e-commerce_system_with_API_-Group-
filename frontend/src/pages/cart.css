@@ -1,4 +1,6 @@
 .productsTable{
     background-color: rgb(185, 211, 217);
-    
+}
+.productsTable.product_image{
+     width: 05%;
 }
