@@ -39,7 +39,7 @@ export default function Product() {
     axios.get(
       'http://localhost:8080/ecommerce/books/details?book_id='+book_id,
       ).then(response=>{
-     
+        
         document.getElementById('book_name').innerHTML=response.data[0].book_title
         document.getElementById('product_image').src=require("../Images/"+response.data[0].book_title+".jpg")
         document.getElementById('book_description').innerHTML=response.data[0].long_description
@@ -106,7 +106,7 @@ export default function Product() {
        }
        
   return (
-    <div >
+    <div>
       <Header/>
       
       <div className='image_div'>
