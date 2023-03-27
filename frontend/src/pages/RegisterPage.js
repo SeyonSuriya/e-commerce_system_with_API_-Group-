@@ -123,6 +123,10 @@ if (firstname===' ') {
 
 return (
   <section>
+<<<<<<< HEAD
+   
+  <div className="signup_container">
+=======
    
     <div className="signup_container">
   
@@ -197,7 +201,90 @@ return (
       
   </div>
   </div>
+>>>>>>> 2d00960576babb83481b7abe7c13bec39df8c80d
   
+        <div className="signup-image">
+          <img src={LoginBackgroundimg03} alt=""/>   
+        </div>
+    
+        <div className="signup_content">
+            <div className="signup_content_row01">
+                <h1>SignUp</h1>
+                <span>Open the door to the world of Books</span>
+            </div>
+       
+          <div className="signup_content_row02">
+            <div className="signup_content_col-01">
+
+              <form id='form' className="signup_form01" onSubmit={handleSubmit}>
+    
+                  <label>Name</label><br/>
+                  <input type='text'  placeholder="First Name" className="signup_placeholder"  value={firstname} onClick={(event)=>RemoveError('firstnameError')}  onChange={(e)=>setFirstName(e.target.value) }></input>
+                  <span id='firstnameError'></span><br/>
+                  <input type='text'  placeholder="Second Name" className="signup_placeholder"value={secondname} onClick={(event)=>RemoveError('secondnameError')} onChange={(e)=>setSecondName(e.target.value)}></input>
+                  <span id='secondnameError'></span><br /><br/>
+
+                  <label>Email</label><br/>
+                  <input type='email' placeholder="Email" className="signup_placeholder" value={email} onClick={(event)=>RemoveError('emailError')} onChange={(e)=>setEmail(e.target.value)}></input>
+                  <span id='emailError'></span><br /><br/>
+
+                  <label>Address</label><br/>
+                  <input type='text' placeholder="Address Line 01" className="signup_placeholder"  value={addressline1} onClick={(event)=>RemoveError('addressline1Error')} onChange={(e)=>setAddressLine1(e.target.value)}></input>
+                  <span id='addressline1Error'></span><br />
+                  <input type='text' placeholder="Address Line 02" className="signup_placeholder" value={addressline2} onClick={(event)=>RemoveError('addressline2Error')} onChange={(e)=>setAddressLine2(e.target.value)}></input>
+                  <span id='addressline2Error'></span><br /><br/>
+
+                  <label>District</label><br/>
+                  <input type='text' placeholder="District" className="signup_placeholder" value={district} onClick={(event)=>RemoveError('districtError')} onChange={(e)=>setDistrict(e.target.value)}></input>
+                  <span id='districtError'></span><br /><br/>
+
+               </form>
+            </div>
+        
+
+            <div className = "signup_content_col-02">
+              <form id='form' className="signup_form01" onSubmit={handleSubmit}>
+                  <label>Province</label><br/>
+                  <input type='text'placeholder="Province" className='signup_placeholder' value={province} onClick={(event)=>RemoveError('provinceError')} onChange={(e)=>setProvince(e.target.value)}></input>
+                  <span id='provinceError'></span><br /><br/>
+
+                  <label>Postal Code</label><br/> 
+                  <input type='text' placeholder="Postal Code" className='signup_placeholder' value={postalcode} onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
+                  <span id='postalcodeError'></span><br /><br/>
+
+                  <label>Mobile Number</label><br/>
+                  <input type='text' placeholder="Mobile Number" max="9999999999" className='signup_placeholder' maxLength='10' value={mobilenumber} onClick={(event)=>RemoveError('mobilenumberError')} onChange={(e)=>setMobile(e.target.value)}></input>
+                  <span id='mobilenumberError'></span><br /><br/>
+
+                  <label>Password</label><br/>
+                  <input type='password' placeholder="Password" className='signup_placeholder' maxLength={15} value={password} onClick={(event)=>RemoveError('passwordError')} onChange={(e)=>setPassword(e.target.value)}></input>
+                  <span id='passwordError'></span><span id='passwordRequirements'></span><br/><br/>
+              
+                  <label>Confirm Password</label><br/>
+                  <input type='password' placeholder="Confirm Password" className='signup_placeholder' maxLength={15} value={password2} onClick={(event)=>RemoveError('password2Error')} onChange={(e)=>setPassword2(e.target.value)}></input>
+                  <span id='password2Error'></span><span id='passwordRequirements'></span><br/>
+              </form>
+            </div>
+            </div>
+
+            <div className="signup_content_row03">
+                  <span id='errorMessage' className='ErrorMessage'></span>  
+                   <br/>
+                  <button type='submit' className="signup_button">Sign up</button>
+                  <br/>
+             
+                <p>Already have an account ?  </p>
+                  <a  href='/emailverification' id="EmailVerification" > </a>
+                  <a  style={{textDecoration:'none', marginLeft:'48px', margintop:'2px'}} href='/login'  id = "LoginPage" >  Click Here to Login</a>
+            </div>
+       
+    
+ 
+      
+        </div>
+    
+  </div>
+
   </section>
 
     
