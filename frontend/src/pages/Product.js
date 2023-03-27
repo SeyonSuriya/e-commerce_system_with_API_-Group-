@@ -128,7 +128,7 @@ export default function Product() {
       </span><br/>
       <img id='wish_list_image' className='wish_list_img' src={require("../Images/heart1.png")} alt='product' onClick={WishListHandler}/><br/>
       <div className="popup">
-      <span className="popuptext" id="myPopup">A Simple Popup!</span>
+      <span className="popuptext" id="myPopup">Added to Cart</span>
       <button id='CartButton' onClick={AddtoCart}>Add to Cart</button>
       </div>
       <button>
