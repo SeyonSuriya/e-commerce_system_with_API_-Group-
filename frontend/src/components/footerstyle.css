@@ -1,32 +1,22 @@
 .containerfooter{
     height: 300px;
-    background-color: #232f3e;
+    background-color: var(--color-131921);
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
-.containerfooter{
-   display: flex;
-   justify-content: space-between;
-   
+.footer-upper{
+    display: flex;
+    margin-left: 5%;
 }
 .firstline{
-    color: white;
-    margin-left: 3%;
-    margin-right: 2%;
-    margin-top: 1%;
+    flex: 3;
 }
 .secondline{
-   color: white;
-   margin-top: 1%;
-   margin-left: 0%;
-   padding-left: 0%;
+    flex: 3;
 }
 .thirdline{
-   color: white;
-   margin-top: 1%;
-   margin-left: 2%;
+    flex: 3;
 }
 .sendmassage{
-   color: white;
-   margin-top: 1%;
-   margin-right: 4%;
-   margin-left: 2%;
+    flex: 6;
 }

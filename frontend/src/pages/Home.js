@@ -13,16 +13,122 @@ export default function Home() {
       <Header/>
       <div className='topcontain'>
       <div className='items'>
-         <img src={pic} className='imgs'/>
+         <img src={require("../Images/1.jpg")} className='imgs'/>
          <h3>$3.00</h3>
          <h3>Kite Runner</h3>
       </div>
 
       <div className='items'>
-         <img src={pic} className='imgs'/>
+         <img src={require("../Images/2.jpg")} className='imgs'/>
          <h3>$3.00</h3>
          <h3>Kite Runner</h3>
       </div>
+
+      <div className='items'>
+         <img src={require("../Images/3.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/4.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/5.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/6.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      
+      </div>
+
+      <div className='topcontain'>
+      <div className='items'>
+         <img src={require("../Images/7.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/8.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/9.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/10.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/11.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/13.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      
+      </div>
+
+      <div className='topcontain'>
+      <div className='items'>
+         <img src={require("../Images/14.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/15.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/16.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/17.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/18.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      <div className='items'>
+         <img src={require("../Images/19.jpg")} className='imgs'/>
+         <h3>$3.00</h3>
+         <h3>Kite Runner</h3>
+      </div>
+
+      
       </div>
       
       <Footer/>
