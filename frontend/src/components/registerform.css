@@ -88,7 +88,11 @@
     background-color: rgb(255, 94, 0);
     border-radius: 1em ;
 }
+<<<<<<< HEAD
 .signup_p p{
+=======
+p{
+>>>>>>> 7bc631875d9a1473f4086ab5c991b23e61d8a881
     margin-left: 50px;
     margin-top: 3px;
 }
