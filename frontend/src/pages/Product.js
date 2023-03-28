@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import axios from 'axios';
 import "../components/product_page.css"
+import Loginimg from "../assests/Login img.jpg";
 import { Cookies, useCookies } from 'react-cookie';
 
 
@@ -11,7 +12,7 @@ export default function Product() {
   const [cookies, setCookie] = useCookies(['user']);
   // Remove this Set Cookie after because this will be created form registration page
   setCookie('userid', '1', { path: '/'});
-  
+    
     const queryParameters = new URLSearchParams(window.location.search)
     const book_id = queryParameters.get("bookid")
     var units=1
@@ -108,9 +109,32 @@ export default function Product() {
   return (
     <div >
       <Header/>
+      <section className="product-section-container"> 
+          <div className="product_container">
+              <div className="flex_container">
+              <div className="product_image" >
+                <img src={Loginimg} className='product_img' id='product_img' alt='product'/>
       
+              
+              
+              </div> 
+
+              <div className="product-detail-container">
+                  <h2 id='book_name'>Book Name</h2>
+                  <p id="book_author">Author Name</p>
+                  <p id='book_category'>Category</p>
+                  <p id='book_description'>Book Description</p>
+                  <p id='book_publisher'>publisher</p>
+                  <h3 id='book_price'>Price</h3>
+              </div>
+                
+              </div>
+          
+
+
+          </div>
+      </section>
       <div className='image_div'>
-      <img className='product_image' id='product_image' src=' ' alt='product'/>
       </div>
       <div className='product_content_div'>
       <span id='book_name'>Book Name</span><br/>
