@@ -43,15 +43,15 @@ export default function Product() {
       ).then(response=>{
         
         document.getElementById('book_name').innerHTML=response.data[0].book_title
-        document.getElementById('product_image').src=require("../Images/"+response.data[0].book_title+".jpg")
+        document.getElementById('product_img').src=require("../Images/"+response.data[0].book_title+".jpg")
         document.getElementById('book_description').innerHTML=response.data[0].long_description
-        document.getElementById('no_of_orders').innerHTML=response.data[0].num_of_orders
-        document.getElementById('no_of_units').innerHTML=response.data[0].num_of_units
+        document.getElementById('no_of_orders').innerHTML=response.data[0].num_of_orders+' orders'
+        document.getElementById('no_of_units').innerHTML='Units Available: <b>'+response.data[0].num_of_units+'</b>'
         available_units=response.data[0].num_of_units
         document.getElementById('book_author').innerHTML=response.data[0].author
-        document.getElementById('book_publisher').innerHTML=response.data[0].publisher
+        document.getElementById('book_publisher').innerHTML='publisher : '+response.data[0].publisher
         document.getElementById('book_category').innerHTML=response.data[0].category
-        document.getElementById('book_price').innerHTML=response.data[0].book_price
+        document.getElementById('book_price').innerHTML='Price: $'+response.data[0].book_price
         if (!response.data[0].num_of_units>0) {
           document.getElementById('change_units').innerHTML="Out of Stock"
         }
@@ -61,7 +61,7 @@ export default function Product() {
       
        // Units Handling
        function addUnits() {
-           if (available_units!==units) {
+           if (available_units>units) {
             units+=1
            document.getElementById('units').innerHTML=units
            }
@@ -114,23 +114,18 @@ export default function Product() {
           <div className="product_container">
               <div className="flex_container">
               <div className="product_image" >
-                <img src={Loginimg} className='product_img' id='product_img' alt='product'/>
+                <img  className='product_img' id='product_img' alt='product'/>
               </div> 
 
               <div className="product-detail-container">
-                  <h2 id='book_name'>Harry Potter And The Philosopher</h2>
+                  <h2 id='book_name'>Book Name</h2>
                   <p id="book_author">J.K. rowling</p>
                   <p id='book_category'>Story</p>
-                  <p id='book_description'>The boy wizard Harry Potter has been casting a spell over young readers and
-                  their families ever since 1997. Now the first book in this unmissable series celebrates 25 years in 
-                  print! The paperback edition of the tale that introduced us to Harry, Ron and Hermione has been updated
-                  and dressed in silver to mark the occasion. It's time to take the magical journey of a lifetime ...
-                  Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number
-                  four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly
-                  confiscated by his grisly aunt and uncle.</p>
+                  <p id='book_description'>Long description</p>
                   <p id='book_publisher'> Bloomsbury Publishing PLC</p>
+                  <p id='no_of_orders'> orders</p>
                   <h3 id='book_price'><b>Price: $</b><b>15</b></h3>
-                  <p id="no_of_units">Units Available: <b>100</b></p>
+                  <p id="no_of_units">Units Available: <b></b></p>
 
                   <span id='change_units'>
                   <img id='remove' className="minus_button" src={require("../Images/-.jpeg")} alt='minus img' onClick={RemoveUnits}/>
