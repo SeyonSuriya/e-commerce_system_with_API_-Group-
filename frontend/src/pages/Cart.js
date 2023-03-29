@@ -20,7 +20,7 @@ export default function Cart() {
            var tmpproduct=response.data
            
            row+='<tr><td ><div class="product"><div class="product_selecter_div"><input type="checkbox" id="'+tmpproduct[0].book_title+'_select"" ></div>'
-           row+='<div class="product_image_div"><img class="product_image" id="'+tmpproduct[0].book_title+'" /></div>'
+           row+='<div class="product_image_div"><img class="product_image" style="width:100%;height:100%;" id="'+tmpproduct[0].book_title+'" /></div>'
            row+='<div class="productInfo"><div>'+tmpproduct[0].book_title+'</div></br><div class="long_description">'+tmpproduct[0].long_description+'</div>'
            row+=' <div>US $'+tmpproduct[0].book_price+' </div></div>'
            row+='<div class="product_functions">'
