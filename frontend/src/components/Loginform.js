@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import "./loginform.css";
-
-
+import { useCookies } from 'react-cookie';
 export default function Loginform(props) {
+  const [cookies, setCookie] = useCookies(['user']);
   const [email,setEmail]=useState(' ');
   const [password,setPassword]=useState(' ');
 
@@ -32,6 +32,7 @@ export default function Loginform(props) {
           postData,
           ).then(response=>{
             if (response.data === 'Login Granted') {
+               setCookie('userid', 1, { path: '/'});
                document.getElementById("Homepage").click();
              }else{
                document.getElementById('ErrorMessage').innerHTML=response.data;
@@ -90,3 +91,4 @@ export default function Loginform(props) {
 }
 
 
+// To do get user id from backend

@@ -10,12 +10,13 @@ import { Cookies, useCookies } from 'react-cookie';
 export default function Product() {
   const [cookies, setCookie] = useCookies(['user']);
   // Remove this Set Cookie after because this will be created form registration page
-  setCookie('userid', '1', { path: '/'});
+  
   
     const queryParameters = new URLSearchParams(window.location.search)
     const book_id = queryParameters.get("bookid")
     var units=1
     var available_units=0
+    setCookie('book_id', book_id, { path: '/product'});
     
 
     // Checking if the product in the wish list or not and select the heart image
