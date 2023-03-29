@@ -195,7 +195,7 @@ return (
                   <button type='submit' className="signup_button">Sign up</button>
                   <br/>
              
-                <p>Already have an account ?  <br/>
+                <p id="signup_p">Already have an account ?  <br/>
                   <a  href='/emailverification' id="EmailVerification" > </a>
                   <a  style={{textDecoration:'none'}} href='/login'  id = "LoginPage" >  Click Here to Login</a>
                   </p></div>

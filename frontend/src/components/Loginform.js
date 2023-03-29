@@ -49,7 +49,7 @@ export default function Loginform(props) {
     <div className ="login-image">
 
      <div className="login-content">
-    <h1> LOGIN</h1><br/>
+     <h1> LOGIN</h1><br/>
         
 <form onSubmit={onCreate}>
 
