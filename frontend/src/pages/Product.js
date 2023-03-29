@@ -114,18 +114,35 @@ export default function Product() {
               <div className="flex_container">
               <div className="product_image" >
                 <img src={Loginimg} className='product_img' id='product_img' alt='product'/>
-      
-              
-              
               </div> 
 
               <div className="product-detail-container">
-                  <h2 id='book_name'>Book Name</h2>
-                  <p id="book_author">Author Name</p>
-                  <p id='book_category'>Category</p>
-                  <p id='book_description'>Book Description</p>
-                  <p id='book_publisher'>publisher</p>
-                  <h3 id='book_price'>Price</h3>
+                  <h2 id='book_name'>Harry Potter And The Philosopher</h2>
+                  <p id="book_author">J.K. rowling</p>
+                  <p id='book_category'>Story</p>
+                  <p id='book_description'>The boy wizard Harry Potter has been casting a spell over young readers and
+                  their families ever since 1997. Now the first book in this unmissable series celebrates 25 years in 
+                  print! The paperback edition of the tale that introduced us to Harry, Ron and Hermione has been updated
+                  and dressed in silver to mark the occasion. It's time to take the magical journey of a lifetime ...
+                  Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number
+                  four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly
+                  confiscated by his grisly aunt and uncle.</p>
+                  <p id='book_publisher'> Bloomsbury Publishing PLC</p>
+                  <h3 id='book_price'><b>Price: $</b><b>15</b></h3>
+                  <p id="no_of_units">Units Available: <b>100</b></p>
+
+                  <span id='change_units'>
+                  <img id='remove' className="minus_button" src={require("../Images/-.jpeg")} alt='minus img' onClick={RemoveUnits}/>
+                  <span id='units'>1</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <img id='add' className="add_button" src={require("../Images/+.jpeg")} alt='plus img' onClick={addUnits}/><br/>
+                  </span><br/>
+
+                    
+                  <img id='wish_list_image' className='wish_list_img' src={require("../Images/heart1.png")} alt='product' onClick={WishListHandler}/><br/>
+                  <div className="popup">
+                  <span className="popuptext" id="myPopup"></span>
+                  <button id='CartButton' onClick={AddtoCart}>Add to Cart</button>
+                  </div>
               </div>
                 
               </div>
@@ -134,31 +151,7 @@ export default function Product() {
 
           </div>
       </section>
-      <div className='image_div'>
-      </div>
-      <div className='product_content_div'>
-      <span id='book_name'>Book Name</span><br/>
-      <span id='book_description'>Book Discription</span><br/>
-      Author : <span id='book_author'>Book Author</span><br/>
-      Publisher :<span id='book_publisher'>Book publisher</span><br/>
-      <span id='book_category'>Book Category</span><br/>
-      Price : <span id='book_price'>Book Price</span>$<br/>
-      <span id='no_of_orders'>Number of Orders</span><br/>
-      Units Available :<span id='no_of_units'>Book Units</span><br/>
-      <span id='change_units'>
-      <img id='remove' className="minus_button" src={require("../Images/-.jpeg")} alt='minus img' onClick={RemoveUnits}/>
-      <span id='units'>1</span>&nbsp;&nbsp;&nbsp;&nbsp;
-      <img id='add' className="add_button" src={require("../Images/+.jpeg")} alt='plus img' onClick={addUnits}/><br/>
-      </span><br/>
-      <img id='wish_list_image' className='wish_list_img' src={require("../Images/heart1.png")} alt='product' onClick={WishListHandler}/><br/>
-      <div className="popup">
-      <span className="popuptext" id="myPopup">Added to Cart</span>
-      <button id='CartButton' onClick={AddtoCart}>Add to Cart</button>
-      </div>
-      <button>
-      <a href='/'> Home Page</a>
-      </button>
-      </div>
+      
       
       
       <Footer/>
