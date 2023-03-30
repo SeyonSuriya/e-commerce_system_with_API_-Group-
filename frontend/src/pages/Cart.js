@@ -11,7 +11,7 @@ export default function Cart() {
 
   // Getting Product Info and creating a row with product data
 
-  function Addproduct(book_id){
+  function Addproduct(book_id,quantity){
     var row=' '
     axios.get(
       'http://localhost:8080/ecommerce/books/details?book_id='+book_id,
@@ -31,7 +31,7 @@ export default function Cart() {
            row+='<div id="change_units" class="unitsdiv">'
            row+='&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+tmpproduct[0].book_id+'_remove" class="minus_button" style="width:25px;height:25px;margin: 0 auto;"  />'
            
-           row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="units" class="units">1</span>&nbsp;&nbsp;'
+           row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+tmpproduct[0].book_id+'_units" class="units">'+quantity+'</span>&nbsp;&nbsp;'
            row+='<img id="'+tmpproduct[0].book_id+'_add" class="add_button" style="width:40px;height:24px;" onClick={addUnits}/></div>'
            row+='<br/>'
            row+='</div></div></td></tr>'
@@ -51,9 +51,16 @@ export default function Cart() {
        }
        // Adding onClick function to delete button
        document.getElementById(tmpproduct[0].book_id+'_delete_image').onclick = function () {
-        // Add Delete from cart function
         DeleteProduct(tmpproduct[0].book_id)
        }
+       // Adding AddUnits and Deduct units in cart onclick functions
+       document.getElementById(tmpproduct[0].book_id+'_add').onclick = function () {
+        addUnits(tmpproduct[0].num_of_units,quantity,tmpproduct[0].book_id)
+       }
+       document.getElementById(tmpproduct[0].book_id+'_remove').onclick = function () {
+        RemoveUnits(quantity,tmpproduct[0].book_id)
+       }
+
       }
       
       )
@@ -71,7 +78,7 @@ export default function Cart() {
             for (let index = 0; index < response.data.length; index++) {
               //console.log(cart[index].item_id)
               table+='<span id="'+cookies.cart[index].item_id+'"></span>'
-              Addproduct(cookies.cart[index].item_id)
+              Addproduct(cookies.cart[index].item_id,cookies.cart[index].quantity)
             }
             
             document.getElementById('products').innerHTML=table+'</tbody>'
@@ -128,6 +135,33 @@ ShowProductsInCart()
          }
         )
     }
+
+// Units Handling Functions
+        function addUnits(available_units,units,book_id) {
+            if (available_units>units) {
+             units+=1
+             axios.post(
+              'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
+              ).then(response=>{
+                window.location.reload();
+                window.location.reload();
+               }
+              )
+           // document.getElementById(book_id+'_units').innerHTML=units
+            }
+        }
+        function RemoveUnits(units,book_id) {
+         if (units!==1) {
+           units-=1
+           axios.post(
+            'http://localhost:8080/ecommerce/cart/updateunits?item_id='+book_id+'&units='+units+'&userid='+cookies.userid,
+            ).then(response=>{
+              window.location.reload();
+             }
+            )
+           //document.getElementById(book_id+'_units').innerHTML=units
+         }
+        }
 
 
 
