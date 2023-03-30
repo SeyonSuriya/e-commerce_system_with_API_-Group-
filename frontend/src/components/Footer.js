@@ -25,8 +25,24 @@ const Footer = () => {
         <h5><Link to=''>Shopping Cart</Link></h5>
         <h5><Link to=''>My Account</Link></h5>
        </div>
-       <div className='sendmassage'>   
+       <div className='sendmassage'> 
+          <form>
+             
+             <input type={'email'} className='sendmassageemail' placeholder='Email'>
+             </input>
+
+             <br></br>
+
+             <input type={Text} className='sendmassage' placeholder='Massage'>
+
+             </input>
+                <br />
+             <button className='sendbutton' >Send</button>
+          </form> 
        </div>   
+       <div className='socialmedia'>
+          
+       </div>
       </span>
        
     </div>

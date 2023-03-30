@@ -22,3 +22,9 @@
     display: flex;
     
 }
+Link{
+    text-decoration: none;
+}
+Link:hover{
+    text-decoration: none;
+}
