@@ -240,16 +240,9 @@ ShowProductsInCart()
         document.getElementById('Total').innerHTML=Total
           
         }
-        function CheckSelections() {
-          if(selected.length>0) {
-
-            $('#inset_form').html('<form action="http://example.com/vote/' + selected + '" name="vote" method="post" style="display:none;"><input type="text" name="api_url" value="' + Return_URL + '" /></form>');
-        
-            document.forms['vote'].submit();
-        
-        }
+       
           
-        }
+        
 
 
 
