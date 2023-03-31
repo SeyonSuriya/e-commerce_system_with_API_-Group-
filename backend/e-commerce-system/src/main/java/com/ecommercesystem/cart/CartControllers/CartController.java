@@ -24,6 +24,10 @@ public class CartController {
     public List<cart> RemoveItemfromCart(@RequestParam Integer userid,Integer book_id){
         return cartService.removeFromCart(book_id,userid);
     }
+    @PostMapping(path = "updateunits")
+    public List<cart> UpdateItemUnitsfromCart(@RequestParam Integer item_id,Integer units,Integer userid){
+        return cartService.updateItemUnitsFromCart(item_id,units,userid);
+    }
 
 
 }
