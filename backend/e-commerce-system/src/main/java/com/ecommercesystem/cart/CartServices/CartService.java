@@ -9,4 +9,5 @@ public interface CartService {
     List<cart> showCart (Integer userid);
     String addToCart(Integer item_id,Integer units,Integer userid);
     List<cart> removeFromCart(Integer item_id, Integer userid);
+    List<cart> updateItemUnitsFromCart(Integer item_id, Integer units, Integer userid);
 }
