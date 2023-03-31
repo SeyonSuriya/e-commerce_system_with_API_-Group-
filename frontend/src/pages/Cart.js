@@ -80,7 +80,6 @@ export default function Cart() {
   }
   function ShowProductsInCart() {
     
-
     axios.post(
       'http://localhost:8080/ecommerce/cart/books?userid='+cookies.userid,
       ).then(response=>{
