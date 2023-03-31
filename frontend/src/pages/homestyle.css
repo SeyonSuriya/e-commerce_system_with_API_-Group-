@@ -1,0 +1,30 @@
+.homecontainer{
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-left: 20px;
+    margin-top: 10px;
+    
+}
+.imgs{
+    width: 200px;
+    height: 200px;
+    
+}
+.items{
+    margin-left: 20px;
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 10px;
+    width: 224px;
+    
+}
+.topcontain{
+    display: flex;
+    
+}
+Link{
+    text-decoration: none;
+}
+Link:hover{
+    text-decoration: none;
+}

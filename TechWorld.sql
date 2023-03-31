@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 07, 2023 at 10:01 AM
+-- Generation Time: Mar 30, 2023 at 08:47 AM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `TechWorld`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `adminid` int(11) NOT NULL,
+  `active_status` tinyint(4) DEFAULT '0',
+  `adminname` varchar(30) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `mobile` varchar(10) DEFAULT NULL,
+  `password` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`adminid`, `active_status`, `adminname`, `email`, `mobile`, `password`) VALUES
+(1, 0, 'Hiran Sanjeewa', 'abc@gmail.com', '1232321312', '$2a$10$0w/n6C5HkxF92MTBAOn2VO2knrMib.WuQc7mjLeybV28E1WcPkHAy');
 
 -- --------------------------------------------------------
 
@@ -43,6 +65,23 @@ INSERT INTO `admins` (`id`, `name`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin_seq`
+--
+
+CREATE TABLE `admin_seq` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin_seq`
+--
+
+INSERT INTO `admin_seq` (`next_val`) VALUES
+(51);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `books`
 --
 
@@ -52,14 +91,22 @@ CREATE TABLE `books` (
   `book_price` int(11) NOT NULL,
   `book_title` varchar(30) NOT NULL,
   `category` varchar(50) NOT NULL,
-  `img_name1` varchar(50) NOT NULL,
-  `img_name2` varchar(50) NOT NULL,
-  `img_name3` varchar(50) NOT NULL,
-  `img_name4` varchar(50) NOT NULL,
-  `long_description` varchar(200) NOT NULL,
+  `isbn` varchar(25) NOT NULL,
+  `long_description` varchar(500) NOT NULL,
+  `num_of_orders` int(11) NOT NULL,
   `num_of_units` int(11) NOT NULL,
-  `publisher` varchar(30) NOT NULL
+  `publisher` varchar(30) NOT NULL,
+  `weight` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`book_id`, `author`, `book_price`, `book_title`, `category`, `isbn`, `long_description`, `num_of_orders`, `num_of_units`, `publisher`, `weight`) VALUES
+(1, 'Danielle Steel', 10, 'FLYING ANGELS', 'Romance', '9781529021783', 'Flying Angels is a compelling and inspirational story of women of courage in the Second World War, by the worlds number one bestselling author, Danielle Steel. It is 1941 and the devastating loss of life following the Japanese attack on Pearl Harbor leaves best friends Audrey and Lizzie distraught and bereft as they lose someone they both love deeply. As they come to terms with their grief, their resolve to play a worthwhile role towards the war effort is strengthened.\r\n', 3, 100, 'MACMILLAN', 1),
+(2, 'Danielle Steel', 11, 'The Affair', 'Romance', '9781529021486', 'In this riveting novel set in Paris, the worlds favourite storyteller, Danielle Steel, explores a high-profile affair that reverberates throughout an entire family ', 20, 200, 'MACMILLAN', 0),
+(3, 'Danielle Steel', 15, 'The Butler', 'Romance', '9781529021721', 'The Butler is an extraordinary tale of family, difficult decisions and destiny, from the worlds favourite storyteller, Danielle Steel.', 15, 50, 'Pan Macmillan', 1);
 
 -- --------------------------------------------------------
 
@@ -79,7 +126,9 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `item_id`, `quantity`, `userid`) VALUES
-(1, 2, 4, 1);
+(1, 3, 5, 1),
+(2, 2, 3, 1),
+(8, 1, 11, 1);
 
 -- --------------------------------------------------------
 
@@ -96,6 +145,36 @@ CREATE TABLE `cart_seq` (
 --
 
 INSERT INTO `cart_seq` (`next_val`) VALUES
+(1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `confirmation_token`
+--
+
+CREATE TABLE `confirmation_token` (
+  `token_id` bigint(20) NOT NULL,
+  `confirmation_token` varchar(255) DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `userid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `confirmation_token_seq`
+--
+
+CREATE TABLE `confirmation_token_seq` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `confirmation_token_seq`
+--
+
+INSERT INTO `confirmation_token_seq` (`next_val`) VALUES
 (1);
 
 -- --------------------------------------------------------
@@ -125,10 +204,19 @@ CREATE TABLE `orders` (
   `book_id` int(11) DEFAULT NULL,
   `book_price` int(11) DEFAULT NULL,
   `item_units` int(11) DEFAULT NULL,
-  `order_status` varchar(15) DEFAULT NULL,
+  `order_status` varchar(30) DEFAULT NULL,
   `orderid` int(11) DEFAULT NULL,
   `userid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`reference`, `address`, `book_id`, `book_price`, `item_units`, `order_status`, `orderid`, `userid`) VALUES
+(1, 'fsdfsd', 1, 123, 2, 'Dilivering', 1, 1),
+(2, 'adasdas', 23, 213, 12, 'Dilivering', 1, 1),
+(3, 'sdfsfd', 5, 23, 2, 'Dilivering', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -146,6 +234,17 @@ CREATE TABLE `orders_seq` (
 
 INSERT INTO `orders_seq` (`next_val`) VALUES
 (1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `otps`
+--
+
+CREATE TABLE `otps` (
+  `email` varchar(30) NOT NULL,
+  `otp` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -173,8 +272,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userid`, `active_status`, `address_line1`, `address_line2`, `district`, `email`, `first_name`, `mobile`, `password`, `postal_code`, `province`, `second_name`) VALUES
-(152, 0, 'No 40, wewa kotasa, puhulwatta', 'maussagolla,passara', 'Badulla', 'hiransanjeewa@gmail.com', 'Hiran Sanjeewa', '070268106', '$2a$10$09Y5nUDa6GfvOIdEk1yujuI3qbY2MxJmQc9h24KwR2y89gelUKw0u', '12312', 'uva', 'Basnayaka'),
-(202, 0, 'No 40, wewa kotasa, puhulwatta', 'maussagolla,passara', 'Badulla', 'basnayakasanjeewa3@gmail.com', 'Sanjeewa', '070268107', '$2a$10$/L5QHNwuo1Sm4fISOzeVU.rtP8Kg0dqqhIJ76k88kQViygqoT9xK.', '12312', 'uva', 'Basnayaka');
+(1956, 0, ' No 40, Wewa Kotasa,Puhulwatta', ' Maussagolla, Passara', ' Badulla', 'hiransanjeewaa@gmail.com', 'Hiran', '0213213123', '$2a$10$mbqQmYW6T3v2Cg3zlGzH9.GF4lwwY0Xg2e73YNchn1ll4wm.eNPeu', ' 90500', ' Uva', ' Sanjeewa');
 
 -- --------------------------------------------------------
 
@@ -191,7 +289,7 @@ CREATE TABLE `users_seq` (
 --
 
 INSERT INTO `users_seq` (`next_val`) VALUES
-(301);
+(2051);
 
 -- --------------------------------------------------------
 
@@ -210,16 +308,18 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`wishno`, `userid`, `item_id`) VALUES
-(4, 2, 2),
-(5, 3, 2),
-(6, 3, 3),
-(7, 3, 4),
-(8, 3, 5),
-(9, 3, 6);
+(4, 1, 3),
+(12, 1, 2);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`adminid`);
 
 --
 -- Indexes for table `admins`
@@ -240,6 +340,13 @@ ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `confirmation_token`
+--
+ALTER TABLE `confirmation_token`
+  ADD PRIMARY KEY (`token_id`),
+  ADD KEY `FK42o07fxd9qphx6c9j91g7x99d` (`userid`);
+
+--
 -- Indexes for table `messages`
 --
 ALTER TABLE `messages`
@@ -250,6 +357,12 @@ ALTER TABLE `messages`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`reference`);
+
+--
+-- Indexes for table `otps`
+--
+ALTER TABLE `otps`
+  ADD PRIMARY KEY (`email`);
 
 --
 -- Indexes for table `users`
@@ -277,7 +390,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -289,7 +402,17 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishno` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `wishno` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `confirmation_token`
+--
+ALTER TABLE `confirmation_token`
+  ADD CONSTRAINT `FK42o07fxd9qphx6c9j91g7x99d` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

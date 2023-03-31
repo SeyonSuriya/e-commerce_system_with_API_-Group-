@@ -1,0 +1,81 @@
+input[type="checkbox"] {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+  }
+
+.Cartdiv{
+    width: 60%;
+    height: 80px;
+    background-color: brown;
+}
+.summarydiv{
+    width: 40%;
+    float: right;
+    background-color: cadetblue;
+}
+.product_image{
+     width: 100%;
+     height: 100%;
+
+}
+.product_image_div{
+  width: 20%;
+  height: 100%;
+  float: left;
+  background-color: beige;
+}
+.product{
+    background-color: aliceblue;
+    width: 60%;
+    height: 170px;
+    padding-left: 1cm;
+    float: left;
+    
+
+}
+.productInfo{
+    width: 54%;
+    height: 170px;
+    float: left;
+    background-color: blueviolet;
+
+}
+.product_functions{
+    background-color: antiquewhite;
+height: 170px;
+
+}
+.product_selecter_div{
+    width: 10%;
+    height: 170px;
+   text-align: center;
+    padding-top: 2cm;
+    float: left;
+
+}
+
+/* .delete_image{
+    width: 3.5%;
+    height: 1%;
+   
+    
+} */
+/* .wish_list_img{
+   
+   
+} */
+
+
+.unitsdiv{
+    white-space: nowrap; 
+    margin: 0 auto;
+}
+/* 
+.add_button{
+
+} */
+
+.units{
+    font-size: large;
+}

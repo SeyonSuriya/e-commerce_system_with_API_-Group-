@@ -6,9 +6,10 @@
 }
 
 .login-image{
-    background-image: url('../assests/Login Background img.jpg');
+    background-image: url('../assests/Login Background img 04.jpg');
     width:100%;
     height:650px;
+    background-size: cover;
 }
 
 .login-content{

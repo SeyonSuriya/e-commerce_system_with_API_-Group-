@@ -14,6 +14,8 @@ import RegisterPage from './pages/RegisterPage';
 import EmailVerification from './pages/EmailVerification';
 import ResetPassword from './pages/ResetPassword';
 import Product from './pages/Product';
+import VerifyEmail from './pages/VerifyEmail';
+import Checkout from './pages/CheckOut';
 
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
         <Route path="/emailverification" element={<EmailVerification />}/>
         <Route path="/resetpassword" element={<ResetPassword />}/>
         <Route path="/product" element={<Product />}/>
+        <Route path="/verifyemail" element={<VerifyEmail />}/>
+        <Route path="/checkout" element={<Checkout />}/>
       </Routes>
     </BrowserRouter>
     </div>
