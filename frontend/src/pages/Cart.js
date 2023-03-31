@@ -260,7 +260,7 @@ ShowProductsInCart()
   <div className='summarydiv'>
    <p>Summary</p>
    <p>Total :US $ <span id="Total"></span></p>
-   <button id='checkout' onClick={CheckSelections}/>
+   <button id='checkout' />
 
   </div>
  
