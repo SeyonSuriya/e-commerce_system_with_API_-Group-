@@ -1,8 +1,12 @@
 import React from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { Cookies,useCookies } from 'react-cookie';
 
 export default function CheckOut() {
+  const [cookies, setCookie] = useCookies(['user']);
+    
+    console.log(cookies.selectedBooks)
     return (
         <div>
           <Header/>

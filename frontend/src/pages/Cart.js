@@ -8,7 +8,8 @@ import "./cart.css";
 export default function Cart() {
   const [cookies, setCookie] = useCookies(['user']);
   setCookie('pricearray', [], { path: '/cart'});
- // setCookie('selected', , { path: '/cart'});
+  
+
   
 
 
@@ -226,23 +227,41 @@ ShowProductsInCart()
 
           }
         }
-        var selected=[]
+        
         function ChangeTotal() {
           var Total = 0
-          var x=0
+          
+         
+          //setCookie('selected', [], { path: '/cart'});
           for(var i=0; i<selectors.length; i++){  
             if (selectors[i].checked===true) {
-              selected[x]=cookies.cart[i].book_id
-              x++
+             
+              
               Total+=cookies.cart[i].quantity*cookies.pricearray[i]
             } 
         }
         document.getElementById('Total').innerHTML=Total
+        
+        //console.log(cookies.selected)
           
         }
-       
-          
-        
+        function CheckSelections() {
+          var selected=[]
+          var x=0
+          for(var i=0; i<selectors.length; i++){  
+            if (selectors[i].checked===true) {
+              selected[x]=cookies.cart[i].id
+              x++
+            } 
+        }
+          if(x>0) {
+            //console.log(cookies.selected)
+            setCookie('selectedBooks', selected, { path: '/checkout'});
+            document.getElementById("Checkoutpage").click();        
+        }else{
+          alert('Please select books to checkout')
+        }
+        }
 
 
 
@@ -260,8 +279,9 @@ ShowProductsInCart()
   <div className='summarydiv'>
    <p>Summary</p>
    <p>Total :US $ <span id="Total"></span></p>
-   <button id='checkout' />
-
+   <button id='checkout' onClick={CheckSelections}>Checkout</button>
+   <span id='checkoutform'></span>
+   <a href='/checkout' id="Checkoutpage" > </a>
   </div>
  
    
