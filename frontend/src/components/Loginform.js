@@ -78,7 +78,7 @@ export default function Loginform(props) {
             <a href='/' type="hidden" id="Homepage" > </a>
                 Don't have an account ? <a style={{textDecoration:'none'}} href='/register'> Sign up here</a> 
 
-                <a style={{textDecoration:'none'}} href='/resetpassword'> Forgot password</a>
+                <a style={{textDecoration:'none'}} href='/forgotpassword'> Forgot password</a>
 
                        
           
