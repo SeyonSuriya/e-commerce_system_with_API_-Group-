@@ -21,3 +21,19 @@ float: left;
 #products{
     width: 60%;
 }
+#changeAddressToDefault{
+   
+    color: blueviolet;
+}
+.productsdiv{
+width: 100%;
+}
+.product_image{
+    float: left;
+}
+.productInfo{
+    width: 60%;
+}
+.unitsdiv{
+    
+}
