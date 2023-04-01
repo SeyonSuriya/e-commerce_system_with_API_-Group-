@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import "../components/forgotpassword.css";
+import Forgotpasswordimg02 from '../assests/Forgotpassword img 02.png';
 
 
 export default function ForgotPassword(){
@@ -8,12 +10,12 @@ export default function ForgotPassword(){
     return(
         <div>
             <Header/>
-                <section>
-                    <div class="forgot-container">
-                        <div className='flex conatiner01'>
+                <section className="forgot-password-section">
+                    <div className="forgot-container">
+                        <div className='flex-conatiner01'>
                             <h1>Forgot Password</h1>
                             <div className="forgot-image">
-
+                            <img src={Forgotpasswordimg02} className='forgot_img'id='forgot_img' alt=''/>
                             </div><b/>
                             <p id="forgot text"> Please enter
                             your <b>Username</b> or <b>Email address.</b>You will
