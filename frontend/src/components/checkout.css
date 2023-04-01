@@ -1,0 +1,23 @@
+.AddressDiv{
+    padding-left: 1cm;
+    width: 60%;
+    height: 150px;
+    background-color:antiquewhite
+}
+.address{
+    padding-left: 1cm;
+width: 50%;
+height: 100%;
+float: left;
+}
+.changeAdressDiv{
+    width: 50%;
+    height: 100%;
+    float :right;
+    text-align: right;
+    padding-right: 1cm;
+    
+}
+#products{
+    width: 60%;
+}

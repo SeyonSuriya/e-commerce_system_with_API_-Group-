@@ -9,7 +9,6 @@ import jakarta.persistence.*;
 public class books {
 
 
-
     @Id
 
     @Column(name = "book_id",length = 5)
@@ -42,7 +41,7 @@ public class books {
     @Column(name = "weight",length = 12,nullable = false)
     private Integer weight;
 
-    @Column(name = "long_description",length = 200,nullable = false)
+    @Column(name = "long_description",length = 500,nullable = false)
     private String long_description;
 
     public int getBook_id() {

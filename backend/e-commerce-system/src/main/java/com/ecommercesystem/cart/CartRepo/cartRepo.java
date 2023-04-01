@@ -41,4 +41,6 @@ public interface cartRepo extends JpaRepository<cart,Integer> {
     @Modifying
     @Query(value = "delete from cart where userid=?2 and item_id=?1")
     void removeFromcart(Integer item_id,Integer userid);
+
+
 }
