@@ -279,7 +279,7 @@ ShowProductsInCart()
    <p>Summary</p>
    <p>Total :US $ <span id="Total"></span></p>
    <button id='checkout' onClick={CheckSelections}>Checkout</button>
-   <span id='checkoutform'></span>
+   
    <a href='/checkout' id="Checkoutpage" > </a>
   </div>
  

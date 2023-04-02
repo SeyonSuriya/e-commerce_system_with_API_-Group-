@@ -7,6 +7,7 @@ import "../components/checkout.css";
 
 export default function CheckOut() {
   const [cookies, setCookie] = useCookies(['user']);
+  setCookie('pricearray', [], { path: '/checkout'});
     
     //console.log(cookies.selectedBooks.length)
     function GetDefaultAddress() {
@@ -57,6 +58,7 @@ export default function CheckOut() {
           // eslint-disable-next-line no-loop-func
           ).then(response=>{
             console.log()
+            cookies.pricearray[index]=response.data[0].book_price
             row+='<img  class="product_image" id="'+response.data[0].book_id+'_image" style="width:20%;height:100%;">'
             row+='<div class="productInfo">'
             row+=response.data[0].book_title+'<br/>'
@@ -77,74 +79,112 @@ export default function CheckOut() {
            
                // Adding AddUnits and Deduct units in cart onclick functions
        document.getElementById(response.data[0].book_id+'_add').onclick = function () {
-        addUnits(response.data[0].num_of_units,cartid,response.data[0].book_id)
+        addUnits(response.data[0].num_of_units,index,response.data[0].book_id)
        }
        document.getElementById(response.data[0].book_id+'_remove').onclick = function () {
-        RemoveUnits(cartid,response.data[0].book_id)
+        RemoveUnits(index,response.data[0].book_id)
        }
+       ChangeTotal()
+
 
           }
           )
-        
       }
-      function addUnits(available_units,cartid,book_id) {
-        if (available_units>cookies.cart[cartid].quantity) {
-          cookies.cart[cartid].quantity+=1
+      function addUnits(available_units,index,book_id) {
+        if (available_units>cookies.productquantities[index].quantity) {
+          cookies.productquantities[index].quantity+=1
          axios.post(
           'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
           ).then(response=>{
            // ShowProductsInCart()
            }
           )
-        //  ChangeTotal()
-        document.getElementById(book_id+'_units').innerHTML=cookies.cart[cartid].quantity
+          ChangeTotal()
+        document.getElementById(book_id+'_units').innerHTML=cookies.productquantities[index].quantity
         }
     }
-    function RemoveUnits(cartid,book_id) {
-     if (cookies.cart[cartid].quantity!==1) {
-      cookies.cart[cartid].quantity-=1
+    function RemoveUnits(index,book_id) {
+     if (cookies.productquantities[index].quantity!==1) {
+      cookies.productquantities[index].quantity-=1
+      // console.log(book_id)
+      // console.log(cookies.productquantities[index].quantity)
+      // console.log(cookies.userid)
        axios.post(
-        'http://localhost:8080/ecommerce/cart/updateunits?item_id='+book_id+'&units='+cookies.cart[cartid].quantity+'&userid='+cookies.userid,
+        'http://localhost:8080/ecommerce/cart/updateunits?item_id='+book_id+'&units='+cookies.productquantities[index].quantity+'&userid='+cookies.userid,
         ).then(response=>{
          // ShowProductsInCart()
          }
         )
-      //  ChangeTotal()
-       document.getElementById(book_id+'_units').innerHTML=cookies.productquantities[cartid].quantity
+        ChangeTotal()
+       document.getElementById(book_id+'_units').innerHTML=cookies.productquantities[index].quantity
      }
     }
-      
+    var selectedBooksDto=[]
 function ChangeTotal() {
   var Total=0
   for (let index = 0; index < cookies.selectedBooks.length; index++) {
-    var i=0
-    if (cookies.cart[i].id===cookies.selectedBooks[index]) {
-      Total+=cookies.productquantities[index].quantity
+    for(let i=0;i<cookies.productquantities.length;i++){
+    if (cookies.productquantities[i].id===cookies.selectedBooks[index]) {
+      Total+=cookies.productquantities[index].quantity*cookies.pricearray[i]
+      // selectedBooksDto[i].units=cookies.productquantities[index].quantity
+      // selectedBooksDto[i].book_id=cookies.productquantities[index].item_id
+
+    var singleObj = {};
+    singleObj['units'] = cookies.productquantities[index].quantity
+    singleObj['book_id'] = cookies.productquantities[index].item_id
+    selectedBooksDto.push(singleObj);
 
     }
-
-    
   }
-  
+}
+document.getElementById('Total').innerHTML=Total
+
 }
 
+function PlaceOrder() {
+  var address=document.getElementById('address').innerHTML
+  var userid=cookies.userid
+  
+  const postData = {
+   address,
+   userid ,
+   selectedBooksDto
+
+  };
+  console.log(postData)
+    axios.post(
+      'http://localhost:8080/ecommerce/placeorder',
+      postData,
+      ).then(response=>{
+        console.log(response.data)
+       //document.getElementById("Checkoutpage").click();  
+      }
+      )
+ 
+}
 
     return (
         <div>
           <Header/>
-      
+          <div className='orderSummayDiv'>
+            <h1>Order Summary</h1>
+            <br/> <br/> <br/> <p >Total $ <span id="Total"></span></p>
+            <button onClick={PlaceOrder}>Place Order</button>
+          </div>
         <div className='AddressDiv'>
           <h3>Address</h3>
           <div className='address'>
           <p id="address"  ></p>
           <script>{GetDefaultAddress()}</script>
           </div>
+         
           <div className='changeAdressDiv'>
           <br/>
             <a href='/changeaddress'>+ Add a new Address</a><br/>
             <span onClick={GetDefaultAddress} id="changeAddressToDefault">&nbsp; Use Default Address</span>
           </div>
         </div>
+      
         
           <span id="products" ></span>
           <script>{ShowSelectedProducts()}</script>
@@ -156,9 +196,9 @@ function ChangeTotal() {
           <br/><br/><br/><br/><br/>
           <br/><br/><br/><br/><br/><br/><br/>
     
+          <a href='/orderplaced' id="Checkoutpage" > </a>
           <Footer/>
         </div>
-        
       )
     }
     

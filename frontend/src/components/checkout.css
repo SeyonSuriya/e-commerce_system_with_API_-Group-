@@ -4,6 +4,12 @@
     height: 150px;
     background-color:antiquewhite
 }
+.orderSummayDiv{
+    width: 38%;
+    height: 300px;
+    background-color: beige;
+    float: right;
+}
 .address{
     padding-left: 1cm;
 width: 50%;
