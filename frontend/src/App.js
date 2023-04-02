@@ -17,6 +17,7 @@ import Product from './pages/Product';
 import VerifyEmail from './pages/VerifyEmail';
 import ForgotPassword from './pages/ForgotPassword';
 import Reset from './pages/Reset';
+import CheckOut from './pages/CheckOut';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/verifyemail" element={<VerifyEmail />}/>
         <Route path="/forgotpassword" element={<ForgotPassword />}/>
         <Route path="/reset" element={<Reset />}/>
+        <Route path="/checkout" element={<CheckOut />}/>
       </Routes>
     </BrowserRouter>
     </div>

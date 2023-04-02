@@ -119,8 +119,9 @@ export default function CheckOut() {
        document.getElementById(book_id+'_units').innerHTML=cookies.productquantities[index].quantity
      }
     }
-    var selectedBooksDto=[]
+    var purchaceitems=[]
 function ChangeTotal() {
+  purchaceitems=[]
   var Total=0
   for (let index = 0; index < cookies.selectedBooks.length; index++) {
     for(let i=0;i<cookies.productquantities.length;i++){
@@ -132,7 +133,7 @@ function ChangeTotal() {
     var singleObj = {};
     singleObj['units'] = cookies.productquantities[index].quantity
     singleObj['book_id'] = cookies.productquantities[index].item_id
-    selectedBooksDto.push(singleObj);
+    purchaceitems.push(singleObj);
 
     }
   }
@@ -145,22 +146,22 @@ function PlaceOrder() {
   var address=document.getElementById('address').innerHTML
   var userid=cookies.userid
   
-  const postData = {
+  const purchaceDetails = {
+    purchaceitems,
    address,
    userid ,
-   selectedBooksDto
+   
 
   };
-  console.log(postData)
+  console.log(purchaceDetails)
     axios.post(
       'http://localhost:8080/ecommerce/placeorder',
-      postData,
+      purchaceDetails,
       ).then(response=>{
-        console.log(response.data)
-       //document.getElementById("Checkoutpage").click();  
+        setCookie('orderid', response.data, { path: '/orderplaced'});
+        document.getElementById("Checkoutpage").click();  
       }
       )
- 
 }
 
     return (

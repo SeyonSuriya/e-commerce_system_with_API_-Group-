@@ -3,8 +3,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import "./homestyle.css";
 import { Link } from 'react-router-dom';
-import { Slide } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css';
+// import { Slide } from 'react-slideshow-image';
+//import 'react-slideshow-image/dist/styles.css';
 
 
 
@@ -47,7 +47,7 @@ export default function Home() {
 
       <div>
       <div className="slide-container">
-        <Slide>
+        {/* <Slide>
          {slideImages.map((slideImage, index)=> (
             <div key={index}>
               <div style={{ ...divStyle, 'backgroundImage': `url(${slideImage.url})` }}>
@@ -55,7 +55,7 @@ export default function Home() {
               </div>
             </div>
           ))} 
-        </Slide>
+        </Slide> */}
       </div>
       </div>
 
