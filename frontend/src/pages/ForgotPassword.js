@@ -17,25 +17,31 @@ export default function ForgotPassword(){
                             <div className="forgot-image">
                             <img src={Forgotpasswordimg02} className='forgot_img'id='forgot_img' alt=''/>
                             </div><b/>
-                            <p id="forgot text"> Please enter
-                            your <b>Username</b> or <b>Email address.</b>You will
+                            <p id="forgot-text"> Please enter
+                            your <b>Username</b> or <b>Email address.</b> You will
                             receive an email message with instructions on how to register
                             your password.</p>
                             <b/>
 
-                            <div className="forgot_form">
-                                <form id="forgot_form01">
+                            
+                                <form>
+                                <div className="forgot_form">
                                     <label>Username/Email Address</label><br/>
                                     <input type="email" placeholder="Email"></input>
                                     <br />
+                                </div>
+
+                                <div className="forgot_form">
                                     <button type="submit" className="forgot_submit">Submit</button>
                                     <br />
-                                </form>
+                                </div>
+                        
+                            </form>
                                 <a style={{textDecoration:'none'}} href='/login'> Back to Login</a>
 
  
 
-                            </div>
+                            
 
                         </div>
 
