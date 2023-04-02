@@ -1,0 +1,38 @@
+.reset-password-section{
+    padding-left: 22em;
+    padding-bottom: 1.5em;
+    padding-right: 22em;
+    padding-top: 2em;  
+}
+.reset-container{
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 2px 2px 5px gray;
+    border: 3px solid #034748;
+    box-shadow: 2px 2px 10px #2c0202;
+    background-color: azure;
+  
+}
+.flex-conatiner02{
+    display: flex;
+    justify-content: space-between;   
+}
+
+.flex-conatiner02 h1{
+    text-align: center;
+    color:black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+.reset-image{
+    width:80%;
+}
+
+#forgot_img{
+    width:19%;
+    height: 160px;
+    margin-left:52%;
+    margin-right: 38%;
+    margin-top: auto;
+}
+
