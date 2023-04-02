@@ -1,6 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import "./footerstyle.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+   faYoutube,
+   faFacebook,
+   faTwitter,
+   faInstagram
+ } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   return (
@@ -41,7 +48,24 @@ const Footer = () => {
           </form> 
        </div>   
        <div className='socialmedia'>
-          
+       <Link 
+        className="youtube social">
+        <FontAwesomeIcon icon={faYoutube} size="2x" />
+      </Link>
+      <br />
+      <Link href=""
+        className="facebook social">
+        <FontAwesomeIcon icon={faFacebook} size="2x" />
+      </Link>
+      <br />
+      <Link href="" className="twitter social">
+        <FontAwesomeIcon icon={faTwitter} size="2x" />
+      </Link>
+      <br />
+      <Link href=""
+        className="instagram social">
+        <FontAwesomeIcon icon={faInstagram} size="2x" />
+      </Link>
        </div>
       </span>
        
