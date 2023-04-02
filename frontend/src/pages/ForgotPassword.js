@@ -27,7 +27,7 @@ export default function ForgotPassword(){
                                 <form >
                                 
                                     <label className="forgot_form">Username/Email Address</label><br/>
-                                    <input type="email" placeholder="Email" className='forgot-form01'></input>
+                                    <input type="email" placeholder="Username or Email " className='forgot-form01'></input>
                                     <br />                           
                             
                                     <button type="submit" className="forgot_submit">Submit</button>
