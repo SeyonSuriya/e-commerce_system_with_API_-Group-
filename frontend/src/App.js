@@ -18,6 +18,8 @@ import VerifyEmail from './pages/VerifyEmail';
 import AdminLoginPage from './pages/AdminLoginPage';
 
 import ForgotPassword from './pages/ForgotPassword';
+import Reset from './pages/Reset';
+import CheckOut from './pages/CheckOut';
 
 
 import Checkout from './pages/CheckOut';
@@ -44,11 +46,16 @@ function App() {
         <Route path="/product" element={<Product />}/>
         <Route path="/verifyemail" element={<VerifyEmail />}/>
         <Route path="/forgotpassword" element={<ForgotPassword />}/>
+<<<<<<< HEAD
          
 
         <Route path="/checkout" element={<Checkout />}/>
  
 
+=======
+        <Route path="/reset" element={<Reset />}/>
+        <Route path="/checkout" element={<CheckOut />}/>
+>>>>>>> 009b37a32a8f5f0f7c4b127babeac3ebce5eb35e
       </Routes>
     </BrowserRouter>
     </div>

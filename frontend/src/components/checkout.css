@@ -4,6 +4,12 @@
     height: 150px;
     background-color:antiquewhite
 }
+.orderSummayDiv{
+    width: 38%;
+    height: 300px;
+    background-color: beige;
+    float: right;
+}
 .address{
     padding-left: 1cm;
 width: 50%;
@@ -20,4 +26,20 @@ float: left;
 }
 #products{
     width: 60%;
+}
+#changeAddressToDefault{
+   
+    color: blueviolet;
+}
+.productsdiv{
+width: 100%;
+}
+.product_image{
+    float: left;
+}
+.productInfo{
+    width: 60%;
+}
+.unitsdiv{
+    
 }

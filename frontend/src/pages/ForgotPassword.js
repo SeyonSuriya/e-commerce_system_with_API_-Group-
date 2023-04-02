@@ -13,29 +13,34 @@ export default function ForgotPassword(){
                 <section className="forgot-password-section">
                     <div className="forgot-container">
                         <div className='flex-conatiner01'>
-                            <h1>Forgot Password</h1>
+                            <h1>FORGOT PASSWORD</h1>
                             <div className="forgot-image">
                             <img src={Forgotpasswordimg02} className='forgot_img'id='forgot_img' alt=''/>
                             </div><b/>
-                            <p id="forgot text"> Please enter
-                            your <b>Username</b> or <b>Email address.</b>You will
-                            receive an email message with instructions on how to register
+                            <p id="forgot-text"> Please enter
+                            your <b>Username</b> or <b>Email address.</b><br /> You will
+                            receive an email message with instructions on how to reset
                             your password.</p>
                             <b/>
 
-                            <div className="forgot_form">
-                                <form id="forgot_form01">
-                                    <label>Username/Email Address</label><br/>
-                                    <input type="email" placeholder="Email"></input>
-                                    <br />
+         
+                                <form >
+                                
+                                    <label className="forgot_form">Username/Email Address</label><br/>
+                                    <input type="email" placeholder="Username or Email " className='forgot-form01'></input>
+                                    <br />                           
+                            
                                     <button type="submit" className="forgot_submit">Submit</button>
-                                    <br />
+                                    <br />            
+                        
                                 </form>
+                         
+                         
                                 <a style={{textDecoration:'none'}} href='/login'> Back to Login</a>
 
  
 
-                            </div>
+                            
 
                         </div>
 
