@@ -1,10 +1,10 @@
 import React from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import axios from 'axios';
+
 import "../components/product_page.css"
 import Loginimg from "../assests/Login img.jpg";
-import { Cookies, useCookies } from 'react-cookie';
+
 
 
 

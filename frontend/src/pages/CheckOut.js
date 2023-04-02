@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import axios from 'axios';
-import { Cookies,useCookies } from 'react-cookie';
+
+
 import "../components/checkout.css";
 
 export default function CheckOut() {

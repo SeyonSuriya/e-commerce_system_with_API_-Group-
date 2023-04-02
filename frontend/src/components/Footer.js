@@ -24,13 +24,14 @@ const Footer = () => {
        <h3><Link to=''>Help</Link></h3>
        <h5><Link to=''>Help Center</Link></h5>
        <h5><Link to=''>Authors</Link></h5>
+       <h5><Link to=''>Community</Link></h5>
        </div> 
        <div className='thirdline'>
         <h3><Link to=''>OUR COMMUNITY</Link></h3>
-        <h5><Link to=''>Community</Link></h5>
         <h5><Link to=''>Blog</Link></h5>
         <h5><Link to=''>Shopping Cart</Link></h5>
         <h5><Link to=''>My Account</Link></h5>
+        <h5><Link to='/adminlogin'>Admin Login</Link></h5>
        </div>
        <div className='sendmassage'> 
           <form>
