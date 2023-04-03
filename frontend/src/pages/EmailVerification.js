@@ -4,6 +4,8 @@ import Footer from '../components/Footer'
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
+
+
 export default function EmailVerification() {
 
   const [cookies, setCookie] = useCookies(['user']);

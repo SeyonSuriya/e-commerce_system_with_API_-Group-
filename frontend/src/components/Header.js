@@ -46,12 +46,7 @@ const Header = () => {
               <div className='collinks'>
                 <div className='headerlinks'>
                    
-                    <Link className='icontag'>
-                    <img src="images/compare.svg" alt="compare" />
-                      <p>
-                      Compare <br /> Product
-                      </p>
-                    </Link>
+                  <h1></h1>
                    
           
                       <Link className='icontag' to="/wishlist">
@@ -93,9 +88,30 @@ const Header = () => {
                     Shop Categories
                       </button>
   <ul className="dropdown-menu">
-    <li><a className="dropdown-item" href="Store?query=Science">Science</a></li>
-    <li><a className="dropdown-item" href="Store?query=Mathematic">Mathematics</a></li>
-    <li><a className="dropdown-item" href="Store?query=Novel">Novels</a></li>
+    <li><a className="dropdown-item" href="Store?query=Arts&Music">Arts & Music</a></li>
+    <li><a className="dropdown-item" href="Store?query=Biographs">Biographs</a></li>
+    <li><a className="dropdown-item" href="Store?query=Business">Business</a></li>
+    <li><a className="dropdown-item" href="Store?query=Comics">Comics</a></li>
+    <li><a className="dropdown-item" href="Store?query=Computer&Tech">Computer & Tech</a></li>
+    <li><a className="dropdown-item" href="Store?query=Cooking">Cooking</a></li>
+    <li><a className="dropdown-item" href="Store?query=Education">Education</a></li>
+    <li><a className="dropdown-item" href="Store?query=Entertainment">Entertainment</a></li>
+    <li><a className="dropdown-item" href="Store?query=Health&Fitness">Health & Fitness</a></li>
+    <li><a className="dropdown-item" href="Store?query=History">History</a></li>
+    <li><a className="dropdown-item" href="Store?query=Hobbies&Craft">Hobbies & Craft</a></li>
+    <li><a className="dropdown-item" href="Store?query=Home&Garden">Home & Garden</a></li>
+    <li><a className="dropdown-item" href="Store?query=Kids">Kids</a></li>
+    <li><a className="dropdown-item" href="Store?query=Medical">Medical</a></li>
+    <li><a className="dropdown-item" href="Store?query=Mysteries">Mysteries</a></li>
+    <li><a className="dropdown-item" href="Store?query=Parenting">Parenting</a></li>
+    <li><a className="dropdown-item" href="Store?query=Religion">Religion</a></li>
+    <li><a className="dropdown-item" href="Store?query=Romance">Romance</a></li>
+    <li><a className="dropdown-item" href="Store?query=Science&Math">Science & Math</a></li>
+    <li><a className="dropdown-item" href="Store?query=SocialScience">Social Science</a></li>
+    <li><a className="dropdown-item" href="Store?query=Sports">Sports</a></li>
+    <li><a className="dropdown-item" href="Store?query=Travel">Travel</a></li>
+    <li><a className="dropdown-item" href="Store?query=TrueCrime">True Crime</a></li>
+    <li><a className="dropdown-item" href="Store?query=Westerns">Westerns</a></li>
   </ul>
 </div>
           </div>

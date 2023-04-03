@@ -11,42 +11,29 @@ export default function Reset(){
 
             <section className="reset-password-section">
                     <div className="reset-container">
-                        <div className='flex-conatiner02'>
-                            <h1>RESET PASSWORD</h1>
+                        <div className='flex-container02'>
+                            <h1>RESET  YOUR PASSWORD</h1><br />
                             <div className="reset-image">
-                            <img src={Passowrdresetimg01} className='forgot_img'id='forgot_img' alt=''/>
-                            </div><b/>
+                            <img src={Passowrdresetimg01} className='reset_img'id='reset_img' alt=''/>
+                            </div><b/><br />
                            
 
                             
-                                <form >
-                                    <div  className="reset_form">
-                                    <label>Password</label><br/>
+                                <form >                                  
+                                    <label className='reset-form'>Password</label><br/>
                                     <input type="password" placeholder="Password" className='reset-form01'></input>
                                     <br /> 
-                                    </div> 
-
-                                    <div  className="reset_form">
-                                    <label className="reset_form">Confirm Password</label><br/>
+                                  
+                                    <label className="reset-form">Confirm Password</label><br/>
                                     <input type="password" placeholder=" Confirm Password" className='reset-form01'></input>
                                     <br />    
-                                    </div>
-                       
-                                    <div  className="reset_form">
-                                    <button type="submit" className="reset_submit01">Reset</button>  
-                                    </div>
 
-                                    <div  className="reset_form">                                 
+                                    <div className='reset-buttons'>
+                                    <button type="submit" className="reset_submit01">Reset</button>                                                                                                        
                                     <button type="submit" className="reset_submit02">Return to Login</button>
-                                    <br />  
-                                    </div>          
-                        
-                                </form>
-                         
-                         
-                        
- 
-
+                                    <br /> 
+                                    </div>                                                         
+                                </form>                                    
                             
 
                         </div>

@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import axios from 'axios';
-import { Cookies, useCookies } from 'react-cookie';
+import { useCookies } from 'react-cookie';
+
+
+
 import "./cart.css";
 
 export default function Cart() {
