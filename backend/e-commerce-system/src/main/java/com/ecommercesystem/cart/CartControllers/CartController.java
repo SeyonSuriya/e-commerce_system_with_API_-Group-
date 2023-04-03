@@ -25,8 +25,8 @@ public class CartController {
         return cartService.removeFromCart(book_id,userid);
     }
     @PostMapping(path = "updateunits")
-    public List<cart> UpdateItemUnitsfromCart(@RequestParam Integer item_id,Integer units,Integer userid){
-        return cartService.updateItemUnitsFromCart(item_id,units,userid);
+    public void UpdateItemUnitsfromCart(@RequestParam Integer item_id,Integer units,Integer userid){
+         cartService.updateItemUnitsFromCart(item_id,units,userid);
     }
 
 

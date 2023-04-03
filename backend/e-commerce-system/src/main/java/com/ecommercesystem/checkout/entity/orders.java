@@ -73,7 +73,7 @@ public class orders {
 
     @Id
     @Column(name = "reference",length = 5)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     private int reference;
     @Column(name = "orderid",length = 5)
     @GeneratedValue(strategy = GenerationType.AUTO)

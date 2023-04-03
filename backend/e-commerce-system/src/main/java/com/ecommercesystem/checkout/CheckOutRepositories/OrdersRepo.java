@@ -14,10 +14,12 @@ public interface OrdersRepo extends JpaRepository<orders,Integer> {
 
     @Transactional
     @Modifying
-    @Query(value=" Insert into orders (address,item_id,item_price,item_units,order_status,orderid,userid) Values(?1,?2,?3,?4,'Placed',?5,?6)", nativeQuery=true)
-    Integer purchaceItem(String address,Integer Book_id,Integer Product_price,Integer Units,Integer orderid,Integer userid);
+    @Query(value=" Insert into orders (reference,address,book_id,book_price,item_units,order_status,orderid,userid) Values(?1,?2,?3,?4,?5,'Placed',?6,?7)", nativeQuery=true)
+    Integer purchaceItem(Integer reference,String address,Integer Book_id,Integer Product_price,Integer Units,Integer orderid,Integer userid);
     @Query(value = "Select orderid from orders ORDER BY orderid DESC Limit 1")
     Integer getNextOrderId();
+    @Query(value = "Select reference from orders ORDER BY reference DESC Limit 1")
+    Integer getNextReference();
 
     @Query(value="select * from orders a where a.userid=:userid", nativeQuery=true)
     List<orders> getorders(Integer userid);

@@ -37,10 +37,10 @@ public class CartServiceImpl implements CartService{
         return cartRepo.showcart(userid);
     }
 
-    @Override
-    public List<cart> updateItemUnitsFromCart(Integer item_id, Integer units, Integer userid) {
+    //@Override
+    public void updateItemUnitsFromCart(Integer item_id, Integer units, Integer userid) {
        // Units=cartRepo.getExistingUnits(item_id,userid);
         cartRepo.updateCart(item_id,units,userid);
-        return cartRepo.showcart(userid);
+
     }
 }

@@ -1,10 +1,13 @@
 package com.ecommercesystem.registeruser.UserController;
 
+import com.ecommercesystem.checkout.CheckoutDtos.AddressDto;
 import com.ecommercesystem.registeruser.Email.Email;
 import com.ecommercesystem.registeruser.LoginUser.LoginUser;
 import com.ecommercesystem.registeruser.dto.PasswordResetDto;
 import com.ecommercesystem.registeruser.dto.VerificationDto;
+import com.ecommercesystem.registeruser.entity.User;
 import com.ecommercesystem.registeruser.service.AccountStatusService.AccountStatusService;
+import com.ecommercesystem.registeruser.service.AddressService.AddressService;
 import com.ecommercesystem.registeruser.service.ResetPassword.ResetPassword;
 import com.ecommercesystem.registeruser.dto.UserDto;
 import com.ecommercesystem.registeruser.service.EmailService.EmailService;
@@ -14,6 +17,7 @@ import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.* ;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 
 @RestController
@@ -22,6 +26,8 @@ import java.io.UnsupportedEncodingException;
 public class RegisterUserController {
     @Autowired
     private UserService registeruser;
+    @Autowired
+    private AddressService addressService;
     @Autowired
     private EmailService emailService;
     @Autowired
@@ -68,6 +74,14 @@ public class RegisterUserController {
     public String deactivateAccount(String email) {
         accountStatusService.deactivateAccount(email);
         return "Account is Deactivated ";
+    }
+    @PostMapping(path = "/getaddress")
+    public List<User> getAddress(@RequestParam Integer userid) {
+        return addressService.getAddressBYId(userid);
+    }
+    @PostMapping(path = "/changeaddress")
+    public void getAddress(@RequestParam AddressDto addressDto, Integer userid) {
+       addressService.changeAddress(addressDto, userid);
     }
 
 }

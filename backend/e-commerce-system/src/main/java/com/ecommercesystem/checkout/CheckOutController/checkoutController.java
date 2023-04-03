@@ -40,6 +40,7 @@ public class checkoutController {
     }
     @PostMapping(path = "/placeorder")
     public String  placeorder(@RequestBody PurchaceDetails purchaceDetails){
+
         return checkoutService.placeorder(purchaceDetails);
     }
 
