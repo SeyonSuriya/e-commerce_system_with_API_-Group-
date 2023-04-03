@@ -8,6 +8,7 @@ export default function OrderPlaced(){
         <div>
           
         <section className='orderplace-section'>
+          
             <div className='orderplace-content'>
                 <div className='order-image'>
                     <img src={Orderplaceimg01} className='order_img'/>
@@ -20,7 +21,7 @@ export default function OrderPlaced(){
                 <button type='submit' className="order_submit">Continue Shopping</button>
             </div>
 
-
+            
         </section>
 
 
