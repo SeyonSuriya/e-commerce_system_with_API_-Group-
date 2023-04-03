@@ -1,0 +1,9 @@
+.orderplace-section{
+    padding: 2em 28% 2em 28%;
+}
+.orderplace-content{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    flex-direction: column;
+}
