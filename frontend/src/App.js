@@ -16,12 +16,9 @@ import ResetPassword from './pages/ResetPassword';
 import Product from './pages/Product';
 import VerifyEmail from './pages/VerifyEmail';
 import AdminLoginPage from './pages/AdminLoginPage';
-
 import ForgotPassword from './pages/ForgotPassword';
+import OrderPlaced from './pages/OrderPlaced';
 import Reset from './pages/Reset';
-
-
-
 import Checkout from './pages/CheckOut';
  
 
@@ -45,13 +42,10 @@ function App() {
         <Route path="/resetpassword" element={<ResetPassword />}/>
         <Route path="/product" element={<Product />}/>
         <Route path="/verifyemail" element={<VerifyEmail />}/>
-        <Route path="/forgotpassword" element={<ForgotPassword />}/>
-         
-
+        <Route path="/forgotpassword" element={<ForgotPassword />}/>        
         <Route path="/checkout" element={<Checkout />}/>
- 
-
         <Route path="/reset" element={<Reset />}/>
+        <Route path="/orderplaced" element={<OrderPlaced />}/>
        
       </Routes>
     </BrowserRouter>
