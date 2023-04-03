@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import "./loginform.css";
 import { useCookies } from 'react-cookie';
+import "./loginform.css";
+
 export default function Loginform(props) {
   const [cookies, setCookie] = useCookies(['user']);
   const [email,setEmail]=useState(' ');
@@ -32,7 +33,7 @@ export default function Loginform(props) {
           postData,
           ).then(response=>{
             if (response.data === 'Login Granted') {
-               setCookie('userid', 1, { path: '/'});
+               setCookie('userid', 1956, { path: '/'});
                document.getElementById("Homepage").click();
              }else{
                document.getElementById('ErrorMessage').innerHTML=response.data;
@@ -78,7 +79,7 @@ export default function Loginform(props) {
             <a href='/' type="hidden" id="Homepage" > </a>
                 Don't have an account ? <a style={{textDecoration:'none'}} href='/register'> Sign up here</a> 
 
-                <a style={{textDecoration:'none'}} href='/resetpassword'> Forgot password</a>
+                <a style={{textDecoration:'none'}} href='/forgotpassword'> Forgot password</a>
 
                        
           

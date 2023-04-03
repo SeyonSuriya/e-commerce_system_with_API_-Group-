@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import axios from 'axios';
-import { Cookies, useCookies } from 'react-cookie';
+import { useCookies } from 'react-cookie';
+
+
+
 import "./cart.css";
 
 export default function Cart() {
@@ -80,7 +83,6 @@ export default function Cart() {
   }
   function ShowProductsInCart() {
     
-
     axios.post(
       'http://localhost:8080/ecommerce/cart/books?userid='+cookies.userid,
       ).then(response=>{
@@ -280,7 +282,7 @@ ShowProductsInCart()
    <p>Summary</p>
    <p>Total :US $ <span id="Total"></span></p>
    <button id='checkout' onClick={CheckSelections}>Checkout</button>
-   <span id='checkoutform'></span>
+   
    <a href='/checkout' id="Checkoutpage" > </a>
   </div>
  
