@@ -29,7 +29,7 @@ export default function Reset(){
                                     <input type="password" placeholder=" Confirm Password" className='reset-form01'></input>
                                     <br />    
 
-                                    <div>
+                                    <div className='reset-buttons'>
                                     <button type="submit" className="reset_submit01">Reset</button>                                                                                                        
                                     <button type="submit" className="reset_submit02">Return to Login</button>
                                     <br /> 
