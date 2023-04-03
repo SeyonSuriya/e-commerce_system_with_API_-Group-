@@ -66,14 +66,11 @@ public class EmailServiceCenter implements EmailService{
     @Override
     public String verifyEmail(String email, Integer otp) {
         Integer otp1=otpRepo.validateEmail(email).getOtp();
-        System.out.println(otp1);
-        System.out.println(otp);
         if (otp1.equals(otp)){
             userRepo.changeActiveStatus(email);
             return "Email Verified";
         }
         return "System error";
-
     }
 
     @Override

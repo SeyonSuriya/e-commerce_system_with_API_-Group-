@@ -21,9 +21,9 @@ public interface wishListRepo extends JpaRepository<wishlist,Integer> {
     List<wishlist> getWishedItems(Integer userid);
 
 
-
     @Query(value="select * from wishlist a where a.item_id=?1 And userid=?2", nativeQuery=true)
     String  checkwishes(Integer item_id, Integer userid);
+
     @Transactional
     @Modifying
     @Query(value="INSERT INTO wishlist (userid, item_id)\n" +

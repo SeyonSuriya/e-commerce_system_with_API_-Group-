@@ -4,10 +4,12 @@ import Footer from '../components/Footer'
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
+
+
 export default function EmailVerification() {
 
   const [cookies, setCookie] = useCookies(['user']);
-  // Remove this Set Cookie after because this will be created form registration page
+ // Remove this Set Cookie after because this will be created form registration page
  // setCookie('email', 'hiransanjeewaa@gmail.com', { path: '/'});
   
   function RequestEmail(params) {

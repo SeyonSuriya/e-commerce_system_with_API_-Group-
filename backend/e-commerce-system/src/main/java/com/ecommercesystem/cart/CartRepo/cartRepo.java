@@ -15,7 +15,6 @@ import java.util.List;
 @Repository
 public interface cartRepo extends JpaRepository<cart,Integer> {
 
-
     //Get books in cart
     @Query(value="select * from cart where userid=:userid", nativeQuery=true)
     List<cart> showcart(Integer userid);
@@ -42,4 +41,6 @@ public interface cartRepo extends JpaRepository<cart,Integer> {
     @Modifying
     @Query(value = "delete from cart where userid=?2 and item_id=?1")
     void removeFromcart(Integer item_id,Integer userid);
+
+
 }

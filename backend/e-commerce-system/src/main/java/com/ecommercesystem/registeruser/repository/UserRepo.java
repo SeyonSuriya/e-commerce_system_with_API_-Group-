@@ -24,7 +24,6 @@ public interface UserRepo extends JpaRepository<User,Integer> {
     List<User> findUserByMobile(String Mobile);
 
     // Login user Queries
-
     @Query(value="SELECT password from users a WHERE a.email=:Email", nativeQuery=true)
     String findUserByLoginCredentials(String Email);
 

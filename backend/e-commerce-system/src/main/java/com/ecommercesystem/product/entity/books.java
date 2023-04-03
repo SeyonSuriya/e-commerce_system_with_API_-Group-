@@ -8,20 +8,6 @@ import jakarta.persistence.*;
 @Table(name = "books")
 public class books {
 
-    public books(int book_id, String book_title, String author, String category, String publisher, Integer book_price, Integer num_of_units, String img_name1, String img_name2, String img_name3, String img_name4, String long_description) {
-        this.book_id = book_id;
-        this.book_title = book_title;
-        this.author = author;
-        this.category = category;
-        this.publisher = publisher;
-        this.book_price = book_price;
-        this.num_of_units = num_of_units;
-        this.img_name1 = img_name1;
-        this.img_name2 = img_name2;
-        this.img_name3 = img_name3;
-        this.img_name4 = img_name4;
-        this.long_description = long_description;
-    }
 
     @Id
 
@@ -46,20 +32,16 @@ public class books {
 
     @Column(name = "num_of_units",length = 5,nullable = false)
     private Integer num_of_units;
+    @Column(name = "num_of_orders",length = 5,nullable = false)
+    private Integer num_of_orders;
 
-    @Column(name = "img_name1",length = 50,nullable = false)
-    private String img_name1;
+    @Column(name = "isbn",length = 25,nullable = false)
+    private String isbn;
 
-    @Column(name = "img_name2",length = 50,nullable = false)
-    private String img_name2;
+    @Column(name = "weight",length = 12,nullable = false)
+    private Integer weight;
 
-    @Column(name = "img_name3",length = 50,nullable = false)
-    private String img_name3;
-
-    @Column(name = "img_name4",length = 50,nullable = false)
-    private String img_name4;
-
-    @Column(name = "long_description",length = 200,nullable = false)
+    @Column(name = "long_description",length = 500,nullable = false)
     private String long_description;
 
     public int getBook_id() {
@@ -118,36 +100,28 @@ public class books {
         this.num_of_units = num_of_units;
     }
 
-    public String getImg_name1() {
-        return img_name1;
+    public Integer getNum_of_orders() {
+        return num_of_orders;
     }
 
-    public void setImg_name1(String img_name1) {
-        this.img_name1 = img_name1;
+    public void setNum_of_orders(Integer num_of_orders) {
+        this.num_of_orders = num_of_orders;
     }
 
-    public String getImg_name2() {
-        return img_name2;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setImg_name2(String img_name2) {
-        this.img_name2 = img_name2;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
-    public String getImg_name3() {
-        return img_name3;
+    public Integer getWeight() {
+        return weight;
     }
 
-    public void setImg_name3(String img_name3) {
-        this.img_name3 = img_name3;
-    }
-
-    public String getImg_name4() {
-        return img_name4;
-    }
-
-    public void setImg_name4(String img_name4) {
-        this.img_name4 = img_name4;
+    public void setWeight(Integer weight) {
+        this.weight = weight;
     }
 
     public String getLong_description() {
@@ -159,5 +133,19 @@ public class books {
     }
 
     public books() {
+    }
+
+    public books(int book_id, String book_title, String author, String category, String publisher, Integer book_price, Integer num_of_units, Integer num_of_orders, String isbn, Integer weight, String long_description) {
+        this.book_id = book_id;
+        this.book_title = book_title;
+        this.author = author;
+        this.category = category;
+        this.publisher = publisher;
+        this.book_price = book_price;
+        this.num_of_units = num_of_units;
+        this.num_of_orders = num_of_orders;
+        this.isbn = isbn;
+        this.weight = weight;
+        this.long_description = long_description;
     }
 }

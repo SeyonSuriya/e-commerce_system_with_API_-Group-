@@ -1,12 +1,106 @@
-.add_button{
-    width: 2%;
-    height: 3%;
-    
+.product-section-container{
+  padding-top: 3em;
+  padding-left: 3em;
+  padding-bottom: 5em;
+
 }
+
+.flex_container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.product_container{
+  margin-right: 10em;
+  margin-left: 10em;
+  box-shadow: 2px 2px 5px gray;
+}
+
+.product-detail-container{
+  width:55%;
+  height:min-content;
+}
+
+.product_image {
+  text-align: center;
+  width:40%;
+  background-color: lightgrey;
+  
+}
+
+.product-detail-container h2{
+  font-size: 38px;
+  font-weight: bold;
+  font-family: Georgia;
+  justify-content: space-between;
+}
+
+.product-detail-container p{
+  padding: 0.5rem 0;
+}
+
+.product_img{
+  border: 3px solid gray;
+  height:450px;
+  width:80%;
+  margin-top: 10%;
+  margin-bottom: 10%; 
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+
+#book_description{
+  line-height: 2.5rem;
+  font-size: 13px;
+}
+
+#book_author{
+  color: orange;
+  font-weight: bold;
+  font-size:18px;
+}
+#book_price{
+  color:orange;
+  font-weight: bolder;
+}
+
 .minus_button{
-    width: 1.3%;
-    height: 1%;
+  width:2.9%;
+  height:3%;
+
 }
+ .add_button{
+  width:4.5%;
+  height:3.2%
+}
+
 .wish_list_img{
-    height: 2%;
+  height: 8%;
+  width: 6%;
 }
+
+#CartButton{
+  display:inline-block;
+  background-color: yellow;
+  color:black;
+  padding: 1rem 1rem;
+  text-decoration: none;
+  padding-top: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 2px 2px 5px #ddd;
+  border:none;
+  transition: 0.2s ease-in;
+  font-family: georgia;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 1em ; 
+  
+}
+
+#CartButton:hover{
+ background-color: orangered;
+ border-radius: 1em ;
+}
+

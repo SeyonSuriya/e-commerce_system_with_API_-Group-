@@ -1,10 +1,12 @@
 package com.ecommercesystem.checkout.CheckoutService;
 
+import com.ecommercesystem.cart.CartRepo.cartRepo;
 import com.ecommercesystem.checkout.CheckOutRepositories.CheckoutRepo;
 import com.ecommercesystem.checkout.CheckOutRepositories.OrdersRepo;
 import com.ecommercesystem.checkout.CheckoutDtos.CheckOutProductsDto;
 import com.ecommercesystem.checkout.CheckoutDtos.SelectedProductsDto;
 import com.ecommercesystem.checkout.entity.PurchaceDetails;
+import com.ecommercesystem.product.productRepo.Booksrepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -13,9 +15,14 @@ import java.util.List;
 @Service
 public class CheckoutServiceImpl implements CheckoutService{
 
+    @Autowired
     private CheckoutRepo checkoutRepo;
     @Autowired
     private OrdersRepo ordersRepo;
+    @Autowired
+    private Booksrepo booksrepo;
+    @Autowired
+    private cartRepo cartrepo;
 
     List<CheckOutProductsDto> purchasingProducts=new ArrayList<CheckOutProductsDto>();
     @Override
@@ -31,16 +38,34 @@ public class CheckoutServiceImpl implements CheckoutService{
         purchasingProducts=products;
         return products;
     }
+
     @Override
     public String placeorder(PurchaceDetails purchaceDetails) {
-        Integer orderid=ordersRepo.getNextOrderId()+1;
-        Integer availableUnits=0;
-        for (int i = 0; i< purchaceDetails.getPurchaceitems().size(); i++){
-            availableUnits=purchasingProducts.get(i).getProduct().getNum_of_units();
-           ordersRepo.purchaceItem(purchaceDetails.getAddress(),purchaceDetails.getPurchaceitems().get(i).getBook_id(),purchasingProducts.get(i).getProduct().getBook_price()*purchaceDetails.getPurchaceitems().get(i).getUnits(),purchaceDetails.getPurchaceitems().get(i).getUnits(),orderid,purchaceDetails.getUserid());
-           availableUnits-=purchaceDetails.getPurchaceitems().get(i).getUnits();
-            checkoutRepo.updateAvailableUnits(purchaceDetails.getPurchaceitems().get(i).getBook_id(),availableUnits);
+        Integer orderid=0;
+        Integer reference=0;
+        if (ordersRepo.getNextOrderId()==null){
+            orderid=1;
+        }else {
+            orderid=ordersRepo.getNextOrderId()+1;
         }
-        return "Your order id is "+orderid;
+        Integer availableUnits=0;
+        if (purchaceDetails.getPurchaceitems().size()>0) {
+            for (int i = 0; i < purchaceDetails.getPurchaceitems().size(); i++) {
+                if (ordersRepo.getNextReference()==null){
+                    reference=1;
+                }else {
+                    reference=ordersRepo.getNextReference()+1;
+                }
+                availableUnits = booksrepo.getProductDetails(purchaceDetails.getPurchaceitems().get(i).getBook_id()).get(0).getNum_of_units();
+                ordersRepo.purchaceItem(reference,purchaceDetails.getAddress(), purchaceDetails.getPurchaceitems().get(i).getBook_id(), booksrepo.getProductDetails(purchaceDetails.getPurchaceitems().get(i).getBook_id()).get(0).getBook_price() * purchaceDetails.getPurchaceitems().get(i).getUnits(), purchaceDetails.getPurchaceitems().get(i).getUnits(), orderid, purchaceDetails.getUserid());
+                availableUnits -= purchaceDetails.getPurchaceitems().get(i).getUnits();
+                checkoutRepo.updateAvailableUnits(purchaceDetails.getPurchaceitems().get(i).getBook_id(), availableUnits);
+                cartrepo.removeFromcart(purchaceDetails.getPurchaceitems().get(i).getBook_id(),purchaceDetails.getUserid().intValue());
+            }
+            return "Your order id is "+orderid;
+        }else {
+            return "Error";
+        }
+
     }
 }

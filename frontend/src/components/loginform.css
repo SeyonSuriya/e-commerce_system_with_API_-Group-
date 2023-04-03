@@ -1,13 +1,62 @@
 
 .Login-container{
     display: flex;
-}
-.Login-background{
- width:50%;
- overflow:hidden;   
+    align-items:center;
+    justify-content: space-between;
 }
 
-.Login-background img{
-width:100%;
-height: 100vh;
+.login-image{
+    background-image: url('../assests/Login Background img 04.jpg');
+    width:100%;
+    height:650px;
+    background-size: cover;
+}
+
+.login-content{
+    background-color:white;
+    width: 350px;
+    height: 430px;
+    margin-right: 50%;
+    margin-left: 35%;
+    margin-top: 90px;
+    border-radius: 1em;
+    box-shadow: 0 0.180em 1.60em rgb(156, 156, 156);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center; 
+    justify-content: space-around;
+    
+   
+}
+.login-content h1{
+   font-family:"Georgia";
+   font-weight: bolder;
+}
+.form input{
+    padding:4px;
+}
+.form_login{
+    display:inline-block;
+    background-color: yellow;
+    padding:0.5rem 1.8rem;
+    text-decoration: none;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color:black;
+    box-shadow: 2px 2px 5px #2c0202;
+    transition: 0.2s ease-in; 
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Gill Sans MT;
+    margin-left: 45px;
+     border-radius: 1em ;
+  
+}
+
+.form_login:hover{
+    background-color: rgb(255, 94, 0);
+    border-radius: 1em ;
+
 }

@@ -24,7 +24,11 @@ public class wishListServiceImpl implements WishListService {
 
     @Override
     public String checkwishes(Integer item_id, Integer userid) {
-        return wishListRepo.checkwishes(item_id, userid);
+        if (wishListRepo.checkwishes(item_id, userid)==null){
+            return "not wished";
+        }else {
+            return"wished";
+        }
     }
 
     @Override

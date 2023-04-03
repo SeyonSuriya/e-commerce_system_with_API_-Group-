@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 import "./loginform.css";
-import LoginBackgroundimg from "../assests/Login Background img.jpg";
 
 export default function Loginform(props) {
+  const [cookies, setCookie] = useCookies(['user']);
   const [email,setEmail]=useState(' ');
   const [password,setPassword]=useState(' ');
 
@@ -32,6 +33,7 @@ export default function Loginform(props) {
           postData,
           ).then(response=>{
             if (response.data === 'Login Granted') {
+               setCookie('userid', 1956, { path: '/'});
                document.getElementById("Homepage").click();
              }else{
                document.getElementById('ErrorMessage').innerHTML=response.data;
@@ -44,42 +46,45 @@ export default function Loginform(props) {
 
   return (
     <section className="Login-container">  
-    
-    <div className="Login-background">
-    <img src={LoginBackgroundimg} alt="Login image" height="566px"/>
-    </div>     
-    
-    <div className ="login-content">
-        
-        <h1> LOGIN</h1>
-         <form onSubmit={onCreate}>
+  
+    <div className ="login-image">
 
-      Email  : <input type='email' id='email' value={email} onClick={RemoveErrorMessages} onChange={(e)=>setEmail(e.target.value)}></input><br />
-      Password : <input type='text' value={password} onClick={RemoveErrorMessages} onChange={(e)=>setPassword(e.target.value)}></input><br />
+     <div className="login-content">
+     <h1> LOGIN</h1><br/>
         
+<form onSubmit={onCreate}>
+
+    <div className="login_form">
+      <label>Email</label><br/>
+      <input type="email" className="form input" placeholder="Enter Your Email" id='email' value={email} onClick={RemoveErrorMessages} onChange={(e)=>setEmail(e.target.value)}></input><br/>
+    </div>
+
+    <br/>
+
+    <div className="login_form">
+      <label>Password</label><br/>
+      
+      <input type="password" className="form input" placeholder="Enter Your Password" value={password} onClick={RemoveErrorMessages} onChange={(e)=>setPassword(e.target.value)}></input>     
+  </div>
+          
       <span id='ErrorMessage' className='ErrorMessage'></span>
-                <div className="Log-btn">
-                    <br/>
-                    <button type='submit'>Log in</button>
+                <div className="login_form">
+                    <button type="submit" className="form_login">Login</button>
                 </div>
                 
-          </form>       
-          {
-            // *******   Login through Google Accounts ********
-            // <p className="text"> OR LOGIN USING</p>
-            // <div className="extra-Log">
-            //     <div className="Facebook"></div>
-            //     <div className="Google"></div>
-            // </div> 
-          }
-                <a href='/' type="hidden" id="Homepage" > </a>
-                Don't have an account ? <a href='/register'> Sign up here</a> 
+  </form>       
+            
+            
+            
+            <a href='/' type="hidden" id="Homepage" > </a>
+                Don't have an account ? <a style={{textDecoration:'none'}} href='/register'> Sign up here</a> 
 
-                <a href='/resetpassword'> Forgot password</a>
+                <a style={{textDecoration:'none'}} href='/forgotpassword'> Forgot password</a>
 
                        
           
-        </div>     
+        </div>
+        </div>        
       
        </section>
 
@@ -87,3 +92,4 @@ export default function Loginform(props) {
 }
 
 
+// To do get user id from backend

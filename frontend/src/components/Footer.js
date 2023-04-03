@@ -1,31 +1,75 @@
 import React from 'react'
-import './footerstyle.css';
+import { Link } from 'react-router-dom';
+import "./footerstyle.css";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//    faYoutube,
+//    faFacebook,
+//    faTwitter,
+//    faInstagram
+//  } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   return (
     <div className='containerfooter'>
-       <div className='firstline'>
-       <h3><a href=''>Tech World</a></h3>
-       <h5><a>Terms</a></h5>
-       <h5><a>License</a></h5>
-       <h5><a>Market</a></h5>
-       <h5><a>All Product</a></h5>
+      <span className='footer-upper'>
+      <div className='firstline'>
+       <h3><Link to=''>Tech World</Link></h3>
+       <h5><Link to=''>Terms</Link></h5>
+       <h5><Link to=''>License</Link></h5>
+       <h5><Link to=''>Market</Link></h5>
+       <h5><Link to=''>All Product</Link></h5>
        </div>
        <div className='secondline'>
-       <h3><a>Help</a></h3>
-       <h5><a>Help Center</a></h5>
-       <h5><a>Authors</a></h5><a></a>
+       <h3><Link to=''>Help</Link></h3>
+       <h5><Link to=''>Help Center</Link></h5>
+       <h5><Link to=''>Authors</Link></h5>
+       <h5><Link to=''>Community</Link></h5>
        </div> 
        <div className='thirdline'>
-        <h3><a>OUR COMMUNITY</a></h3>
-        <h5><a>Community</a></h5>
-        <h5><a>Blog</a></h5>
-        <h5><a>Shopping Cart</a></h5>
-        <h5><a>My Account</a></h5>
+        <h3><Link to=''>OUR COMMUNITY</Link></h3>
+        <h5><Link to=''>Blog</Link></h5>
+        <h5><Link to=''>Shopping Cart</Link></h5>
+        <h5><Link to=''>My Account</Link></h5>
+        <h5><Link to='/adminlogin'>Admin Login</Link></h5>
        </div>
-       <div className='sendmassage'>
-       fourth
-       </div>  
+       <div className='sendmassage'> 
+          <form>
+             
+             <input type={'email'} className='sendmassageemail' placeholder='Email'>
+             </input>
+
+             <br></br>
+
+             <input type={Text} className='sendmassage' placeholder='Massage'>
+
+             </input>
+                <br />
+             <button className='sendbutton' >Send</button>
+          </form> 
+       </div>   
+       <div className='socialmedia'>
+       {/* <Link 
+        className="youtube social">
+        <FontAwesomeIcon icon={faYoutube} size="2x" />
+      </Link>
+      <br />
+      <Link href=""
+        className="facebook social">
+        <FontAwesomeIcon icon={faFacebook} size="2x" />
+      </Link>
+      <br />
+      <Link href="" className="twitter social">
+        <FontAwesomeIcon icon={faTwitter} size="2x" />
+      </Link>
+      <br />
+      <Link href=""
+        className="instagram social">
+        <FontAwesomeIcon icon={faInstagram} size="2x" />
+      </Link> */}
+       </div>
+      </span>
+       
     </div>
   )
 }

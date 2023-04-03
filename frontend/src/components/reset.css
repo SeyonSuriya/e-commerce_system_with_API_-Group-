@@ -1,0 +1,95 @@
+.reset-password-section{
+  padding: 2em 28% 2em 28%;
+}
+
+.flex-container02{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.flex-container02 h1{
+  font-size: 2.2em;
+  text-align: center;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  width: 100%;
+  
+}
+
+.reset-container{
+    margin: 0 auto;    
+    border: 3px solid #034748;
+    box-shadow: 2px 2px 10px #2c0202;
+    box-shadow: 2px 2px 5px gray;
+    border: 3px solid #11324d;
+    box-shadow: 2px 2px 10px #2c0202;
+    background-color: #e9f1f7;
+    width: 90%;
+    max-width: 85%;
+    padding: 1em;
+    
+}
+
+
+.reset-image{
+  width:50%;
+  max-width: 600px;
+ margin-left: 30%;
+}
+
+#reset_img{
+  width:50%;
+  max-width: 300px;
+  height:87px;
+  margin: 0 auto;
+  margin-left: 17%;
+}
+.reset-form{
+    font-size: 18px;
+    text-align: left;
+    padding-left: 10%;
+    white-space:nowrap;
+}
+.reset-form01{
+    background-color:  rgba(175, 173, 173, 0.911);
+    padding: 1.2rem 18% 1rem 20%;
+    border: none;
+    border-top: 1rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em;
+    margin-left: 10%;
+    margin-bottom: 1.8rem;
+   
+}
+.reset-buttons{
+  display:flex;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+ 
+.reset_submit01{
+  background-color: #11324d;
+  display:inline-block;
+  padding: 0.6em 8% 0.6em;
+  color: white;
+  box-shadow: 2px 2px 10px #2c0202;
+  transition: 0.2s ease-in;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: Gill Sans MT;
+  margin-left:35%; 
+  white-space:nowrap;
+}
+
+
+
+ 
+  .reset_submit01:hover, .reset_submit02:hover {
+    background-color: #559fd8;
+  }
+  

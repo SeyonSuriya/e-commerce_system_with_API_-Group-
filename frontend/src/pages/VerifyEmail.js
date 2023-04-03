@@ -2,6 +2,8 @@ import React from 'react'
 import Header from '../components/Header'
 import axios from 'axios';
 
+
+
 export default function VerifyEmail() {
     const queryParameters = new URLSearchParams(window.location.search)
     const email = queryParameters.get("email")
@@ -28,7 +30,9 @@ export default function VerifyEmail() {
   return (
     <div>
         <Header/>
-        <span id='Message'> </span><br/>
+        <div className ="verified-image"></div>
+        <span id='Message'>Email Verified Successfully </span><br/>
+        
         <a href='/login'>Please Login to your account</a>
     </div>
   )

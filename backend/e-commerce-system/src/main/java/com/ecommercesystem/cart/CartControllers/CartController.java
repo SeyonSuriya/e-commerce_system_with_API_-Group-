@@ -13,7 +13,7 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @PostMapping(path="books")
+    @PostMapping(path="/books")
     @ResponseBody
     public  List<cart> showCart(@RequestParam Integer userid)
     {
@@ -24,8 +24,10 @@ public class CartController {
     public List<cart> RemoveItemfromCart(@RequestParam Integer userid,Integer book_id){
         return cartService.removeFromCart(book_id,userid);
     }
-
-
+    @PostMapping(path = "updateunits")
+    public void UpdateItemUnitsfromCart(@RequestParam Integer item_id,Integer units,Integer userid){
+         cartService.updateItemUnitsFromCart(item_id,units,userid);
+    }
 
 
 }
