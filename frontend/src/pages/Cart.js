@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import axios from 'axios';
-import { Cookies, useCookies } from 'react-cookie';
+
+
 import "./cart.css";
 
 export default function Cart() {
@@ -279,7 +279,7 @@ ShowProductsInCart()
    <p>Summary</p>
    <p>Total :US $ <span id="Total"></span></p>
    <button id='checkout' onClick={CheckSelections}>Checkout</button>
-   <span id='checkoutform'></span>
+   
    <a href='/checkout' id="Checkoutpage" > </a>
   </div>
  

@@ -15,8 +15,15 @@ import EmailVerification from './pages/EmailVerification';
 import ResetPassword from './pages/ResetPassword';
 import Product from './pages/Product';
 import VerifyEmail from './pages/VerifyEmail';
+import AdminLoginPage from './pages/AdminLoginPage';
+
 import ForgotPassword from './pages/ForgotPassword';
 import Reset from './pages/Reset';
+import CheckOut from './pages/CheckOut';
+
+
+import Checkout from './pages/CheckOut';
+ 
 
 
 function App() {
@@ -32,13 +39,23 @@ function App() {
         <Route path="/contactUs" element={<Contact />}/>
         <Route path="/store" element={<Store />}/>
         <Route path="/login" element={<LoginPage />}/>
+        <Route path="/adminlogin" element={<AdminLoginPage />}/>
         <Route path="/register" element={<RegisterPage />}/>
         <Route path="/emailverification" element={<EmailVerification />}/>
         <Route path="/resetpassword" element={<ResetPassword />}/>
         <Route path="/product" element={<Product />}/>
         <Route path="/verifyemail" element={<VerifyEmail />}/>
         <Route path="/forgotpassword" element={<ForgotPassword />}/>
+<<<<<<< HEAD
+         
+
+        <Route path="/checkout" element={<Checkout />}/>
+ 
+
+=======
         <Route path="/reset" element={<Reset />}/>
+        <Route path="/checkout" element={<CheckOut />}/>
+>>>>>>> 009b37a32a8f5f0f7c4b127babeac3ebce5eb35e
       </Routes>
     </BrowserRouter>
     </div>

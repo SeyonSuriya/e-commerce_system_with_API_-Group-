@@ -1,8 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { useCookies } from 'react-cookie';
-import axios from 'axios';
+
 
 export default function ResetPassword(params) {
   
