@@ -67,7 +67,7 @@
   box-shadow: 2px 2px 10px #2c0202;
   transition: 0.2s ease-in;
   border: none;
-  padding: 5% 15%;
+  padding: 5% 15% 3% 15%;
   font-size: 25px;
   font-weight: bold;
   font-family: Gill Sans MT;
@@ -80,7 +80,7 @@
 .reset_submit02 {
     background-color: #034748;
     display: inline-block;
-    padding: 0.5em;
+    padding: 0.3em 0.5em 0.5em 0.5em;
     color: white;
     box-shadow: 2px 2px 10px #2c0202;
     transition: 0.2s ease-in;
