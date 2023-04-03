@@ -7,3 +7,22 @@
     justify-content: space-between;
     flex-direction: column;
 }
+.order_img{
+  width: 10em;  
+  height:auto;
+}
+.orderplace-content h1{
+    font-weight: bold;
+    font-size: 37px;
+}
+.orderplace-content h4{
+   font-size: 25px;
+}
+.orderplace-content p{
+    font-size: 17px;
+}
+#order_text01{
+ font-size: 20px;
+ color:orange;
+ font-weight: bold;
+}
