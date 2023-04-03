@@ -15,8 +15,6 @@ import java.util.List;
 @RequestMapping("ecommerce")
 public class WishListController {
 
-
-
     @Autowired
     private WishListService wishListService;
 
