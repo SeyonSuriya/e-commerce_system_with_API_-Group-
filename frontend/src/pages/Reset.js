@@ -30,7 +30,6 @@ export default function Reset(){
 
                                     <div className='reset-buttons'>
                                     <button type="submit" className="reset_submit01">Reset</button>                                                                                                        
-                                    <button type="submit" className="reset_submit02">Return to Login</button>
                                     <br /> 
                                     </div>                                                         
                                 </form>                                    
