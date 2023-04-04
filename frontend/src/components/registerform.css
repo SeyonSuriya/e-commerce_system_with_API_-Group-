@@ -30,10 +30,7 @@
     text-align: center;
     font-family: georgia;
 }
-.signup_content_row01 span{
-    margin-left: 200px;
-    text-align: center;
-}
+
 .signup_content_row02{
     display:flex;
     align-items: center;
