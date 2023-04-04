@@ -48,8 +48,8 @@ export default function EmailVerification() {
                 <img src={emailverifyimg01} className='emailverify_img'/>
               </div>
               <h1>Email Confirmation</h1>
-              <p>We have sent an email to <b>(EMAIL)</b> to verify
-              your email address and activate your account</p><br />
+              <p >We have sent an email to <b id='verify_text01'>(EMAIL)</b> to verify
+              your email address and activate your account.</p><br />
 
               <p>If you haven't received an email Click here
                  to resend a link to verify. </p>
