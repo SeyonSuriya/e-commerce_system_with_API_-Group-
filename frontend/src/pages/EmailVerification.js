@@ -36,6 +36,7 @@ export default function EmailVerification() {
       }
        )
   }
+  document.getElementById('email').innerHTML=cookies.email
 
   return (
     <div>
@@ -48,7 +49,7 @@ export default function EmailVerification() {
                 <img src={emailverifyimg01} className='emailverify_img'/>
               </div>
               <h1>Email Confirmation</h1>
-              <p >We have sent an email to <b id='verify_text01'>(EMAIL)</b> to verify
+              <p >We have sent an email to <b id='verify_text01'>(<span id="email"></span>)</b> . verify
               your email address and activate your account.</p><br />
 
               <p>If you haven't received an email Click here
