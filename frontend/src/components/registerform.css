@@ -20,7 +20,8 @@
 .signup_content{
     background-color: aliceblue;
     height:585px;
-    width:50%;
+    width:60%;
+    margin-left: auto;
 }
 
 .signup_content_row01 h1{
@@ -36,18 +37,29 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    flex-flow: column;
+    flex-flow:column;
 }
-.signup_placeholder{
-    padding:5px;
-    border-radius: 1em;
-    border-left: 1em;
-    border-top:1em;
-    padding-left: 8px;
-    padding-right: 10px;
+.signup_placeholder01{
+    padding: 1rem 20px 1rem 20px;
+    margin-right:60px;
+    margin-left: 2em;
+    border: 1.7px solid black;
    text-align: center;
-   box-shadow: 1px 1px 1px  black inset,1px 1px 16px yellow;
+   white-space: nowrap;
+   background-color: rgba(226, 224, 224, 0.911);
+
 }
+.signup_placeholder02{
+    border: 1.7px solid black;
+    padding: 1rem 20px 1rem 20px;
+    margin-right: 2em;
+    margin-left: 7px;
+    text-align: center;
+    white-space: nowrap;
+    background-color: rgba(226, 224, 224, 0.911);
+
+}
+
 .signup_content_row03{
    text-align: center;
 
