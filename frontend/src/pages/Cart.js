@@ -283,8 +283,8 @@ ShowProductsInCart()
           <td className='right'><span id='products'></span></td>
           <td className='left'>
             <div className='summarydiv'>
-              <p id="summary"><b>Summary</b></p>
-              <p className="total">Total :US $ <span id="Total"></span></p>
+              <p id="summary"><b>Summary</b></p><br></br>
+              <p className="total">Total :US $ <span id="Total"></span></p><br></br><br></br>
               <div className="checkout_button"><button id='checkout' onClick={CheckSelections}><b>Checkout</b></button></div>
    
               <a href='/checkout' id="Checkoutpage" > </a>

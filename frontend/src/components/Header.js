@@ -1,23 +1,46 @@
 import React from 'react'
+import axios from 'axios';
 import { Link, NavLink } from 'react-router-dom';
 import {BsSearch} from 'react-icons/bs'
+import { useCookies } from 'react-cookie';
+import {useState} from "react";
+import "./Header.css";
 //import { NavLink,Link } from 'react-router-dom';
 const Header = () => {
+
+
+
+  const [cookies, setCookie] = useCookies(['user']);
+  function GetUserName() {
+    if (cookies.userid>0) {
+      axios.post(
+        'http://localhost:8080/ecommerce/username?userid='+cookies.userid,
+        ).then(response=>{
+          document.getElementById('username').innerHTML=response.data.firstname+'</br>'+response.data.secondname
+          document.getElementById('login').innerHTML='Logout'
+    }
+        )
+  }
+}
+
+
+
+
+
   return (
     <>
-      <header className='header-top-strip'>
+      <header className='header-top-strip' >
+        
           <div className='container-xxl'>
             <div className='row'>
               <div className='col-6'>
                 <p className='text-whitee mb-0'>
-                Easy shopping with Tech World</p>
+                Easy shopping with Book Mart</p>
               </div>
               <div className='col-6'>
                 <p className='text-end text-white '>
-                Hotline:
-                <a className='text-white' href='tel: +94 704341138'>
-                  +94704341138
-                </a>
+                Hotline : +94704341138
+              
                 </p>
               </div>
             </div>
@@ -26,7 +49,7 @@ const Header = () => {
       <header className='header-upper'>
           <div className='container'>
             <div>
-              <h4 className='topicweb'>Tech  World</h4>
+              <h4 className='topicweb'>Book Mart</h4>
             </div>
             <div className='row'>
               
@@ -46,32 +69,33 @@ const Header = () => {
               <div className='collinks'>
                 <div className='headerlinks'>
                    
-                  <h1></h1>
+                  
                    
-          
-                      <Link className='icontag' to="/wishlist">
+                    
+                      <a className='icontag' href="/wishlist">
                       <img src="images/wishlist.svg" alt="wishlist" />
                       <p>
                        Favourite <br /> wishlist
                       </p>
-                      </Link>
+                      </a>
+                      
                    
-                      <Link className='icontag' to="/login">
+                      <a className='icontag' href="/login">
                       <img src="images/user.svg" alt="user" />
-                      <p>
-                        Log in <br />  Account
-                      </p>
-                      </Link>
-                   
+                     
+                        
+                       <span className='login' id='login'></span> 
+                     
+                      </a>
                    <div>
-                      <Link className='icontag' to="/cart">
+                      <a className='icontag' href="/cart" >
                       <img src="images/cart.svg" alt="cart" />
-                     <div className='d-flex flex-column gap-10'>
-                        <span className='badge'>0</span>
-                        <p className='totalprice'>$ 000</p>
-                     </div> 
-                      </Link>
+                      </a>
                    </div>
+                   <div>
+                      <span id='username' onLoad={GetUserName()} ></span>
+                  </div> 
+
                 </div>
               </div>
             </div>
@@ -87,6 +111,7 @@ const Header = () => {
                    aria-expanded="false">
                     Shop Categories
                       </button>
+                      
   <ul className="dropdown-menu">
     <li><a className="dropdown-item" href="Store?query=Arts&Music">Arts & Music</a></li>
     <li><a className="dropdown-item" href="Store?query=Biographs">Biographs</a></li>
@@ -115,17 +140,22 @@ const Header = () => {
   </ul>
 </div>
           </div>
-          <div className='menu-links'>
+          <div className='menu-links' >
             <div className='d-flexx'>
-                <NavLink className="pageslink" to="/">Home</NavLink>
-                <NavLink className="pageslink" to="/store">Store</NavLink>
-                <NavLink className="pageslink" to="/aboutUs">About Us</NavLink>
-                <NavLink className="pageslink" to="/contactUs">Contact</NavLink>
+                <a className="pageslink" href="/">Home</a>
+                <a className="pageslink" href="/store">Store</a>
+                <a className="pageslink" href="/aboutUs">About Us</a>
+                <a className="pageslink" href="/contactUs">Contact</a>
             </div>
           </div>
         </div>
        </div>
       </header>
+     
+    
+
+    
+      
     </>
   )
 }

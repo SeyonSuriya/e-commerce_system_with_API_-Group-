@@ -14,7 +14,7 @@ input[type="checkbox"] {
     width: 95%;
     height: 200px;
     float:right;
-    background-color: #8a93aa;
+    background-color: rgb(212, 210, 210);
     border: 3px solid black;
     
 }
@@ -120,12 +120,13 @@ input[type="checkbox"] {
 }
 
 #Total{
-    color: white;
+    color: rgb(46, 151, 46);
     font-size: 22px;
 }
 
 .total{
     font-size: 18px;
+    padding-left: 22px;
 }
 
 .checkout_button{
@@ -136,6 +137,8 @@ input[type="checkbox"] {
 
 #checkout{
     font-size: 16px;
+    width: 90%;
+    background-color: rgba(250, 66, 66, 0.904);
 }
 
 .maintable{
@@ -148,4 +151,8 @@ input[type="checkbox"] {
 
 .left{
     width: 25%;
+}
+
+body{
+    background-color: rgb(245, 236, 236);
 }

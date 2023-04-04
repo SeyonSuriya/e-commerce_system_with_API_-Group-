@@ -2,13 +2,13 @@
     padding-left: 1cm;
     width: 60%;
     height: 150px;
-    background-color:antiquewhite
+    background-color: #e7e0c9
 }
 
 .orderSummayDiv{
     width: 38%;
     height: 300px;
-    background-color: beige;
+    background-color: #c1cfc0;
     float: right;
 }
 
@@ -49,6 +49,33 @@
     width: 60%;
 }
 
-.unitsdiv{
-    
+#total{
+    font-size: 25px;
+}
+
+#Total{
+    font-size: 28px;
+    color: antiquewhite;
+}
+
+.place_order_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.po_button{
+    width: 90%;
+    height: 40px;
+    background-color: rgb(248, 196, 83);
+    font-size: 18px;
+}
+
+h1{
+    text-decoration: underline;
+    text-transform: none;
+}
+
+.ordsum{
+    margin-top: 1cm;
 }
