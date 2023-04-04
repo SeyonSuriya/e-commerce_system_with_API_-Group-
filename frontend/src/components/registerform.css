@@ -20,38 +20,23 @@
 .signup_content{
     background-color: aliceblue;
     height:585px;
-    width:70%;
+    width:50%;
 }
 
 .signup_content_row01 h1{
     margin-top: 8px;
-    margin-left:45px;
     font-weight: bold;
     text-align: center;
     font-family: georgia;
+    text-decoration: none;
 }
 
 .signup_content_row02{
-    display:flex;
     align-items: center;
-}
-
-.signup_content_col-01{
-    margin-left: 50px;
-    margin-right: 50px;
-    flex-direction: column;
     display: flex;
-    width:50%;
-    float: left;
-    padding-bottom: 3px;
-    
-}
-.signup_content_col-02{
-    flex-direction: column;
-    display: flex;
-    margin-left: 60px;
-    margin-right: 50px;
-  
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-flow: column;
 }
 .signup_placeholder{
     padding:5px;
