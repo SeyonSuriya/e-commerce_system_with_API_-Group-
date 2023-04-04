@@ -46,31 +46,32 @@ const Header = () => {
               <div className='collinks'>
                 <div className='headerlinks'>
                    
-                  <h1></h1>
+                  
                    
-          
-                      <Link className='icontag' to="/wishlist">
+                    
+                      <a className='icontag' href="/wishlist">
                       <img src="images/wishlist.svg" alt="wishlist" />
                       <p>
                        Favourite <br /> wishlist
                       </p>
-                      </Link>
+                      </a>
+                      
                    
-                      <Link className='icontag' to="/login">
+                      <a className='icontag' href="/login">
                       <img src="images/user.svg" alt="user" />
                       <p>
                         Log in <br />  Account
                       </p>
-                      </Link>
+                      </a>
                    
                    <div>
-                      <Link className='icontag' to="/cart">
+                      <a className='icontag' href="/cart">
                       <img src="images/cart.svg" alt="cart" />
                      <div className='d-flex flex-column gap-10'>
-                        <span className='badge'>0</span>
-                        <p className='totalprice'>$ 000</p>
+                      
+                        
                      </div> 
-                      </Link>
+                      </a>
                    </div>
                 </div>
               </div>
@@ -117,15 +118,16 @@ const Header = () => {
           </div>
           <div className='menu-links'>
             <div className='d-flexx'>
-                <NavLink className="pageslink" to="/">Home</NavLink>
-                <NavLink className="pageslink" to="/store">Store</NavLink>
-                <NavLink className="pageslink" to="/aboutUs">About Us</NavLink>
-                <NavLink className="pageslink" to="/contactUs">Contact</NavLink>
+                <a className="pageslink" href="/">Home</a>
+                <a className="pageslink" href="/store">Store</a>
+                <a className="pageslink" href="/aboutUs">About Us</a>
+                <a className="pageslink" href="/contactUs">Contact</a>
             </div>
           </div>
         </div>
        </div>
       </header>
+      
     </>
   )
 }
