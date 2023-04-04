@@ -1,0 +1,95 @@
+
+
+
+
+h1{
+  text-align: center;
+  color: black;
+  text-transform: uppercase;
+  padding:1rem;
+  font-size: 3.5rem;
+  padding-bottom: 2rem;
+}
+
+.header-1{
+  background:#eddecf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:2rem 9%;
+}
+
+.contact {
+  position: relative;
+  margin-left: 10px;
+}
+
+.contact .left {
+  width: 72%;
+  display: inline;
+  float: left;
+  padding: 0.5 rem;
+}
+
+.contact .left form{
+  text-align: center;
+  padding:2rem;
+  border:.1rem solid rgba(0,0,0,.3);
+}
+
+.contact .left form .inputBox{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact .left form .inputBox input, .contact .left form textarea{
+  padding: 0.5rem;
+  font-size: 1 rem;
+  background:#f7f7f7;
+  text-transform: none;
+  margin: 0.5rem 5;
+  border:.1rem solid rgba(0,0,0,.3);
+  width: 49%;
+}
+
+.contact .left form .inputBox input {
+  width: 500px;
+}
+
+.contact .left form textarea{
+  height: 10rem;
+  resize: none;
+  width: 100%;
+}
+
+.contact .left .btn{
+  display: inline-block;
+  align-self: justify;
+  margin-top: 1rem;
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+  padding:.4rem 2rem;
+  font-size: 1rem;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.contact .left .btn:hover{
+  background-color: black;
+  color:#fff;
+}
+
+.contact .right {
+  width: 25%;
+  display: inline;
+  position: relative;
+  float: right;
+  margin-right: 1%;
+}
+
+.merge {
+  clear:both;
+}
