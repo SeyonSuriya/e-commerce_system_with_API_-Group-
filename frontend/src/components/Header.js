@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, NavLink } from 'react-router-dom';
 import {BsSearch} from 'react-icons/bs'
 import { useCookies } from 'react-cookie';
+import {useState} from "react";
 import "./Header.css";
 //import { NavLink,Link } from 'react-router-dom';
 const Header = () => {
@@ -16,19 +17,14 @@ const Header = () => {
         'http://localhost:8080/ecommerce/username?userid='+cookies.userid,
         ).then(response=>{
           document.getElementById('username').innerHTML=response.data.firstname+'</br>'+response.data.secondname
+          document.getElementById('login').innerHTML='Logout'
     }
         )
-      
   }
-  
 }
-function CheckLogin() {
-  if (cookies.userid>0) {
-    
-    console.log('asdads')
-  }
-  
-}
+
+
+
 
 
   return (
@@ -88,7 +84,7 @@ function CheckLogin() {
                       <img src="images/user.svg" alt="user" />
                      
                         
-                       <span className='login' onLoad={CheckLogin()}>Log in <br  />  Account</span> 
+                       <span className='login' id='login'></span> 
                      
                       </a>
                    <div>
