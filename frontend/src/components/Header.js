@@ -1,8 +1,22 @@
 import React from 'react'
+import axios from 'axios';
 import { Link, NavLink } from 'react-router-dom';
 import {BsSearch} from 'react-icons/bs'
+import { useCookies } from 'react-cookie';
 //import { NavLink,Link } from 'react-router-dom';
 const Header = () => {
+  const [cookies, setCookie] = useCookies(['user']);
+  function GetUserName() {
+    if (cookies.userid>0) {
+      axios.post(
+        'http://localhost:8080/ecommerce/username?userid='+cookies.userid,
+        ).then(response=>{
+          document.getElementById('username').innerHTML=response.data.firstname+'</br>'+response.data.secondname
+    }
+        )
+  }
+}
+
   return (
     <>
       <header className='header-top-strip'>
@@ -10,7 +24,7 @@ const Header = () => {
             <div className='row'>
               <div className='col-6'>
                 <p className='text-whitee mb-0'>
-                Easy shopping with Tech World</p>
+                Easy shopping with Book Mart</p>
               </div>
               <div className='col-6'>
                 <p className='text-end text-white '>
@@ -26,7 +40,7 @@ const Header = () => {
       <header className='header-upper'>
           <div className='container'>
             <div>
-              <h4 className='topicweb'>Tech  World</h4>
+              <h4 className='topicweb'>Book Mart</h4>
             </div>
             <div className='row'>
               
@@ -68,8 +82,8 @@ const Header = () => {
                       <a className='icontag' href="/cart">
                       <img src="images/cart.svg" alt="cart" />
                      <div className='d-flex flex-column gap-10'>
-                      
-                        
+                      <span id='username'></span>
+                      {GetUserName()}
                      </div> 
                       </a>
                    </div>
