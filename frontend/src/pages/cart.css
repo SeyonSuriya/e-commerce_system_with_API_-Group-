@@ -5,52 +5,56 @@ input[type="checkbox"] {
   }
 
 .Cartdiv{
-    width: 60%;
+    width: 100%;
     height: 80px;
     background-color: brown;
+    padding-left: 1cm;
 }
 .summarydiv{
-    width: 40%;
+    width: 20%;
     float: right;
     background-color: cadetblue;
 }
 .product_image{
-     width: 100%;
-     height: 100%;
+     width: 100px;
+     height: 100px;
 
 }
 .product_image_div{
   width: 20%;
-  height: 100%;
+  height: 200px;
   float: left;
-  background-color: beige;
+  background-color: rgb(252, 252, 248);
 }
+
 .product{
     background-color: aliceblue;
-    width: 60%;
-    height: 170px;
+    width: 30%;
+    height: 200px;
     padding-left: 1cm;
     float: left;
     
 
 }
 .productInfo{
-    width: 54%;
-    height: 170px;
+    width: 120px;
+    height: 200px;
     float: left;
     background-color: blueviolet;
+    text-align: center;
 
 }
 .product_functions{
     background-color: antiquewhite;
-height: 170px;
+    height: 200px;
+    width: 100%;
+    align-items: center;
 
 }
 .product_selecter_div{
-    width: 10%;
-    height: 170px;
-   text-align: center;
-    padding-top: 2cm;
+    width: 20px;
+    height: 200px;
+    padding-top: 2.3cm;
     float: left;
 
 }
@@ -70,6 +74,8 @@ height: 170px;
 .unitsdiv{
     white-space: nowrap; 
     margin: 0 auto;
+    width: 20px;
+    height: 200px;
 }
 /* 
 .add_button{
@@ -78,4 +84,11 @@ height: 170px;
 
 .units{
     font-size: large;
+}
+
+.productrow{
+    width: 80%;
+    height: 200px;
+    border-spacing: 0 30px;
+    border-collapse: separate;
 }
