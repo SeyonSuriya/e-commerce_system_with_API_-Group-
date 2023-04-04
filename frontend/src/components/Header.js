@@ -3,8 +3,12 @@ import axios from 'axios';
 import { Link, NavLink } from 'react-router-dom';
 import {BsSearch} from 'react-icons/bs'
 import { useCookies } from 'react-cookie';
+import "./Header.css";
 //import { NavLink,Link } from 'react-router-dom';
 const Header = () => {
+
+
+
   const [cookies, setCookie] = useCookies(['user']);
   function GetUserName() {
     if (cookies.userid>0) {
@@ -14,12 +18,23 @@ const Header = () => {
           document.getElementById('username').innerHTML=response.data.firstname+'</br>'+response.data.secondname
     }
         )
+      
   }
+  
 }
+function CheckLogin() {
+  if (cookies.userid>0) {
+    
+    console.log('asdads')
+  }
+  
+}
+
 
   return (
     <>
-      <header className='header-top-strip'>
+      <header className='header-top-strip' >
+        
           <div className='container-xxl'>
             <div className='row'>
               <div className='col-6'>
@@ -28,10 +43,8 @@ const Header = () => {
               </div>
               <div className='col-6'>
                 <p className='text-end text-white '>
-                Hotline:
-                <a className='text-white' href='tel: +94 704341138'>
-                  +94704341138
-                </a>
+                Hotline : +94704341138
+              
                 </p>
               </div>
             </div>
@@ -73,20 +86,20 @@ const Header = () => {
                    
                       <a className='icontag' href="/login">
                       <img src="images/user.svg" alt="user" />
-                      <p>
-                        Log in <br />  Account
-                      </p>
+                     
+                        
+                       <span className='login' onLoad={CheckLogin()}>Log in <br  />  Account</span> 
+                     
                       </a>
-                   
                    <div>
-                      <a className='icontag' href="/cart">
+                      <a className='icontag' href="/cart" >
                       <img src="images/cart.svg" alt="cart" />
-                     <div className='d-flex flex-column gap-10'>
-                      <span id='username'></span>
-                      {GetUserName()}
-                     </div> 
                       </a>
                    </div>
+                   <div>
+                      <span id='username' onLoad={GetUserName()} ></span>
+                  </div> 
+
                 </div>
               </div>
             </div>
@@ -102,6 +115,7 @@ const Header = () => {
                    aria-expanded="false">
                     Shop Categories
                       </button>
+                      
   <ul className="dropdown-menu">
     <li><a className="dropdown-item" href="Store?query=Arts&Music">Arts & Music</a></li>
     <li><a className="dropdown-item" href="Store?query=Biographs">Biographs</a></li>
@@ -130,7 +144,7 @@ const Header = () => {
   </ul>
 </div>
           </div>
-          <div className='menu-links'>
+          <div className='menu-links' >
             <div className='d-flexx'>
                 <a className="pageslink" href="/">Home</a>
                 <a className="pageslink" href="/store">Store</a>
@@ -141,6 +155,10 @@ const Header = () => {
         </div>
        </div>
       </header>
+     
+    
+
+    
       
     </>
   )
