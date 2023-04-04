@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react'
 import axios from 'axios';
+import Header from '../components/Header';
 import "../components/registerform.css"
 import LoginBackgroundimg03 from "../assests/Login Background img 03.jpg";
 import { useCookies } from 'react-cookie';
