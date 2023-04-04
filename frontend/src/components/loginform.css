@@ -32,6 +32,7 @@
 .login-content h1{
    font-family:"Georgia";
    font-weight: bolder;
+   text-decoration: none;
 }
 .form-input{
     padding: 6px;
