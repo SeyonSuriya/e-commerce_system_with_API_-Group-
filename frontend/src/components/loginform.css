@@ -35,11 +35,18 @@
 }
 .form-input{
     padding: 6px;
+    text-align: center;
+    font-size: 14px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.login_form label{
+    font-size: 17px;
 }
 .form_login{
     display:inline-block;
     background-color: yellow;
-    padding:0.5em 10%;
+    padding:0.7em 15%;
     text-decoration: none;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -47,7 +54,7 @@
     box-shadow: 2px 2px 5px #2c0202;
     transition: 0.2s ease-in; 
     border: none;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     font-family: Gill Sans MT;
     margin-left: 45px;
