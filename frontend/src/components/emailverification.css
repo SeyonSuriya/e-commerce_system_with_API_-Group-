@@ -1,0 +1,23 @@
+.emailverify-section{
+    background-color: #f5f5f5;
+    padding: 7em 28% 9em 28%;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    
+}
+.emailverify-content{
+    display: flex;
+    background-color: white ;
+    align-items:center;
+    justify-content: space-between;
+    flex-direction: column;
+    border: none;
+    padding: 2% 3rem 2% 3rem;
+    box-shadow: 2px 2px 10px #2c0202;
+}
+.emailverify_img{
+    width: 10em;  
+    height:auto;
+    margin-left: 2rem;
+}
