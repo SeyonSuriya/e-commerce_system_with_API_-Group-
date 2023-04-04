@@ -180,8 +180,8 @@ function PlaceOrder() {
           <div className='ordsum'>
             <div className='orderSummayDiv'>
               <h1>Order Summary</h1>
-              <p id='total'>Total $ <span id="Total"></span></p>
-              <div className='place_order_button'><button onClick={PlaceOrder}><b>Place Order</b></button></div>
+              <p id='total'>Total $ <span id="Total"></span></p><br></br>
+              <div className='place_order_button'><button className='po_button' onClick={PlaceOrder}><b>Place Order</b></button></div>
             </div>
           </div>
         <div className='AddressDiv'>
