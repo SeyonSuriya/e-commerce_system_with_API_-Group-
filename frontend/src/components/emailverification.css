@@ -1,0 +1,55 @@
+.emailverify-section{
+    background-color: #f5f5f5;
+    padding: 3em 28% 3em 28%;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    
+}
+.emailverify-content{
+    display: flex;
+    background-color: white ;
+    align-items:center;
+    justify-content: space-between;
+    flex-direction: column;
+    border: none;
+    padding: 2% 3rem 2% 3rem;
+    box-shadow: 2px 2px 10px #2c0202;
+}
+.emailverify_img{
+    width: 10em;  
+    height:auto;
+    margin-left: 2rem;
+}
+.emailverify-content h1{
+    font-weight: bold;
+    font-size: 37px;
+}
+.emailverify-content p{
+    font-size: 15px;
+    text-align: center;
+}
+#verify_text01{
+    font-size: 18px;
+    color:green;
+    font-weight: bold;
+ }
+ .emailverify-submit{
+    background-color: #11324d;
+    padding: 0.5em 7% 0.5em;
+    color: white;
+    box-shadow: 2px 2px 10px #2c0202;
+    transition: 0.2s ease-in;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Gill Sans MT;
+    white-space:nowrap;
+    text-align: center;
+    margin-right: 35px;
+    border-radius: 0.7em;
+}
+.emailverify-submit:hover{
+    background-color: rgb(255, 94, 0);
+    border-radius: 0.7em;
+}

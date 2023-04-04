@@ -177,10 +177,12 @@ function PlaceOrder() {
     return (
         <div>
           <Header/>
-          <div className='orderSummayDiv'>
-            <h1>Order Summary</h1>
-            <br/> <br/> <br/> <p >Total $ <span id="Total"></span></p>
-            <button onClick={PlaceOrder}>Place Order</button>
+          <div className='ordsum'>
+            <div className='orderSummayDiv'>
+              <h1>Order Summary</h1>
+              <p id='total'>Total $ <span id="Total"></span></p>
+              <div className='place_order_button'><button onClick={PlaceOrder}><b>Place Order</b></button></div>
+            </div>
           </div>
         <div className='AddressDiv'>
           <h3>Address</h3>
