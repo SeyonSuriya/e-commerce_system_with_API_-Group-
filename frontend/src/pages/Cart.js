@@ -28,12 +28,12 @@ export default function Cart() {
            var tmpproduct=response.data
            cookies.pricearray[index]=tmpproduct[0].book_price
            console.log(cartid)
-           row+='<table class="productrow"><tr><td ><div class="product"><div class="product_selecter_div"><input type="checkbox" name="chk" id="'+cartid+'" ></div>'
+           row+='<table class="productrow"><tr style="border-color: 1px solid #11324d;"><td ><div class="product_selecter_div"><input type="checkbox" name="chk" id="'+cartid+'" ></div>'
            //console.log(tmpproduct[0].book_title+'_wish_image')
            //console.log(tmpproduct[0].book_id)
            row+='<div class="product_image_div"><img class="product_image"  style="width:100%;height:100%;" id="'+tmpproduct[0].book_id+'_image" /></div><span id='+tmpproduct[0].book_id+'></span>'
-           row+='<div class="productInfo"><div>'+tmpproduct[0].book_title+'</div></br><div class="long_description">'+tmpproduct[0].long_description+'</div>'
-           row+=' <div>US $'+tmpproduct[0].book_price+' </div></div><br>'
+           row+='<div class="productInfo"><div style="font-size:15px"><b>'+tmpproduct[0].book_title+'</b></div></br><div class="long_description">'+tmpproduct[0].long_description+'</div><br>'
+           row+=' <div style="; bottom;font-size: 18px"><b>US $'+tmpproduct[0].book_price+' </b></div></div>'
            row+='<div class="product_functions">'
            row+='<div></br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+tmpproduct[0].book_id+'_wish_image" style="width:24px;height:24px; "  />&nbsp;&nbsp;'
            row+='<img id="'+tmpproduct[0].book_id+'_delete_image" class="delete_image" style="width:24px;height:26px;margin: 0 auto;" /></div><br/></br>'
@@ -273,20 +273,30 @@ ShowProductsInCart()
         <Header/>
     <div className='Cartdiv'>
         
-  <h3>Shopping Cart(<span id="num_of_item_in_cart"/>)</h3>
-  <span id="all_items_selector" />
-  </div>  
+      <h3><b>Shopping Cart(<span id="num_of_item_in_cart"/>)</b></h3>
+      <span id="all_items_selector" />
+    </div>  
 
-  <span id='products'></span>
-  <div className='summarydiv'>
-   <p>Summary</p>
-   <p>Total :US $ <span id="Total"></span></p>
-   <button id='checkout' onClick={CheckSelections}>Checkout</button>
+    <div>
+      <table className='maintable'>
+        <tr>
+          <td className='right'><span id='products'></span></td>
+          <td className='left'>
+            <div className='summarydiv'>
+              <p id="summary"><b>Summary</b></p>
+              <p className="total">Total :US $ <span id="Total"></span></p>
+              <div className="checkout_button"><button id='checkout' onClick={CheckSelections}><b>Checkout</b></button></div>
    
-   <a href='/checkout' id="Checkoutpage" > </a>
-  </div>
+              <a href='/checkout' id="Checkoutpage" > </a>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    
  
-   
+    
    
 
  </div>
