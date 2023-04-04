@@ -136,7 +136,7 @@ return (
             </div>
        
           <div className="signup_content_row02">
-            <div className="signup_content_col-01">
+          
 
               <form id='form' className="signup_form01" onSubmit={handleSubmit}>
     
@@ -160,12 +160,9 @@ return (
                   <input type='text' placeholder="District" className="signup_placeholder" value={district} onClick={(event)=>RemoveError('districtError')} onChange={(e)=>setDistrict(e.target.value)}></input>
                   <span id='districtError'></span><br /><br/>
 
-               </form>
-            </div>
-        
+               
+            
 
-            <div className = "signup_content_col-02">
-              <form id='form' className="signup_form01" onSubmit={handleSubmit}>
                   <label>Province</label><br/>
                   <input type='text'placeholder="Province" className='signup_placeholder' value={province} onClick={(event)=>RemoveError('provinceError')} onChange={(e)=>setProvince(e.target.value)}></input>
                   <span id='provinceError'></span><br /><br/>
@@ -186,7 +183,7 @@ return (
                   <input type='password' placeholder="Confirm Password" className='signup_placeholder' maxLength={15} value={password2} onClick={(event)=>RemoveError('password2Error')} onChange={(e)=>setPassword2(e.target.value)}></input>
                   <span id='password2Error'></span><br/>
               </form>
-            </div>
+            
             </div>
 
             <div className="signup_content_row03">
