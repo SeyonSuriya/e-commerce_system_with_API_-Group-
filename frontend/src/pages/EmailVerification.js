@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import '../components/emailverification.css';
 
 
 
@@ -38,13 +39,23 @@ export default function EmailVerification() {
   return (
     <div>
       <Header/>
-        Check your emails and verify your email to {cookies.email}
-        If You not received an email click here to resent a link to verify
-        <form onSubmit={RequestEmail}>
-          <button type='submit'>Resend link</button><br/>
-        </form>
-        <span id='Message'> </span><br/><br/><br/>
-        <a href='/' id='Home' > Homepage</a>
+             
+      <section className='emailverify-section'>
+          
+          <div className='emailverify-content'>
+              <div className='emailverify-image'>
+                  </div>
+              <h1>Email Confirmation</h1>
+              <p>We have sent an email to <b>(EMAIL)</b> to verify
+              your email address and activate your account</p><br />
+
+              <p>If you haven't received an email <a style={{textDecoration:'none'}} href=''> Click here </a> 
+                 to resend a link to verify. </p>
+           
+            </div>
+
+          
+      </section>
         <Footer/>
     </div>
   )
