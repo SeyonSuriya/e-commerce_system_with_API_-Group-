@@ -32,12 +32,16 @@ export default function Loginform(props) {
           'http://localhost:8080/ecommerce/login',
           postData,
           ).then(response=>{
-            if (response.data === 'Login Granted') {
-               setCookie('userid', 1956, { path: '/'});
+            if (response.data>0) {
+               setCookie('userid', response.data, { path: '/'});
                document.getElementById("Homepage").click();
+             }else if(response.data===-1){
+               document.getElementById('ErrorMessage').innerHTML="Incorrect Password";
              }else{
-               document.getElementById('ErrorMessage').innerHTML=response.data;
+              document.getElementById('ErrorMessage').innerHTML="No User Registered for this email";
+
              }
+
            }
             )
      }
