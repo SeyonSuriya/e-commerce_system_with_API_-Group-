@@ -141,7 +141,7 @@ return (
 
               <form id='form' className="signup_form01" onSubmit={handleSubmit}>
     
-                  <label></label><br/>
+                  <label></label>
                   <input type='text'  placeholder="First Name" className="signup_placeholder01"  onClick={(event)=>RemoveError('firstnameError')}  onChange={(e)=>setFirstName(e.target.value) }></input>
                   <span id='firstnameError'></span>
                   <input type='text'  placeholder="Second Name" className="signup_placeholder02" onClick={(event)=>RemoveError('secondnameError')} onChange={(e)=>setSecondName(e.target.value)}></input>
