@@ -15,7 +15,8 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: bold;
   width: 100%;
-  
+  text-decoration: none;
+  margin-bottom: auto;
 }
 
 .reset-container{
@@ -40,10 +41,9 @@
 }
 
 #reset_img{
-  width:50%;
+  width:40%;
   max-width: 300px;
-  height:87px;
-  margin: 0 auto;
+  height:90px;
   margin-left: 17%;
 }
 .reset-form{
@@ -86,10 +86,13 @@
   white-space:nowrap;
 }
 
-
-
- 
   .reset_submit01:hover, .reset_submit02:hover {
     background-color: #559fd8;
+  }
+
+  
+  .errorDiv{
+    text-align: center;
+    font-size: large;
   }
   

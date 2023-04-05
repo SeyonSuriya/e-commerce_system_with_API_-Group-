@@ -58,10 +58,12 @@ function GetEmail() {
                  to resend a link to verify. </p>
 
                  <form onSubmit={RequestEmail}>
-                    <button type='submit' className='emailverify-submit'>Resend link</button><br/>
+                    <button type='submit' className='emailverify-submit'>Resend link</button>
                 </form>
+                
+                <div className='errorDiv'>
                 <span id='Message'></span>
-           
+                </div>
             </div>
 
           
