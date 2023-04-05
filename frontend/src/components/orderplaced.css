@@ -19,8 +19,8 @@
     
 }
 .order_img{
-  width: 10em;  
-  height:auto;
+    width: 15em;
+    height: auto;
 }
 
 .orderplace-content h1{
@@ -34,6 +34,7 @@
 
 .orderplace-content p{
     font-size: 17px;
+    
 }
 
 #order_text01{

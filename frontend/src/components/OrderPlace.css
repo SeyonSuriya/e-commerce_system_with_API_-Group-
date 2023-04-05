@@ -18,10 +18,7 @@
     box-shadow: 2px 2px 10px #2c0202;
     
 }
-.order_img{
-  width: 10em;  
-  height:auto;
-}
+
 
 .orderplace-content h1{
     font-weight: bold;
@@ -34,6 +31,7 @@
 
 .orderplace-content p{
     font-size: 17px;
+    text-align: center;
 }
 
 #order_text01{
