@@ -95,7 +95,7 @@ public class EmailServiceCenter implements EmailService{
         helper.setSubject(subject);
 
         content = content.replace("[[name]]", user.get(0).getFirstname()+user.get(0).getSecondname());
-        String resetPasswordURL = "http://localhost:3000/changepassword?email="+email+"&otp="+otp;
+        String resetPasswordURL = "http://localhost:3000/resetpassword?email="+email+"&otp="+otp;
         if (otpRepo.validateEmail(email)!=null){
             otpRepo.deletePreviousOtp(email);
         }

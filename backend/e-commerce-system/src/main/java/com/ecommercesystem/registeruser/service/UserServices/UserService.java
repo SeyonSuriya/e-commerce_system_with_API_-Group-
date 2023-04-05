@@ -2,11 +2,15 @@ package com.ecommercesystem.registeruser.service.UserServices;
 
 
 import com.ecommercesystem.registeruser.dto.UserDto;
+import com.ecommercesystem.registeruser.dto.Username;
 import jakarta.mail.MessagingException;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 public interface UserService {
     String addUser(UserDto userDto) throws MessagingException, UnsupportedEncodingException;
-    String validateUserDetails(String email,String password);
+    Integer validateUserDetails(String email,String password);
+
+    Username GetUserName(Integer userid);
 }
