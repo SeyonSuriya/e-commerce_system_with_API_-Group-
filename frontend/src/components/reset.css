@@ -86,10 +86,13 @@
   white-space:nowrap;
 }
 
-
-
- 
   .reset_submit01:hover, .reset_submit02:hover {
     background-color: #559fd8;
+  }
+
+  
+  .errorDiv{
+    text-align: center;
+    font-size: large;
   }
   
