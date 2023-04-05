@@ -72,6 +72,8 @@ public class RegisterUserController {
     }
     @PostMapping(path = "/changepassword")
     public String changepassword(@RequestBody VerificationDto verificationDto) throws MessagingException, UnsupportedEncodingException {
+
+        System.out.println(emailService.ValidateResetLink(verificationDto.email,verificationDto.otp));
         return emailService.ValidateResetLink(verificationDto.email,verificationDto.otp);
     }
     @PostMapping(path = "/addnewpassword")
