@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { useCookies } from "react-cookie";
 import axios from 'axios';
-
-
-
 import "./adminloginform.css";
 
 export default function Loginform(props) {
@@ -59,7 +56,7 @@ export default function Loginform(props) {
 
     <div className="login_form">
       <label>Email</label><br/>
-      <input type="email" className="form input"  id='email' value={email} onClick={RemoveErrorMessages} onChange={(e)=>setEmail(e.target.value)}></input><br/>
+      <input type="email" className="form-input"  placeholder="Enter Your Email" id='email' value={email} onClick={RemoveErrorMessages} onChange={(e)=>setEmail(e.target.value)}></input><br/>
     </div>
 
     <br/>
@@ -67,7 +64,7 @@ export default function Loginform(props) {
     <div className="login_form">
       <label>Password</label><br/>
       
-      <input type="password" className="form input" placeholder="Enter Your Password" value={password} onClick={RemoveErrorMessages} onChange={(e)=>setPassword(e.target.value)}></input>     
+      <input type="password" className="form-input" placeholder="Enter Your Password" onClick={RemoveErrorMessages} onChange={(e)=>setPassword(e.target.value)}></input>     
   </div>
           
       <span id='ErrorMessage' className='ErrorMessage'></span>
