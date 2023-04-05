@@ -34,7 +34,7 @@ export default function ChangePassword() {
     }
 
   return (
-    <div>
+    <div id='resetpasswordPage'>
         <form onSubmit={ChangePassword}>
         Add new Password : <input type='password' id='password1' value={password1}></input>
         Confirm new Password : <input type='password' id='password2' value={password2}></input>

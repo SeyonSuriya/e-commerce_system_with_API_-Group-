@@ -7,6 +7,7 @@ export default function Loginform(props) {
   const [cookies, setCookie] = useCookies(['user']);
   const [email,setEmail]=useState(' ');
   const [password,setPassword]=useState(' ');
+  setCookie('userid', 0, { path: '/'});
 
   function RemoveErrorMessages(){
     document.getElementById('ErrorMessage').innerHTML=" "

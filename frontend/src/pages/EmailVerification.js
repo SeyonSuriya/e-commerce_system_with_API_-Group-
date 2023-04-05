@@ -2,10 +2,10 @@ import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import axios from 'axios';
+import {useState} from "react";
 import { useCookies } from 'react-cookie';
 import '../components/emailverification.css';
 import emailverifyimg01 from "../assests/email verify img 01.png";
-
 
 
 export default function EmailVerification() {
@@ -17,15 +17,12 @@ export default function EmailVerification() {
   function RequestEmail(params) {
 
     params.preventDefault();
-    var emailAddress=cookies.email
+    var email=cookies.email
     
-    const postData = {
-      emailAddress
-    };
     
     axios.post(
-      'http://localhost:8080/ecommerce/resendverificationlink',
-      postData,
+      'http://localhost:8080/ecommerce/resendverificationlink?email='+email,
+      
       ).then(response=>{
         console.log(response.data)
         if (response.data==='Email verification link sent') {
@@ -36,11 +33,16 @@ export default function EmailVerification() {
       }
        )
   }
-  document.getElementById('email').innerHTML=cookies.email
+ 
+  
+function GetEmail() {
+  return cookies.email
+}
+ //
 
   return (
     <div>
-      <Header/>
+    
              
       <section className='emailverify-section'>
           
@@ -49,21 +51,22 @@ export default function EmailVerification() {
                 <img src={emailverifyimg01} className='emailverify_img'/>
               </div>
               <h1>Email Confirmation</h1>
-              <p >We have sent an email to <b id='verify_text01'>(<span id="email"></span>)</b> . verify
+              <p >We have sent an email to <b id='verify_text01'>(<span className='email'>{GetEmail()}</span>)</b> . verify
               your email address and activate your account.</p><br />
 
-              <p>If you haven't received an email Click here
+              <p >If you haven't received an email Click here
                  to resend a link to verify. </p>
 
                  <form onSubmit={RequestEmail}>
                     <button type='submit' className='emailverify-submit'>Resend link</button><br/>
                 </form>
+                <span id='Message'></span>
            
             </div>
 
           
       </section>
-        <Footer/>
+       
     </div>
   )
 }
