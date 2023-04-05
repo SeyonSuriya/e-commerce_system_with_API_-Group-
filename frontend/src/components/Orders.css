@@ -1,4 +1,4 @@
-.orderplace-section{
+.orders-section{
     background-color: #f5f5f5;
     padding: 7em 28% 9em 28%;
     display: flex;
@@ -7,7 +7,7 @@
     
 }
 
-.orderplace-content{
+.orders-content{
     display: flex;
     background-color: white ;
     align-items:center;
@@ -20,16 +20,16 @@
 }
 
 
-.orderplace-content h1{
+.orders-content h1{
     font-weight: bold;
     font-size: 37px;
 }
 
-.orderplace-content h4{
+.orders-content h4{
    font-size: 25px;
 }
 
-.orderplace-content p{
+.orders-content p{
     font-size: 17px;
     text-align: center;
 }
