@@ -29,62 +29,43 @@ const Header = () => {
 
 
   return (
-    <>
-      <header className='header-upper'>
+
+  <section className='header-upper'>
+     
           <div className='container'>
             <div className="bookmartlogo">
             <img src={BookMart03}/>
             </div>
-            <div className='row'>
+           
               
-              <div className='col'>
-                <div className="input-group">
-                <input type="text" 
-                className="form-control " 
-                placeholder="Search Product Here..." 
-                aria-label="Search Product Here..." 
-                aria-describedby="basic-addon2" />
-
-                <span className="input-group-text" id="basic-addon2">
-                 <BsSearch className='searchicon'/>
-                </span>
-                </div>
-              </div>
-              <div className='collinks'>
+     
+              
                 <div className='headerlinks'>
-                   
-                  
-                   
+                                                     
                     
                       <a className='icontag' href="/wishlist">
                       <img src="images/wishlist.svg" alt="wishlist" />
-                      <p>
-                       Favourite <br /> wishlist
-                      </p>
                       </a>
-                      
-                   
+                                                                               
                       <a className='icontag' href="/login">
                       <img src="images/user.svg" alt="user" />
-                     
-                        
-                       <span className='login' id='login'></span> 
-                     
-                      </a>
-                   <div>
+                      <span className='login' id='login'></span> 
+                      </a> 
+
                       <a className='icontag' href="/cart" >
                       <img src="images/cart.svg" alt="cart" />
-                      </a>
-                   </div>
-                   <div>
-                      <span id='username' onLoad={GetUserName()} ></span>
-                  </div> 
+                      </a> 
+                                                                                                      
+                          <div>
+                              <span id='username' onLoad={GetUserName()} ></span>
+                          </div> 
 
                 </div>
-              </div>
-            </div>
+           
+           
           </div>
-      </header>
+
+<section></section>
       <header className='header-bottom'>
        <div className='contain-bottom'>
         <div className='menu-bottom'>
@@ -140,7 +121,7 @@ const Header = () => {
 
     
       
-    </>
+</section>
   )
 }
 export default Header;
