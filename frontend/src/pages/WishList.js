@@ -44,7 +44,8 @@ export default function WishList() {
             
             row+='</div>'
             row +='<div class="product_info">'
-            row +=response.data[0].book_title+'</br>'
+            row +='<div class="title">'
+            row +=response.data[0].book_title+'</div></br>'
             row +='By '+response.data[0].author+'</br>'
             row +=response.data[0].long_description+'</br>'
             row +='Price : US $'+response.data[0].book_price+'</br>'
