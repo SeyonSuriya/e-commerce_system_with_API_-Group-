@@ -126,7 +126,7 @@ const Header = () => {
           <div className='menu-links' >
             <div className='d-flexx'>
                 <a className="pageslink" href="/">Home</a>
-                <a className="pageslink" href="/store">Store</a>
+                <a className="pageslink" href="/Store?query=">Store</a>
                 <a className="pageslink" href="/aboutUs">About Us</a>
                 <a className="pageslink" href="/contactUs">Contact</a>
             </div>
