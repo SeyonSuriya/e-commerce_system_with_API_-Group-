@@ -37,7 +37,6 @@ export default function WishList() {
           'http://localhost:8080/ecommerce/books/details?book_id='+cookies.wishlist[index].item_id,
           ).then(response=>{
             var row=' '
-            row+='<table class="table"><tr>'
             row +='<div class="product_img_div"><img class="productimg" id="'+response.data[0].book_id+'_image" style="width:100%;height:100%;"/></div>'
             row+='<div class="wishlistdiv">'
             row+='<br><br><br><button class="remove_button" id="'+response.data[0].book_id+'_remove">Remove</button><br><br>'
@@ -45,14 +44,14 @@ export default function WishList() {
             
             row+='</div>'
             row +='<div class="product_info">'
-            row +='<div class="title">'
-            row +=response.data[0].book_title+'</div></br>'
-            row +='By '+response.data[0].author+'</br>'
-            row +=response.data[0].long_description+'</br><br>'
-            row +='<div class="price">'
-            row +='Price : US $'+response.data[0].book_price+'</div></br>'
+            row +='<p class="title">'
+            row +=response.data[0].book_title+'</p>'
+            row +='By '+response.data[0].author+'</br></br>'
+            row+='<p class="description">'
+            row +=response.data[0].long_description+'</p></br>'
+            row +='<p class="price">'
+            row +='Price : US $'+response.data[0].book_price+'</p></br>'
             row+='</div>'
-            row+='</tr></table>'
             row+='</br>'
 
 
@@ -121,11 +120,9 @@ export default function WishList() {
           <div class='productsdiv'>
             <span id='products'></span>
           </div>
+          &nbsp;
     
-    
-          <br/><br/><br/><br/><br/><br/><br/>
-          <br/><br/><br/><br/><br/>
-          <br/><br/><br/><br/><br/><br/><br/>
+          
           <a href='/wishlist' id="wishlist" > </a>
           <Footer/>
         </div>
