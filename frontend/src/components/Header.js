@@ -69,7 +69,9 @@ const Header = () => {
         <div className='menu-bottom'>
           
           <div className="bookmartlogo">
+            <a href='/home'>
             <img src={BookMart03}/>
+            </a>
             </div>
           <div className="dropdown">
                  <button className="btn btn-secondary dropdown-toggle bg-transparent" 
@@ -107,13 +109,13 @@ const Header = () => {
 
           </div>
           <div className='menu-links' >
-            <div className='d-flexx'>
+            <div className='d-flex'>
                 <a className="pageslink" href="/">Home</a>
-                <a className="pageslink" href="/Store?query=">Store</a>
+                <a className="pageslink" href="/store">Store</a>
                 <a className="pageslink" href="/aboutUs">About Us</a>
                 <a className="pageslink" href="/contactUs">Contact</a>
             </div>
-          </div>
+            </div>
         </div>
        </div>
       </header>

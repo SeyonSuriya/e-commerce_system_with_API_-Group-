@@ -9,13 +9,14 @@
     white-space:nowrap;
     color:white;
     font-size: 15px;
-    padding-top: 1rem;
+   padding: 1rem 0;
+  
 }
 
 .header-upper{
     width:100%;
     background-color: #034748;
-    height:2.5em
+    height:2.7em
     
 }
 .headerlinks{
@@ -48,9 +49,12 @@
 
 .btn.btn-secondary.dropdown-toggle.bg-transparent {
     color: black;
+ }
 
-   
-  }
+ .btn.btn-secondary.dropdown-toggle.bg-transparent:hover{
+    color: gray;
+
+ }
  .dropdown-toggle{
     display: inline-block;
     vertical-align: middle;
@@ -67,3 +71,19 @@
     overflow-y:scroll;
 
 }
+.menu-links {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+.menu-links a {
+    color: black;
+    text-decoration: none;
+    padding: 0 15px;
+    font-size: 17px;
+    padding-top: 1.8rem;
+    font-weight: bold;
+}
+.menu-links a:hover{
+    color: gray;
+} 
