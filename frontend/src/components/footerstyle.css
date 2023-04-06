@@ -10,20 +10,34 @@
     padding-top: 2em;
 }
 .firstline{
-    flex: 3;
+    flex: 5;
     
 }
+.firstline h3 a, .firstline h5 a{
+    color: white;
+}
+
 .secondline{
-    flex: 3;
+    flex: 5;
 }
+
+.secondline h3 a, .secondline h5 a{
+   color: white;
+}
+
 .thirdline{
-    flex: 3;
+    flex: 5;
 }
+
+.thirdline h3 a, .thirdline h5 a{
+    color: white;
+ }
 .sendmessage{
     flex: 5;
 }
+
 .sendmessageemail{
-    margin-top: 20px;
+    margin-top: 0.8em;
     width: 280px;
     text-align: center;
     height: 30px;
@@ -51,4 +65,10 @@
 .sendbutton:hover{
     background-color: rgb(255, 94, 0);
     border-radius: 1em ;
+}
+.socialmedia{
+    display: flex;
+    flex-direction: row;
+    margin-top: 230px;
+    padding-right: 10%;
 }
