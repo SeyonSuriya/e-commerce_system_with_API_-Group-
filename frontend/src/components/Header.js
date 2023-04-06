@@ -5,6 +5,7 @@ import {BsSearch} from 'react-icons/bs'
 import { useCookies } from 'react-cookie';
 import {useState} from "react";
 import "./Header.css";
+import BookMart03 from '../assests/Book Mart 03.png';
 //import { NavLink,Link } from 'react-router-dom';
 const Header = () => {
 
@@ -31,8 +32,8 @@ const Header = () => {
     <>
       <header className='header-upper'>
           <div className='container'>
-            <div>
-              <h4 className='topicweb'>Book Mart</h4>
+            <div className="bookmartlogo">
+            <img src={BookMart03}/>
             </div>
             <div className='row'>
               
