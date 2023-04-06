@@ -1,0 +1,26 @@
+.productsDiv{
+    padding-top: 1cm;
+    width: 80%;
+    float: right;
+   
+}
+.product{
+    width: 21%;
+    height: 320px;
+    
+    padding-top: 15px;
+    padding-left: 32px;
+    padding-right: 20px;
+    margin: 5px;
+    
+    
+    
+}
+.productImg{
+    width: 90%;
+    height: 70%;
+    background-color: blue;
+}
+.MainDiv{
+    background-color:rgb(238, 234, 234);
+}
