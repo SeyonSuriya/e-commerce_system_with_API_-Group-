@@ -7,7 +7,7 @@
 .product{
     width: 21%;
     height: 320px;
-    background-color: yellow;
+    
     padding-top: 15px;
     padding-left: 32px;
     padding-right: 20px;
@@ -20,4 +20,7 @@
     width: 90%;
     height: 70%;
     background-color: blue;
+}
+.MainDiv{
+    background-color:rgb(238, 234, 234);
 }
