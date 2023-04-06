@@ -47,12 +47,12 @@ const Header = () => {
                       <img src="images/wishlist.svg" alt="wishlist" />
                       </a>
                                                                                
-                      <a className='icontag' href="/login">
+                      <a className='icontag02' href="/login">
                       <img src="images/user.svg" alt="user" />
                       <span className='login' id='login'></span> 
                       </a> 
 
-                      <a className='icontag' href="/cart" >
+                      <a className='icontag03' href="/cart" >
                       <img src="images/cart.svg" alt="cart" />
                       </a> 
                                                                                                       
@@ -74,7 +74,7 @@ const Header = () => {
                  <button className="btn btn-secondary dropdown-toggle bg-transparent" 
                   type="button" data-bs-toggle="dropdown" 
                    aria-expanded="false">
-                    Shop Categories
+                    Categories
                       </button>
                       
   <ul className="dropdown-menu">
