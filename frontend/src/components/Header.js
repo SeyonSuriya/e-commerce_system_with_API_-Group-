@@ -29,23 +29,6 @@ const Header = () => {
 
   return (
     <>
-      <header className='header-top-strip' >
-        
-          <div className='container-xxl'>
-            <div className='row'>
-              <div className='col-6'>
-                <p className='text-whitee mb-0'>
-                Easy shopping with Book Mart</p>
-              </div>
-              <div className='col-6'>
-                <p className='text-end text-white '>
-                Hotline : +94704341138
-              
-                </p>
-              </div>
-            </div>
-          </div>
-      </header>
       <header className='header-upper'>
           <div className='container'>
             <div>
