@@ -67,13 +67,16 @@ public class RegisterUserController {
     }
     @PostMapping(path = "/resetpassword")
     public String resetPassword(@RequestParam String email) throws MessagingException, UnsupportedEncodingException {
+        System.out.println(email);
         return emailService.resetPasswordEmail(email);
     }
     @PostMapping(path = "/changepassword")
     public String changepassword(@RequestBody VerificationDto verificationDto) throws MessagingException, UnsupportedEncodingException {
+
+        System.out.println(emailService.ValidateResetLink(verificationDto.email,verificationDto.otp));
         return emailService.ValidateResetLink(verificationDto.email,verificationDto.otp);
     }
-    @PostMapping(path = "addnewpassword")
+    @PostMapping(path = "/addnewpassword")
     public String addNewPassword(@RequestBody PasswordResetDto passwordResetDto){
         return resetPassword.addNewPassword(passwordResetDto);
     }

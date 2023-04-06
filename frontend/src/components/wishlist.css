@@ -25,6 +25,21 @@
     float: right;
     background-color: rgb(208, 208, 216);
     height: 100%;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+}
+
+.remove_button{
+    width: 50%;
+    background-color: rgb(228, 66, 66);
+    border: none;
+    color: white;
+}
+
+.addtocart_button{
+    width: 50%;
+    border: none;
+}
+
+.title{
+    font-weight: bold;
 }
