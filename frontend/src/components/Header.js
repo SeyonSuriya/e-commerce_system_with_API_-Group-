@@ -33,9 +33,7 @@ const Header = () => {
   <section>
      <header className='header-upper'>
           <div className='container'>
-            <div className="bookmartlogo">
-            <img src={BookMart03}/>
-            </div>
+           <p>Easy Shopping with Book Mart</p>
            
               
      
@@ -69,7 +67,10 @@ const Header = () => {
       <header className='header-bottom'>
        <div className='contain-bottom'>
         <div className='menu-bottom'>
-          <div>
+          
+          <div className="bookmartlogo">
+            <img src={BookMart03}/>
+            </div>
           <div className="dropdown">
                  <button className="btn btn-secondary dropdown-toggle bg-transparent" 
                   type="button" data-bs-toggle="dropdown" 
@@ -103,7 +104,7 @@ const Header = () => {
     <li><a className="dropdown-item" href="Store?query=TrueCrime">True Crime</a></li>
     <li><a className="dropdown-item" href="Store?query=Westerns">Westerns</a></li>
   </ul>
-</div>
+
           </div>
           <div className='menu-links' >
             <div className='d-flexx'>
