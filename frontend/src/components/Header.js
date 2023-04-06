@@ -30,8 +30,8 @@ const Header = () => {
 
   return (
 
-  <section className='header-upper'>
-     
+  <section>
+     <header className='header-upper'>
           <div className='container'>
             <div className="bookmartlogo">
             <img src={BookMart03}/>
@@ -40,7 +40,7 @@ const Header = () => {
               
      
               
-                <div className='headerlinks'>
+          <div className='headerlinks'>
                                                      
                     
                       <a className='icontag' href="/wishlist">
@@ -64,8 +64,8 @@ const Header = () => {
            
            
           </div>
+          </header>
 
-<section></section>
       <header className='header-bottom'>
        <div className='contain-bottom'>
         <div className='menu-bottom'>
