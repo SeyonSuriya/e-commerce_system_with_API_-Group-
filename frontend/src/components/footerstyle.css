@@ -1,8 +1,11 @@
-.containerfooter{
+body{
+    overflow-x: hidden;
+}.containerfooter{
     height: 300px;
     background-color: #034748;
     margin-top: 20px;
     margin-bottom: 0px;
+    
 }
 .footer-upper{
     display: flex;
@@ -10,7 +13,9 @@
     padding-top: 2em;
 }
 .firstline{
-    flex: 5;
+    flex: 7;
+    margin-left:2%;
+    white-space: nowrap;
     
 }
 .firstline h3 a, .firstline h5 a{
@@ -18,7 +23,8 @@
 }
 
 .secondline{
-    flex: 5;
+    flex: 4;
+    margin-left: 5%;
 }
 
 .secondline h3 a, .secondline h5 a{
@@ -26,7 +32,8 @@
 }
 
 .thirdline{
-    flex: 5;
+    flex: 4;
+    margin-left: 5%;
 }
 
 .thirdline h3 a, .thirdline h5 a{
@@ -71,4 +78,20 @@
     flex-direction: row;
     margin-top: 230px;
     padding-right: 10%;
+}
+.youtube.social svg {
+    color: white;
+    padding-right: 1rem;
+}
+.facebook.social svg{
+    color: white;
+    padding-right: 1rem;
+}
+.twitter.social svg{
+    color: white;
+    padding-right: 1rem;
+}
+.instagram.social svg{
+    color: white;
+    padding-right: 1rem;
 }
