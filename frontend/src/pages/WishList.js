@@ -39,8 +39,8 @@ export default function WishList() {
             var row=' '
             row +='<div class="product_img_div"><img class="productimg" id="'+response.data[0].book_id+'_image" style="width:100%;height:100%;"/></div>'
             row+='<div class="wishlistdiv">'
-            row+='<button id="'+response.data[0].book_id+'_remove">Remove</button>'
-            row+='<button id="'+response.data[0].book_id+'_addtocart">Add to cart</button>'
+            row+='<br><br><br><button class="remove_button" id="'+response.data[0].book_id+'_remove">Remove</button><br><br>'
+            row+='<button class="addtocart_button" id="'+response.data[0].book_id+'_addtocart">Add to cart</button>'
             
             row+='</div>'
             row +='<div class="product_info">'
