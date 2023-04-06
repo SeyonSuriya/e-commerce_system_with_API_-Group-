@@ -1,20 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import "./footerstyle.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//    faYoutube,
-//    faFacebook,
-//    faTwitter,
-//    faInstagram
-//  } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+   faYoutube,
+  faFacebook,   faTwitter,
+   faInstagram
+} from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   return (
     <div className='containerfooter'>
       <span className='footer-upper'>
       <div className='firstline'>
-       <h3><Link to=''>Tech World</Link></h3>
+       <h3><Link to=''>Book Mart</Link></h3>
        <h5><Link to=''>Terms</Link></h5>
        <h5><Link to=''>License</Link></h5>
        <h5><Link to=''>Market</Link></h5>
@@ -30,26 +29,26 @@ const Footer = () => {
         <h3><Link to=''>OUR COMMUNITY</Link></h3>
         <h5><Link to=''>Blog</Link></h5>
         <h5><Link to=''>Shopping Cart</Link></h5>
-        <h5><Link to=''>My Account</Link></h5>
+        <h5><Link to='/login'>My Account</Link></h5>
         <h5><Link to='/adminlogin'>Admin Login</Link></h5>
        </div>
-       <div className='sendmassage'> 
+       <div className='sendmessage'> 
           <form>
              
-             <input type={'email'} className='sendmassageemail' placeholder='Email'>
+             <input type={'email'} className='sendmessageemail' placeholder='Email'>
              </input>
 
              <br></br>
 
-             <input type={Text} className='sendmassage' placeholder='Massage'>
+             <textarea type={Text} className='sendmessage' placeholder='Message'>
 
-             </input>
+             </textarea>
                 <br />
-             <button className='sendbutton' >Send</button>
+             <button type='submit'className='sendbutton' >Send</button>
           </form> 
        </div>   
        <div className='socialmedia'>
-       {/* <Link 
+    <Link 
         className="youtube social">
         <FontAwesomeIcon icon={faYoutube} size="2x" />
       </Link>
@@ -66,7 +65,7 @@ const Footer = () => {
       <Link href=""
         className="instagram social">
         <FontAwesomeIcon icon={faInstagram} size="2x" />
-      </Link> */}
+      </Link> 
        </div>
       </span>
        
