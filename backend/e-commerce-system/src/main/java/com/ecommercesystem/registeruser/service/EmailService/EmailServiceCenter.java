@@ -75,6 +75,10 @@ public class EmailServiceCenter implements EmailService{
 
     @Override
     public String resetPasswordEmail(String email) throws MessagingException, UnsupportedEncodingException {
+        if (userRepo.findUserByEmail(email).isEmpty()){
+            return "No User Registered for this email";
+
+        }
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
@@ -83,7 +87,7 @@ public class EmailServiceCenter implements EmailService{
 
         String toAddress = email;
         String fromAddress = "basnayakasanjeewa3@gmail.com";
-        String senderName = "Book World";
+        String senderName = "Book Mart";
         String subject = "Please Reset Your Password";
         String content = "Dear [[name]],<br>"
                 + "Please click the link below to reset your password:<br>"
@@ -95,7 +99,7 @@ public class EmailServiceCenter implements EmailService{
         helper.setSubject(subject);
 
         content = content.replace("[[name]]", user.get(0).getFirstname()+user.get(0).getSecondname());
-        String resetPasswordURL = "http://localhost:3000/changepassword?email="+email+"&otp="+otp;
+        String resetPasswordURL = "http://localhost:3000/resetpassword?email="+email+"&otp="+otp;
         if (otpRepo.validateEmail(email)!=null){
             otpRepo.deletePreviousOtp(email);
         }

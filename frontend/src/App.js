@@ -12,7 +12,7 @@ import Store from './pages/Store';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import EmailVerification from './pages/EmailVerification';
-import ResetPassword from './pages/ResetPassword';
+
 import Product from './pages/Product';
 import VerifyEmail from './pages/VerifyEmail';
 import AdminLoginPage from './pages/AdminLoginPage';
@@ -39,12 +39,12 @@ function App() {
         <Route path="/adminlogin" element={<AdminLoginPage />}/>
         <Route path="/register" element={<RegisterPage />}/>
         <Route path="/emailverification" element={<EmailVerification />}/>
-        <Route path="/resetpassword" element={<ResetPassword />}/>
+
         <Route path="/product" element={<Product />}/>
         <Route path="/verifyemail" element={<VerifyEmail />}/>
         <Route path="/forgotpassword" element={<ForgotPassword />}/>        
         <Route path="/checkout" element={<Checkout />}/>
-        <Route path="/reset" element={<Reset />}/>
+        <Route path="/resetpassword" element={<Reset />}/>
         <Route path="/orderplaced" element={<OrderPlaced />}/>
        
       </Routes>

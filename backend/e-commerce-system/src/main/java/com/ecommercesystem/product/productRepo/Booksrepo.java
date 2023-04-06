@@ -23,7 +23,13 @@ public interface Booksrepo extends JpaRepository<books,Integer> {
     @Query(value="select * from books a where a.book_id=:item_id", nativeQuery=true)
     books getItemDetails(Integer item_id);
 
-      // @Query(value = "select num_of_units from books where item_id=:item_id")
+    @Query(value = "select * from books ORDER BY num_of_orders DESC;",nativeQuery = true)
+    List<books> GetAllBooks();
+
+    @Query(value = "select * from books where category=:category ORDER BY num_of_orders DESC;",nativeQuery = true)
+    List<books> GetBooksByCategory(String category);
+
+    // @Query(value = "select num_of_units from books where item_id=:item_id")
     //  Integer getAvailableUnits(Integer item_id);
 
 

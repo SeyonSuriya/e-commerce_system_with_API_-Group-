@@ -2,6 +2,7 @@ package com.ecommercesystem.registeruser.service.UserServices;
 
 
 import com.ecommercesystem.registeruser.dto.UserDto;
+import com.ecommercesystem.registeruser.dto.Username;
 import com.ecommercesystem.registeruser.entity.User;
 import com.ecommercesystem.registeruser.repository.UserRepo;
 import com.ecommercesystem.registeruser.service.EmailService.EmailService;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -62,17 +64,27 @@ public class UserServiceCenter implements UserService {
             return "email is already registered";
         }
     }
-    public String validateUserDetails(String email,String password) {
+    public Integer validateUserDetails(String email,String password) {
         List<User> IsUserAvailable = userRepo.findUserByEmail(email);
         BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
         if (IsUserAvailable.size()!=0 ){
             if (bCrypt.matches(password,userRepo.findUserByLoginCredentials(email))){
-                return "Login Granted";
+                return IsUserAvailable.get(0).getUserId();
             }else {
-                return "Incorrect Password";
+                return -1;
             }
         }else {
-            return "No user Registered for this email";
+            return -2;
         }
+    }
+
+    @Override
+    public Username GetUserName(Integer userid) {
+        Username username=new Username();
+        User user=userRepo.getAddressBYId(userid).get(0);
+        username.setFirstname(user.getFirstname());
+        username.setSecondname(user.getSecondname());
+        return username;
+
     }
 }

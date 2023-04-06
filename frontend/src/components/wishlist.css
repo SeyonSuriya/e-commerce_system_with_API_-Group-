@@ -2,20 +2,20 @@
 
 
 .product{
-    background-color: bisque;
+    background-color: rgb(208, 208, 216)e;
     width: 100%;
     height: 200px;
     
 }
 .product_info{
     
-    width: 70%;
-    background-color: aqua;
+    width: 72%;
+    background-color: rgb(232, 235, 189);
     height: 100%;
     float: left;
 }
 .product_img_div{
-    width: 15%;
+    width: 13%;
     height: 100%;
     float: left;
     background-color: black;
@@ -23,6 +23,23 @@
 .wishlistdiv{
     width: 15%;
     float: right;
-    background-color: rgb(173, 173, 192);
+    background-color: rgb(208, 208, 216);
     height: 100%;
+    text-align: center;
+}
+
+.remove_button{
+    width: 50%;
+    background-color: rgb(228, 66, 66);
+    border: none;
+    color: white;
+}
+
+.addtocart_button{
+    width: 50%;
+    border: none;
+}
+
+.title{
+    font-weight: bold;
 }

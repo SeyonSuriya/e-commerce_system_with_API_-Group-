@@ -34,22 +34,30 @@ export default function CheckOut() {
          axios.post(
           'http://localhost:8080/ecommerce/cart/books?userid='+cookies.userid,
           ).then(response=>{
-            var cart= response.data
+            //var cart= response.data
             setCookie('productquantities', response.data, { path: '/checkout'});
-            var product='<div class="productsdiv">'
+            setCookie('product', '<div class="productsdiv">', { path: '/checkout'});
+            //console.log(cookies.cart)
+            //console.log(cookies.selectedBooks)
             for (let index = 0; index <cookies.selectedBooks.length; index++) {
-              product+='<div class="product">'
-              //product+='CartID : '+cookies.selectedBooks[index]
-              for (let i = 0; i < cart.length; i++) {
-                if (cookies.cart[i].id===cookies.selectedBooks[index]) {
-                  product+='<span id="'+cart[i].item_id+'"></span>'
-                  GetProduct(cart[i].item_id,i,cookies.selectedBooks[index])
+              cookies.product+='<div class="product">'
+              
+              //cookies.product+='CartID : '+cookies.selectedBooks[index]
+              for (let i = 0; i < cookies.productquantities.length; i++) {
+                var addproduct=' '
+                
+                if (cookies.productquantities[i].id===cookies.selectedBooks[index]) {
+                  addproduct+='<span id="'+cookies.productquantities[i].item_id+'"></span>'
+                  GetProduct(cookies.productquantities[i].item_id,i,cookies.selectedBooks[index])
+                  //break;
                }
+               cookies.product+=addproduct
               }
-             product+='</div>'
+              cookies.product+='</div>'
            }
-          // console.log(product)
-           document.getElementById('products').innerHTML=product+'</div>'
+          // console.log(cookies.product)
+           document.getElementById('products').innerHTML=cookies.product+'</div>'
+
           }
           )
       }
@@ -169,10 +177,12 @@ function PlaceOrder() {
     return (
         <div>
           <Header/>
-          <div className='orderSummayDiv'>
-            <h1>Order Summary</h1>
-            <br/> <br/> <br/> <p >Total $ <span id="Total"></span></p>
-            <button onClick={PlaceOrder}>Place Order</button>
+          <div className='ordsum'>
+            <div className='orderSummayDiv'>
+              <h1>Order Summary</h1>
+              <p id='total'>Total $ <span id="Total"></span></p><br></br>
+              <div className='place_order_button'><button className='po_button' onClick={PlaceOrder}><b>Place Order</b></button></div>
+            </div>
           </div>
         <div className='AddressDiv'>
           <h3>Address</h3>

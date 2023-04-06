@@ -4,6 +4,7 @@ import com.ecommercesystem.checkout.CheckoutDtos.AddressDto;
 import com.ecommercesystem.registeruser.Email.Email;
 import com.ecommercesystem.registeruser.LoginUser.LoginUser;
 import com.ecommercesystem.registeruser.dto.PasswordResetDto;
+import com.ecommercesystem.registeruser.dto.Username;
 import com.ecommercesystem.registeruser.dto.VerificationDto;
 import com.ecommercesystem.registeruser.entity.User;
 import com.ecommercesystem.registeruser.service.AccountStatusService.AccountStatusService;
@@ -39,33 +40,43 @@ public class RegisterUserController {
 
     @PostMapping(path = "/register")
     public String saveUser(@RequestBody UserDto userDto) throws MessagingException, UnsupportedEncodingException {
-        return registeruser.addUser(userDto);
+        var email=registeruser.addUser(userDto);
+        System.out.println(email);
+        return email;
     }
 
     @PostMapping(path = "/login")
-    public String authenticateUser(@RequestBody LoginUser loginUser)
+    public Integer authenticateUser(@RequestBody LoginUser loginUser)
     {
-        String result = registeruser.validateUserDetails(loginUser.email,loginUser.password);
+       Integer result = registeruser.validateUserDetails(loginUser.email,loginUser.password);
         return result;
+    }
+    @PostMapping(path = "/username")
+    public Username GetUserName(@RequestParam Integer userid)
+    {
+        return registeruser.GetUserName(userid);
     }
 
     @PostMapping(path = "/validateemail/verify")
     public String validateWithOtp(@RequestBody VerificationDto verificationDto) throws MessagingException {
         return emailService.verifyEmail(verificationDto.email,verificationDto.otp);
     }
-    @GetMapping(path = "/resendverificationlink")
-    public String validateWithOtp(@RequestBody Email email) throws MessagingException, UnsupportedEncodingException {
-        return emailService.sendEmailVerification(email.getEmailAddress());
+    @PostMapping (path = "/resendverificationlink")
+    public String validateWithOtp(@RequestParam String email) throws MessagingException, UnsupportedEncodingException {
+        return emailService.sendEmailVerification(email);
     }
     @PostMapping(path = "/resetpassword")
-    public String resetPassword(@RequestBody Email email) throws MessagingException, UnsupportedEncodingException {
-        return emailService.resetPasswordEmail(email.getEmailAddress());
+    public String resetPassword(@RequestParam String email) throws MessagingException, UnsupportedEncodingException {
+        System.out.println(email);
+        return emailService.resetPasswordEmail(email);
     }
     @PostMapping(path = "/changepassword")
     public String changepassword(@RequestBody VerificationDto verificationDto) throws MessagingException, UnsupportedEncodingException {
+
+        System.out.println(emailService.ValidateResetLink(verificationDto.email,verificationDto.otp));
         return emailService.ValidateResetLink(verificationDto.email,verificationDto.otp);
     }
-    @PostMapping(path = "addnewpassword")
+    @PostMapping(path = "/addnewpassword")
     public String addNewPassword(@RequestBody PasswordResetDto passwordResetDto){
         return resetPassword.addNewPassword(passwordResetDto);
     }
