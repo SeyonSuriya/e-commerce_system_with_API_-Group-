@@ -3,13 +3,19 @@
     color: aqua;
 }
 .bookmartlogo img{
-    width:80%;
+    width:7.5em;
     height:7em;
 }
+
 .header-upper{
     width:100%;
     background-color: #034748;
 }
-.container{
+.headerlinks{
+    margin-left: 70%;
    
+}
+.icontag01 img{
+    margin-left: 30%;
+    padding-top: 1rem;
 }

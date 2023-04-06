@@ -43,7 +43,7 @@ const Header = () => {
           <div className='headerlinks'>
                                                      
                     
-                      <a className='icontag' href="/wishlist">
+                      <a className='icontag01' href="/wishlist">
                       <img src="images/wishlist.svg" alt="wishlist" />
                       </a>
                                                                                
