@@ -1,12 +1,10 @@
-#username{
-    font-size: medium;
-    color: aqua;
-}
+
 .bookmartlogo img{
     width:5.5em;
-    height:5.5em;
-    
+    height:5em;
+   
 }
+    
 .container p{
     white-space:nowrap;
     color:white;
@@ -17,7 +15,7 @@
 .header-upper{
     width:100%;
     background-color: #034748;
-    height:3em
+    height:2.5em
     
 }
 .headerlinks{
@@ -26,22 +24,46 @@
 }
 .icontag01 img {
     margin-left: 30%;
-    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+    margin-top: 0.2rem;
+    padding-top: 0.4rem;
 }
 .icontag02 img{
     margin-left: 30%;
-    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+    margin-top: 0.2rem;
+    padding-top: 0.4rem;
 }
 .icontag03 img{
     margin-left: 30%;
-    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+    margin-top: 0.2rem;
+    padding-top: 0.4rem;
 }
 .header-bottom{
     width:100%;
-    height:4em;
+    height:4.5em;
     background-color: white;
 }
-.dropdown{
-    margin-left: 8%;
-    margin-top: auto;
+
+.btn.btn-secondary.dropdown-toggle.bg-transparent {
+    color: black;
+
+   
+  }
+ .dropdown-toggle{
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 25%;
+    padding-left: 0%;
+    font-size: 18px;
+    padding-top: 1.5rem;
+    font-weight: bold;
+ }
+.dropdown-menu{
+  
+    position:fixed;
+    max-height: 200px;
+    overflow-y:scroll;
+
 }
