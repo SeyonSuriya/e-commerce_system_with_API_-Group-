@@ -37,20 +37,26 @@ export default function WishList() {
           'http://localhost:8080/ecommerce/books/details?book_id='+cookies.wishlist[index].item_id,
           ).then(response=>{
             var row=' '
+            row+='<table class="table"><tr>'
             row +='<div class="product_img_div"><img class="productimg" id="'+response.data[0].book_id+'_image" style="width:100%;height:100%;"/></div>'
             row+='<div class="wishlistdiv">'
-            row+='<button id="'+response.data[0].book_id+'_remove">Remove</button>'
-            row+='<button id="'+response.data[0].book_id+'_addtocart">Add to cart</button>'
+            row+='<br><br><br><button class="remove_button" id="'+response.data[0].book_id+'_remove">Remove</button><br><br>'
+            row+='<button class="addtocart_button" id="'+response.data[0].book_id+'_addtocart">Add to cart</button>'
             
             row+='</div>'
             row +='<div class="product_info">'
-            row +=response.data[0].book_title+'</br>'
+            row +='<div class="title">'
+            row +=response.data[0].book_title+'</div></br>'
             row +='By '+response.data[0].author+'</br>'
-            row +=response.data[0].long_description+'</br>'
-            row +='Price : US $'+response.data[0].book_price+'</br>'
+            row +=response.data[0].long_description+'</br><br>'
+            row +='<div class="price">'
+            row +='Price : US $'+response.data[0].book_price+'</div></br>'
             row+='</div>'
-            
+            row+='</tr></table>'
             row+='</br>'
+
+
+
          
           //console.log(response.data[0].book_id)
           document.getElementById(response.data[0].book_id).innerHTML=row
@@ -111,10 +117,9 @@ export default function WishList() {
       
           
           <h1>Wishlist</h1>
-          <div className='productsdiv'>
-            <span id='products'></span>
-          
 
+          <div class='productsdiv'>
+            <span id='products'></span>
           </div>
     
     

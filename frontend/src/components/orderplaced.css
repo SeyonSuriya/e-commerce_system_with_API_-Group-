@@ -26,15 +26,15 @@
 .orderplace-content h1{
     font-weight: bold;
     font-size: 37px;
+    text-decoration: none;
 }
 
 .orderplace-content h4{
-   font-size: 25px;
+   font-size: 23px;
 }
 
 .orderplace-content p{
-    font-size: 17px;
-    
+    font-size: 15px;
 }
 
 #order_text01{
@@ -44,7 +44,7 @@
 }
 .order_submit{
     background-color: #11324d;
-    padding: 0.6em 2.5% 0.6em;
+    padding: 0.5em 2.5% 0.5em;
     color: white;
     box-shadow: 2px 2px 10px #2c0202;
     transition: 0.2s ease-in;

@@ -1,4 +1,6 @@
-
+.productsdiv{
+    background-color: white;
+}
 
 
 .product{
@@ -10,7 +12,7 @@
 .product_info{
     
     width: 72%;
-    background-color: rgb(232, 235, 189);
+    background-color: rgb(229, 231, 202);
     height: 100%;
     float: left;
 }
@@ -25,6 +27,51 @@
     float: right;
     background-color: rgb(208, 208, 216);
     height: 100%;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+}
+
+.remove_button{
+    width: 50%;
+    background-color: rgb(228, 66, 66);
+    border: none;
+    color: white;
+}
+
+.addtocart_button{
+    width: 50%;
+    border: none;
+}
+
+.title{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.price{
+    font-weight: bold;
+}
+
+.table{
+    width: 100%;
+    border: 15px;
+}
+
+.image{
+    width: 10%;
+    height: 100%;
+}
+
+.bookdata{
+    width: 75%;
+}
+
+.tools{
+    width: 15%;
+    text-align: center;
+}
+
+tr{
+    height: 200px;
+    
+
 }
