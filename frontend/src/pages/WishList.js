@@ -16,7 +16,7 @@ export default function WishList() {
       setCookie('wishlist', response.data, { path: '/wishlist'});
       var products=' '
       for (let index = 0; index < cookies.wishlist.length; index++) {
-        products+='<div class="product">'
+        products+='<div className={Style["product"]}>'
         products+='<span id="'+ cookies.wishlist[index].item_id+'"></span>'
         products+='</div>'
       //  console.log(cookies.wishlist[index].item_id)
