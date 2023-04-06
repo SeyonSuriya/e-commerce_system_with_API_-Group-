@@ -1,4 +1,6 @@
-
+.productsdiv{
+    background-color: white;
+}
 
 
 .product{
@@ -10,7 +12,7 @@
 .product_info{
     
     width: 72%;
-    background-color: rgb(232, 235, 189);
+    background-color: rgb(229, 231, 202);
     height: 100%;
     float: left;
 }
@@ -42,4 +44,34 @@
 
 .title{
     font-weight: bold;
+    text-decoration: underline;
+}
+
+.price{
+    font-weight: bold;
+}
+
+.table{
+    width: 100%;
+    border: 15px;
+}
+
+.image{
+    width: 10%;
+    height: 100%;
+}
+
+.bookdata{
+    width: 75%;
+}
+
+.tools{
+    width: 15%;
+    text-align: center;
+}
+
+tr{
+    height: 200px;
+    
+
 }
