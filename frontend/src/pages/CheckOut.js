@@ -70,11 +70,11 @@ export default function CheckOut() {
             console.log()
             cookies.pricearray[index]=response.data[0].book_price
             row+='<img  class="product_image"  id="'+response.data[0].book_id+'_image" style="width:20%;height:70%;">'
-            row+='<div class="productInfo">'
-            row+=response.data[0].book_title+'<br/>'
+            row+='<div class="productInfo"> <p className={Style["booktitle"]}>'
+            row+=response.data[0].book_title+'</p>'
             row+='By '+response.data[0].author+'<br/>'
-            row+='US $ '+response.data[0].book_price
-            row+='</div>'
+            row+='<p className="price">US $ '+response.data[0].book_price
+            row+='</p></div>'
             row+='<div id="change_units" class="unitsdiv"></br></br></br>'
             row+='&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+response.data[0].book_id+'_remove" class="minus_button" style="width:25px;height:25px;margin: 0 auto;"  />'
             

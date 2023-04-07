@@ -48,6 +48,7 @@
 
 .productInfo{
     width: 40%;
+    height: 100%;
 }
 
 #total{
@@ -84,4 +85,12 @@ h1{
     background-color: white;
     width: 60%;
     height: 200px;
+}
+
+.booktitle{
+    font-weight: bold;
+}
+
+.price{
+    font-weight: bold;
 }
