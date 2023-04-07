@@ -1,41 +1,98 @@
+body{
+    overflow-x: hidden;
+}
 .containerfooter{
     height: 300px;
-    background-color: var(--color-131921);
+    background-color: #034748;
     margin-top: 20px;
     margin-bottom: 0px;
+    
 }
 .footer-upper{
     display: flex;
     margin-left: 5%;
+    padding-top: 2em;
 }
 .firstline{
-    flex: 3;
+    flex: 7;
+    margin-left:2%;
+    white-space: nowrap;
+    
 }
+.firstline h3 a, .firstline h5 a{
+    color: white;
+}
+
 .secondline{
-    flex: 3;
+    flex: 4;
+    margin-left: 5%;
 }
+
+.secondline h3 a, .secondline h5 a{
+   color: white;
+}
+
 .thirdline{
-    flex: 3;
+    flex: 4;
+    margin-left: 5%;
 }
-.sendmassage{
+
+.thirdline h3 a, .thirdline h5 a{
+    color: white;
+ }
+.sendmessage{
     flex: 5;
 }
-.sendmassageemail{
-    margin-top: 20px;
-    width: 300px;
+
+.sendmessageemail{
+    margin-top: 0.8em;
+    width: 280px;
+    text-align: center;
     height: 30px;
     margin-bottom: 0px;
+    padding: 1rem 10% 1rem 10%;
 }
-.sendmassage{
-    height: 150px;
-    width: 300px;
-    margin-top: 0px;
+.sendmessage{
+    height: 60px;
+    width: 280px;
+    margin-top: 0.2rem;
     padding-bottom: 0px;
+    padding: 1rem 10% 1rem 10%;
+    text-align: center;
 }
 .sendbutton{
-    height: 35px;
-    width: 300px;
-    margin-top: 20px;
-    padding-top: 0px;
-    background-color: orange;
+    height: 40px;
+    width: 210px;
+    margin-top: 10px;
+    padding-top: 2rem 10% 2rem 10%;
+    background-color: #68bb42;
+    margin-right: 20%;
+    border-radius: 1em ;
+    color:white
+}
+.sendbutton:hover{
+    background-color: rgb(255, 94, 0);
+    border-radius: 1em ;
+}
+.socialmedia{
+    display: flex;
+    flex-direction: row;
+    margin-top: 230px;
+    padding-right: 10%;
+}
+.youtube.social svg {
+    color: white;
+    padding-right: 1rem;
+}
+.facebook.social svg{
+    color: white;
+    padding-right: 1rem;
+}
+.twitter.social svg{
+    color: white;
+    padding-right: 1rem;
+}
+.instagram.social svg{
+    color: white;
+    padding-right: 1rem;
 }

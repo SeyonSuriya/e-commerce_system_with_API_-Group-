@@ -1,9 +1,51 @@
+*{
+    margin:0;
+    padding:0;
+
+}
 .homecontainer{
-    margin-left: 0px;
-    padding-left: 0px;
-    margin-left: 10px;
-    margin-top: 10px;
-    
+    width:100%;
+    height:100vh;   
+}
+.video-container video{
+    width:100%;
+    height:40%;
+    object-fit:contain;
+}
+.video-content{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:7em;
+    justify-content:center;
+   margin-left: 25%;
+    display:flex;
+    margin-right: 17%;
+    flex-direction: column;
+}
+.overLay{
+    position:absolute;
+    top:10em;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.form-control{
+    padding: 1.7em;
+    border: 2px solid none;
+    width:10%;
+    text-align: center;
+    color:black;
+    font-size:14px;
+    border-radius: 1.7rem ;   
+}
+.searchicon{
+    margin-left: 0.7rem;
+    margin-bottom: 0.2rem;
+    margin-top: 1rem;
+    height:3rem;
+    background-color: #034748;
 }
 .imgs{
     width: 230px;
