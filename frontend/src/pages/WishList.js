@@ -9,6 +9,13 @@ export default function WishList() {
   
   const [cookies, setCookie] = useCookies(['user']);
   var wishlist=[]
+  
+
+  if (cookies.userid<1) {
+    window.location.href = "/login";
+  }
+
+
   axios.post(
     'http://localhost:8080/ecommerce/wishes?userid='+cookies.userid,
     ).then(response=>{
