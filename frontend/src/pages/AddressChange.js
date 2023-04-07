@@ -45,12 +45,6 @@ if (firstname===' ') {
     }else if (secondname===' ') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your secondname";
       event.preventDefault();
-     
-     
-    }else if (email===' ') {
-      document.getElementById('error_message').innerHTML="<br/>Please enter your email";
-      event.preventDefault();
- 
     }
     // Add emial validation here
     else if (addressline1===' ') {
@@ -86,19 +80,7 @@ if (firstname===' ') {
       document.getElementById('error_message').innerHTML="<br/>Mobile number should contain 10 characters";
       event.preventDefault();
     }
-    else if (password===' ') {
-      document.getElementById('error_message').innerHTML="<br/>Please enter your password";
-      event.preventDefault();
-    }else if (password.length<6) {
-      document.getElementById('error_message').innerHTML="<br/>Password should contain at least 6 characters";
-      event.preventDefault();
-    }else if (password2===' ') {
-      document.getElementById('error_message').innerHTML="<br/>Please enter your password again";
-      event.preventDefault();
-    }else if (password2!==password) {
-      document.getElementById('error_message').innerHTML="<br/>Passwords not maching";
-      event.preventDefault();
-    }else{
+    else{
       const postData = {
         firstname,
         secondname,
@@ -108,10 +90,9 @@ if (firstname===' ') {
         province,
         mobile,
         postalcode,
-        email,
-        password,
+        
       };
-      setCookie('email', email, { path: '/emailverification' });
+      //setCookie('email', email, { path: '/emailverification' });
       axios.post(
         'http://localhost:8080/ecommerce/register',
         postData,
