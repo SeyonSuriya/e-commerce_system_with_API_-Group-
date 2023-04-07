@@ -134,8 +134,7 @@ if (firstname===' ') {
       
 
 return (
-<div>
-<Header/>
+
   <section>
   <div className="signup_container">
   
@@ -160,9 +159,7 @@ return (
                   <input type='text'  placeholder="First Name" className="signup_placeholder01"  onClick={(event)=>RemoveError('firstnameError')}  onChange={(e)=>setFirstName(e.target.value) }></input>
                 
                   <input type='text'  placeholder="Second Name" className="signup_placeholder02" onClick={(event)=>RemoveError('secondnameError')} onChange={(e)=>setSecondName(e.target.value)}></input>
-                  <br/> <br/>
 
-                  <input type='text' placeholder="Mobile Number" max="9999999999" className='signup_placeholder02' maxLength='10' onClick={(event)=>RemoveError('mobilenumberError')} onChange={(e)=>setMobile(e.target.value)}></input>
         
                   
                   <br/> <br/>
@@ -183,7 +180,9 @@ return (
 
                   <input type='text' placeholder="Postal Code" className='signup_placeholder01'  onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
                             
-                  
+                  <br/> <br/>
+
+                    <input type='text' placeholder="Mobile Number" max="9999999999" className='signup_placeholder02' maxLength='10' onClick={(event)=>RemoveError('mobilenumberError')} onChange={(e)=>setMobile(e.target.value)}></input>
                  
                   
                   
@@ -207,7 +206,7 @@ return (
   </div>
 
   </section>
-  </div>
+  
     
 )
 }
