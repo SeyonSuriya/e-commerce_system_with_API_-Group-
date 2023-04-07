@@ -43,10 +43,11 @@
 
 .product_image{
     float: left;
+    
 }
 
 .productInfo{
-    width: 60%;
+    width: 40%;
 }
 
 #total{
@@ -78,4 +79,9 @@ h1{
 
 .ordsum{
     margin-top: 1cm;
+}
+.product{
+    background-color: white;
+    width: 60%;
+    height: 200px;
 }
