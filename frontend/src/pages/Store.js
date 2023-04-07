@@ -23,7 +23,7 @@ export default function Store() {
           if ((index%4===0)&(index!==0)) {
             allproducts+='</br>'
           }
-          allproducts+='<div class="product">'
+          allproducts+='<div class="product" >'
           allproducts+='<img class="productImg" id="'+products[index].book_id+'_image" alt="product Image" /></br>'
           allproducts+='<span class="book_title">'+products[index].book_title+'</span></br>'
           allproducts+='<span class="book_price">'+products[index].book_price+'</span></br>'
@@ -115,7 +115,7 @@ export default function Store() {
 
   return (
     
-     <div className='MainDiv'>
+     <div className='MainDiv' >
           <Header/>
       
      <div className='productsDiv'>
@@ -125,7 +125,7 @@ export default function Store() {
     <br/> <br/> <br/> <br/> <br/> <br/> 
     <br/> <br/> <br/> <br/> <br/> <br/>
     <br/> <br/> <br/> <br/> <br/> <br/>
-     <Footer/>
+    
         </div>
         
       )
