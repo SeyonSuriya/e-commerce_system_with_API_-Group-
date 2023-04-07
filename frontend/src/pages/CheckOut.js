@@ -69,17 +69,18 @@ export default function CheckOut() {
           ).then(response=>{
             console.log()
             cookies.pricearray[index]=response.data[0].book_price
-            row+='<img  class="product_image" id="'+response.data[0].book_id+'_image" style="width:20%;height:100%;">'
-            row+='<div class="productInfo">'
-            row+=response.data[0].book_title+'<br/>'
+            row+='<img  class="product_image"  id="'+response.data[0].book_id+'_image" style="width:20%;height:70%;">'
+            row+='<div class="productInfo"> <p className={Style["booktitle"]}>'
+            row+=response.data[0].book_title+'</p>'
             row+='By '+response.data[0].author+'<br/>'
-            row+='US $ '+response.data[0].book_price
-            row+='</div>'
+            row+='<p className="price">US $ '+response.data[0].book_price
+            row+='</p></div>'
             row+='<div id="change_units" class="unitsdiv"></br></br></br>'
             row+='&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+response.data[0].book_id+'_remove" class="minus_button" style="width:25px;height:25px;margin: 0 auto;"  />'
             
             row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+response.data[0].book_id+'_units" class="units">'+cookies.productquantities[index].quantity+'</span>&nbsp;&nbsp;'
             row+='<img id="'+response.data[0].book_id+'_add" class="add_button" style="width:40px;height:24px;" onClick={addUnits}/></div>'
+            row+='</div>'
             
            // console.log(row)
             document.getElementById(book_id).innerHTML=row
@@ -197,6 +198,7 @@ function PlaceOrder() {
             <span onClick={GetDefaultAddress} id="changeAddressToDefault">&nbsp; Use Default Address</span>
           </div>
         </div>
+        
       
         
           <span id="products" ></span>

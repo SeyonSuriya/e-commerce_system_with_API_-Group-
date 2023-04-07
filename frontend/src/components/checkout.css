@@ -29,7 +29,7 @@
 }
 
 #products{
-    width: 60%;
+    width: 100%;
 }
 
 #changeAddressToDefault{
@@ -43,10 +43,12 @@
 
 .product_image{
     float: left;
+    
 }
 
 .productInfo{
-    width: 60%;
+    width: 40%;
+    height: 100%;
 }
 
 #total{
@@ -78,4 +80,17 @@ h1{
 
 .ordsum{
     margin-top: 1cm;
+}
+.product{
+    background-color: white;
+    width: 60%;
+    height: 200px;
+}
+
+.booktitle{
+    font-weight: bold;
+}
+
+.price{
+    font-weight: bold;
 }
