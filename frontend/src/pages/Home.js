@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import "./homestyle.css";
 import { Link } from 'react-router-dom';
+import video03 from '../assests/video 02.mp4';
 // import { Slide } from 'react-slideshow-image';
 //import 'react-slideshow-image/dist/styles.css';
 
@@ -21,20 +22,6 @@ const divStyle = {
   backgroundSize: 'cover',
   height: '570px'
 }
-const slideImages = [
-  {
-    url: '',
-   
-  },
-  {
-    url: '',
-    
-  },
-  {
-    url: '',
-    
-  },
-];
 
 
 
@@ -46,20 +33,12 @@ export default function Home() {
       <Header/>
 
       <div>
-      <div className="slide-container">
-        {/* <Slide>
-         {slideImages.map((slideImage, index)=> (
-            <div key={index}>
-              <div style={{ ...divStyle, 'backgroundImage': `url(${slideImage.url})` }}>
-                <button>Explore Here</button>
-              </div>
-            </div>
-          ))} 
-        </Slide> */}
+      <div className="video-container">
+      <video src={video03} autoPlay loop muted/>
       </div>
       </div>
 
-      <h3>Recommanded Books</h3>
+      <h3>Recommended Books</h3>
       <div className='topcontain'>
       <div className='items'>
       <Link>
