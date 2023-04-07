@@ -1,6 +1,7 @@
 body{
     overflow-x: hidden;
-}.containerfooter{
+}
+.containerfooter{
     height: 300px;
     background-color: #034748;
     margin-top: 20px;
