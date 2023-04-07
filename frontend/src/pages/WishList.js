@@ -115,7 +115,7 @@ export default function WishList() {
       
       
           
-          <h1>Wishlist</h1>
+          <div class="head"><h1>Wishlist</h1></div>
 
           <div class='productsdiv'>
             <span id='products'></span>

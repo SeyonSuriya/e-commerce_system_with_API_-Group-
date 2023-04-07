@@ -78,3 +78,8 @@
     font-family:monospace;
 }
 
+.head{
+    background-color: #6B7AA1;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
