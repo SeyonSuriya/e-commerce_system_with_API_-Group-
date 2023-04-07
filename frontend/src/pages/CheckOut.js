@@ -69,6 +69,7 @@ export default function CheckOut() {
           ).then(response=>{
             console.log()
             cookies.pricearray[index]=response.data[0].book_price
+            row+='<div class="maindiv">'
             row+='<img  class="product_image" id="'+response.data[0].book_id+'_image" style="width:20%;height:100%;">'
             row+='<div class="productInfo">'
             row+=response.data[0].book_title+'<br/>'
@@ -80,6 +81,7 @@ export default function CheckOut() {
             
             row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+response.data[0].book_id+'_units" class="units">'+cookies.productquantities[index].quantity+'</span>&nbsp;&nbsp;'
             row+='<img id="'+response.data[0].book_id+'_add" class="add_button" style="width:40px;height:24px;" onClick={addUnits}/></div>'
+            row+='</div>'
             
            // console.log(row)
             document.getElementById(book_id).innerHTML=row
@@ -197,6 +199,7 @@ function PlaceOrder() {
             <span onClick={GetDefaultAddress} id="changeAddressToDefault">&nbsp; Use Default Address</span>
           </div>
         </div>
+        
       
         
           <span id="products" ></span>

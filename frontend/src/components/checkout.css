@@ -29,7 +29,7 @@
 }
 
 #products{
-    width: 60%;
+    width: 100%;
 }
 
 #changeAddressToDefault{
@@ -78,4 +78,8 @@ h1{
 
 .ordsum{
     margin-top: 1cm;
+}
+
+.maindiv{
+    width: 100%;
 }
