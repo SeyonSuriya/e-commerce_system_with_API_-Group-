@@ -110,10 +110,10 @@ const Header = () => {
           </div>
           <div className='menu-links' >
             <div className='d-flex'>
-                <a className="pageslink" href="/">Home</a>
-                <a className="pageslink" href="/store">Store</a>
-                <a className="pageslink" href="/aboutUs">About Us</a>
-                <a className="pageslink" href="/contactUs">Contact</a>
+                <a className="pageslink" href="/">HOME</a>
+                <a className="pageslink" href="/store">STORE</a>
+                <a className="pageslink" href="/aboutUs">ABOUT US</a>
+                <a className="pageslink" href="/contactUs">CONTACT</a>
             </div>
             </div>
         </div>
