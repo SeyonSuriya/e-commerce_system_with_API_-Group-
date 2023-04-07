@@ -35,7 +35,8 @@ export default function Home() {
 
       <div>
       <div className="video-container">
-      <video src={video03} autoPlay loop muted/>
+         <div classname='overLay'>
+      <video src={video03} autoPlay loop muted/></div>
          <div className="video-content">
         
                 <div className="input-group">
