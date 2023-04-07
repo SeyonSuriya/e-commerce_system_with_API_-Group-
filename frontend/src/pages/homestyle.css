@@ -12,6 +12,15 @@
     height:40%;
     object-fit:contain;
 }
+.video-content{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:30em;
+    left:30em;
+    display:flex;
+    flex-direction: column;
+}
 .imgs{
     width: 230px;
     height: 230px;

@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import {BsSearch} from 'react-icons/bs';
 import "./homestyle.css";
 import { Link } from 'react-router-dom';
 import video03 from '../assests/video 02.mp4';
@@ -36,7 +37,19 @@ export default function Home() {
       <div className="video-container">
       <video src={video03} autoPlay loop muted/>
          <div className="video-content">
+        
+                <div className="input-group">
+                <input type="text" 
+                className="form-control " 
+                placeholder="Search Product Here..." 
+                aria-label="Search Product Here..." 
+                aria-describedby="basic-addon2" />
 
+                <span className="input-group-text" id="basic-addon2">
+                 <BsSearch className='searchicon'/>
+                </span>
+                </div>
+              
          </div>
       </div>
       </div>
