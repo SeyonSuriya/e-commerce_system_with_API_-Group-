@@ -1,29 +1,40 @@
 
-.signup_container{   
+.addresschange_container{   
     height:auto;
-    width: 70%;
+    width: 50%;
     border: 3px solid #11324d;
     display: flex;
     border-radius:5px;
     align-items:center;
-    margin-left: 185px;
+    margin-left: 385px;
     margin-top: 30px;
 }
 
-.signup-image img{
+.addresschange-image{
     background-size: cover;
-    width:100%;
-    height: 594px; 
+    width:20%;
+    height: 594px;
+    color:white; 
+    background-color: #11324d;
+    text-decoration: none;
+    text-align: center;
+   
 }
 
-.signup_content{
+.addresschange-image h1{
+    color: aliceblue;
+    text-decoration: none;
+    text-align: center;
+}
+
+.addresschange_content{
     background-color: aliceblue;
     height:594px;
-    width:60%;
+    width:80%;
     margin-left: auto;
 }
 
-.signup_content_row01 h1{
+.addresschange_content_row01 h1{
     margin-top: 0px;
     font-weight: bold;
     text-align: center;
@@ -31,13 +42,13 @@
     text-decoration: none;
 }
 
-.signup_content_row02{
+.addresschange_content_row02{
     align-items:flex;
     display: flex;
     justify-content: space-between;
     flex-flow:column;   
 }
-.signup_placeholder01{
+.addresschange_placeholder01{
     padding: 1rem 25px 1rem 25px;
     margin-top: 2px;
     border: 1.7px solid black;
@@ -47,7 +58,7 @@
    background-color: rgba(226, 224, 224, 0.911);
 
 }
-.signup_placeholder02{
+.addresschange_placeholder02{
     border: 1.7px solid black;
     padding: 1rem 25px 1rem 25px;
    margin-top: 2px;
@@ -60,11 +71,11 @@
 
 }
 
-.signup_content_row03{
+.addresschange_content_row03{
    text-align: center;
 }
 
-.signup_button{
+.addresschange_button{
     background-color: #11324d;
     color:white;
     display:inline-block;
@@ -80,18 +91,11 @@
     border-radius: 1em ; 
    
 }
-.signup_button:hover{
+.addresschange_button:hover{
     background-color: rgb(255, 94, 0);
     border-radius: 1em ;
 }
-#signup_p {
-    text-align: center;
-    margin-left: 7%;
-}
-#LoginPage{
-    text-align: center;
-    margin-left: 1%;
-}
+
 #error_message{
     color: red;
     

@@ -2,8 +2,8 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import Header from '../components/Header';
-import "../components/registerform.css"
-import LoginBackgroundimg03 from "../assests/Login Background img 03.jpg";
+import "../components/addresschange.css"
+import changeaddress from "../assests/changeaddress.png";
 import { useCookies } from 'react-cookie';
 
 export default function RegisterPage() {
@@ -23,10 +23,7 @@ export default function RegisterPage() {
  
   
      
-    
-   
   
-
   function RemoveError(event) {
     document.getElementById('error_message').innerHTML="";
    // document.getElementById('passwordRequirements').innerHTML="";
@@ -92,6 +89,10 @@ if (firstname===' ') {
         postalcode,
         
       };
+    
+   
+  
+
       //setCookie('email', email, { path: '/emailverification' });
       axios.post(
         'http://localhost:8080/ecommerce/register',
@@ -115,70 +116,68 @@ if (firstname===' ') {
       
 
 return (
-<div>
-<Header/>
+
   <section>
-  <div className="signup_container">
+  <div className="addresschange_container">
   
-        <div className="signup-image">
-          <img src={LoginBackgroundimg03} alt=""/>   
+        <div className ="addresschange-image">
+        <h1><b></b></h1>
         </div>
     
-        <div className="signup_content">
-            <div className="signup_content_row01">
-                <h1>SignUp</h1>
+        <div className="addresschange_content">
+            <div className="addresschange_content_row01">
+                <h1>Change Address</h1>
                 <b><span id='error_message'></span></b>
             </div>
             
 
        
-          <div className="signup_content_row02">
+          <div className="addresschange_content_row02">
           
 
-              <form id='form' className="signup_form01" onSubmit={handleSubmit}>
+              <form id='form' className="addresschange_form01" onSubmit={handleSubmit}>
     
                   <br/>
-                  <input type='text'  placeholder="First Name" className="signup_placeholder01"  onClick={(event)=>RemoveError('firstnameError')}  onChange={(e)=>setFirstName(e.target.value) }></input>
+                  <input type='text'  placeholder="First Name" className="addresschange_placeholder01"  onClick={(event)=>RemoveError('firstnameError')}  onChange={(e)=>setFirstName(e.target.value) }></input>
                 
-                  <input type='text'  placeholder="Second Name" className="signup_placeholder02" onClick={(event)=>RemoveError('secondnameError')} onChange={(e)=>setSecondName(e.target.value)}></input>
-                  <br/> <br/>
+                  <input type='text'  placeholder="Second Name" className="addresschange_placeholder02" onClick={(event)=>RemoveError('secondnameError')} onChange={(e)=>setSecondName(e.target.value)}></input>
 
-                  <input type='text' placeholder="Mobile Number" max="9999999999" className='signup_placeholder02' maxLength='10' onClick={(event)=>RemoveError('mobilenumberError')} onChange={(e)=>setMobile(e.target.value)}></input>
         
                   
                   <br/> <br/>
                   
-                  <input type='text' placeholder="Address Line 01" className="signup_placeholder01"  onClick={(event)=>RemoveError('addressline1Error')} onChange={(e)=>setAddressLine1(e.target.value)}></input>
+                  <input type='text' placeholder="Address Line 01" className="addresschange_placeholder01"  onClick={(event)=>RemoveError('addressline1Error')} onChange={(e)=>setAddressLine1(e.target.value)}></input>
                  
-                  <input type='text' placeholder="Address Line 02" className="signup_placeholder02"  onClick={(event)=>RemoveError('addressline2Error')} onChange={(e)=>setAddressLine2(e.target.value)}></input>
+                  <input type='text' placeholder="Address Line 02" className="addresschange_placeholder02"  onClick={(event)=>RemoveError('addressline2Error')} onChange={(e)=>setAddressLine2(e.target.value)}></input>
                   <br/> <br/>
 
                 
                 
                   
-                  <input type='text' placeholder="District" className="signup_placeholder01"  onClick={(event)=>RemoveError('districtError')} onChange={(e)=>setDistrict(e.target.value)}></input>
+                  <input type='text' placeholder="District" className="addresschange_placeholder01"  onClick={(event)=>RemoveError('districtError')} onChange={(e)=>setDistrict(e.target.value)}></input>
                   
-                  <input type='text'placeholder="Province" className='signup_placeholder02'  onClick={(event)=>RemoveError('provinceError')} onChange={(e)=>setProvince(e.target.value)}></input>
+                  <input type='text'placeholder="Province" className='addresschange_placeholder02'  onClick={(event)=>RemoveError('provinceError')} onChange={(e)=>setProvince(e.target.value)}></input>
                      
                   <br/> <br/>
 
-                  <input type='text' placeholder="Postal Code" className='signup_placeholder01'  onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
+                  <input type='text' placeholder="Postal Code" className='addresschange_placeholder01'  onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
                             
-                  
+                  <br/> <br/>
+
+                  <input type='text' placeholder="Mobile Number" max="9999999999" className='addresschange_placeholder01' maxLength='10' onClick={(event)=>RemoveError('mobilenumberError')} onChange={(e)=>setMobile(e.target.value)}></input>
+
+                  <br/> <br/>
                  
                   
                   
 
-            <div className="signup_content_row03">
+            <div className="addresschange_content_row03">
                   <span id='errorMessage' className='ErrorMessage'></span>  
                    <br/>
-                  <button type='submit' className="signup_button">Sign up</button>
+                  <button type='submit' className="addresschange_button">Change Your Address</button>
                   <br/>
                   <a  href='/emailverification' id="EmailVerification" > </a>
-                <p id="signup_p">Already have an account ?  <br/>
-                  
-                  <a  style={{textDecoration:'none'}} href='/login'  id = "LoginPage" >  Click Here to Login</a>
-                  </p></div>
+                 </div>
                   </form>
             
             </div>
@@ -188,7 +187,7 @@ return (
   </div>
 
   </section>
-  </div>
+  
     
 )
 }
