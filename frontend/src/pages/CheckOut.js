@@ -69,8 +69,7 @@ export default function CheckOut() {
           ).then(response=>{
             console.log()
             cookies.pricearray[index]=response.data[0].book_price
-            row+='<div class="maindiv">'
-            row+='<img  class="product_image" id="'+response.data[0].book_id+'_image" style="width:20%;height:100%;">'
+            row+='<img  class="product_image"  id="'+response.data[0].book_id+'_image" style="width:20%;height:70%;">'
             row+='<div class="productInfo">'
             row+=response.data[0].book_title+'<br/>'
             row+='By '+response.data[0].author+'<br/>'

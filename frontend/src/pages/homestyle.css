@@ -1,9 +1,25 @@
+*{
+    margin:0;
+    padding:0;
+
+}
 .homecontainer{
-    margin-left: 0px;
-    padding-left: 0px;
-    margin-left: 10px;
-    margin-top: 10px;
-    
+    width:100%;
+    height:100vh;   
+}
+.video-container video{
+    width:100%;
+    height:40%;
+    object-fit:contain;
+}
+.video-content{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:30em;
+    left:30em;
+    display:flex;
+    flex-direction: column;
 }
 .imgs{
     width: 230px;
