@@ -12,7 +12,7 @@ import Store from './pages/Store';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import EmailVerification from './pages/EmailVerification';
-
+import AddressChange from './pages/AddressChange';
 import Product from './pages/Product';
 import VerifyEmail from './pages/VerifyEmail';
 import AdminLoginPage from './pages/AdminLoginPage';
@@ -46,6 +46,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />}/>
         <Route path="/resetpassword" element={<Reset />}/>
         <Route path="/orderplaced" element={<OrderPlaced />}/>
+        <Route path="/changeaddress" element={<AddressChange />}/>
        
       </Routes>
     </BrowserRouter>

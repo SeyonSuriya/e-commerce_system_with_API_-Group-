@@ -5,6 +5,7 @@ import {BsSearch} from 'react-icons/bs'
 import { useCookies } from 'react-cookie';
 import {useState} from "react";
 import "./Header.css";
+import BookMart03 from '../assests/Book Mart 03.png';
 //import { NavLink,Link } from 'react-router-dom';
 const Header = () => {
 
@@ -27,97 +28,65 @@ const Header = () => {
 
 
 
+
   return (
-    <>
-      <header className='header-top-strip' >
-        
-          <div className='container-xxl'>
-            <div className='row'>
-              <div className='col-6'>
-                <p className='text-whitee mb-0'>
-                Easy shopping with Book Mart</p>
-              </div>
-              <div className='col-6'>
-                <p className='text-end text-white '>
-                Hotline : +94704341138
-              
-                </p>
-              </div>
-            </div>
-          </div>
-      </header>
-      <header className='header-upper'>
+
+  <section>
+     <header className='header-upper'>
           <div className='container'>
-            <div>
-              <h4 className='topicweb'>Book Mart</h4>
-            </div>
-            <div className='row'>
+           <p>Easy Shopping with Book Mart</p>
+           
               
-              <div className='col'>
-                <div className="input-group">
-                <input type="text" 
-                className="form-control " 
-                placeholder="Search Product Here..." 
-                aria-label="Search Product Here..." 
-                aria-describedby="basic-addon2" />
-
-                <span className="input-group-text" id="basic-addon2">
-                 <BsSearch className='searchicon'/>
-                </span>
-                </div>
-              </div>
-              <div className='collinks'>
-                <div className='headerlinks'>
-                   
-                  
-                   
+     
+              
+          <div className='headerlinks'>
+                                                     
                     
-                      <a className='icontag' href="/wishlist">
+                      <a className='icontag01' href="/wishlist" >
                       <img src="images/wishlist.svg" alt="wishlist" />
-                      <p>
-                       Favourite <br /> wishlist
-                      </p>
                       </a>
-                      
-                   
-                      <a className='icontag' href="/login">
+                                                                               
+                      <a className='icontag02' href="/login" >
                       <img src="images/user.svg" alt="user" />
-                     
-                        
-                       <span className='login' id='login'></span> 
-                     
-                      </a>
-                   <div>
-                      <a className='icontag' href="/cart" >
+                      <span className='login' id='login'>Log in</span> 
+                      </a> 
+
+                      <a className='icontag03' href="/cart" >
                       <img src="images/cart.svg" alt="cart" />
-                      </a>
-                   </div>
-                   <div>
-                      <span id='username' onLoad={GetUserName()} ></span>
-                  </div> 
+                      </a> 
+                                                                                                      
+                          <div>
+                              <span id='username' onLoad={GetUserName()} ></span>
+                          </div> 
 
                 </div>
-              </div>
-            </div>
+           
+           
           </div>
-      </header>
+          </header>
+
       <header className='header-bottom'>
        <div className='contain-bottom'>
         <div className='menu-bottom'>
-          <div>
+          
+          <div className="bookmartlogo">
+            <a href='/'>
+            <img src={BookMart03}/>
+            </a>
+            </div>
           <div className="dropdown">
                  <button className="btn btn-secondary dropdown-toggle bg-transparent" 
                   type="button" data-bs-toggle="dropdown" 
                    aria-expanded="false">
-                    Shop Categories
+                    Categories
                       </button>
                       
   <ul className="dropdown-menu">
-    <li><a className="dropdown-item" href="Store?query=Arts&Music">Arts & Music</a></li>
+    <li><a className="dropdown-item" href="Store?query=Music">Music</a></li>
     <li><a className="dropdown-item" href="Store?query=Biographs">Biographs</a></li>
     <li><a className="dropdown-item" href="Store?query=Business">Business</a></li>
     <li><a className="dropdown-item" href="Store?query=Comics">Comics</a></li>
-    <li><a className="dropdown-item" href="Store?query=Computer&Tech">Computer & Tech</a></li>
+    <li><a className="dropdown-item" href="Store?query=Computer">Computer & Tech</a></li>
     <li><a className="dropdown-item" href="Store?query=Cooking">Cooking</a></li>
     <li><a className="dropdown-item" href="Store?query=Education">Education</a></li>
     <li><a className="dropdown-item" href="Store?query=Entertainment">Entertainment</a></li>
@@ -138,25 +107,27 @@ const Header = () => {
     <li><a className="dropdown-item" href="Store?query=TrueCrime">True Crime</a></li>
     <li><a className="dropdown-item" href="Store?query=Westerns">Westerns</a></li>
   </ul>
-</div>
+
           </div>
           <div className='menu-links' >
-            <div className='d-flexx'>
-                <a className="pageslink" href="/">Home</a>
-                <a className="pageslink" href="/store">Store</a>
-                <a className="pageslink" href="/aboutUs">About Us</a>
-                <a className="pageslink" href="/contactUs">Contact</a>
+            <div className='d-flex'>
+                <a className="pageslink" href="/">HOME</a>
+                <a className="pageslink" href="/store?query=">STORE</a>
+                <a className="pageslink" href="/aboutUs">ABOUT US</a>
+                <a className="pageslink" href="/contactUs">CONTACT</a>
             </div>
-          </div>
+            </div>
         </div>
        </div>
       </header>
      
     
 
+
+
     
       
-    </>
+</section>
   )
 }
 export default Header;

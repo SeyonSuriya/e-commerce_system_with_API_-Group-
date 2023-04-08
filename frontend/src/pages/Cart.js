@@ -11,10 +11,10 @@ import "./cart.css";
 export default function Cart() {
   const [cookies, setCookie] = useCookies(['user']);
   setCookie('pricearray', [], { path: '/cart'});
+  if (cookies.userid<1) {
+    window.location.href = "/login";
+  }
   
-
-  
-
 
   // Getting Product Info and creating a row with product data
 
@@ -284,7 +284,7 @@ ShowProductsInCart()
           <td className='left'>
             <div className='summarydiv'>
               <p id="summary"><b>Summary</b></p><br></br>
-              <p className="total">Total :US $ <span id="Total"></span></p><br></br><br></br>
+              <p className="total">Total :US $ <span className="Total" id="Total"></span></p><br></br><br></br>
               <div className="checkout_button"><button id='checkout' onClick={CheckSelections}><b>Checkout</b></button></div>
    
               <a href='/checkout' id="Checkoutpage" > </a>

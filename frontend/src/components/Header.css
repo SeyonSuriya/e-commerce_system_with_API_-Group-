@@ -1,4 +1,178 @@
-#username{
-    font-size: medium;
-    color: aqua;
+
+    
+.container p{
+font-size: 1.5rem;
+font-weight: bold;
+margin: 0;
+color:white;
+padding-right: 50%;
+white-space: nowrap;
+margin-top: 0.7rem;
+  
 }
+
+.header-upper{
+    background-color: #034748;
+    padding: 6px;
+    display:flex;
+    margin-bottom: auto;
+    justify-content: space-between;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.1);  
+}
+
+.headerlinks{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+   
+}
+.headerlinks a {
+    margin-left: 8%;
+
+}
+
+.icontag01, .icontag02, .icontag03 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    color: aliceblue;
+    
+}
+
+.icontag01 img, .icontag02 img, .icontag03 img {
+    width: 28px;
+    height: 25px;
+    margin-left: 0%;
+    
+    
+}
+.contain-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    
+  }
+  .bookmartlogo {
+    display: flex;
+    align-items: center;
+    padding-top:3.2em; 
+    
+  }
+
+  .bookmartlogo img {
+    height: 7.2em;;
+    max-width:fit-content;
+    padding-left: 1rem;
+    width:300%;
+    margin-bottom: 0;  
+   
+  }
+  
+.header-bottom{
+    width:100%;
+    height:6em;
+    background-color: white;
+}
+
+.btn.btn-secondary.dropdown-toggle.bg-transparent {
+    color: black;
+ }
+
+ .btn.btn-secondary.dropdown-toggle.bg-transparent:hover{
+    color: gray;
+
+ }
+ .dropdown {
+    position: relative;
+    display:flex;
+    padding-left: 5rem;
+    margin-left: 1rem;
+}
+  .dropdown button {
+    background-color: transparent;
+    border: none;
+    font-size:2rem;
+    font-weight: bold;
+    cursor: pointer;
+
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left:7%;
+    display: none;
+    margin-top: 5px;
+    padding: 12px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+    max-height: 200px;
+    overflow-y:scroll;
+
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    color:gray;
+  }
+
+ .dropdown-toggle{
+    display: inline-block;
+    vertical-align:middle;
+    padding-right: 10%;
+    font-size: 18px;
+    padding-top: 2.4rem;
+    font-weight: bold;
+ }
+ 
+ .dropdown-menu li {
+    margin-bottom: 7px;
+  }
+
+  .dropdown-menu a {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  
+.menu-links {
+    display: flex;
+}
+
+.d-flex{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    white-space: nowrap;
+    flex-direction: row;
+}
+
+.menu-links a {
+    color: black;
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 17px;
+    padding-top: 4rem;
+    font-weight: bold;
+}
+.menu-links a:hover{
+    color: gray;
+} 
+
+.pageslink {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 0;
+    margin-right:0;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.5rem;
+  
+  }
+  .pageslink:hover {
+    color: #666;
+    text-decoration: none;
+  }
+  #username{
+    color: aliceblue;
+  }

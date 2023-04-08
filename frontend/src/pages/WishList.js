@@ -9,6 +9,13 @@ export default function WishList() {
   
   const [cookies, setCookie] = useCookies(['user']);
   var wishlist=[]
+  
+
+  if (cookies.userid<1) {
+    window.location.href = "/login";
+  }
+
+
   axios.post(
     'http://localhost:8080/ecommerce/wishes?userid='+cookies.userid,
     ).then(response=>{
@@ -16,7 +23,7 @@ export default function WishList() {
       setCookie('wishlist', response.data, { path: '/wishlist'});
       var products=' '
       for (let index = 0; index < cookies.wishlist.length; index++) {
-        products+='<div class="product">'
+        products+='<div className={Style["product"]}>'
         products+='<span id="'+ cookies.wishlist[index].item_id+'"></span>'
         products+='</div>'
       //  console.log(cookies.wishlist[index].item_id)
@@ -39,18 +46,23 @@ export default function WishList() {
             var row=' '
             row +='<div class="product_img_div"><img class="productimg" id="'+response.data[0].book_id+'_image" style="width:100%;height:100%;"/></div>'
             row+='<div class="wishlistdiv">'
-            row+='<button id="'+response.data[0].book_id+'_remove">Remove</button>'
-            row+='<button id="'+response.data[0].book_id+'_addtocart">Add to cart</button>'
+            row+='<br><br><br><button class="remove_button" id="'+response.data[0].book_id+'_remove">Remove</button><br><br>'
+            row+='<button class="addtocart_button" id="'+response.data[0].book_id+'_addtocart">Add to cart</button>'
             
             row+='</div>'
             row +='<div class="product_info">'
-            row +=response.data[0].book_title+'</br>'
-            row +='By '+response.data[0].author+'</br>'
-            row +=response.data[0].long_description+'</br>'
-            row +='Price : US $'+response.data[0].book_price+'</br>'
+            row +='<p class="title">'
+            row +=response.data[0].book_title+'</p>'
+            row +='By '+response.data[0].author+'</br></br>'
+            row+='<p class="description">'
+            row +=response.data[0].long_description+'</p></br>'
+            row +='<p class="price">'
+            row +='Price : US $'+response.data[0].book_price+'</p></br>'
             row+='</div>'
-            
             row+='</br>'
+
+
+
          
           //console.log(response.data[0].book_id)
           document.getElementById(response.data[0].book_id).innerHTML=row
@@ -110,17 +122,14 @@ export default function WishList() {
       
       
           
-          <h1>Wishlist</h1>
-          <div className='productsdiv'>
-            <span id='products'></span>
-          
+          <div class="head"><h1>Wishlist</h1></div>
 
+          <div class='productsdiv'>
+            <span id='products'></span>
           </div>
+          &nbsp;
     
-    
-          <br/><br/><br/><br/><br/><br/><br/>
-          <br/><br/><br/><br/><br/>
-          <br/><br/><br/><br/><br/><br/><br/>
+          
           <a href='/wishlist' id="wishlist" > </a>
           <Footer/>
         </div>
