@@ -53,8 +53,10 @@ export default function Product() {
         document.getElementById('book_category').innerHTML=response.data[0].category
         document.getElementById('book_price').innerHTML='Price: $'+response.data[0].book_price
         if (!response.data[0].num_of_units>0) {
-          document.getElementById('change_units').innerHTML="Out of Stock"
+          document.getElementById('change_units').innerHTML="Out of Stock</br>"
+          document.getElementById('cartbuttondiv').innerHTML='</br></br></br>'
         }
+        
 
       }
        )
@@ -137,7 +139,10 @@ export default function Product() {
                   <img id='wish_list_image' className='wish_list_img' src={require("../Images/heart1.png")} alt='product' onClick={WishListHandler}/><br/>
                   <div className="popup">
                   <span className="popuptext" id="myPopup"></span>
+                  <span id='cartbuttondiv'>
                   <button id='CartButton' onClick={AddtoCart}>Add to Cart</button>
+
+                  </span>
                   </div>
               </div>
                 
