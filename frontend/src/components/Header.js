@@ -28,6 +28,7 @@ const Header = () => {
 
 
 
+
   return (
 
   <section>
@@ -41,13 +42,13 @@ const Header = () => {
           <div className='headerlinks'>
                                                      
                     
-                      <a className='icontag01' href="/wishlist">
+                      <a className='icontag01' href="/wishlist" >
                       <img src="images/wishlist.svg" alt="wishlist" />
                       </a>
                                                                                
-                      <a className='icontag02' href="/login">
+                      <a className='icontag02' href="/login" >
                       <img src="images/user.svg" alt="user" />
-                      <span className='login' id='login'></span> 
+                      <span className='login' id='login'>Log in</span> 
                       </a> 
 
                       <a className='icontag03' href="/cart" >
@@ -69,7 +70,7 @@ const Header = () => {
         <div className='menu-bottom'>
           
           <div className="bookmartlogo">
-            <a href='/home'>
+            <a href='/'>
             <img src={BookMart03}/>
             </a>
             </div>
@@ -81,11 +82,11 @@ const Header = () => {
                       </button>
                       
   <ul className="dropdown-menu">
-    <li><a className="dropdown-item" href="Store?query=Arts&Music">Arts & Music</a></li>
+    <li><a className="dropdown-item" href="Store?query=Music">Music</a></li>
     <li><a className="dropdown-item" href="Store?query=Biographs">Biographs</a></li>
     <li><a className="dropdown-item" href="Store?query=Business">Business</a></li>
     <li><a className="dropdown-item" href="Store?query=Comics">Comics</a></li>
-    <li><a className="dropdown-item" href="Store?query=Computer&Tech">Computer & Tech</a></li>
+    <li><a className="dropdown-item" href="Store?query=Computer">Computer & Tech</a></li>
     <li><a className="dropdown-item" href="Store?query=Cooking">Cooking</a></li>
     <li><a className="dropdown-item" href="Store?query=Education">Education</a></li>
     <li><a className="dropdown-item" href="Store?query=Entertainment">Entertainment</a></li>
@@ -111,7 +112,7 @@ const Header = () => {
           <div className='menu-links' >
             <div className='d-flex'>
                 <a className="pageslink" href="/">HOME</a>
-                <a className="pageslink" href="/store">STORE</a>
+                <a className="pageslink" href="/store?query=">STORE</a>
                 <a className="pageslink" href="/aboutUs">ABOUT US</a>
                 <a className="pageslink" href="/contactUs">CONTACT</a>
             </div>
@@ -121,6 +122,8 @@ const Header = () => {
       </header>
      
     
+
+
 
     
       

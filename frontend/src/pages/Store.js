@@ -23,14 +23,17 @@ export default function Store() {
           if ((index%4===0)&(index!==0)) {
             allproducts+='</br>'
           }
-          allproducts+='<div class="product">'
-          allproducts+='<img class="productImg" id="'+products[index].book_id+'_image" alt="product Image" /></br>'
-          allproducts+='<span class="book_title">'+products[index].book_title+'</span></br>'
-          allproducts+='<span class="book_price">'+products[index].book_price+'</span></br>'
+          allproducts+='<div class="product" >'
+          allproducts+='<div id="product_'+products[index].book_id+'"><img class="productImg" id="'+products[index].book_id+'_image" alt="product Image" /></div>'
+          allproducts+='<div class="NamePrice"><span class="book_title">'+products[index].book_title+'</span></br>'
+          allproducts+='<span class="book_price"><p class="price">US $'+products[index].book_price+'</p></span></div>'
           allproducts+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+products[index].book_id+'_wish_image" style="width:24px;height:24px; "  />&nbsp;&nbsp;'
-          allproducts+='<button id="'+products[index].book_id+'_cart_button">Add to Cart</button>'
+          if (products[index].num_of_units>0) {
+            allproducts+='<button class="Addtocart" id="'+products[index].book_id+'_cart_button">Add to Cart</button>'
+          }else{
+            allproducts+='Out of Stock'
+          }
           allproducts+='</div>'
-  
         }
         document.getElementById('Addproducts').innerHTML=allproducts
         for (let index = 0; index < products.length; index++) {
@@ -41,7 +44,9 @@ export default function Store() {
          changeWishListImage(products[index].book_id)
          document.getElementById(products[index].book_id+'_cart_button').onclick = function () {
           AddtoCart(products[index].book_id)
-            
+        }
+        document.getElementById('product_'+products[index].book_id).onclick = function () {
+          window.location.href = "/product?bookid="+products[index].book_id;
         }
       }
     }
@@ -115,7 +120,7 @@ export default function Store() {
 
   return (
     
-     <div className='MainDiv'>
+     <div className='MainDiv' >
           <Header/>
       
      <div className='productsDiv'>
@@ -125,7 +130,7 @@ export default function Store() {
     <br/> <br/> <br/> <br/> <br/> <br/> 
     <br/> <br/> <br/> <br/> <br/> <br/>
     <br/> <br/> <br/> <br/> <br/> <br/>
-     <Footer/>
+    
         </div>
         
       )

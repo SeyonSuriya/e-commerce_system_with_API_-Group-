@@ -24,9 +24,18 @@ export default function CheckOut() {
             Address+=response.data[0].postalCode
            // console.log(Address)
         document.getElementById('address').innerHTML=Address
+      
         //console.log(cookies.userid)
        }
         )
+        setCookie('newaddress', ' ', { path: '/checkout'});
+
+      }
+      function ChangeNewAddress() {
+        if (cookies.newaddress!==' ') {
+          document.getElementById('address').innerHTML=cookies.newaddress
+        }
+        
       }
        
         function ShowSelectedProducts() {
@@ -181,7 +190,7 @@ function PlaceOrder() {
           <div className='ordsum'>
             <div className='orderSummayDiv'>
               <h1>Order Summary</h1>
-              <p id='total'>Total $ <span id="Total"></span></p><br></br>
+              <p id='total'>&ensp;&ensp;&ensp;Total $ <span id="Total"></span></p><br></br><br></br>
               <div className='place_order_button'><button className='po_button' onClick={PlaceOrder}><b>Place Order</b></button></div>
             </div>
           </div>
@@ -189,13 +198,16 @@ function PlaceOrder() {
           <h3>Address</h3>
           <div className='address'>
           <p id="address"  ></p>
-          <script>{GetDefaultAddress()}</script>
+          <script>{GetDefaultAddress}</script>
+          <script>{ChangeNewAddress}</script>
+
+         
           </div>
          
           <div className='changeAdressDiv'>
           <br/>
             <a href='/changeaddress'>+ Add a new Address</a><br/>
-            <span onClick={GetDefaultAddress} id="changeAddressToDefault">&nbsp; Use Default Address</span>
+            <span  id="changeAddressToDefault">&nbsp; <button onClick={GetDefaultAddress}>Use Default Address</button></span>
           </div>
         </div>
         

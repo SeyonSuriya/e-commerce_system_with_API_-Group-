@@ -6,6 +6,7 @@
 .homecontainer{
     width:100%;
     height:100vh;   
+    
 }
 .video-container video{
     width:100%;
@@ -45,30 +46,106 @@
     margin-bottom: 0.2rem;
     margin-top: 1rem;
     height:3rem;
-    background-color: #034748;
-}
-.imgs{
-    width: 230px;
-    height: 230px;
     
 }
-.items{
-    margin-left: 30px;
-    margin-top: 20px;
-    border: 1px solid black;
-    padding: 10px;
-    width: 252px;
-    
-    
+.latest-name{
+font-family: gill Sans MT;
+font-size: 3.5em;
 }
-.topcontain{
-    display: flex;
-    margin-left: 35px;
-    
+
+.btn.btn-secondary.dropdown01-toggle.bg-transparent {
+    color: black;
+   text-align: center;
+   font-size: 20px;
 }
-Link{
-    text-decoration: none;
+
+ .btn.btn-secondary.dropdown01-toggle.bg-transparent:hover{
+    color: gray;
+
+ }
+.dropdown01{
+    position:relative;
+    display:flex;
+    text-align: center; 
+    justify-content: center; 
 }
-Link:hover{
-    text-decoration: none;
+
+.dropdown01 button {
+    border-color:black;
+    font-size:2.5rem;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    padding: 4rem 10% 3rem 7%;  
+}
+.dropdown-menu {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left:7%;
+    display: none;
+    margin-top: 5px;
+    padding: 12px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+    max-height: 200px;
+    overflow-y:scroll;
+}
+
+.dropdown-toggle{
+    display: inline-block;
+    vertical-align:middle;
+    padding-right: 10%;
+    font-size: 18px;
+    padding-top: 2.4rem;
+    font-weight: bold;
+ }
+ .dropdown-menu li {
+    margin-bottom: 7px;
+  }
+
+.dropdown-menu a {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.col-md-3{
+    display:flex;
+    margin-bottom: 4px;
+}
+.card {
+    height: 100%;
+    text-align: center;
+    padding:24px;
+}
+.card-img-top{
+    width:100%;
+    height:300px;
+}
+.card-title{
+ margin-bottom: 0;
+ font-size: 20px;
+}
+.card-text{
+    font-weight: bold;
+    font-size: 24px;
+}
+.home-button{
+    outline: dark;
+    padding: 0.7rem 7% 0.7rem 7%;
+    font-weight: bold;
+    border:1.2px solid gray;
+    background-color:#034748;
+    color:white;
+}
+
+.Addtocartbut{
+    width: 60%;
+    background-color: rgba(246, 250, 6, 0.938);
+    border: none;
+    float: right;
+    text-align: center;
+    align-content: center;
+}
+
+.Addtocart:active{
+    background-color: rgb(238, 33, 33);
 }
