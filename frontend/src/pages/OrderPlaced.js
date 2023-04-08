@@ -17,10 +17,8 @@ export default function OrderPlaced(){
                 <h4>Thank you for your purchase!</h4>
                 <p >Your order ID is : <b id='order_text01'>order id</b></p>
                 <p >You will receive an confirmation email with details of your order</p>
-
-                <button type='submit' className="order_submit">Continue Shopping</button>
+                <a href='/'><button type='submit' className="order_submit">Continue Shopping</button></a>
             </div>
-
             
         </section>
 

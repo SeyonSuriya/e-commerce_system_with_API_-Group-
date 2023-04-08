@@ -49,7 +49,7 @@ export default function Home() {
             if ((index%5===0)&(index!==0)) {
               allproducts+='</br>'
             }
-            allproducts+='<div className="product" >'
+            allproducts+='&nbsp;&nbsp;&nbsp;<div id="product" >'
             allproducts+='<div id="product_'+products[index].book_id+'"><img class="productImg" id="'+products[index].book_id+'_image" alt="product Image" /></div>'
             allproducts+='<div class="NamePrice"><span class="book_title">'+products[index].book_title+'</span></br>'
             allproducts+='<span class="book_price">US $'+products[index].book_price+'</span></div>'
@@ -163,12 +163,15 @@ export default function Home() {
       </div>
 
       <h3>Recommended Books</h3>
-      <div className='productDiv'>
+      <div id='productDiv'>
       <span className="Addproducts" id='Addproducts'></span>
       </div>
 
-      &nbsp
-      
+      &nbsp;
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       
       <Footer/>
 

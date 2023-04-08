@@ -4,12 +4,12 @@
     float: right;
    
 }
-.product{
-    width: 21%;
+#product{
+    width: 20%;
     height: 320px;
-    
+    background-color: beige;
     padding-top: 15px;
-    padding-left: 38px;
+    padding-left: 20px;
     padding-right: 20px;
     margin: 5px;
     
@@ -29,7 +29,7 @@
 }
 
 .Addtocart{
-    width: 120px;
+    width: 90px;
     background-color: rgba(246, 250, 6, 0.938);
     border: none;
     align-content: center;

@@ -23,7 +23,7 @@ export default function Store() {
           if ((index%4===0)&(index!==0)) {
             allproducts+='</br>'
           }
-          allproducts+='<div  className={Style["product"]}>'
+          allproducts+='<div id="product">'
           allproducts+='<div id="product_'+products[index].book_id+'"><img class="productImg" id="'+products[index].book_id+'_image" alt="product Image" /></div>'
           allproducts+='<div class="NamePrice"><span class="book_title">'+products[index].book_title+'</span></br>'
           allproducts+='<span class="book_price"><p class="price">US $'+products[index].book_price+'</p></span></div>'
@@ -42,9 +42,10 @@ export default function Store() {
           WishListHandler(products[index].book_id)
          } 
          changeWishListImage(products[index].book_id)
+         if (products[index].num_of_units>0) {
          document.getElementById(products[index].book_id+'_cart_button').onclick = function () {
           AddtoCart(products[index].book_id)
-        }
+        }}
         document.getElementById('product_'+products[index].book_id).onclick = function () {
           window.location.href = "/product?bookid="+products[index].book_id;
         }
