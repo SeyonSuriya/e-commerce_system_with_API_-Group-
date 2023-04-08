@@ -135,15 +135,8 @@ export default function Home() {
     
    
    
+     
    
-   
-   
-
-
-
-
-
-
   return (
     <div className='homecontainer'>
       <Header/>
@@ -170,16 +163,20 @@ export default function Home() {
       </div>
       </div>
 
-<<<<<<< HEAD
-      <h1 className='latest-name'>Latest Products</h1><hr />
-      <div className="dropdown">
-                 <button className="btn btn-secondary dropdown-toggle bg-transparent" 
+      <div className='latest-line'>
+      <h1 className='latest-name'>
+      Latest Products</h1><hr />
+      </div>
+
+   <div className="dropdown01">
+                 <button className="btn btn-secondary dropdown01-toggle bg-transparent" 
                   type="button" data-bs-toggle="dropdown" 
                    aria-expanded="false">
                     Categories
                       </button>
                       
-  <ul className="dropdown-menu">
+   <ul class="dropdown-menu">
+  
     <li><a className="dropdown-item" href="Store?query=Arts&Music">Arts & Music</a></li>
     <li><a className="dropdown-item" href="Store?query=Biographs">Biographs</a></li>
     <li><a className="dropdown-item" href="Store?query=Business">Business</a></li>
@@ -206,65 +203,52 @@ export default function Home() {
     <li><a className="dropdown-item" href="Store?query=Westerns">Westerns</a></li>
   </ul>
 
-          </div>
+</div>
+
       
       
-      <div className='topcontain'>
-      <div className='card'>
+   <div className='col-md-3'>
+      <div className='card '>
       
       <img src={require("../Images/1.jpg")} className='card-img-top'/>
       <div class='card-body'>
          <h5 class='card-title'>Kite runner</h5>
          <p class='card-text'>$10.00</p>
-       <button className='home-button'>
-            Continue Shopping
+         <button className='home-button'>
+          Buy Now
+         </button>
+      </div>
+
+      <img src={require("../Images/1.jpg")} className='card-img-top'/>
+      <div class='card-body'>
+         <h5 class='card-title'>Kite runner</h5>
+         <p class='card-text'>$10.00</p>
+         <button className='home-button'>
+          Buy Now
+         </button>
+      </div>
+
+      <img src={require("../Images/1.jpg")} className='card-img-top'/>
+      <div class='card-body'>
+         <h5 class='card-title'>Kite runner</h5>
+         <p class='card-text'>$10.00</p>
+         <button className='home-button'>
+          Buy Now
+         </button>
+      </div>
+
+      <img src={require("../Images/1.jpg")} className='card-img-top'/>
+      <div class='card-body'>
+         <h5 class='card-title'>Kite runner</h5>
+         <p class='card-text'>$10.00</p>
+         <button className='home-button'>
+          Buy Now
          </button>
       </div>
  
       </div>
 
-      <div className='items'>
-      <Link>
-      <img src={require("../Images/2.jpg")} className='imgs'/>
-         <h3>$3.00</h3>
-         <h3>Kite Runner</h3>
-      </Link>
-         
-      </div>
-
-      <div className='items'>
-      <Link>
-      <img src={require("../Images/3.jpg")} className='imgs'/>
-         <h3>$3.00</h3>
-         <h3>Kite Runner</h3>
-      </Link>
-        
-      </div>
-
-      <div className='items'>
-      <Link>
-      <img src={require("../Images/4.jpg")} className='imgs'/>
-         <h3>$3.00</h3>
-         <h3>Kite Runner</h3>
-      </Link>
-         
-      </div>
-
-      <div className='items'>
-      <Link>
-      <img src={require("../Images/5.jpg")} className='imgs'/>
-         <h3>$3.00</h3>
-         <h3>Kite Runner</h3>
-      </Link>
-         
-      </div>
-
-      
-=======
-      <h3>Recommended Books</h3>
-      <div className='productsDiv'>fs
-      <span id='Addproducts'></span>
->>>>>>> dffc9b2deecdac11d4afa7aacad228f1f9433c99
+    
       </div>
       
       
