@@ -138,14 +138,45 @@ font-size: 3.5em;
 }
 
 .Addtocartbut{
-    width: 60%;
+    width: 10%;
     background-color: rgba(246, 250, 6, 0.938);
     border: none;
-    float: right;
+   
     text-align: center;
     align-content: center;
 }
 
 .Addtocart:active{
     background-color: rgb(238, 33, 33);
+}
+
+
+.productsDiv{
+    padding-top: 1cm;
+    width: 100px;
+    background-color: blue;
+    
+   
+}
+.product{
+    width: 21%;
+    height: 320px;
+    background-color:blue;
+    padding-top: 15px;
+    padding-left: 38px;
+    padding-right: 20px;
+    margin: 5px;
+    float: left;
+}
+.productImg{
+    width: 170px;
+    height: 190px;
+    background-color: blue;
+}
+.MainDiv{
+    background-color:rgb(238, 234, 234);
+    float: left;
+}
+.NamePrice{
+    height: 60px;
 }

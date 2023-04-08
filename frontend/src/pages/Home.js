@@ -49,7 +49,7 @@ export default function Home() {
             if ((index%5===0)&(index!==0)) {
               allproducts+='</br>'
             }
-            allproducts+='<div class="product" >'
+            allproducts+='<div className="product" >'
             allproducts+='<div id="product_'+products[index].book_id+'"><img class="productImg" id="'+products[index].book_id+'_image" alt="product Image" /></div>'
             allproducts+='<div class="NamePrice"><span class="book_title">'+products[index].book_title+'</span></br>'
             allproducts+='<span class="book_price">US $'+products[index].book_price+'</span></div>'
