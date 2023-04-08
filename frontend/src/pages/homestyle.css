@@ -111,17 +111,10 @@ font-size: 3.5em;
     display:flex;
     margin-bottom: 4px;
 }
-<<<<<<< HEAD
-.productImg{
-    width: 170px;
-    height: 190px;
-    background-color: rgb(199, 199, 250);
-=======
 .card {
     height: 100%;
     text-align: center;
     padding:24px;
->>>>>>> 4fe8723f8fe495b6d19a0544458c6667f5bc027d
 }
 .card-img-top{
     width:100%;
