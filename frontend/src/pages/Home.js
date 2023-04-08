@@ -137,7 +137,7 @@ export default function Home() {
    
      
    
- return(
+  return (
     <div className='homecontainer'>
       <Header/>
 
@@ -251,7 +251,7 @@ export default function Home() {
     
       </div>
       
-     
+      
       <Footer/>
 
     </div>
