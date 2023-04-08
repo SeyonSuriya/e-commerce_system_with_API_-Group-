@@ -135,7 +135,6 @@ export default function Home() {
     
    
    
-     
    
   return (
     <div className='homecontainer'>
@@ -163,92 +162,9 @@ export default function Home() {
       </div>
       </div>
 
-      <div className='latest-line'>
-      <h1 className='latest-name'>
-      Latest Products</h1><hr />
-      </div>
-
-   <div className="dropdown01">
-                 <button className="btn btn-secondary dropdown01-toggle bg-transparent" 
-                  type="button" data-bs-toggle="dropdown" 
-                   aria-expanded="false">
-                    Categories
-                      </button>
-                      
-   <ul class="dropdown-menu">
-  
-    <li><a className="dropdown-item" href="Store?query=Arts&Music">Arts & Music</a></li>
-    <li><a className="dropdown-item" href="Store?query=Biographs">Biographs</a></li>
-    <li><a className="dropdown-item" href="Store?query=Business">Business</a></li>
-    <li><a className="dropdown-item" href="Store?query=Comics">Comics</a></li>
-    <li><a className="dropdown-item" href="Store?query=Computer&Tech">Computer & Tech</a></li>
-    <li><a className="dropdown-item" href="Store?query=Cooking">Cooking</a></li>
-    <li><a className="dropdown-item" href="Store?query=Education">Education</a></li>
-    <li><a className="dropdown-item" href="Store?query=Entertainment">Entertainment</a></li>
-    <li><a className="dropdown-item" href="Store?query=Health&Fitness">Health & Fitness</a></li>
-    <li><a className="dropdown-item" href="Store?query=History">History</a></li>
-    <li><a className="dropdown-item" href="Store?query=Hobbies&Craft">Hobbies & Craft</a></li>
-    <li><a className="dropdown-item" href="Store?query=Home&Garden">Home & Garden</a></li>
-    <li><a className="dropdown-item" href="Store?query=Kids">Kids</a></li>
-    <li><a className="dropdown-item" href="Store?query=Medical">Medical</a></li>
-    <li><a className="dropdown-item" href="Store?query=Mysteries">Mysteries</a></li>
-    <li><a className="dropdown-item" href="Store?query=Parenting">Parenting</a></li>
-    <li><a className="dropdown-item" href="Store?query=Religion">Religion</a></li>
-    <li><a className="dropdown-item" href="Store?query=Romance">Romance</a></li>
-    <li><a className="dropdown-item" href="Store?query=Science&Math">Science & Math</a></li>
-    <li><a className="dropdown-item" href="Store?query=SocialScience">Social Science</a></li>
-    <li><a className="dropdown-item" href="Store?query=Sports">Sports</a></li>
-    <li><a className="dropdown-item" href="Store?query=Travel">Travel</a></li>
-    <li><a className="dropdown-item" href="Store?query=TrueCrime">True Crime</a></li>
-    <li><a className="dropdown-item" href="Store?query=Westerns">Westerns</a></li>
-  </ul>
-
-</div>
-
-      
-      
-   <div className='col-md-3'>
-      <div className='card '>
-      
-      <img src={require("../Images/1.jpg")} className='card-img-top'/>
-      <div class='card-body'>
-         <h5 class='card-title'>Kite runner</h5>
-         <p class='card-text'>$10.00</p>
-         <button className='home-button'>
-          Buy Now
-         </button>
-      </div>
-
-      <img src={require("../Images/1.jpg")} className='card-img-top'/>
-      <div class='card-body'>
-         <h5 class='card-title'>Kite runner</h5>
-         <p class='card-text'>$10.00</p>
-         <button className='home-button'>
-          Buy Now
-         </button>
-      </div>
-
-      <img src={require("../Images/1.jpg")} className='card-img-top'/>
-      <div class='card-body'>
-         <h5 class='card-title'>Kite runner</h5>
-         <p class='card-text'>$10.00</p>
-         <button className='home-button'>
-          Buy Now
-         </button>
-      </div>
-
-      <img src={require("../Images/1.jpg")} className='card-img-top'/>
-      <div class='card-body'>
-         <h5 class='card-title'>Kite runner</h5>
-         <p class='card-text'>$10.00</p>
-         <button className='home-button'>
-          Buy Now
-         </button>
-      </div>
- 
-      </div>
-
-    
+      <h3>Recommended Books</h3>
+      <div className='productDiv'>
+      <span id='Addproducts'></span>
       </div>
       
       
@@ -258,24 +174,6 @@ export default function Home() {
     
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
