@@ -55,7 +55,7 @@ export default function Home() {
             allproducts+='<span class="book_price">US $'+products[index].book_price+'</span></div>'
             allproducts+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+products[index].book_id+'_wish_image" style="width:24px;height:24px; "  />&nbsp;&nbsp;'
             if (products[index].num_of_units>0) {
-              allproducts+='<button className={Style["Addtocartbut"]} id="'+products[index].book_id+'_cart_button">Add to Cart</button>'
+              allproducts+='<button class="Addtocartbut" id="'+products[index].book_id+'_cart_button">Add to Cart</button>'
             }else{
               allproducts+='Out of Stock'
             }

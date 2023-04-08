@@ -136,3 +136,16 @@ font-size: 3.5em;
     background-color:#034748;
     color:white;
 }
+
+.Addtocartbut{
+    width: 60%;
+    background-color: rgba(246, 250, 6, 0.938);
+    border: none;
+    float: right;
+    text-align: center;
+    align-content: center;
+}
+
+.Addtocart:active{
+    background-color: rgb(238, 33, 33);
+}
