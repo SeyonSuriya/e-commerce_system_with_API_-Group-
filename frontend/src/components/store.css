@@ -29,11 +29,9 @@
 }
 
 .Addtocart{
-    width: 60%;
+    width: 120px;
     background-color: rgba(246, 250, 6, 0.938);
     border: none;
-    float: right;
-    text-align: center;
     align-content: center;
 }
 

@@ -78,11 +78,12 @@ export default function CheckOut() {
           ).then(response=>{
             console.log()
             cookies.pricearray[index]=response.data[0].book_price
+            row+='<div class="maindiv">'
             row+='<img  class="product_image"  id="'+response.data[0].book_id+'_image" style="width:20%;height:70%;">'
             row+='<div class="productInfo"> <p className={Style["booktitle"]}>'
             row+=response.data[0].book_title+'</p>'
             row+='By '+response.data[0].author+'<br/>'
-            row+='<p className="price">US $ '+response.data[0].book_price
+            row+='<p class="price">US $ '+response.data[0].book_price
             row+='</p></div>'
             row+='<div id="change_units" class="unitsdiv"></br></br></br>'
             row+='&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+response.data[0].book_id+'_remove" class="minus_button" style="width:25px;height:25px;margin: 0 auto;"  />'
@@ -187,11 +188,11 @@ function PlaceOrder() {
     return (
         <div>
           <Header/>
-          <div className='ordsum'>
-            <div className='orderSummayDiv'>
+          <div class='ordsum'>
+            <div class='orderSummayDiv'>
               <h1>Order Summary</h1>
               <p id='total'>&ensp;&ensp;&ensp;Total $ <span id="Total"></span></p><br></br><br></br>
-              <div className='place_order_button'><button className='po_button' onClick={PlaceOrder}><b>Place Order</b></button></div>
+              <div class='place_order_button'><button class='po_button' onClick={PlaceOrder}><b>Place Order</b></button></div>
             </div>
           </div>
         <div className='AddressDiv'>
@@ -210,7 +211,7 @@ function PlaceOrder() {
             <span  id="changeAddressToDefault">&nbsp; <button onClick={GetDefaultAddress}>Use Default Address</button></span>
           </div>
         </div>
-        
+       
       
         
           <span id="products" ></span>
