@@ -76,7 +76,7 @@ Link:hover{
 .productsDiv{
     padding-top: 1cm;
     width: 100px;
-    background-color: blue;
+    background-color: rgb(148, 148, 245);
     
    
 }
@@ -95,7 +95,7 @@ Link:hover{
 .productImg{
     width: 170px;
     height: 190px;
-    background-color: blue;
+    background-color: rgb(199, 199, 250);
 }
 .MainDiv{
     background-color:rgb(238, 234, 234);
