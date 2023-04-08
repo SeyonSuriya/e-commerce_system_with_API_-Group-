@@ -16,7 +16,8 @@ public class StoreController {
     public List<books> GetAllBooks (@RequestParam String category){
         return storeService.GetBooks(category);
     }
-    @PostMapping(path = "/search")
+    @GetMapping(path = "/search")
+    @ResponseBody
     public List<books> GetSearchedBooks (@RequestParam String keyword){
         return storeService.GetSerchBooks(keyword);
     }

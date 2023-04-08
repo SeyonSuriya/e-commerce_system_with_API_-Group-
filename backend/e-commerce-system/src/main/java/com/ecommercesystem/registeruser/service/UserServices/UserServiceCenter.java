@@ -41,7 +41,8 @@ public class UserServiceCenter implements UserService {
                 UserDto.getDistrict(),
                 UserDto.getProvince(),
                 UserDto.getPostalcode(),
-                UserDto.getPassword()
+                UserDto.getPassword(),
+                false
 
 
                 // UserDto.isActiveState()
@@ -69,12 +70,17 @@ public class UserServiceCenter implements UserService {
         BCryptPasswordEncoder bCrypt= new BCryptPasswordEncoder();
         if (IsUserAvailable.size()!=0 ){
             if (bCrypt.matches(password,userRepo.findUserByLoginCredentials(email))){
-                return IsUserAvailable.get(0).getUserId();
+                if (IsUserAvailable.get(0).isActiveStatus()){
+                    return IsUserAvailable.get(0).getUserId();
+                }else {
+                    return -2;
+                }
+
             }else {
                 return -1;
             }
         }else {
-            return -2;
+            return -3;
         }
     }
 
@@ -82,8 +88,8 @@ public class UserServiceCenter implements UserService {
     public Username GetUserName(Integer userid) {
         Username username=new Username();
         User user=userRepo.getAddressBYId(userid).get(0);
-        username.setFirstname(user.getFirstname());
-        username.setSecondname(user.getSecondname());
+        username.setFirstname(user.getFirstName());
+        username.setSecondname(user.getSecondName());
         return username;
 
     }

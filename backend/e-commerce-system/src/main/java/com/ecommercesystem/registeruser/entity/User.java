@@ -38,11 +38,10 @@ public class User {
     private boolean activeStatus;
 
     public User() {
-
     }
 
-    public User(int userid, String firstName, String secondName, String email, String mobile, String addressLine1, String addressLine2, String district, String province, String postalCode,String password) {
-        this.userId = userid;
+    public User(int userId, String firstName, String secondName, String email, String mobile, String addressLine1, String addressLine2, String district, String province, String postalCode, String password, boolean activeStatus) {
+        this.userId = userId;
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
@@ -53,9 +52,8 @@ public class User {
         this.province = province;
         this.postalCode = postalCode;
         this.password = password;
+        this.activeStatus = activeStatus;
     }
-
-
 
     public int getUserId() {
         return userId;
@@ -65,21 +63,20 @@ public class User {
         this.userId = userId;
     }
 
-    public String getFirstname() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstName = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-
-    public String getSecondname() {
+    public String getSecondName() {
         return secondName;
     }
 
-    public void setSecondname(String secondname) {
-        this.secondName = secondname;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     public String getEmail() {
@@ -98,19 +95,19 @@ public class User {
         this.mobile = mobile;
     }
 
-    public String getAddressline1() {
+    public String getAddressLine1() {
         return addressLine1;
     }
 
-    public void setAddressline1(String addressLine1) {
+    public void setAddressLine1(String addressLine1) {
         this.addressLine1 = addressLine1;
     }
 
-    public String getAddressline2() {
+    public String getAddressLine2() {
         return addressLine2;
     }
 
-    public void setAddressline2(String addressLine2) {
+    public void setAddressLine2(String addressLine2) {
         this.addressLine2 = addressLine2;
     }
 
@@ -118,8 +115,8 @@ public class User {
         return district;
     }
 
-    public void setDistrict(String city) {
-        this.district = city;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
     public String getProvince() {
@@ -137,6 +134,7 @@ public class User {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
+
     public String getPassword() {
         return password;
     }
@@ -145,5 +143,12 @@ public class User {
         this.password = password;
     }
 
+    public boolean isActiveStatus() {
+        return activeStatus;
+    }
+
+    public void setActiveStatus(boolean activeStatus) {
+        this.activeStatus = activeStatus;
+    }
 
 }
