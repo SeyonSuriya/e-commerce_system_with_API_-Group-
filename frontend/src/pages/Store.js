@@ -26,10 +26,10 @@ export default function Store() {
           allproducts+='<div class="product" >'
           allproducts+='<div id="product_'+products[index].book_id+'"><img class="productImg" id="'+products[index].book_id+'_image" alt="product Image" /></div>'
           allproducts+='<div class="NamePrice"><span class="book_title">'+products[index].book_title+'</span></br>'
-          allproducts+='<span class="book_price">US $'+products[index].book_price+'</span></div>'
+          allproducts+='<span class="book_price"><p class="price">US $'+products[index].book_price+'</p></span></div>'
           allproducts+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+products[index].book_id+'_wish_image" style="width:24px;height:24px; "  />&nbsp;&nbsp;'
           if (products[index].num_of_units>0) {
-            allproducts+='<button id="'+products[index].book_id+'_cart_button">Add to Cart</button>'
+            allproducts+='<button class="Addtocart" id="'+products[index].book_id+'_cart_button">Add to Cart</button>'
           }else{
             allproducts+='Out of Stock'
           }
