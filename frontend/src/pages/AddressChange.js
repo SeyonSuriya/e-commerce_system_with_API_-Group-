@@ -6,9 +6,8 @@ import "../components/addresschange.css"
 import changeaddress from "../assests/changeaddress.png";
 import { useCookies } from 'react-cookie';
 
-export default function RegisterPage() {
+export default function AddressChange() {
   const [cookies, setCookie] = useCookies(['user']);
-
 
   const [firstname,setFirstName]=useState(' ');
   const [secondname,setSecondName]=useState(' ');
@@ -19,17 +18,12 @@ export default function RegisterPage() {
   const [postalcode,setPostalcode]=useState(' ');
   const [mobile,setMobile]=useState(' ');
 
-
- 
   
-     
+  
   
   function RemoveError(event) {
     document.getElementById('error_message').innerHTML="";
    // document.getElementById('passwordRequirements').innerHTML="";
-    if (event==='passwordError') {
-      document.getElementById('passwordRequirements').innerHTML="<br/>Password should contain at least 6 characters";
-    }
   }
   function handleSubmit (event) {
     event.preventDefault();
@@ -37,83 +31,86 @@ export default function RegisterPage() {
   
 if (firstname===' ') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your firstname";
-      event.preventDefault();
+   //   event.preventDefault();
       
     }else if (secondname===' ') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your secondname";
-      event.preventDefault();
+   //   event.preventDefault();
     }
     // Add emial validation here
     else if (addressline1===' ') {
       document.getElementById('error_message').innerHTML="<br/>Please enter AddressLine 1";
-      event.preventDefault();
+    //  event.preventDefault();
      
     }
     else if (addressline2===' ') {
       document.getElementById('error_message').innerHTML="<br/>Please enter AddressLine 2";
-      event.preventDefault();
+    //  event.preventDefault();
    
     }else if (district===' ') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your district";
-      event.preventDefault();
+   //   event.preventDefault();
      
     }else if (province===' ') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your province";
-      event.preventDefault();
+   //   event.preventDefault();
       
     }else if (postalcode===' ') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your postalcode";
-      event.preventDefault();
+    //  event.preventDefault();
    
     }else if (mobile===' ') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your mobilenumber";
-      event.preventDefault();
+    //  event.preventDefault();
    
     }else if( !phoneno.test(mobile)){
       document.getElementById('error_message').innerHTML="<br/>Please Enter a valid Mobile Number";
-      event.preventDefault();
+    ///  event.preventDefault();
     }
     else if (mobile.length<10) {
       document.getElementById('error_message').innerHTML="<br/>Mobile number should contain 10 characters";
-      event.preventDefault();
+    //  event.preventDefault();
     }
-    else{
+    else if(document.getElementById('default').clicked){
+      
       const postData = {
         firstname,
         secondname,
         addressline1,
         addressline2,
+        mobile,
         district,
         province,
-        mobile,
         postalcode,
         
       };
     
    
   
-
+    
       //setCookie('email', email, { path: '/emailverification' });
       axios.post(
-        'http://localhost:8080/ecommerce/register',
-        postData,
+        'http://localhost:8080/ecommerce/changeaddress?addressDto='+postData+'&userid'+cookies.userid,
         ).then(response=>{
           console.log(response.data)
-          if (response.data === 'Registration Successful') {
             
-            document.getElementById("EmailVerification").click();
-          }else {
-            document.getElementById('error_message').innerHTML="<br/>"+response.data+"<br/>";
-          }
         }
          )
+         
+    }else{
+      setCookie('newaddress', firstname+' '+secondname+'</br>'+addressline1+'</br>'+addressline2+'</br>'+district+'</br>'+province+'</br>'+postalcode+'</br>'+mobile, { path: '/checkout'});
+      
     }
+    document.getElementById("gotocheckout").click();
     
   
    
     // to do Password requirements
   }
       
+
+  // Address change function
+  
 
 return (
 
@@ -135,7 +132,7 @@ return (
           <div className="addresschange_content_row02">
           
 
-              <form id='form' className="addresschange_form01" onSubmit={handleSubmit}>
+              <form id='form' className="addresschange_form01"   onSubmit={ handleSubmit } >
     
                   <br/>
                   <input type='text'  placeholder="First Name" className="addresschange_placeholder01"  onClick={(event)=>RemoveError('firstnameError')}  onChange={(e)=>setFirstName(e.target.value) }></input>
@@ -173,12 +170,19 @@ return (
 
             <div className="addresschange_content_row03">
                   <span id='errorMessage' className='ErrorMessage'></span>  
+                  Make this address default &nbsp;&nbsp;&nbsp; <input type='checkbox' id='default'></input>
+                   
                    <br/>
-                  <button type='submit' className="addresschange_button">Change Your Address</button>
+                   <span id='error_message'></span><br/>
+                   
+
+                  <button type='submit' className="addresschange_button" onClick={AddressChange}>Change Your Address</button>
                   <br/>
-                  <a  href='/emailverification' id="EmailVerification" > </a>
+                 
+                  
                  </div>
                   </form>
+                  <a  href='/checkout' id="gotocheckout" > </a>
             
             </div>
       

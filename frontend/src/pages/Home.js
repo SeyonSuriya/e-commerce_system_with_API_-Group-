@@ -49,13 +49,13 @@ export default function Home() {
             if ((index%5===0)&(index!==0)) {
               allproducts+='</br>'
             }
-            allproducts+='<div class="product" >'
+            allproducts+='&nbsp;&nbsp;&nbsp;<div id="product" >'
             allproducts+='<div id="product_'+products[index].book_id+'"><img class="productImg" id="'+products[index].book_id+'_image" alt="product Image" /></div>'
             allproducts+='<div class="NamePrice"><span class="book_title">'+products[index].book_title+'</span></br>'
             allproducts+='<span class="book_price">US $'+products[index].book_price+'</span></div>'
             allproducts+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+products[index].book_id+'_wish_image" style="width:24px;height:24px; "  />&nbsp;&nbsp;'
             if (products[index].num_of_units>0) {
-              allproducts+='<button id="'+products[index].book_id+'_cart_button">Add to Cart</button>'
+              allproducts+='<button class="Addtocartbut" id="'+products[index].book_id+'_cart_button">Add to Cart</button>'
             }else{
               allproducts+='Out of Stock'
             }
@@ -136,14 +136,6 @@ export default function Home() {
    
    
    
-   
-   
-
-
-
-
-
-
   return (
     <div className='homecontainer'>
       <Header/>
@@ -154,7 +146,7 @@ export default function Home() {
       <video src={video03} autoPlay loop muted/></div>
          <div className="video-content">
         
-                <div className="input-group">
+               <div className="input-group">
                 <input type="text" 
                 className="form-control " 
                 placeholder="Search Product Here..." 
@@ -171,39 +163,22 @@ export default function Home() {
       </div>
 
       <h3>Recommended Books</h3>
-      <div className='productDiv'>
-      <span id='Addproducts'></span>
+      <div id='productDiv'>
+      <span className="Addproducts" id='Addproducts'></span>
       </div>
+
+      &nbsp;
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-      <br/><br/>
       <Footer/>
 
     </div>
     
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
