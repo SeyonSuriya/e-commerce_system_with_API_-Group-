@@ -146,7 +146,7 @@ export default function Home() {
       <video src={video03} autoPlay loop muted/></div>
          <div className="video-content">
         
-                <div className="input-group">
+               <div className="input-group">
                 <input type="text" 
                 className="form-control " 
                 placeholder="Search Product Here..." 
