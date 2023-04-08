@@ -100,9 +100,9 @@ export default function Home() {
       <div class='card-body'>
          <h5 class='card-title'>Kite runner</h5>
          <p class='card-text'>$10.00</p>
-         <a href='#' className='btn btn-primary'>
+       <button className='home-button'>
             Continue Shopping
-         </a>
+         </button>
       </div>
  
       </div>
