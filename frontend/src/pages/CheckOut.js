@@ -181,7 +181,7 @@ function PlaceOrder() {
           <div className='ordsum'>
             <div className='orderSummayDiv'>
               <h1>Order Summary</h1>
-              <p id='total'>Total $ <span id="Total"></span></p><br></br>
+              <p id='total'>&ensp;&ensp;&ensp;Total $ <span id="Total"></span></p><br></br><br></br>
               <div className='place_order_button'><button className='po_button' onClick={PlaceOrder}><b>Place Order</b></button></div>
             </div>
           </div>

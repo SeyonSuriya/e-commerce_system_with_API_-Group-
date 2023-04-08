@@ -27,7 +27,7 @@ margin-top: 0.7rem;
    
 }
 .headerlinks a {
-    margin-left: 25%;
+    margin-left: 8%;
 
 }
 
@@ -35,6 +35,7 @@ margin-top: 0.7rem;
     display: flex;
     align-items: center;
     margin-bottom: 0;
+    color: aliceblue;
     
 }
 
@@ -172,4 +173,6 @@ margin-top: 0.7rem;
     color: #666;
     text-decoration: none;
   }
-  
+  #username{
+    color: aliceblue;
+  }

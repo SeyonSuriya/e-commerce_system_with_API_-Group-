@@ -9,7 +9,7 @@
     height: 320px;
     
     padding-top: 15px;
-    padding-left: 32px;
+    padding-left: 38px;
     padding-right: 20px;
     margin: 5px;
     
@@ -17,10 +17,13 @@
     
 }
 .productImg{
-    width: 90%;
-    height: 70%;
+    width: 170px;
+    height: 190px;
     background-color: blue;
 }
 .MainDiv{
     background-color:rgb(238, 234, 234);
+}
+.NamePrice{
+    height: 60px;
 }

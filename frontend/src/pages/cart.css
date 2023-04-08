@@ -56,8 +56,15 @@ input[type="checkbox"] {
 }
 
 .productInfo.long_description{
+    height: 200px;
     text-align: justify;
     text-overflow: ellipsis;
+}
+
+.long_description{
+    height: 110px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 
@@ -65,7 +72,7 @@ input[type="checkbox"] {
     background-color: #ffffff;
     height: 200px;
     width: parent;
-    align-items: left;
+    align-items: center;
 
 }
 .product_selecter_div{

@@ -11,10 +11,10 @@ import "./cart.css";
 export default function Cart() {
   const [cookies, setCookie] = useCookies(['user']);
   setCookie('pricearray', [], { path: '/cart'});
+  if (cookies.userid<1) {
+    window.location.href = "/login";
+  }
   
-
-  
-
 
   // Getting Product Info and creating a row with product data
 
