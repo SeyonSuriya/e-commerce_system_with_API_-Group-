@@ -24,4 +24,12 @@ public class StoreServiceImpl implements StoreService{
         }
         return books;
     }
+
+    @Override
+    public List<books> GetSerchBooks(String keyword) {
+        if (keyword != null) {
+            return booksrepo.getSerchedProducts(keyword);
+        }
+        return booksrepo.GetAllBooks();
+    }
 }
