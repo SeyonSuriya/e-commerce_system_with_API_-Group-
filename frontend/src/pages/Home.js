@@ -45,7 +45,7 @@ export default function Home() {
       ).then(response=>{
           var products=response.data
           var allproducts=' '
-          for (let index = 0; index < 15; index++) {
+          for (let index = 0; index < 12; index++) {
             if ((index%5===0)&(index!==0)) {
               allproducts+='</br>'
             }
@@ -136,14 +136,6 @@ export default function Home() {
    
    
    
-   
-   
-
-
-
-
-
-
   return (
     <div className='homecontainer'>
       <Header/>
@@ -154,7 +146,7 @@ export default function Home() {
       <video src={video03} autoPlay loop muted/></div>
          <div className="video-content">
         
-                <div className="input-group">
+               <div className="input-group">
                 <input type="text" 
                 className="form-control " 
                 placeholder="Search Product Here..." 
@@ -171,34 +163,17 @@ export default function Home() {
       </div>
 
       <h3>Recommended Books</h3>
-      <div className='productsDiv'>fs
+      <div className='productDiv'>
       <span id='Addproducts'></span>
       </div>
       
       
+      <Footer/>
 
     </div>
     
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
