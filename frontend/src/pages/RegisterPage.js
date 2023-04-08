@@ -48,11 +48,10 @@ if (firstname===' ') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your secondname";
       event.preventDefault();
      
-     
+
     }else if (email===' ') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your email";
       event.preventDefault();
- 
     }
     // Add emial validation here
     else if (addressline1===' ') {
@@ -120,7 +119,6 @@ if (firstname===' ') {
         ).then(response=>{
           console.log(response.data)
           if (response.data === 'Registration Successful') {
-            
             document.getElementById("EmailVerification").click();
           }else {
             document.getElementById('error_message').innerHTML="<br/>"+response.data+"<br/>";
@@ -183,7 +181,7 @@ return (
 
                   <input type='text' placeholder="Postal Code" className='signup_placeholder01'  onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
                             
-                  <input type='password' placeholder="Password" className='signup_placeholder02' maxLength={15}  onClick={(event)=>RemoveError('passwordError')} onChange={(e)=>setPassword(e.target.value)}></input>
+                  <input type='password' placeholder="Password" className='signup_placeholder02' maxLength={15}  onClick={(event)=>RemoveError('password1Error')} onChange={(e)=>setPassword(e.target.value)}></input>
     
                   <br/> <br/>
                   <input type='password' placeholder="Confirm Password" className='signup_placeholder01' maxLength={15}  onClick={(event)=>RemoveError('password2Error')} onChange={(e)=>setPassword2(e.target.value)}></input>

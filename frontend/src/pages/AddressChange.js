@@ -9,7 +9,6 @@ import { useCookies } from 'react-cookie';
 export default function AddressChange() {
   const [cookies, setCookie] = useCookies(['user']);
 
-
   const [firstname,setFirstName]=useState(' ');
   const [secondname,setSecondName]=useState(' ');
   const [addressline1,setAddressLine1]=useState(' ');
@@ -19,10 +18,8 @@ export default function AddressChange() {
   const [postalcode,setPostalcode]=useState(' ');
   const [mobile,setMobile]=useState(' ');
 
-
- 
   
-     
+  
   
   function RemoveError(event) {
     document.getElementById('error_message').innerHTML="";

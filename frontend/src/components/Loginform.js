@@ -23,7 +23,6 @@ export default function Loginform(props) {
       document.getElementById('ErrorMessage').innerHTML="Please Enter Password"
       e.preventDefault();
      }else  {
-
       const postData = {
         email,
         password,
