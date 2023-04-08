@@ -38,9 +38,11 @@ export default function Loginform(props) {
                document.getElementById("Homepage").click();
              }else if(response.data===-1){
                document.getElementById('ErrorMessage').innerHTML="Incorrect Password";
-             }else{
+             }else if (response.data===-2) {
+              document.getElementById('ErrorMessage').innerHTML="Please verify your email address to login to your account";
+             }
+             else{
               document.getElementById('ErrorMessage').innerHTML="No User Registered for this email";
-
              }
 
            }
@@ -71,13 +73,13 @@ export default function Loginform(props) {
       <input type="password" className="form-input" placeholder="Enter Your Password"  onClick={RemoveErrorMessages} onChange={(e)=>setPassword(e.target.value)}></input>     
   </div>
           
-      <span id='ErrorMessage' className='ErrorMessage'></span>
+      
                 <div className="login_form">
                     <button type="submit" className="form_login">Login</button>
                 </div>
                 
   </form>       
-            
+  <span id='ErrorMessage' className='ErrorMessage'></span>
             
             
             <a href='/' type="hidden" id="Homepage" > </a>

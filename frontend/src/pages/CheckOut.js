@@ -24,9 +24,18 @@ export default function CheckOut() {
             Address+=response.data[0].postalCode
            // console.log(Address)
         document.getElementById('address').innerHTML=Address
+      
         //console.log(cookies.userid)
        }
         )
+        setCookie('newaddress', ' ', { path: '/checkout'});
+
+      }
+      function ChangeNewAddress() {
+        if (cookies.newaddress!==' ') {
+          document.getElementById('address').innerHTML=cookies.newaddress
+        }
+        
       }
        
         function ShowSelectedProducts() {
@@ -189,13 +198,16 @@ function PlaceOrder() {
           <h3>Address</h3>
           <div className='address'>
           <p id="address"  ></p>
-          <script>{GetDefaultAddress()}</script>
+          <script>{GetDefaultAddress}</script>
+          <script>{ChangeNewAddress}</script>
+
+         
           </div>
          
           <div className='changeAdressDiv'>
           <br/>
             <a href='/changeaddress'>+ Add a new Address</a><br/>
-            <span onClick={GetDefaultAddress} id="changeAddressToDefault">&nbsp; Use Default Address</span>
+            <span  id="changeAddressToDefault">&nbsp; <button onClick={GetDefaultAddress}>Use Default Address</button></span>
           </div>
         </div>
         
