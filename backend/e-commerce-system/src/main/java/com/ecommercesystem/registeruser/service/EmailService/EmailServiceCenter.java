@@ -40,7 +40,7 @@ public class EmailServiceCenter implements EmailService{
 
         String toAddress = email;
         String fromAddress = "basnayakasanjeewa3@gmail.com";
-        String senderName = "Book World";
+        String senderName = "Book Mart";
         String subject = "Please verify your registration";
         String content = "Dear [[name]],<br>"
                 + "Please click the link below to verify your registration:<br>"
@@ -51,7 +51,7 @@ public class EmailServiceCenter implements EmailService{
         helper.setTo(toAddress);
         helper.setSubject(subject);
 
-        content = content.replace("[[name]]", user.get(0).getFirstname()+user.get(0).getSecondname());
+        content = content.replace("[[name]]", user.get(0).getFirstName()+user.get(0).getSecondName());
         String verifyURL = "http://localhost:3000/verifyemail?email="+email+"&otp="+otp;
         if (otpRepo.validateEmail(email)!=null){
             otpRepo.deletePreviousOtp(email);
@@ -98,7 +98,7 @@ public class EmailServiceCenter implements EmailService{
         helper.setTo(toAddress);
         helper.setSubject(subject);
 
-        content = content.replace("[[name]]", user.get(0).getFirstname()+user.get(0).getSecondname());
+        content = content.replace("[[name]]", user.get(0).getFirstName()+user.get(0).getSecondName());
         String resetPasswordURL = "http://localhost:3000/resetpassword?email="+email+"&otp="+otp;
         if (otpRepo.validateEmail(email)!=null){
             otpRepo.deletePreviousOtp(email);

@@ -10,7 +10,6 @@ public class UserDto {
     private static String addressline1;
     private static String addressline2;
     private static String email;
-
     private static String mobile;
     private static String password;
     private String country;

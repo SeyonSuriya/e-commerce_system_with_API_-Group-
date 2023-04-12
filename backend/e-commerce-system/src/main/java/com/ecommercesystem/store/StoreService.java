@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface StoreService {
     List<books> GetBooks(String category);
+
+    List<books> GetSerchBooks(String keyword);
 }

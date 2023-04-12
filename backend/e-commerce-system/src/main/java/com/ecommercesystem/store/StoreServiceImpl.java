@@ -24,4 +24,15 @@ public class StoreServiceImpl implements StoreService{
         }
         return books;
     }
+
+    @Override
+    public List<books> GetSerchBooks(String keyword) {
+
+        if (keyword != " ") {
+            System.out.println(booksrepo.getSerchedProducts(keyword));
+            return booksrepo.getSerchedProducts(keyword);
+
+        }
+        return booksrepo.GetAllBooks();
+    }
 }
