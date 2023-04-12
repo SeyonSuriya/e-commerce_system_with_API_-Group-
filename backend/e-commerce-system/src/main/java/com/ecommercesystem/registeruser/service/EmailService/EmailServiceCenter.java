@@ -39,7 +39,7 @@ public class EmailServiceCenter implements EmailService{
         List<User> user = userRepo.findUserByEmail(email);
 
         String toAddress = email;
-        String fromAddress = "basnayakasanjeewa3@gmail.com";
+        String fromAddress = "bookmartlkcom@gmail.com";
         String senderName = "Book Mart";
         String subject = "Please verify your registration";
         String content = "Dear [[name]],<br>"
@@ -86,7 +86,7 @@ public class EmailServiceCenter implements EmailService{
         List<User> user = userRepo.findUserByEmail(email);
 
         String toAddress = email;
-        String fromAddress = "basnayakasanjeewa3@gmail.com";
+        String fromAddress = "bookmartlkcom@gmail.com";
         String senderName = "Book Mart";
         String subject = "Please Reset Your Password";
         String content = "Dear [[name]],<br>"
