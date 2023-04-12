@@ -16,9 +16,9 @@ export default function CheckOut() {
     axios.post(
       'http://localhost:8080/ecommerce/getaddress?userid='+cookies.userid,
       ).then(response=>{
-        var Address=response.data[0].firstname+' '+response.data[0].secondname+',</br>'
-            Address+=response.data[0].addressline1+',</br>'
-            Address+=response.data[0].addressline2+',</br>'
+        var Address=response.data[0].firstName+' '+response.data[0].secondName+',</br>'
+            Address+=response.data[0].addressLine1+',</br>'
+            Address+=response.data[0].addressLine2+',</br>'
             Address+=response.data[0].district+','
             Address+=response.data[0].province+',</br>'
             Address+=response.data[0].postalCode
@@ -31,12 +31,7 @@ export default function CheckOut() {
         setCookie('newaddress', ' ', { path: '/checkout'});
 
       }
-      function ChangeNewAddress() {
-        if (cookies.newaddress!==' ') {
-          document.getElementById('address').innerHTML=cookies.newaddress
-        }
-        
-      }
+    
        
         function ShowSelectedProducts() {
          
@@ -199,8 +194,9 @@ function PlaceOrder() {
           <h3>Address</h3>
           <div className='address'>
           <p id="address"  ></p>
-          <script>{GetDefaultAddress}</script>
-          <script>{ChangeNewAddress}</script>
+          
+        
+          <script>{GetDefaultAddress()}</script>
 
          
           </div>
