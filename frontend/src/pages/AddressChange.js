@@ -29,35 +29,35 @@ export default function AddressChange() {
     event.preventDefault();
     var phoneno = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
   
-if (firstname==='') {
+if ((firstname==='')||(firstname===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your firstname";
    //   event.preventDefault();
-    }else if (secondname==='') {
+    }else if ((secondname==='')||(secondname===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your secondname";
    //  event.preventDefault();
     }
     // Add emial validation here
-    else if (addressline1==='') {
+    else if ((addressline1==='')||(addressline1===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter AddressLine 1";
     //  event.preventDefault();
     }
-    else if (addressline2==='') {
+    else if ((addressline2==='')||(addressline2===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter AddressLine 2";
     //  event.preventDefault();
    
-    }else if (district==='') {
+    }else if ((district==='')||(district===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your district";
    //   event.preventDefault();
      
-    }else if (province==='') {
+    }else if ((province==='')||(province===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your province";
    //   event.preventDefault();
       
-    }else if (postalcode==='') {
+    }else if ((postalcode==='')||(postalcode===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your postalcode";
     //  event.preventDefault();
    
-    }else if (mobile==='') {
+    }else if ((mobile===' ')||(mobile==='')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your mobilenumber";
     //  event.preventDefault();
    
@@ -87,15 +87,15 @@ if (firstname==='') {
       axios.post(
         'http://localhost:8080/ecommerce/changeaddress?addressDto='+postData+'&userid'+cookies.userid,
         ).then(response=>{
-         // console.log(response.data)
-         // document.getElementById("gotocheckout").click();
+          console.log(response.data)
+          document.getElementById("gotocheckout").click();
             
         }
          )
          
     }else{
-    //  setCookie('newaddress', firstname+' '+secondname+'</br>'+addressline1+'</br>'+addressline2+'</br>'+district+'</br>'+province+'</br>'+postalcode+'</br>'+mobile, { path: '/checkout'});
-    //  document.getElementById("gotocheckout").click();
+     setCookie('newaddress', firstname+' '+secondname+'</br>'+addressline1+'</br>'+addressline2+'</br>'+district+'</br>'+province+'</br>'+postalcode+'</br>'+mobile, { path: '/checkout'});
+     document.getElementById("gotocheckout").click();
     }
 
     
@@ -172,7 +172,7 @@ return (
                    <span id='error_message'></span><br/>
                    
 
-                  <button type='submit' className="addresschange_button" onClick={AddressChange}>Change Your Address</button>
+                  <button type='submit' className="addresschange_button" >Change Your Address</button>
                   <br/>
                  
                   
