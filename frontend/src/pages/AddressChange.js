@@ -21,45 +21,43 @@ export default function AddressChange() {
   
   
   
-  function RemoveError(event) {
-    document.getElementById('error_message').innerHTML="";
-   // document.getElementById('passwordRequirements').innerHTML="";
+  function RemoveError() {
+    document.getElementById('error_message').innerHTML=" ";
+   
   }
   function handleSubmit (event) {
     event.preventDefault();
     var phoneno = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
   
-if (firstname===' ') {
+if (firstname==='') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your firstname";
    //   event.preventDefault();
-      
-    }else if (secondname===' ') {
+    }else if (secondname==='') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your secondname";
-   //   event.preventDefault();
+   //  event.preventDefault();
     }
     // Add emial validation here
-    else if (addressline1===' ') {
+    else if (addressline1==='') {
       document.getElementById('error_message').innerHTML="<br/>Please enter AddressLine 1";
     //  event.preventDefault();
-     
     }
-    else if (addressline2===' ') {
+    else if (addressline2==='') {
       document.getElementById('error_message').innerHTML="<br/>Please enter AddressLine 2";
     //  event.preventDefault();
    
-    }else if (district===' ') {
+    }else if (district==='') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your district";
    //   event.preventDefault();
      
-    }else if (province===' ') {
+    }else if (province==='') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your province";
    //   event.preventDefault();
       
-    }else if (postalcode===' ') {
+    }else if (postalcode==='') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your postalcode";
     //  event.preventDefault();
    
-    }else if (mobile===' ') {
+    }else if (mobile==='') {
       document.getElementById('error_message').innerHTML="<br/>Please enter your mobilenumber";
     //  event.preventDefault();
    
@@ -71,6 +69,7 @@ if (firstname===' ') {
       document.getElementById('error_message').innerHTML="<br/>Mobile number should contain 10 characters";
     //  event.preventDefault();
     }
+    
     else if(document.getElementById('default').clicked){
       
       const postData = {
@@ -84,24 +83,21 @@ if (firstname===' ') {
         postalcode,
         
       };
-    
-   
-  
-    
       //setCookie('email', email, { path: '/emailverification' });
       axios.post(
         'http://localhost:8080/ecommerce/changeaddress?addressDto='+postData+'&userid'+cookies.userid,
         ).then(response=>{
-          console.log(response.data)
+         // console.log(response.data)
+         // document.getElementById("gotocheckout").click();
             
         }
          )
          
     }else{
-      setCookie('newaddress', firstname+' '+secondname+'</br>'+addressline1+'</br>'+addressline2+'</br>'+district+'</br>'+province+'</br>'+postalcode+'</br>'+mobile, { path: '/checkout'});
-      
+    //  setCookie('newaddress', firstname+' '+secondname+'</br>'+addressline1+'</br>'+addressline2+'</br>'+district+'</br>'+province+'</br>'+postalcode+'</br>'+mobile, { path: '/checkout'});
+    //  document.getElementById("gotocheckout").click();
     }
-    document.getElementById("gotocheckout").click();
+
     
   
    

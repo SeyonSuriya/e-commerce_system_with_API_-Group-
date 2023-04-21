@@ -13,6 +13,10 @@ export default function CheckOut() {
     
     //console.log(cookies.selectedBooks.length)
     function GetDefaultAddress() {
+      setCookie('newaddress', ' ', { path: '/checkout'});
+      if (cookies.newaddress===' ') {
+        
+     
     axios.post(
       'http://localhost:8080/ecommerce/getaddress?userid='+cookies.userid,
       ).then(response=>{
@@ -21,7 +25,8 @@ export default function CheckOut() {
             Address+=response.data[0].addressLine2+',</br>'
             Address+=response.data[0].district+','
             Address+=response.data[0].province+',</br>'
-            Address+=response.data[0].postalCode
+            Address+=response.data[0].postalCode+',</br>'
+            Address+=response.data[0].mobile
            // console.log(Address)
         document.getElementById('address').innerHTML=Address
       
@@ -30,7 +35,10 @@ export default function CheckOut() {
         )
         setCookie('newaddress', ' ', { path: '/checkout'});
 
+      }else{
+        document.getElementById('address').innerHTML=cookies.newaddress
       }
+    }
     
        
         function ShowSelectedProducts() {
