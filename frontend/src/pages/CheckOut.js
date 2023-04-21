@@ -11,12 +11,20 @@ export default function CheckOut() {
   const [cookies, setCookie] = useCookies(['user']);
   setCookie('pricearray', [], { path: '/checkout'});
     
+  function GetDefaultAddress() {
+    setCookie('newaddress', ' ', { path: '/checkout'});
+    GetAddress();
+  }
     //console.log(cookies.selectedBooks.length)
-    function GetDefaultAddress() {
-      setCookie('newaddress', ' ', { path: '/checkout'});
-      if (cookies.newaddress===' ') {
+    function GetAddress() {
+      //console.log(cookies.newaddress)
+      if ((cookies.newaddress!==' ')||(cookies.newaddress!=='')) {
+        document.getElementById('address').innerHTML=cookies.newaddress
+ 
+
+      }else{
+        //
         
-     
     axios.post(
       'http://localhost:8080/ecommerce/getaddress?userid='+cookies.userid,
       ).then(response=>{
@@ -33,10 +41,6 @@ export default function CheckOut() {
         //console.log(cookies.userid)
        }
         )
-        setCookie('newaddress', ' ', { path: '/checkout'});
-
-      }else{
-        document.getElementById('address').innerHTML=cookies.newaddress
       }
     }
     
@@ -204,7 +208,7 @@ function PlaceOrder() {
           <p id="address"  ></p>
           
         
-          <script>{GetDefaultAddress()}</script>
+          <script>{GetAddress()}</script>
 
          
           </div>
