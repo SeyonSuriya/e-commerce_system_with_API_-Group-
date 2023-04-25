@@ -181,8 +181,12 @@ return (
                  
                   
                  </div>
+                 <div className='gotocheckout'>
+                 <a  href='/checkout' id="gotocheckout" > Use default address</a>
+
+                 </div>
+
                   </form>
-                  <a  href='/checkout' id="gotocheckout" > </a>
             
             </div>
       
