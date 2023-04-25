@@ -72,41 +72,44 @@ if ((firstname==='')||(firstname===' ')) {
     }
     
     else if(MakeAddressDefault.checked){
-      console.log('******')
+      var country='Srilanka'
       const addressDto = {
         firstname,
         secondname,
         addressline1,
         addressline2,
+        country,
         mobile,
         district,
         province,
         postalcode
       };
-      //setCookie('email', email, { path: '/emailverification' });
+      console.log(addressDto)
+      if(window.confirm("Are you sure to change this address as your default?")){
+
+      
       axios.post(
         'http://localhost:8080/ecommerce/checkout/changeaddress?userid='+cookies.userid,addressDto
         ).then(response=>{
-          console.log(response.data)
-         // document.getElementById("gotocheckout").click();
+       
+          document.getElementById("gotocheckout").click();
             
         }
          )
+      }
     }else{
-      console.log('0000')
+     
      setCookie('newaddress', firstname+' '+secondname+'</br>'+addressline1+'</br>'+addressline2+'</br>'+district+'</br>'+province+'</br>'+postalcode+'</br>'+mobile, { path: '/checkout'});
-   //  document.getElementById("gotocheckout").click();
+     document.getElementById("gotocheckout").click();
 
     }
 
     
   
    
-    // to do Password requirements
   }
       
 
-  // Address change function
   
 
 return (
@@ -154,7 +157,7 @@ return (
                      
                   <br/> <br/>
 
-                  <input type='text' placeholder="Postal Code" className='addresschange_placeholder01'  onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
+                  <input type='text' maxLength={5} placeholder="Postal Code" className='addresschange_placeholder01'  onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
                             
                   <br/> <br/>
 
