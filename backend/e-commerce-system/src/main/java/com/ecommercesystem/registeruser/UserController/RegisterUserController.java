@@ -90,7 +90,7 @@ public class RegisterUserController {
     public List<User> getAddress(@RequestParam Integer userid) {
         return addressService.getAddressBYId(userid);
     }
-    @PostMapping(path = "/changeaddress")
+    @GetMapping(path = "/changeaddress")
     public void getAddress(@RequestParam AddressDto addressDto, Integer userid) {
        addressService.changeAddress(addressDto, userid);
     }

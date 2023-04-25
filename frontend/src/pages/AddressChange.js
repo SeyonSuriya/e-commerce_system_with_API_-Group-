@@ -1,10 +1,11 @@
 
 import React, { useState } from 'react'
 import axios from 'axios';
-import Header from '../components/Header';
+
 import "../components/addresschange.css"
-import changeaddress from "../assests/changeaddress.png";
+
 import { useCookies } from 'react-cookie';
+
 
 export default function AddressChange() {
   const [cookies, setCookie] = useCookies(['user']);
@@ -28,7 +29,7 @@ export default function AddressChange() {
   function handleSubmit (event) {
     event.preventDefault();
     var phoneno = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
-  
+    var MakeAddressDefault = document.getElementById('default')
 if ((firstname==='')||(firstname===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your firstname";
    //   event.preventDefault();
@@ -70,9 +71,9 @@ if ((firstname==='')||(firstname===' ')) {
     //  event.preventDefault();
     }
     
-    else if(document.getElementById('default').clicked){
-      
-      const postData = {
+    else if(MakeAddressDefault.checked){
+      console.log('******')
+      const addressDto = {
         firstname,
         secondname,
         addressline1,
@@ -80,22 +81,22 @@ if ((firstname==='')||(firstname===' ')) {
         mobile,
         district,
         province,
-        postalcode,
-        
+        postalcode
       };
       //setCookie('email', email, { path: '/emailverification' });
       axios.post(
-        'http://localhost:8080/ecommerce/changeaddress?addressDto='+postData+'&userid'+cookies.userid,
+        'http://localhost:8080/ecommerce/checkout/changeaddress?userid='+cookies.userid,addressDto
         ).then(response=>{
           console.log(response.data)
-          document.getElementById("gotocheckout").click();
+         // document.getElementById("gotocheckout").click();
             
         }
          )
-         
     }else{
+      console.log('0000')
      setCookie('newaddress', firstname+' '+secondname+'</br>'+addressline1+'</br>'+addressline2+'</br>'+district+'</br>'+province+'</br>'+postalcode+'</br>'+mobile, { path: '/checkout'});
-     document.getElementById("gotocheckout").click();
+   //  document.getElementById("gotocheckout").click();
+
     }
 
     
