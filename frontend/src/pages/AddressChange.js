@@ -1,10 +1,11 @@
 
 import React, { useState } from 'react'
 import axios from 'axios';
-import Header from '../components/Header';
+
 import "../components/addresschange.css"
-import changeaddress from "../assests/changeaddress.png";
+
 import { useCookies } from 'react-cookie';
+
 
 export default function AddressChange() {
   const [cookies, setCookie] = useCookies(['user']);
@@ -21,45 +22,43 @@ export default function AddressChange() {
   
   
   
-  function RemoveError(event) {
-    document.getElementById('error_message').innerHTML="";
-   // document.getElementById('passwordRequirements').innerHTML="";
+  function RemoveError() {
+    document.getElementById('error_message').innerHTML=" ";
+   
   }
   function handleSubmit (event) {
     event.preventDefault();
     var phoneno = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
-  
-if (firstname===' ') {
+    var MakeAddressDefault = document.getElementById('default')
+if ((firstname==='')||(firstname===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your firstname";
    //   event.preventDefault();
-      
-    }else if (secondname===' ') {
+    }else if ((secondname==='')||(secondname===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your secondname";
-   //   event.preventDefault();
+   //  event.preventDefault();
     }
     // Add emial validation here
-    else if (addressline1===' ') {
+    else if ((addressline1==='')||(addressline1===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter AddressLine 1";
     //  event.preventDefault();
-     
     }
-    else if (addressline2===' ') {
+    else if ((addressline2==='')||(addressline2===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter AddressLine 2";
     //  event.preventDefault();
    
-    }else if (district===' ') {
+    }else if ((district==='')||(district===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your district";
    //   event.preventDefault();
      
-    }else if (province===' ') {
+    }else if ((province==='')||(province===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your province";
    //   event.preventDefault();
       
-    }else if (postalcode===' ') {
+    }else if ((postalcode==='')||(postalcode===' ')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your postalcode";
     //  event.preventDefault();
    
-    }else if (mobile===' ') {
+    }else if ((mobile===' ')||(mobile==='')) {
       document.getElementById('error_message').innerHTML="<br/>Please enter your mobilenumber";
     //  event.preventDefault();
    
@@ -71,45 +70,46 @@ if (firstname===' ') {
       document.getElementById('error_message').innerHTML="<br/>Mobile number should contain 10 characters";
     //  event.preventDefault();
     }
-    else if(document.getElementById('default').clicked){
-      
-      const postData = {
+    
+    else if(MakeAddressDefault.checked){
+      var country='Srilanka'
+      const addressDto = {
         firstname,
         secondname,
         addressline1,
         addressline2,
+        country,
         mobile,
         district,
         province,
-        postalcode,
-        
+        postalcode
       };
-    
-   
-  
-    
-      //setCookie('email', email, { path: '/emailverification' });
+      console.log(addressDto)
+      if(window.confirm("Are you sure to change this address as your default?")){
+
+      
       axios.post(
-        'http://localhost:8080/ecommerce/changeaddress?addressDto='+postData+'&userid'+cookies.userid,
+        'http://localhost:8080/ecommerce/checkout/changeaddress?userid='+cookies.userid,addressDto
         ).then(response=>{
-          console.log(response.data)
+       
+          document.getElementById("gotocheckout").click();
             
         }
          )
-         
+      }
     }else{
-      setCookie('newaddress', firstname+' '+secondname+'</br>'+addressline1+'</br>'+addressline2+'</br>'+district+'</br>'+province+'</br>'+postalcode+'</br>'+mobile, { path: '/checkout'});
-      
+     
+     setCookie('newaddress', firstname+' '+secondname+'</br>'+addressline1+'</br>'+addressline2+'</br>'+district+'</br>'+province+'</br>'+postalcode+'</br>'+mobile, { path: '/checkout'});
+     document.getElementById("gotocheckout").click();
+
     }
-    document.getElementById("gotocheckout").click();
+
     
   
    
-    // to do Password requirements
   }
       
 
-  // Address change function
   
 
 return (
@@ -157,7 +157,7 @@ return (
                      
                   <br/> <br/>
 
-                  <input type='text' placeholder="Postal Code" className='addresschange_placeholder01'  onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
+                  <input type='text' maxLength={5} placeholder="Postal Code" className='addresschange_placeholder01'  onClick={(event)=>RemoveError('postalcodeError')} onChange={(e)=>setPostalcode(e.target.value)}></input>
                             
                   <br/> <br/>
 
@@ -176,13 +176,17 @@ return (
                    <span id='error_message'></span><br/>
                    
 
-                  <button type='submit' className="addresschange_button" onClick={AddressChange}>Change Your Address</button>
+                  <button type='submit' className="addresschange_button" >Change Your Address</button>
                   <br/>
                  
                   
                  </div>
+                 <div className='gotocheckout'>
+                 <a  href='/checkout' id="gotocheckout" > Use default address</a>
+
+                 </div>
+
                   </form>
-                  <a  href='/checkout' id="gotocheckout" > </a>
             
             </div>
       

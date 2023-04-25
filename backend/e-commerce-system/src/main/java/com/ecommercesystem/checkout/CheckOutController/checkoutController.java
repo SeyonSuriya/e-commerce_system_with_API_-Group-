@@ -24,9 +24,9 @@ public class checkoutController {
 
 
     @PostMapping(path = "/checkout/changeaddress")
-    public List<User>  getAddress(@RequestBody AddressDto addressDto, @RequestParam Integer  userid){
+    public void  getAddress(@RequestBody AddressDto addressDto, @RequestParam Integer  userid){
         addressService.changeAddress(addressDto,userid);
-        return addressService.getAddressBYId(userid);
+
     }
 
     @PostMapping(path = "/checkout")

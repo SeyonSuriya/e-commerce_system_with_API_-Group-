@@ -100,3 +100,12 @@
     color: red;
     
 }
+.gotocheckout{
+    margin-top: 0.5cm;
+    text-align: center;
+   
+    font-size: larger;
+}
+#gotocheckout{
+    color:#11324d;
+}

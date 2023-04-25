@@ -22,7 +22,8 @@ public class AddressServiceImpl implements AddressService{
 
     @Override
     public void changeAddress(AddressDto addressDto,Integer userid) {
+        System.out.println(addressDto.getDistrict());
         userRepo.changeUserAddress(addressDto.getFirstname(),addressDto.getSecondname(),addressDto.getAddressline1(), addressDto.getAddressline2(),
-                 addressDto.getDistrict(), addressDto.getPostalcode(), addressDto.getMobile(), addressDto.getProvince(),userid);
+                addressDto.getDistrict(),addressDto.getPostalcode() , addressDto.getMobile(), addressDto.getProvince(),userid);
     }
 }
