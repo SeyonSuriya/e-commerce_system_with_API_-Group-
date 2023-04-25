@@ -10,21 +10,18 @@ import "../components/checkout.css";
 export default function CheckOut() {
   const [cookies, setCookie] = useCookies(['user']);
   setCookie('pricearray', [], { path: '/checkout'});
-    
-  function GetDefaultAddress() {
-    setCookie('newaddress', ' ', { path: '/checkout'});
-    GetAddress();
-  }
-    //console.log(cookies.selectedBooks.length)
-    function GetAddress() {
-      //console.log(cookies.newaddress)
-      if ((cookies.newaddress!==' ')||(cookies.newaddress!=='')) {
-        document.getElementById('address').innerHTML=cookies.newaddress
+    if (cookies.newaddress!=='') {
+      var newaddress=cookies.newaddress
+    }else{
+      newaddress=0
+    }
  
-
-      }else{
-        //
-        
+  function GetDefaultAddress() {
+    newaddress=0
+    setCookie('newaddress','', { path: '/checkout'});
+    GetAddress()
+  }
+  function GetAddress() {
     axios.post(
       'http://localhost:8080/ecommerce/getaddress?userid='+cookies.userid,
       ).then(response=>{
@@ -37,12 +34,22 @@ export default function CheckOut() {
             Address+=response.data[0].mobile
            // console.log(Address)
         document.getElementById('address').innerHTML=Address
-      
-        //console.log(cookies.userid)
+        console.log(cookies.newaddress)
+        if ((newaddress!==0)) {
+          
+          console.log('***')
+          document.getElementById('address').innerHTML=cookies.newaddress
+          
+  
+         }
+        
+     
        }
         )
-      }
-    }
+        
+  }
+
+ 
     
        
         function ShowSelectedProducts() {
@@ -112,6 +119,12 @@ export default function CheckOut() {
        document.getElementById(response.data[0].book_id+'_remove').onclick = function () {
         RemoveUnits(index,response.data[0].book_id)
        }
+       document.getElementById('changeAddressToDefault').onclick = function () {
+        GetDefaultAddress()
+       }
+       
+       
+      
        ChangeTotal()
 
 
@@ -195,20 +208,21 @@ function PlaceOrder() {
     return (
         <div>
           <Header/>
-          <div class='ordsum'>
-            <div class='orderSummayDiv'>
+          <div className='ordsum'>
+            <div className='orderSummayDiv'>
               <h1>Order Summary</h1>
               <p id='total'>&ensp;&ensp;&ensp;Total $ <span id="Total"></span></p><br></br><br></br>
-              <div class='place_order_button'><button class='po_button' onClick={PlaceOrder}><b>Place Order</b></button></div>
+              <div className='place_order_button'><button className='po_button' onClick={PlaceOrder}><b>Place Order</b></button></div>
             </div>
           </div>
         <div className='AddressDiv'>
           <h3>Address</h3>
           <div className='address'>
           <p id="address"  ></p>
+          <script>{GetAddress()}</script>
           
         
-          <script>{GetAddress()}</script>
+          
 
          
           </div>
@@ -216,14 +230,17 @@ function PlaceOrder() {
           <div className='changeAdressDiv'>
           <br/>
             <a href='/changeaddress'>+ Add a new Address</a><br/>
-            <span  id="changeAddressToDefault">&nbsp; <button onClick={GetDefaultAddress}>Use Default Address</button></span>
+            <span  >&nbsp; <button id="changeAddressToDefault" >Use Default Address</button></span>
           </div>
         </div>
        
       
         
           <span id="products" ></span>
+          
+          
           <script>{ShowSelectedProducts()}</script>
+
         
 
     
