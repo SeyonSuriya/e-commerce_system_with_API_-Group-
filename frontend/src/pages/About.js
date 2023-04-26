@@ -7,6 +7,7 @@ export default function About() {
   return (
     <div>
       <Header/>
+      
 
       <div class="aboutcont">
         <div class="abcontainer-sub">
