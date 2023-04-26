@@ -13,9 +13,17 @@ export default function Store() {
 
   const queryParameters = new URLSearchParams(window.location.search)
   const category = queryParameters.get("query")
+  const keyword = queryParameters.get("keyword")
+  var books=' '
   
+  if (keyword!==null) {
+  
+    books='http://localhost:8080/ecommerce/search?keyword='+keyword
+  }else{
+    books='http://localhost:8080/ecommerce/store?category='+category
+  }
   axios.post(
-    'http://localhost:8080/ecommerce/store?category='+category,
+    books,
     ).then(response=>{
         var products=response.data
         var allproducts=' '

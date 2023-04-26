@@ -27,12 +27,23 @@ public class StoreServiceImpl implements StoreService{
 
     @Override
     public List<books> GetSerchBooks(String keyword) {
-
-        if (keyword != " ") {
-            System.out.println(booksrepo.getSerchedProducts(keyword));
-            return booksrepo.getSerchedProducts(keyword);
-
+        if (!booksrepo.getSerchedProductsByAuthor(keyword).isEmpty()){
+            return booksrepo.getSerchedProductsByAuthor(keyword);
         }
-        return booksrepo.GetAllBooks();
+        else if (!booksrepo.getSerchedProductsByBookTitle(keyword).isEmpty()){
+            return booksrepo.getSerchedProductsByBookTitle(keyword);
+        }
+        else if (!booksrepo.getSerchedProductsByIsbn(keyword).isEmpty()){
+            return booksrepo.getSerchedProductsByIsbn(keyword);
+        }
+        else if (!booksrepo.getSerchedProductsByCategory(keyword).isEmpty()){
+            return booksrepo.getSerchedProductsByCategory(keyword);
+        }
+        else {
+            return null;
+        }
+
+
+
     }
 }

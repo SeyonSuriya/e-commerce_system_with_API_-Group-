@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import video03 from '../assests/video 02.mp4';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import  { useState } from 'react'
 // import { Slide } from 'react-slideshow-image';
 //import 'react-slideshow-image/dist/styles.css';
 
@@ -68,9 +69,11 @@ export default function Home() {
             WishListHandler(products[index].book_id)
            } 
            changeWishListImage(products[index].book_id)
+           if (products[index].num_of_units>0) {
            document.getElementById(products[index].book_id+'_cart_button').onclick = function () {
             AddtoCart(products[index].book_id)
           }
+        }
           document.getElementById('product_'+products[index].book_id).onclick = function () {
             window.location.href = "/product?bookid="+products[index].book_id;
           }
@@ -105,6 +108,10 @@ export default function Home() {
               )
             }
         }else{
+          
+  if (cookies.userid<1||cookies.userid==='') {
+    window.location.href = "/login";
+  }
           axios.post(
             'http://localhost:8080/ecommerce/books/addtowishlist?book_id='+book_id+'&userid='+cookies.userid,
             ).then(response=>{
@@ -118,6 +125,9 @@ export default function Home() {
    
       // Add to cart Function
       function AddtoCart(book_id) {
+        if (cookies.userid<1||cookies.userid==='') {
+          window.location.href = "/login";
+        }else{
         if(window.confirm("Are you sure to Add this book to your cart?")){
         axios.post(
           'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
@@ -127,13 +137,24 @@ export default function Home() {
    
               var popup = document.getElementById("myPopup");
               popup.classList.toggle("show");
+
    
            }
             )
           }
+        }
        }
+  const [SearchKeyword,setSearchKeyword]=useState(' ');
+   function SearchBarHandler() {
+    if (SearchKeyword!=="") {
+
+      window.location.href = "/store?keyword="+SearchKeyword;
+    }else{
     
-   
+    }
+
+    
+   }
    
    
   return (
@@ -147,14 +168,15 @@ export default function Home() {
          <div className="video-content">
         
                <div className="input-group">
-                <input type="text" 
-                className="form-control " 
+                <input type="text" id="searchbar"
+                className="form-control" 
                 placeholder="Search Product Here..." 
                 aria-label="Search Product Here..." 
-                aria-describedby="basic-addon2" />
+                aria-describedby="basic-addon2" 
+                onChange={(e)=>setSearchKeyword(e.target.value)}  />
 
                 <span className="input-group-text" id="basic-addon2">
-                 <BsSearch className='searchicon'/>
+                 <BsSearch className='searchicon' onClick={(event)=>SearchBarHandler()}/>
                 </span>
                 </div>
               
