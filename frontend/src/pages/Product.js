@@ -78,6 +78,9 @@ export default function Product() {
 
        // Wish List Handling
        function WishListHandler() {
+        if (cookies.userid<1||cookies.userid==='') {
+          window.location.href = "/login";
+        }else{
         if (document.getElementById('wish_list_image').value===0) {
           axios.post(
             'http://localhost:8080/ecommerce/books/addtowishlist?book_id='+book_id+'&userid='+cookies.userid,
@@ -94,11 +97,15 @@ export default function Product() {
              }
               )
         }   
-       }             
+       }
+      }             
        }
 
        // Add to cart function
        function AddtoCart() {
+        if (cookies.userid<1||cookies.userid==='') {
+          window.location.href = "/login";
+        }else{
         axios.post(
           'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+units+'&userid='+cookies.userid,
           ).then(response=>{
@@ -109,6 +116,7 @@ export default function Product() {
 
            }
             )
+          }
        }
        
   return (

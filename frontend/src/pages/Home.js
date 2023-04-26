@@ -107,6 +107,10 @@ export default function Home() {
               )
             }
         }else{
+          
+  if (cookies.userid<1||cookies.userid==='') {
+    window.location.href = "/login";
+  }
           axios.post(
             'http://localhost:8080/ecommerce/books/addtowishlist?book_id='+book_id+'&userid='+cookies.userid,
             ).then(response=>{
@@ -120,6 +124,9 @@ export default function Home() {
    
       // Add to cart Function
       function AddtoCart(book_id) {
+        if (cookies.userid<1||cookies.userid==='') {
+          window.location.href = "/login";
+        }else{
         if(window.confirm("Are you sure to Add this book to your cart?")){
         axios.post(
           'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
@@ -133,6 +140,7 @@ export default function Home() {
            }
             )
           }
+        }
        }
     
    
