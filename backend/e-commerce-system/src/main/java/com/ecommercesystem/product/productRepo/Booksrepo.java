@@ -47,3 +47,28 @@ public interface Booksrepo extends JpaRepository<books,Integer> {
     @Query("select c from books c where c.isbn LIKE ?1||'%'")
     List<books> getSerchedProductsByCategory(String keyword);
 
+    // @Query(value = "select num_of_units from books where item_id=:item_id")
+    //  Integer getAvailableUnits(Integer item_id);
+
+
+
+
+    // @Query(value="select * from users a where a.mobile=:Mobile", nativeQuery=true)
+    // List<User> findUserByMobile(String Mobile);
+
+    // Login user Queries
+
+    //     @Query(value="SELECT password from users a WHERE a.email=:Email", nativeQuery=true)
+    //      String findUserByLoginCredentials(String Email);
+
+    //      @Transactional
+    //      @Modifying
+    //      @Query(value="update users a set a.password=?2 WHERE a.email=?1", nativeQuery=true)
+    //      Integer changePassword(String Email,String password);
+
+    //     @Transactional
+    //     @Modifying
+    //     @Query(value="update users a set a.active_status=?1 WHERE a.email=?2", nativeQuery=true)
+    //     void changeActiveStatus(int i,String email);
+    //  }
+}

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import video03 from '../assests/video 02.mp4';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import  { useState } from 'react'
 // import { Slide } from 'react-slideshow-image';
 //import 'react-slideshow-image/dist/styles.css';
 
@@ -136,14 +137,22 @@ export default function Home() {
    
               var popup = document.getElementById("myPopup");
               popup.classList.toggle("show");
+
    
            }
             )
           }
         }
        }
+  const [SearchKeyword,setSearchKeyword]=useState(' ');
+   function SearchBarHandler() {
+    if (SearchKeyword===''|SearchKeyword===' ') {
+      setCookie('search_keyword',SearchKeyword, { path: '/store'});
+      window.location.href = "/store";
+    }
+
     
-   
+   }
    
    
   return (
@@ -157,14 +166,15 @@ export default function Home() {
          <div className="video-content">
         
                <div className="input-group">
-                <input type="text" 
-                className="form-control " 
+                <input type="text" id="searchbar"
+                className="form-control" 
                 placeholder="Search Product Here..." 
                 aria-label="Search Product Here..." 
-                aria-describedby="basic-addon2" />
+                aria-describedby="basic-addon2" 
+                onChange={(e)=>setSearchKeyword(e.target.value)}  />
 
                 <span className="input-group-text" id="basic-addon2">
-                 <BsSearch className='searchicon'/>
+                 <BsSearch className='searchicon' onClick={(event)=>SearchBarHandler()}/>
                 </span>
                 </div>
               
