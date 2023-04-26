@@ -68,9 +68,11 @@ export default function Home() {
             WishListHandler(products[index].book_id)
            } 
            changeWishListImage(products[index].book_id)
+           if (products[index].num_of_units>0) {
            document.getElementById(products[index].book_id+'_cart_button').onclick = function () {
             AddtoCart(products[index].book_id)
           }
+        }
           document.getElementById('product_'+products[index].book_id).onclick = function () {
             window.location.href = "/product?bookid="+products[index].book_id;
           }
