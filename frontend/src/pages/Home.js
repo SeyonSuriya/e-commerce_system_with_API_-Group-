@@ -146,9 +146,11 @@ export default function Home() {
        }
   const [SearchKeyword,setSearchKeyword]=useState(' ');
    function SearchBarHandler() {
-    if (SearchKeyword===''|SearchKeyword===' ') {
-      setCookie('search_keyword',SearchKeyword, { path: '/store'});
-      window.location.href = "/store";
+    if (SearchKeyword!=="") {
+
+      window.location.href = "/store?keyword="+SearchKeyword;
+    }else{
+    
     }
 
     
