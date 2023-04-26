@@ -11,7 +11,7 @@ export default function WishList() {
   var wishlist=[]
   
 
-  if (cookies.userid<1) {
+  if (cookies.userid<1||cookies.userid==='') {
     window.location.href = "/login";
   }
 

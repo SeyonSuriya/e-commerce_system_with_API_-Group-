@@ -86,13 +86,15 @@ export default function Product() {
              }
               )
         }else{
+          if(window.confirm("Do you want remove this item from cart?")){
           axios.post(
             'http://localhost:8080/ecommerce/books/removefromwishlist?book_id='+book_id+'&userid='+cookies.userid,
             ).then(response=>{
               changeWishListImage()
              }
               )
-        }                 
+        }   
+       }             
        }
 
        // Add to cart function
