@@ -47,6 +47,12 @@ export default function Cart() {
            if (response.data[0].num_of_units>=cart[index].quantity) {
            row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+tmpproduct[0].book_id+'_units" class="units">'+cart[index].quantity+'</span>&nbsp;&nbsp;'
            }else{
+            axios.post(
+              'http://localhost:8080/ecommerce/cart/updateunits?item_id='+tmpproduct[0].book_id+'&units='+1+'&userid='+cookies.userid,
+              ).then(response=>{
+           
+               }
+              )
             row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+tmpproduct[0].book_id+'_units" class="units">'+1+'</span>&nbsp;&nbsp;'
            }
            row+='<img id="'+tmpproduct[0].book_id+'_add" class="add_button" style="width:40px;height:24px;" onClick={addUnits}/>'
