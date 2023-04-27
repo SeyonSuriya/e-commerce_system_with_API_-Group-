@@ -28,7 +28,12 @@ export default function Cart() {
            var tmpproduct=response.data
            cookies.pricearray[index]=tmpproduct[0].book_price
            //console.log(cartid)
-           row+='<table class="productrow"><tr style="border-color: 1px solid #11324d;"><td ><div class="product_selecter_div"><input type="checkbox" name="chk" id="'+cartid+'" ></div>'
+           if (response.data[0].num_of_units>0) {
+            row+='<table class="productrow"><tr style="border-color: 1px solid #11324d;"><td ><div class="product_selecter_div"><input type="checkbox" name="chk" id="'+cartid+'" ></div>'
+           }else{
+            row+='<table class="productrow"><tr style="border-color: 1px solid #11324d;"><td ><div class="product_selecter_div"></div>'
+
+           }
            //console.log(tmpproduct[0].book_title+'_wish_image')
            //console.log(tmpproduct[0].book_id)
            row+='<div class="product_image_div"><img class="product_image"  style="width:100%;height:100%;" id="'+tmpproduct[0].book_id+'_image" /></div><span id='+tmpproduct[0].book_id+'></span>'
@@ -39,9 +44,16 @@ export default function Cart() {
            row+='<img id="'+tmpproduct[0].book_id+'_delete_image" class="delete_image" style="width:24px;height:26px;margin: 0 auto;" /></div><br/></br>'
            row+='<div id="change_units" class="unitsdiv">'
            row+='&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+tmpproduct[0].book_id+'_remove" class="minus_button" style="width:25px;height:25px;margin: 0 auto;"  />'
-           
+           if (response.data[0].num_of_units>=cart[index].quantity) {
            row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+tmpproduct[0].book_id+'_units" class="units">'+cart[index].quantity+'</span>&nbsp;&nbsp;'
-           row+='<img id="'+tmpproduct[0].book_id+'_add" class="add_button" style="width:40px;height:24px;" onClick={addUnits}/></div>'
+           }else{
+            row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+tmpproduct[0].book_id+'_units" class="units">'+1+'</span>&nbsp;&nbsp;'
+           }
+           row+='<img id="'+tmpproduct[0].book_id+'_add" class="add_button" style="width:40px;height:24px;" onClick={addUnits}/>'
+           if (response.data[0].num_of_units===0) {
+            row+='Item is out of stock'
+           }
+           row+='</div>'
            row+='<br>'
            row+='</div></div></td></tr></table>'
            
