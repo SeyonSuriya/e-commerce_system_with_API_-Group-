@@ -50,8 +50,11 @@ function GetWishedItems(){
             row +='<div class="product_img_div"><img class="productimg" id="'+response.data[0].book_id+'_image" style="width:100%;height:100%;"/></div>'
             row+='<div class="wishlistdiv">'
             row+='<br><br><br><button class="remove_button" id="'+response.data[0].book_id+'_remove">Remove</button><br><br>'
+            if (response.data[0].num_of_units>0) {
             row+='<button class="addtocart_button" id="'+response.data[0].book_id+'_addtocart">Add to cart</button>'
-            
+            }else{
+              row+='<span>out of stock</span>'
+            }
             row+='</div>'
             row +='<div class="product_info">'
             row +='<p class="title">'
@@ -73,9 +76,12 @@ function GetWishedItems(){
           document.getElementById(wisheditems[index].item_id+'_remove').onclick = function () {
             RemoveFromWishlist(wisheditems[index].item_id)
            }
-           document.getElementById(wisheditems[index].item_id+'_addtocart').onclick = function () {
-            AddToCart(wisheditems[index].item_id)
+           if (response.data[0].num_of_units>0) {
+            document.getElementById(wisheditems[index].item_id+'_addtocart').onclick = function () {
+              AddToCart(wisheditems[index].item_id)
+             }
            }
+           
           //console.log(response.data[0].book_id+'_image')
 
           }
