@@ -18,7 +18,7 @@ export default function Cart() {
 
   // Getting Product Info and creating a row with product data
 
-  function Addproduct(book_id,index,cartid){
+  function Addproduct(book_id,index,cartid,cart){
     var row=' '
     axios.get(
       'http://localhost:8080/ecommerce/books/details?book_id='+book_id,
@@ -27,7 +27,7 @@ export default function Cart() {
         //console.log(tmpproduct)
            var tmpproduct=response.data
            cookies.pricearray[index]=tmpproduct[0].book_price
-           console.log(cartid)
+           //console.log(cartid)
            row+='<table class="productrow"><tr style="border-color: 1px solid #11324d;"><td ><div class="product_selecter_div"><input type="checkbox" name="chk" id="'+cartid+'" ></div>'
            //console.log(tmpproduct[0].book_title+'_wish_image')
            //console.log(tmpproduct[0].book_id)
@@ -40,7 +40,7 @@ export default function Cart() {
            row+='<div id="change_units" class="unitsdiv">'
            row+='&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+tmpproduct[0].book_id+'_remove" class="minus_button" style="width:25px;height:25px;margin: 0 auto;"  />'
            
-           row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+tmpproduct[0].book_id+'_units" class="units">'+cookies.cart[index].quantity+'</span>&nbsp;&nbsp;'
+           row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+tmpproduct[0].book_id+'_units" class="units">'+cart[index].quantity+'</span>&nbsp;&nbsp;'
            row+='<img id="'+tmpproduct[0].book_id+'_add" class="add_button" style="width:40px;height:24px;" onClick={addUnits}/></div>'
            row+='<br>'
            row+='</div></div></td></tr></table>'
@@ -89,12 +89,12 @@ export default function Cart() {
            if (response.data.length>0) {
             document.getElementById('all_items_selector').innerHTML='<input type="checkbox" name="all_items_selector"> &nbsp;&nbsp;Select all Items</br>'
             setCookie('cart', response.data, { path: '/cart'});
-            
+            var cart=response.data
             var table='</br></br><tbody>'
             for (let index = 0; index < response.data.length; index++) {
-              //console.log(cart[index].item_id)
-              table+='<span id="'+cookies.cart[index].item_id+'"></span>'
-              Addproduct(cookies.cart[index].item_id,index,cookies.cart[index].id)
+              console.log(cart[index].item_id)
+              table+='<span id="'+response.data[index].item_id+'"></span>'
+              Addproduct(response.data[index].item_id,index,response.data[index].id,response.data)
             }
             document.getElementById('products').innerHTML=table+'</tbody>'
             document.getElementById('num_of_item_in_cart').innerHTML=response.data.length
