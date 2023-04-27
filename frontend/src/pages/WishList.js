@@ -70,11 +70,11 @@ function GetWishedItems(){
           //console.log(response.data[0].book_id)
           document.getElementById(response.data[0].book_id).innerHTML=row
           document.getElementById(response.data[0].book_id+'_image').src=require("../Images/"+response.data[0].book_title+".jpg")
-          document.getElementById(response.data[index].item_id+'_remove').onclick = function () {
-            RemoveFromWishlist(response.data[index].item_id)
+          document.getElementById(wisheditems[index].item_id+'_remove').onclick = function () {
+            RemoveFromWishlist(wisheditems[index].item_id)
            }
-           document.getElementById(response.data[index].item_id+'_addtocart').onclick = function () {
-            AddToCart(response.data[index].item_id)
+           document.getElementById(wisheditems[index].item_id+'_addtocart').onclick = function () {
+            AddToCart(wisheditems[index].item_id)
            }
           //console.log(response.data[0].book_id+'_image')
 
