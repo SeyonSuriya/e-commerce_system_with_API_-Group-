@@ -15,33 +15,36 @@ export default function WishList() {
     window.location.href = "/login";
   }
 
-
+function GetWishedItems(){
   axios.post(
     'http://localhost:8080/ecommerce/wishes?userid='+cookies.userid,
     ).then(response=>{
       //console.log(response.data)
       setCookie('wishlist', response.data, { path: '/wishlist'});
       var products=' '
-      for (let index = 0; index < cookies.wishlist.length; index++) {
+      for (let index = 0; index < response.data.length; index++) {
         products+='<div className={Style["product"]}>'
-        products+='<span id="'+ cookies.wishlist[index].item_id+'"></span>'
+        products+='<span id="'+ response.data[index].item_id+'"></span>'
         products+='</div>'
       //  console.log(cookies.wishlist[index].item_id)
       }
-      if (cookies.wishlist.length===0) {
+      if (response.data.length===0) {
         products+='<div class="product">'
         products+='No Books in your wishlist'
         products+='</div>'
       }
       document.getElementById('products').innerHTML=products
-      GetProductInfo()
+      GetProductInfo(response.data)
     }
      )
-     function GetProductInfo() {
-      for (let index = 0; index < cookies.wishlist.length; index++) {
+  }
+  GetWishedItems()
+
+     function GetProductInfo(wisheditems) {
+      for (let index = 0; index < wisheditems.length; index++) {
        // console.log(cookies.wishlist[index].item_id)
         axios.get(
-          'http://localhost:8080/ecommerce/books/details?book_id='+cookies.wishlist[index].item_id,
+          'http://localhost:8080/ecommerce/books/details?book_id='+wisheditems[index].item_id,
           ).then(response=>{
             var row=' '
             row +='<div class="product_img_div"><img class="productimg" id="'+response.data[0].book_id+'_image" style="width:100%;height:100%;"/></div>'
@@ -67,11 +70,11 @@ export default function WishList() {
           //console.log(response.data[0].book_id)
           document.getElementById(response.data[0].book_id).innerHTML=row
           document.getElementById(response.data[0].book_id+'_image').src=require("../Images/"+response.data[0].book_title+".jpg")
-          document.getElementById(cookies.wishlist[index].item_id+'_remove').onclick = function () {
-            RemoveFromWishlist(cookies.wishlist[index].item_id)
+          document.getElementById(response.data[index].item_id+'_remove').onclick = function () {
+            RemoveFromWishlist(response.data[index].item_id)
            }
-           document.getElementById(cookies.wishlist[index].item_id+'_addtocart').onclick = function () {
-            AddToCart(cookies.wishlist[index].item_id)
+           document.getElementById(response.data[index].item_id+'_addtocart').onclick = function () {
+            AddToCart(response.data[index].item_id)
            }
           //console.log(response.data[0].book_id+'_image')
 
@@ -92,7 +95,7 @@ export default function WishList() {
           
          }
           )
-          GetProductInfo()
+          GetWishedItems()
           setCookie('wishlist', [], { path: '/wishlist'});
           document.getElementById("wishlist").click(); 
         }
