@@ -66,12 +66,12 @@ export default function CheckOut() {
               cookies.product+='<div class="product">'
               
               //cookies.product+='CartID : '+cookies.selectedBooks[index]
-              for (let i = 0; i < cookies.productquantities.length; i++) {
+              for (let i = 0; i < response.data.length; i++) {
                 var addproduct=' '
                 
-                if (cookies.productquantities[i].id===cookies.selectedBooks[index]) {
-                  addproduct+='<span id="'+cookies.productquantities[i].item_id+'"></span>'
-                  GetProduct(cookies.productquantities[i].item_id,i,cookies.selectedBooks[index])
+                if (response.data[i].id===cookies.selectedBooks[index]) {
+                  addproduct+='<span id="'+response.data[i].item_id+'"></span>'
+                  GetProduct(response.data[i].item_id,i,cookies.selectedBooks[index])
                   //break;
                }
                cookies.product+=addproduct
