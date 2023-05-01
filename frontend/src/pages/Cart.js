@@ -91,7 +91,7 @@ export default function Cart() {
         RemoveUnits(index,tmpproduct[0].book_id)
        }
        document.getElementById(cartid).onclick = function () {
-        Select()
+        Select(cart)
         
        }
 
@@ -99,6 +99,7 @@ export default function Cart() {
       
       )
   }
+  var cart=[]
   function ShowProductsInCart() {
     
     axios.post(
@@ -107,7 +108,7 @@ export default function Cart() {
            if (response.data.length>0) {
             document.getElementById('all_items_selector').innerHTML='<input type="checkbox" name="all_items_selector"> &nbsp;&nbsp;Select all Items</br>'
             setCookie('cart', response.data, { path: '/cart'});
-            var cart=response.data
+            cart=response.data
             var table='</br></br><tbody>'
             for (let index = 0; index < response.data.length; index++) {
               console.log(cart[index].item_id)
@@ -123,7 +124,7 @@ export default function Cart() {
 
            }
            document.getElementById('all_items_selector').onclick = function () {
-            AllItemSelector()
+            AllItemSelector(cart)
            }
           }
   )
@@ -187,6 +188,8 @@ ShowProductsInCart()
         function addUnits(available_units,cartid,book_id) {
             if (available_units>cookies.cart[cartid].quantity) {
               cookies.cart[cartid].quantity+=1
+              cart[cartid]+=1
+              
              axios.post(
               'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
               ).then(response=>{
@@ -212,7 +215,8 @@ ShowProductsInCart()
         }
         var selectors=document.getElementsByName('chk'); 
         // All Item Selector
-        function AllItemSelector() {
+        function AllItemSelector(cart) {
+          console.log(cart)
           
          var all_items_selector=document.getElementsByName('all_items_selector')[0]
            if (all_items_selector.checked===false) {
@@ -221,43 +225,43 @@ ShowProductsInCart()
             if(selectors[i].type==='checkbox')  
             selectors[i].checked=false;  
           }
-          ChangeTotal()
+          ChangeTotal(cart)
          }else{
           document.getElementsByName('all_items_selector').checked=false
           for( i=0; i<selectors.length; i++){  
             if(selectors[i].type==='checkbox')  
             selectors[i].checked=true; 
          }
-         ChangeTotal()
+         ChangeTotal(cart)
           }
         }
        
         // Select Item
-        function Select() {
+        function Select(cart) {
           
           // console.log(selectors)
           for(var i=0; i<selectors.length; i++){  
               if (selectors[i].checked===false) {
                 document.getElementsByName('all_items_selector')[0].checked=false
-                ChangeTotal() 
+                ChangeTotal(cart) 
                 break;
-              }  
-              ChangeTotal()            
+              }  console.log(cart)
+              ChangeTotal(cart)            
             document.getElementsByName('all_items_selector')[0].checked=true
 
           }
         }
         
-        function ChangeTotal() {
+        function ChangeTotal(cart) {
           var Total = 0
           
-         
+          console.log(cart)
           //setCookie('selected', [], { path: '/cart'});
           for(var i=0; i<selectors.length; i++){  
             if (selectors[i].checked===true) {
              
-              
-              Total+=cookies.cart[i].quantity*cookies.pricearray[i]
+              console.log(cart)
+              Total+=cart[i].quantity*cookies.pricearray[i]
             } 
         }
         document.getElementById('Total').innerHTML=Total

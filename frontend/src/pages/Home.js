@@ -39,6 +39,10 @@ const divStyle = {
 export default function Home() {
 
    const [cookies, setCookie] = useCookies(['user']);
+   if (cookies.userid>1) {
+    console.log('$$$')
+   // window.location.href = "/login";
+  }
 
 
    axios.post(

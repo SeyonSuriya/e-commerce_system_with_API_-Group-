@@ -44,7 +44,6 @@ public class RegisterUserController {
         System.out.println(email);
         return email;
     }
-
     @PostMapping(path = "/login")
     public Integer authenticateUser(@RequestBody LoginUser loginUser)
     {
@@ -80,7 +79,6 @@ public class RegisterUserController {
     public String addNewPassword(@RequestBody PasswordResetDto passwordResetDto){
         return resetPassword.addNewPassword(passwordResetDto);
     }
-
     @PostMapping(path = "/deactivateAccount")
     public String deactivateAccount(String email) {
         accountStatusService.deactivateAccount(email);
