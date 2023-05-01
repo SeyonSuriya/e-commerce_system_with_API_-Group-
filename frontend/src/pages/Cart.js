@@ -85,10 +85,10 @@ export default function Cart() {
        }
        // Adding AddUnits and Deduct units in cart onclick functions
        document.getElementById(tmpproduct[0].book_id+'_add').onclick = function () {
-        addUnits(tmpproduct[0].num_of_units,index,tmpproduct[0].book_id)
+        addUnits(tmpproduct[0].num_of_units,index,tmpproduct[0].book_id,cart)
        }
        document.getElementById(tmpproduct[0].book_id+'_remove').onclick = function () {
-        RemoveUnits(index,tmpproduct[0].book_id)
+        RemoveUnits(index,tmpproduct[0].book_id,cart)
        }
        document.getElementById(cartid).onclick = function () {
         Select(cart)
@@ -146,16 +146,20 @@ ShowProductsInCart()
             )
           } 
   function WishListHandler(book_id) {
+
     axios.post(
       'http://localhost:8080/ecommerce/books/checkwishes?book_id='+book_id+'&userid='+cookies.userid,
       ).then(response=>{
         if (response.data==='wished') {
+          if(window.confirm("Are you sure to remove this book from wishlist?")){
+
           axios.post(
             'http://localhost:8080/ecommerce/books/removefromwishlist?book_id='+book_id+'&userid='+cookies.userid,
             ).then(response=>{
               document.getElementById(book_id+'_wish_image').src=require("../Images/heart1.png")
              }
               )
+            }
         }else{
           axios.post(
             'http://localhost:8080/ecommerce/books/addtowishlist?book_id='+book_id+'&userid='+cookies.userid,
@@ -177,7 +181,6 @@ ShowProductsInCart()
            }
           )
       }else{
-
       }
 
 
@@ -185,31 +188,33 @@ ShowProductsInCart()
     }
 
 // Units Handling Functions
-        function addUnits(available_units,cartid,book_id) {
+        function addUnits(available_units,cartid,book_id,cart) {
             if (available_units>cookies.cart[cartid].quantity) {
               cookies.cart[cartid].quantity+=1
-              cart[cartid]+=1
-              
+              cart[cartid].quantity+=1
+             
              axios.post(
               'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
               ).then(response=>{
                // ShowProductsInCart()
                }
               )
-              ChangeTotal()
+              ChangeTotal(cart)
             document.getElementById(book_id+'_units').innerHTML=cookies.cart[cartid].quantity
             }
         }
-        function RemoveUnits(cartid,book_id) {
+        function RemoveUnits(cartid,book_id,cart) {
          if (cookies.cart[cartid].quantity!==1) {
           cookies.cart[cartid].quantity-=1
+          cart[cartid].quantity-=1
+          
            axios.post(
             'http://localhost:8080/ecommerce/cart/updateunits?item_id='+book_id+'&units='+cookies.cart[cartid].quantity+'&userid='+cookies.userid,
             ).then(response=>{
              // ShowProductsInCart()
              }
             )
-            ChangeTotal()
+            ChangeTotal(cart)
            document.getElementById(book_id+'_units').innerHTML=cookies.cart[cartid].quantity
          }
         }
@@ -261,7 +266,7 @@ ShowProductsInCart()
             if (selectors[i].checked===true) {
              
               console.log(cart)
-              Total+=cart[i].quantity*cookies.pricearray[i]
+              Total+=cookies.cart[i].quantity*cookies.pricearray[i]
             } 
         }
         document.getElementById('Total').innerHTML=Total
