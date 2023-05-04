@@ -10,15 +10,13 @@ import "../components/checkout.css";
 export default function CheckOut() {
   const [cookies, setCookie] = useCookies(['user']);
   setCookie('pricearray', [], { path: '/checkout'});
-    if (cookies.newaddress!=='') {
-      var newaddress=cookies.newaddress
-    }else{
-      newaddress=0
-    }
+
+  var newaddress=cookies.newaddress
+ 
  
   function GetDefaultAddress() {
     newaddress=0
-    setCookie('newaddress','', { path: '/checkout'});
+    setCookie('newaddress',0, { path: '/checkout'});
     GetAddress()
   }
   function GetAddress() {
@@ -35,12 +33,11 @@ export default function CheckOut() {
            // console.log(Address)
         document.getElementById('address').innerHTML=Address
         console.log(cookies.newaddress)
-        if ((newaddress!==0)) {
+        if ((newaddress!=='0')) {
           
           console.log('***')
-          document.getElementById('address').innerHTML=cookies.newaddress
+          document.getElementById('address').innerHTML=newaddress
           
-  
          }
         
      
@@ -184,6 +181,8 @@ document.getElementById('Total').innerHTML=Total
 }
 
 function PlaceOrder() {
+  newaddress=0
+  setCookie('newaddress',0, { path: '/checkout'});
   var address=document.getElementById('address').innerHTML
   var userid=cookies.userid
   
@@ -230,7 +229,7 @@ function PlaceOrder() {
           <div className='changeAdressDiv'>
           <br/>
             <a href='/changeaddress'>+ Add a new Address</a><br/>
-            <span  >&nbsp; <button id="changeAddressToDefault" >Use Default Address</button></span>
+            <span  >&nbsp; <button id="changeAddressToDefault" onClick={GetDefaultAddress}>Use Default Address</button></span>
           </div>
         </div>
        

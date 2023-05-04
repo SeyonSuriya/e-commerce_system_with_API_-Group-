@@ -266,7 +266,7 @@ ShowProductsInCart()
             if (selectors[i].checked===true) {
              
               console.log(cart)
-              Total+=cookies.cart[i].quantity*cookies.pricearray[i]
+              Total+=cart[i].quantity*cookies.pricearray[i]
             } 
         }
         document.getElementById('Total').innerHTML=Total
