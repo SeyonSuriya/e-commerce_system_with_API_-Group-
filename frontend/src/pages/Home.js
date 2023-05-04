@@ -39,10 +39,13 @@ const divStyle = {
 export default function Home() {
 
    const [cookies, setCookie] = useCookies(['user']);
-   if (cookies.userid>1) {
-    console.log('$$$')
-   // window.location.href = "/login";
+   
+   if (!cookies.userid>0) {
+    
+    setCookie('userid', 0, { path: '/'});
+
   }
+  console.log(cookies.userid)
 
 
    axios.post(
@@ -100,6 +103,7 @@ export default function Home() {
             )
           } 
     function WishListHandler(book_id) {
+     
     axios.post(
       'http://localhost:8080/ecommerce/books/checkwishes?book_id='+book_id+'&userid='+cookies.userid,
       ).then(response=>{
