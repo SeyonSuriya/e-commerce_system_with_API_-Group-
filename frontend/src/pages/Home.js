@@ -67,7 +67,8 @@ export default function Home() {
             allproducts+='</div>'
           }
           document.getElementById('Addproducts').innerHTML=allproducts
-          for (let index = 0; index < products.length; index++) {
+          for (let index = 0; index < 12; index++) {
+           
           document.getElementById(products[index].book_id+'_image').src=require("../Images/"+products[index].book_title+".jpg")
           document.getElementById(products[index].book_id+'_wish_image').onclick = function () {
             WishListHandler(products[index].book_id)
