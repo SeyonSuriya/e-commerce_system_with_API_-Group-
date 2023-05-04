@@ -10,6 +10,11 @@ import "../components/store.css"
 
 export default function Store() {
   const [cookies, setCookie] = useCookies(['user']);
+  if (!cookies.userid>0) {
+    
+    setCookie('userid', 0, { path: '/'});
+
+  }
 
   const queryParameters = new URLSearchParams(window.location.search)
   const category = queryParameters.get("query")
@@ -75,6 +80,9 @@ export default function Store() {
           )
         } 
   function WishListHandler(book_id) {
+    if (cookies.userid<1||cookies.userid==='') {
+      window.location.href = "/login";
+    }else{
   axios.post(
     'http://localhost:8080/ecommerce/books/checkwishes?book_id='+book_id+'&userid='+cookies.userid,
     ).then(response=>{
@@ -98,9 +106,13 @@ export default function Store() {
      }
       )
     }
+    }
 
     // Add to cart Function
     function AddtoCart(book_id) {
+      if (cookies.userid<1||cookies.userid==='') {
+        window.location.href = "/login";
+      }else{
       if(window.confirm("Are you sure to Add this book to your cart?")){
       axios.post(
         'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
@@ -114,6 +126,7 @@ export default function Store() {
          }
           )
         }
+      }
      }
   
 
