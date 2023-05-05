@@ -7,15 +7,15 @@ import { useCookies } from 'react-cookie';
 
 import "../components/checkout.css";
 
-export default function CheckOut() {
+export default function CheckOut(props) {
   const [cookies, setCookie] = useCookies(['user']);
   setCookie('pricearray', [], { path: '/checkout'});
 
   var newaddress=cookies.newaddress
- 
- 
+  
+
   function GetDefaultAddress() {
-    newaddress=0
+    newaddress='0'
     setCookie('newaddress',0, { path: '/checkout'});
     GetAddress()
   }
@@ -32,9 +32,8 @@ export default function CheckOut() {
             Address+=response.data[0].mobile
            // console.log(Address)
         document.getElementById('address').innerHTML=Address
-        console.log(cookies.newaddress)
+        //console.log(cookies.newaddress)
         if ((newaddress!=='0')) {
-          
           console.log('***')
           document.getElementById('address').innerHTML=newaddress
           
@@ -88,7 +87,8 @@ export default function CheckOut() {
           // eslint-disable-next-line no-loop-func
           ).then(response=>{
             console.log()
-            cookies.pricearray[index]=response.data[0].book_price
+            setCookie('pricearray', response.data[0].book_price, { path: '/checkout'});
+            //cookies.pricearray[index]=response.data[0].book_price
             row+='<div class="maindiv">'
             row+='<img  class="product_image"  id="'+response.data[0].book_id+'_image" style="width:20%;height:70%;">'
             row+='<div class="productInfo"> <p className={Style["booktitle"]}>'
@@ -123,8 +123,6 @@ export default function CheckOut() {
        
       
        ChangeTotal()
-
-
           }
           )
       }

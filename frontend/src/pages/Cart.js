@@ -279,7 +279,12 @@ ShowProductsInCart()
           var x=0
           for(var i=0; i<selectors.length; i++){  
             if (selectors[i].checked===true) {
-              selected[x]=cookies.cart[i].id
+              try {
+                selected[x]=cookies.cart[i].id
+              } catch (error) {
+console.log('*****')
+              }
+              
               x++
             } 
         }
@@ -313,7 +318,6 @@ ShowProductsInCart()
               <p id="summary"><b>Summary</b></p><br></br>
               <p className="total">Total :US $ <span className="Total" id="Total"></span></p><br></br><br></br>
               <div className="checkout_button"><button id='checkout' onClick={CheckSelections}><b>Checkout</b></button></div>
-   
               <a href='/checkout' id="Checkoutpage" > </a>
             </div>
           </td>
