@@ -36,6 +36,7 @@ const divStyle = {
 
 
 
+
 export default function Home() {
 
    const [cookies, setCookie] = useCookies(['user']);
@@ -53,7 +54,7 @@ export default function Home() {
           var products=response.data
           var allproducts=' '
           for (let index = 0; index < 12; index++) {
-            if ((index%5===0)&(index!==0)) {
+            if ((index%5===0)&&(index!==0)) {
               allproducts+='</br>'
             }
             allproducts+='&nbsp;&nbsp;&nbsp;<div id="product" >'
@@ -69,7 +70,7 @@ export default function Home() {
             allproducts+='</div>'
           }
           document.getElementById('Addproducts').innerHTML=allproducts
-          for (let index = 0; index < 12; index++) {
+          for (let index = 0; index < 15; index++) {
            
           document.getElementById(products[index].book_id+'_image').src=require("../Images/"+products[index].book_title+".jpg")
           document.getElementById(products[index].book_id+'_wish_image').onclick = function () {
