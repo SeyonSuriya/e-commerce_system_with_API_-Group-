@@ -101,7 +101,7 @@ export default function CheckOut(props) {
             
             row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+response.data[0].book_id+'_units" class="units">'+cookies.productquantities[index].quantity+'</span>&nbsp;&nbsp;'
             row+='<img id="'+response.data[0].book_id+'_add" class="add_button" style="width:40px;height:24px;" onClick={addUnits}/></div>'
-            row+='</div>'
+            row+='</div>' 
             
            // console.log(row)
             document.getElementById(book_id).innerHTML=row
