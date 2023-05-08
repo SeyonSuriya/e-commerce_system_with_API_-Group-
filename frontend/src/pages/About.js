@@ -2,6 +2,11 @@ import React from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './about.css';
+import team1 from '../Images/about/team1.png'
+import team2 from '../Images/about/team2.jpg'
+import team3 from '../Images/about/team3.jpg'
+import team4 from '../Images/about/team4.jpg'
+import team5 from '../Images/about/team5.jpg'
 import team6 from '../Images/about/team6.jpg'
 
 
@@ -105,42 +110,42 @@ export default function About() {
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-1.png" alt="member 1" width="240px"/>
+                <img src={team1} alt="member 1"  className='developer_images'/>
                 <h4>Yadheeshani Shakilanka Edirisinghe</h4>
                 <span>Web Developer</span>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-2.jpg" alt="member 2" width="240px"/>
+                <img src={team2} alt="member 2"  className='developer_images'/>
                 <h4>Seyon Suriyakumaran</h4>
                 <span>Web Developer</span>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-3.jpg" alt="member 3"/>
+                <img src={team3} alt="member 3" className='developer_images'/>
                 <h4>Hiran Sanjeewa</h4>
                 <span>Web Developer</span>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-4.jpg" alt="member 4"/>
+                <img src={team4} alt="member 4" className='developer_images'/>
                 <h4>Vidhush Thamilchelvan</h4>
                 <span>Web Developer</span>
               </div>
             </div>
 			      <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-5.jpg" alt="member 5"/>
+                <img src={team5} alt="member 5" className='developer_images'/>
                 <h4>Saman Kumara Rajapaksha</h4>
                 <span>Web Developer</span>
               </div>
             </div>
 			      <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src={team6} alt="member 6"/>
+                <img src={team6} alt="member 6" className='developer_images'/>
                 <h4>Kavindu Sandaruwan Dayarathna</h4>
                 <span>Web Developer</span>
               </div>
