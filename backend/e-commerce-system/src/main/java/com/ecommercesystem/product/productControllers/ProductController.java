@@ -22,8 +22,8 @@ public class ProductController {
     @Autowired
     private CartService cartService;
     @GetMapping(path = "/details")
-    @ResponseBody
     public List<books> ShowProduct(@RequestParam Integer book_id) {
+        System.out.println(book_id);
         return productInfoService.getItemPrice(book_id);
     }
 

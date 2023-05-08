@@ -38,3 +38,27 @@
 .Addtocart:active{
     background-color: rgb(238, 33, 33);
 }
+.categories_div{
+    width: 260px;
+  
+    float: left;
+    padding-left: 1cm;
+    
+}
+.categories{
+    width: 100%;
+    height: 40px;
+    
+    background-color:coral;
+}
+.category{
+    color: black;
+    
+}
+.no_products{
+    font-size:1cm;
+    text-align: center;
+    padding-left: 3cm;
+    padding-top: 2cm;
+    color: red;
+}

@@ -274,3 +274,11 @@
     margin-bottom: 75px;
     text-align: center;
 }
+.developer_images{
+    height: 200px;
+    width: 150px;
+}
+.client_images{
+    width: 200px;
+    height: 200px;
+}

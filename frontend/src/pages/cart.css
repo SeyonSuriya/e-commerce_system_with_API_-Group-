@@ -168,3 +168,16 @@ input[type="checkbox"] {
 body{
     background-color: rgb(245, 240, 240);
 }
+.empty_cart_message{
+    width: 100%;
+    text-align: center;
+    font-size: 1cm;
+    
+}
+.home_button{
+    color: black;
+    background-color:blue;
+}
+.home_page_button{
+    background-color:green
+}

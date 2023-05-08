@@ -29,8 +29,9 @@ function GetWishedItems(){
       //  console.log(cookies.wishlist[index].item_id)
       }
       if (response.data.length===0) {
-        products+='<div class="product">'
-        products+='No Books in your wishlist'
+        products+='<div class="wishlist_empty_div">'
+        products+='<div class="empty_cart_message">Your Wishlist is Empty</br><a href="/" class="home_button"><button class="home_page_button">Homepage</button></a></div></tbody>'
+
         products+='</div>'
       }
       document.getElementById('products').innerHTML=products

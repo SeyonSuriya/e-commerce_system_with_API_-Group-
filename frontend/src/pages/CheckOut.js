@@ -7,18 +7,17 @@ import { useCookies } from 'react-cookie';
 
 import "../components/checkout.css";
 
-export default function CheckOut() {
+export default function CheckOut(props) {
   const [cookies, setCookie] = useCookies(['user']);
   setCookie('pricearray', [], { path: '/checkout'});
-    if (cookies.newaddress!=='') {
-      var newaddress=cookies.newaddress
-    }else{
-      newaddress=0
-    }
- 
+  console.log(cookies.selectedBooks)
+
+  var newaddress=cookies.newaddress
+  
+
   function GetDefaultAddress() {
-    newaddress=0
-    setCookie('newaddress','', { path: '/checkout'});
+    newaddress='0'
+    setCookie('newaddress',0, { path: '/checkout'});
     GetAddress()
   }
   function GetAddress() {
@@ -34,13 +33,11 @@ export default function CheckOut() {
             Address+=response.data[0].mobile
            // console.log(Address)
         document.getElementById('address').innerHTML=Address
-        console.log(cookies.newaddress)
-        if ((newaddress!==0)) {
+        //console.log(cookies.newaddress)
+        if ((newaddress!=='0')) {
+          //console.log('***')
+          document.getElementById('address').innerHTML=newaddress
           
-          console.log('***')
-          document.getElementById('address').innerHTML=cookies.newaddress
-          
-  
          }
         
      
@@ -51,13 +48,14 @@ export default function CheckOut() {
 
  
     
-       
+       var productquantities=0
         function ShowSelectedProducts() {
          
          axios.post(
           'http://localhost:8080/ecommerce/cart/books?userid='+cookies.userid,
           ).then(response=>{
             //var cart= response.data
+            productquantities=response.data
             setCookie('productquantities', response.data, { path: '/checkout'});
             setCookie('product', '<div class="productsdiv">', { path: '/checkout'});
             //console.log(cookies.cart)
@@ -67,8 +65,7 @@ export default function CheckOut() {
               
               //cookies.product+='CartID : '+cookies.selectedBooks[index]
               for (let i = 0; i < response.data.length; i++) {
-                var addproduct=' '
-                
+                var addproduct=' '    
                 if (response.data[i].id===cookies.selectedBooks[index]) {
                   addproduct+='<span id="'+response.data[i].item_id+'"></span>'
                   GetProduct(response.data[i].item_id,i,cookies.selectedBooks[index])
@@ -84,14 +81,24 @@ export default function CheckOut() {
           }
           )
       }
+      var pricearray=[]
+      
       function GetProduct(book_id,index,cartid){
+     //   console.log(book_id)
+        var kk=book_id
         var row=' '
         axios.get(
-          'http://localhost:8080/ecommerce/books/details?book_id='+book_id,
-          // eslint-disable-next-line no-loop-func
+          'http://localhost:8080/ecommerce/books/details?book_id='+kk,
+          
           ).then(response=>{
-            console.log()
-            cookies.pricearray[index]=response.data[0].book_price
+            
+         //   console.log('********')
+            //console.log(response.data[0].book_price)
+            pricearray.push({id:response.data[0].book_id,price:response.data[0].book_price})
+            //console.log(response.data[0].book_price)
+            
+           // setCookie('pricearray', response.data[0].book_price, { path: '/checkout'});
+            //cookies.pricearray[index]=response.data[0].book_price
             row+='<div class="maindiv">'
             row+='<img  class="product_image"  id="'+response.data[0].book_id+'_image" style="width:20%;height:70%;">'
             row+='<div class="productInfo"> <p className={Style["booktitle"]}>'
@@ -102,9 +109,9 @@ export default function CheckOut() {
             row+='<div id="change_units" class="unitsdiv"></br></br></br>'
             row+='&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+response.data[0].book_id+'_remove" class="minus_button" style="width:25px;height:25px;margin: 0 auto;"  />'
             
-            row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+response.data[0].book_id+'_units" class="units">'+cookies.productquantities[index].quantity+'</span>&nbsp;&nbsp;'
+            row+='&nbsp;&nbsp;&nbsp;&nbsp;<span id="'+response.data[0].book_id+'_units" class="units">'+productquantities[index].quantity+'</span>&nbsp;&nbsp;'
             row+='<img id="'+response.data[0].book_id+'_add" class="add_button" style="width:40px;height:24px;" onClick={addUnits}/></div>'
-            row+='</div>'
+            row+='</div>' 
             
            // console.log(row)
             document.getElementById(book_id).innerHTML=row
@@ -123,17 +130,25 @@ export default function CheckOut() {
         GetDefaultAddress()
        }
        
-       
-      
        ChangeTotal()
-
-
+      
+       
           }
+          
           )
+        
       }
+      
       function addUnits(available_units,index,book_id) {
-        if (available_units>cookies.productquantities[index].quantity) {
-          cookies.productquantities[index].quantity+=1
+        if (available_units>productquantities[index].quantity) {
+          for (let i = 0; i < productquantities.length; i++) {
+            if (productquantities[i].item_id===book_id) {
+              productquantities[i].quantity+=1
+            }
+            
+          }
+          console.log(productquantities[2].id)
+          console.log(productquantities)
          axios.post(
           'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
           ).then(response=>{
@@ -141,49 +156,80 @@ export default function CheckOut() {
            }
           )
           ChangeTotal()
-        document.getElementById(book_id+'_units').innerHTML=cookies.productquantities[index].quantity
+        document.getElementById(book_id+'_units').innerHTML=productquantities[index].quantity
         }
     }
     function RemoveUnits(index,book_id) {
-     if (cookies.productquantities[index].quantity!==1) {
-      cookies.productquantities[index].quantity-=1
+     if (productquantities[index].quantity!==1) {
+      for (let i = 0; i < productquantities.length; i++) {
+        if (productquantities[i].item_id===book_id) {
+          productquantities[i].quantity-=1
+        }
+        
+      }
       // console.log(book_id)
       // console.log(cookies.productquantities[index].quantity)
       // console.log(cookies.userid)
        axios.post(
-        'http://localhost:8080/ecommerce/cart/updateunits?item_id='+book_id+'&units='+cookies.productquantities[index].quantity+'&userid='+cookies.userid,
+        'http://localhost:8080/ecommerce/cart/updateunits?item_id='+book_id+'&units='+productquantities[index].quantity+'&userid='+cookies.userid,
         ).then(response=>{
          // ShowProductsInCart()
          }
         )
         ChangeTotal()
-       document.getElementById(book_id+'_units').innerHTML=cookies.productquantities[index].quantity
+       document.getElementById(book_id+'_units').innerHTML=productquantities[index].quantity
      }
     }
     var purchaceitems=[]
 function ChangeTotal() {
+
   purchaceitems=[]
   var Total=0
   for (let index = 0; index < cookies.selectedBooks.length; index++) {
-    for(let i=0;i<cookies.productquantities.length;i++){
-    if (cookies.productquantities[i].id===cookies.selectedBooks[index]) {
-      Total+=cookies.productquantities[index].quantity*cookies.pricearray[i]
-      // selectedBooksDto[i].units=cookies.productquantities[index].quantity
-      // selectedBooksDto[i].book_id=cookies.productquantities[index].item_id
+  //  console.log('1')
+
+    for(let i=0;i<productquantities.length;i++){
+    //  console.log('*')
+      for (let m = 0; m < pricearray.length; m++) {
+
+        if (productquantities[i].id===cookies.selectedBooks[index]) {
+
+    if (productquantities[i].item_id===pricearray[m].id) {
+      console.log(index)
+ 
+          Total+=productquantities[i].quantity*pricearray[m].price
+          m=pricearray.length
+          i=productquantities.length
+          break;
+        }
+        
+      
+    }
+     // break;
+
+
+     
+    }
 
     var singleObj = {};
-    singleObj['units'] = cookies.productquantities[index].quantity
-    singleObj['book_id'] = cookies.productquantities[index].item_id
+    singleObj['units'] = productquantities[index].quantity
+    singleObj['book_id'] = productquantities[index].item_id
     purchaceitems.push(singleObj);
+    if (i===productquantities.length ) {
+      break;
+    }
 
     }
   }
-}
-document.getElementById('Total').innerHTML=Total
+  document.getElementById('Total').innerHTML=Total
 
 }
+
+
 
 function PlaceOrder() {
+  newaddress=0
+  setCookie('newaddress',0, { path: '/checkout'});
   var address=document.getElementById('address').innerHTML
   var userid=cookies.userid
   
@@ -203,7 +249,7 @@ function PlaceOrder() {
         document.getElementById("Checkoutpage").click();  
       }
       )
-}
+    }
 
     return (
         <div>
@@ -230,7 +276,7 @@ function PlaceOrder() {
           <div className='changeAdressDiv'>
           <br/>
             <a href='/changeaddress'>+ Add a new Address</a><br/>
-            <span  >&nbsp; <button id="changeAddressToDefault" >Use Default Address</button></span>
+            <span  >&nbsp; <button id="changeAddressToDefault" onClick={GetDefaultAddress}>Use Default Address</button></span>
           </div>
         </div>
        
@@ -255,4 +301,4 @@ function PlaceOrder() {
       )
     }
     
-    
+  

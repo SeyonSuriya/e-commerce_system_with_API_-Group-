@@ -2,6 +2,18 @@ import React from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './about.css';
+import team1 from '../Images/about/team1.png'
+import team2 from '../Images/about/team2.jpg'
+import team3 from '../Images/about/team3.jpg'
+import team4 from '../Images/about/team4.jpg'
+import team5 from '../Images/about/team5.jpg'
+import team6 from '../Images/about/team6.jpg'
+import client1 from '../Images/clients/client1.png'
+import client2 from '../Images/clients/client2.png'
+import client3 from '../Images/clients/client3.png'
+import client4 from '../Images/clients/client4.png'
+
+
 
 export default function About() {
   return (
@@ -11,11 +23,7 @@ export default function About() {
 
       <div class="aboutcont">
         <div class="abcontainer-sub">
-             
-          <div class="about__pic">
-            <h6>Image Here</h6>
-            <img src="Images/about/boooikR.png" alt="main image"/>
-          </div>     
+              
           
         
           <div class="about__item ">
@@ -103,42 +111,42 @@ export default function About() {
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-1.png" alt="member 1" width="240px"/>
+                <img src={team1} alt="member 1"  className='developer_images'/>
                 <h4>Yadheeshani Shakilanka Edirisinghe</h4>
                 <span>Web Developer</span>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-2.jpg" alt="member 2" width="240px"/>
+                <img src={team2} alt="member 2"  className='developer_images'/>
                 <h4>Seyon Suriyakumaran</h4>
                 <span>Web Developer</span>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-3.jpg" alt="member 3"/>
+                <img src={team3} alt="member 3" className='developer_images'/>
                 <h4>Hiran Sanjeewa</h4>
                 <span>Web Developer</span>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-4.jpg" alt="member 4"/>
+                <img src={team4} alt="member 4" className='developer_images'/>
                 <h4>Vidhush Thamilchelvan</h4>
                 <span>Web Developer</span>
               </div>
             </div>
 			      <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-5.jpg" alt="member 5"/>
+                <img src={team5} alt="member 5" className='developer_images'/>
                 <h4>Saman Kumara Rajapaksha</h4>
                 <span>Web Developer</span>
               </div>
             </div>
 			      <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-6.jpg" alt="member 6"/>
+                <img src={team6} alt="member 6" className='developer_images'/>
                 <h4>Kavindu Sandaruwan Dayarathna</h4>
                 <span>Web Developer</span>
               </div>
@@ -158,16 +166,16 @@ export default function About() {
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-4 col-6">
-              <a href="#" class="client__item"><img src="Images/clients/client-1.png" alt="client 1"/></a>
+              <a href="#" class="client__item"><img src={client1} alt="client 1" className='client_images'/></a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-4 col-6">
-              <a href="#" class="client__item"><img src="Images/clients/client-2.png" alt="client 2"/></a>
+              <a href="#" class="client__item"><img src={client2} alt="client 2" className='client_images'/></a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-4 col-6">
-              <a href="#" class="client__item"><img src="Images/clients/client-3.png" alt="client 3"/></a>
+              <a href="#" class="client__item"><img src={client3} alt="client 3" className='client_images'/></a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-4 col-6">
-              <a href="#" class="client__item"><img src="Images/clients/client-4.png" alt="client 4"/></a>
+              <a href="#" class="client__item"><img src={client4} alt="client 4" className='client_images'/></a>
             </div>
           </div>
 

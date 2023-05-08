@@ -36,9 +36,16 @@ const divStyle = {
 
 
 
+
 export default function Home() {
 
    const [cookies, setCookie] = useCookies(['user']);
+   var userid=cookies.userid;
+   if (!cookies.userid>0) {
+    setCookie('userid', 0, { path: '/'});
+     userid=0;
+  }
+  console.log(cookies.userid)
 
 
    axios.post(
@@ -47,7 +54,7 @@ export default function Home() {
           var products=response.data
           var allproducts=' '
           for (let index = 0; index < 12; index++) {
-            if ((index%5===0)&(index!==0)) {
+            if ((index%5===0)&&(index!==0)) {
               allproducts+='</br>'
             }
             allproducts+='&nbsp;&nbsp;&nbsp;<div id="product" >'
@@ -63,7 +70,8 @@ export default function Home() {
             allproducts+='</div>'
           }
           document.getElementById('Addproducts').innerHTML=allproducts
-          for (let index = 0; index < products.length; index++) {
+          for (let index = 0; index < 15; index++) {
+           
           document.getElementById(products[index].book_id+'_image').src=require("../Images/"+products[index].book_title+".jpg")
           document.getElementById(products[index].book_id+'_wish_image').onclick = function () {
             WishListHandler(products[index].book_id)
@@ -83,7 +91,7 @@ export default function Home() {
     
       function changeWishListImage(book_id) {
         axios.post(
-          'http://localhost:8080/ecommerce/books/checkwishes?book_id='+book_id+'&userid='+cookies.userid,
+          'http://localhost:8080/ecommerce/books/checkwishes?book_id='+book_id+'&userid='+userid,
           ).then(response=>{
             if (response.data==='wished') {
               //console.log(response.data)
@@ -95,13 +103,14 @@ export default function Home() {
             )
           } 
     function WishListHandler(book_id) {
+     
     axios.post(
-      'http://localhost:8080/ecommerce/books/checkwishes?book_id='+book_id+'&userid='+cookies.userid,
+      'http://localhost:8080/ecommerce/books/checkwishes?book_id='+book_id+'&userid='+userid,
       ).then(response=>{
         if (response.data==='wished') {
           if(window.confirm("Are you sure to remove this book from wishlist?")){
           axios.post(
-            'http://localhost:8080/ecommerce/books/removefromwishlist?book_id='+book_id+'&userid='+cookies.userid,
+            'http://localhost:8080/ecommerce/books/removefromwishlist?book_id='+book_id+'&userid='+userid,
             ).then(response=>{
               document.getElementById(book_id+'_wish_image').src=require("../Images/heart1.png")
              }
@@ -109,28 +118,29 @@ export default function Home() {
             }
         }else{
           
-  if (cookies.userid<1||cookies.userid==='') {
+  if (userid<1||userid==='') {
     window.location.href = "/login";
-  }
+  }else{
           axios.post(
-            'http://localhost:8080/ecommerce/books/addtowishlist?book_id='+book_id+'&userid='+cookies.userid,
+            'http://localhost:8080/ecommerce/books/addtowishlist?book_id='+book_id+'&userid='+userid,
             ).then(response=>{
               document.getElementById(book_id+'_wish_image').src=require("../Images/heart2.png")
               alert('Book added to wishlist successfully')
             }
               )}
+          }
        }
         )
       }
    
       // Add to cart Function
       function AddtoCart(book_id) {
-        if (cookies.userid<1||cookies.userid==='') {
+        if (userid<1||userid==='') {
           window.location.href = "/login";
         }else{
         if(window.confirm("Are you sure to Add this book to your cart?")){
         axios.post(
-          'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
+          'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+userid,
           ).then(response=>{
             // When the user clicks on div, open the popup
             alert('Book added to Cart successfully')

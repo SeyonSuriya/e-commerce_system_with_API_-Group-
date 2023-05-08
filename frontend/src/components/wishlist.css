@@ -83,3 +83,20 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
 }
+.empty_cart_message{
+    width: 100%;
+    text-align: center;
+    font-size: 1cm;
+    
+}
+.home_button{
+    color: black;
+    background-color:blue;
+}
+.home_page_button{
+    background-color:green
+}
+.wishlist_empty_div{
+    padding-top: 2cm;
+    height: 400px;
+}

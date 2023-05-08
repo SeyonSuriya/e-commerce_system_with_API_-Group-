@@ -10,11 +10,12 @@ import "./cart.css";
 
 export default function Cart() {
   const [cookies, setCookie] = useCookies(['user']);
-  setCookie('pricearray', [], { path: '/cart'});
+  
+  setCookie('selectedBooks', [], { path: '/checkout'});
   if (cookies.userid<1) {
     window.location.href = "/login";
   }
-  
+  var pricearray=[]
 
   // Getting Product Info and creating a row with product data
 
@@ -26,7 +27,8 @@ export default function Cart() {
       ).then(response=>{
         //console.log(tmpproduct)
            var tmpproduct=response.data
-           cookies.pricearray[index]=tmpproduct[0].book_price
+          
+           pricearray[index]=tmpproduct[0].book_price
            //console.log(cartid)
            if (response.data[0].num_of_units>0) {
             row+='<table class="productrow"><tr style="border-color: 1px solid #11324d;"><td ><div class="product_selecter_div"><input type="checkbox" name="chk" id="'+cartid+'" ></div>'
@@ -34,8 +36,7 @@ export default function Cart() {
             row+='<table class="productrow"><tr style="border-color: 1px solid #11324d;"><td ><div class="product_selecter_div"></div>'
 
            }
-           //console.log(tmpproduct[0].book_title+'_wish_image')
-           //console.log(tmpproduct[0].book_id)
+          
            row+='<div class="product_image_div"><img class="product_image"  style="width:100%;height:100%;" id="'+tmpproduct[0].book_id+'_image" /></div><span id='+tmpproduct[0].book_id+'></span>'
            row+='<div class="productInfo"><div style="font-size:15px"><b>'+tmpproduct[0].book_title+'</b></div></br><div class="long_description">'+tmpproduct[0].long_description+'</div><br>'
            row+=' <div style="; bottom;font-size: 18px"><b>US $'+tmpproduct[0].book_price+' </b></div></div>'
@@ -85,13 +86,13 @@ export default function Cart() {
        }
        // Adding AddUnits and Deduct units in cart onclick functions
        document.getElementById(tmpproduct[0].book_id+'_add').onclick = function () {
-        addUnits(tmpproduct[0].num_of_units,index,tmpproduct[0].book_id)
+        addUnits(tmpproduct[0].num_of_units,index,tmpproduct[0].book_id,cart)
        }
        document.getElementById(tmpproduct[0].book_id+'_remove').onclick = function () {
-        RemoveUnits(index,tmpproduct[0].book_id)
+        RemoveUnits(index,tmpproduct[0].book_id,cart)
        }
        document.getElementById(cartid).onclick = function () {
-        Select()
+        Select(cart)
         
        }
 
@@ -99,6 +100,7 @@ export default function Cart() {
       
       )
   }
+  var cart=[]
   function ShowProductsInCart() {
     
     axios.post(
@@ -107,7 +109,7 @@ export default function Cart() {
            if (response.data.length>0) {
             document.getElementById('all_items_selector').innerHTML='<input type="checkbox" name="all_items_selector"> &nbsp;&nbsp;Select all Items</br>'
             setCookie('cart', response.data, { path: '/cart'});
-            var cart=response.data
+            cart=response.data
             var table='</br></br><tbody>'
             for (let index = 0; index < response.data.length; index++) {
               console.log(cart[index].item_id)
@@ -119,11 +121,11 @@ export default function Cart() {
            }else{
             document.getElementById('all_items_selector').innerHTML=' '
             document.getElementById('num_of_item_in_cart').innerHTML=0
-            document.getElementById('products').innerHTML='<div class="product">Your Cart is Empty<a href="/"><button>Homepage</button></a></div></tbody>'
+            document.getElementById('products').innerHTML='<div class="empty_cart_message">Your Cart is Empty</br><a href="/" class="home_button"><button class="home_page_button">Homepage</button></a></div></tbody>'
 
            }
            document.getElementById('all_items_selector').onclick = function () {
-            AllItemSelector()
+            AllItemSelector(cart)
            }
           }
   )
@@ -145,16 +147,20 @@ ShowProductsInCart()
             )
           } 
   function WishListHandler(book_id) {
+
     axios.post(
       'http://localhost:8080/ecommerce/books/checkwishes?book_id='+book_id+'&userid='+cookies.userid,
       ).then(response=>{
         if (response.data==='wished') {
+          if(window.confirm("Are you sure to remove this book from wishlist?")){
+
           axios.post(
             'http://localhost:8080/ecommerce/books/removefromwishlist?book_id='+book_id+'&userid='+cookies.userid,
             ).then(response=>{
               document.getElementById(book_id+'_wish_image').src=require("../Images/heart1.png")
              }
               )
+            }
         }else{
           axios.post(
             'http://localhost:8080/ecommerce/books/addtowishlist?book_id='+book_id+'&userid='+cookies.userid,
@@ -176,7 +182,6 @@ ShowProductsInCart()
            }
           )
       }else{
-
       }
 
 
@@ -184,35 +189,40 @@ ShowProductsInCart()
     }
 
 // Units Handling Functions
-        function addUnits(available_units,cartid,book_id) {
+        function addUnits(available_units,cartid,book_id,cart) {
             if (available_units>cookies.cart[cartid].quantity) {
               cookies.cart[cartid].quantity+=1
+              cart[cartid].quantity+=1
+             
              axios.post(
               'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
               ).then(response=>{
                // ShowProductsInCart()
                }
               )
-              ChangeTotal()
+              ChangeTotal(cart)
             document.getElementById(book_id+'_units').innerHTML=cookies.cart[cartid].quantity
             }
         }
-        function RemoveUnits(cartid,book_id) {
+        function RemoveUnits(cartid,book_id,cart) {
          if (cookies.cart[cartid].quantity!==1) {
           cookies.cart[cartid].quantity-=1
+          cart[cartid].quantity-=1
+          
            axios.post(
             'http://localhost:8080/ecommerce/cart/updateunits?item_id='+book_id+'&units='+cookies.cart[cartid].quantity+'&userid='+cookies.userid,
             ).then(response=>{
              // ShowProductsInCart()
              }
             )
-            ChangeTotal()
+            ChangeTotal(cart)
            document.getElementById(book_id+'_units').innerHTML=cookies.cart[cartid].quantity
          }
         }
         var selectors=document.getElementsByName('chk'); 
         // All Item Selector
-        function AllItemSelector() {
+        function AllItemSelector(cart) {
+          console.log(cart)
           
          var all_items_selector=document.getElementsByName('all_items_selector')[0]
            if (all_items_selector.checked===false) {
@@ -221,43 +231,43 @@ ShowProductsInCart()
             if(selectors[i].type==='checkbox')  
             selectors[i].checked=false;  
           }
-          ChangeTotal()
+          ChangeTotal(cart)
          }else{
           document.getElementsByName('all_items_selector').checked=false
           for( i=0; i<selectors.length; i++){  
             if(selectors[i].type==='checkbox')  
             selectors[i].checked=true; 
          }
-         ChangeTotal()
+         ChangeTotal(cart)
           }
         }
        
         // Select Item
-        function Select() {
+        function Select(cart) {
           
           // console.log(selectors)
           for(var i=0; i<selectors.length; i++){  
               if (selectors[i].checked===false) {
                 document.getElementsByName('all_items_selector')[0].checked=false
-                ChangeTotal() 
+                ChangeTotal(cart) 
                 break;
-              }  
-              ChangeTotal()            
+              }  console.log(cart)
+              ChangeTotal(cart)            
             document.getElementsByName('all_items_selector')[0].checked=true
 
           }
         }
         
-        function ChangeTotal() {
+        function ChangeTotal(cart) {
           var Total = 0
           
-         
+          console.log(cart)
           //setCookie('selected', [], { path: '/cart'});
           for(var i=0; i<selectors.length; i++){  
             if (selectors[i].checked===true) {
              
-              
-              Total+=cookies.cart[i].quantity*cookies.pricearray[i]
+              console.log(cart)
+              Total+=cart[i].quantity*pricearray[i]
             } 
         }
         document.getElementById('Total').innerHTML=Total
@@ -270,7 +280,12 @@ ShowProductsInCart()
           var x=0
           for(var i=0; i<selectors.length; i++){  
             if (selectors[i].checked===true) {
-              selected[x]=cookies.cart[i].id
+              try {
+                selected[x]=cookies.cart[i].id
+              } catch (error) {
+console.log('*****')
+              }
+              
               x++
             } 
         }
@@ -284,6 +299,7 @@ ShowProductsInCart()
         }
 
 
+        
 
 
     return (
@@ -304,7 +320,6 @@ ShowProductsInCart()
               <p id="summary"><b>Summary</b></p><br></br>
               <p className="total">Total :US $ <span className="Total" id="Total"></span></p><br></br><br></br>
               <div className="checkout_button"><button id='checkout' onClick={CheckSelections}><b>Checkout</b></button></div>
-   
               <a href='/checkout' id="Checkoutpage" > </a>
             </div>
           </td>
