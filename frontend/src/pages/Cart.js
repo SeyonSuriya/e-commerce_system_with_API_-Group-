@@ -10,12 +10,12 @@ import "./cart.css";
 
 export default function Cart() {
   const [cookies, setCookie] = useCookies(['user']);
-  setCookie('pricearray', [], { path: '/cart'});
+  
   setCookie('selectedBooks', [], { path: '/checkout'});
   if (cookies.userid<1) {
     window.location.href = "/login";
   }
-  
+  var pricearray=[]
 
   // Getting Product Info and creating a row with product data
 
@@ -27,7 +27,8 @@ export default function Cart() {
       ).then(response=>{
         //console.log(tmpproduct)
            var tmpproduct=response.data
-           cookies.pricearray[index]=tmpproduct[0].book_price
+          
+           pricearray[index]=tmpproduct[0].book_price
            //console.log(cartid)
            if (response.data[0].num_of_units>0) {
             row+='<table class="productrow"><tr style="border-color: 1px solid #11324d;"><td ><div class="product_selecter_div"><input type="checkbox" name="chk" id="'+cartid+'" ></div>'
@@ -120,7 +121,7 @@ export default function Cart() {
            }else{
             document.getElementById('all_items_selector').innerHTML=' '
             document.getElementById('num_of_item_in_cart').innerHTML=0
-            document.getElementById('products').innerHTML='<div class="product">Your Cart is Empty<a href="/"><button>Homepage</button></a></div></tbody>'
+            document.getElementById('products').innerHTML='<div class="empty_cart_message">Your Cart is Empty</br><a href="/" class="home_button"><button class="home_page_button">Homepage</button></a></div></tbody>'
 
            }
            document.getElementById('all_items_selector').onclick = function () {
@@ -266,7 +267,7 @@ ShowProductsInCart()
             if (selectors[i].checked===true) {
              
               console.log(cart)
-              Total+=cart[i].quantity*cookies.pricearray[i]
+              Total+=cart[i].quantity*pricearray[i]
             } 
         }
         document.getElementById('Total').innerHTML=Total
@@ -298,6 +299,7 @@ console.log('*****')
         }
 
 
+        
 
 
     return (
