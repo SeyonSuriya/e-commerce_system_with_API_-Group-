@@ -34,7 +34,7 @@ export default function CheckOut(props) {
         document.getElementById('address').innerHTML=Address
         //console.log(cookies.newaddress)
         if ((newaddress!=='0')) {
-          console.log('***')
+          //console.log('***')
           document.getElementById('address').innerHTML=newaddress
           
          }
@@ -84,7 +84,7 @@ export default function CheckOut(props) {
       var pricearray=[]
       
       function GetProduct(book_id,index,cartid){
-        console.log(book_id)
+     //   console.log(book_id)
         var kk=book_id
         var row=' '
         axios.get(
@@ -92,12 +92,12 @@ export default function CheckOut(props) {
           
           ).then(response=>{
             
-            console.log('********')
+         //   console.log('********')
             //console.log(response.data[0].book_price)
-            pricearray.push(response.data[0].book_price)
+            pricearray.push({id:response.data[0].book_id,price:response.data[0].book_price})
             //console.log(response.data[0].book_price)
             
-            setCookie('pricearray', response.data[0].book_price, { path: '/checkout'});
+           // setCookie('pricearray', response.data[0].book_price, { path: '/checkout'});
             //cookies.pricearray[index]=response.data[0].book_price
             row+='<div class="maindiv">'
             row+='<img  class="product_image"  id="'+response.data[0].book_id+'_image" style="width:20%;height:70%;">'
@@ -175,25 +175,44 @@ function ChangeTotal() {
   purchaceitems=[]
   var Total=0
   for (let index = 0; index < cookies.selectedBooks.length; index++) {
+    console.log('1')
+ 
     for(let i=0;i<productquantities.length;i++){
-    if (productquantities[i].id===cookies.selectedBooks[index]) {
-     // console.log(productquantities[index].quantity)
-    // console.log(pricearray)
-      Total+=productquantities[index].quantity*pricearray[i]
-      // selectedBooksDto[i].units=cookies.productquantities[index].quantity
-      // selectedBooksDto[i].book_id=cookies.productquantities[index].item_id
+      console.log('*')
+      for (let m = 0; m < pricearray.length; m++) {
+
+    if (productquantities[i].item_id===pricearray[m].id) {
+         if (productquantities[i].id===cookies.selectedBooks[index]) {
+ 
+          Total+=productquantities[index].quantity*pricearray[m].price
+          m=pricearray.length
+          i=productquantities.length
+          break;
+        }
+        
+      
+    }
+     // break;
+
+
+     
+    }
 
     var singleObj = {};
     singleObj['units'] = productquantities[index].quantity
     singleObj['book_id'] = productquantities[index].item_id
     purchaceitems.push(singleObj);
+    if (i===productquantities.length ) {
+      break;
+    }
 
     }
   }
-}
-document.getElementById('Total').innerHTML=Total
+  document.getElementById('Total').innerHTML=Total
 
 }
+
+
 
 function PlaceOrder() {
   newaddress=0
@@ -217,7 +236,7 @@ function PlaceOrder() {
         document.getElementById("Checkoutpage").click();  
       }
       )
-}
+    }
 
     return (
         <div>
@@ -269,4 +288,4 @@ function PlaceOrder() {
       )
     }
     
-    
+  
