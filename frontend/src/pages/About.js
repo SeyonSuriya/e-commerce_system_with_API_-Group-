@@ -8,6 +8,10 @@ import team3 from '../Images/about/team3.jpg'
 import team4 from '../Images/about/team4.jpg'
 import team5 from '../Images/about/team5.jpg'
 import team6 from '../Images/about/team6.jpg'
+import client1 from '../Images/clients/client1.png'
+import client2 from '../Images/clients/client2.png'
+import client3 from '../Images/clients/client3.png'
+import client4 from '../Images/clients/client4.png'
 
 
 export default function About() {
@@ -165,16 +169,16 @@ export default function About() {
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-4 col-6">
-              <a href="#" class="client__item"><img src="Images/clients/client-1.png" alt="client 1"/></a>
+              <a href="#" class="client__item"><img src={client1} alt="client 1" className='client_images'/></a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-4 col-6">
-              <a href="#" class="client__item"><img src="Images/clients/client-2.png" alt="client 2"/></a>
+              <a href="#" class="client__item"><img src={client2} alt="client 2" className='client_images'/></a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-4 col-6">
-              <a href="#" class="client__item"><img src="Images/clients/client-3.png" alt="client 3"/></a>
+              <a href="#" class="client__item"><img src={client3} alt="client 3" className='client_images'/></a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-4 col-6">
-              <a href="#" class="client__item"><img src="Images/clients/client-4.png" alt="client 4"/></a>
+              <a href="#" class="client__item"><img src={client4} alt="client 4" className='client_images'/></a>
             </div>
           </div>
 
