@@ -2,6 +2,8 @@ import React from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './about.css';
+import team6 from '../Images/about/team6.jpg'
+
 
 export default function About() {
   return (
@@ -138,7 +140,7 @@ export default function About() {
             </div>
 			      <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="team__item">
-                <img src="Images/about/team-6.jpg" alt="member 6"/>
+                <img src={team6} alt="member 6"/>
                 <h4>Kavindu Sandaruwan Dayarathna</h4>
                 <span>Web Developer</span>
               </div>
