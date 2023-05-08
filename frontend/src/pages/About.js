@@ -12,7 +12,7 @@ import client1 from '../Images/clients/client1.png'
 import client2 from '../Images/clients/client2.png'
 import client3 from '../Images/clients/client3.png'
 import client4 from '../Images/clients/client4.png'
-import boooikR from '../Images/about/boooikR.jpg'
+
 
 
 export default function About() {

@@ -42,7 +42,7 @@ export default function Store() {
           allproducts+='<span class="book_price"><p class="price">US $'+products[index].book_price+'</p></span></div>'
           allproducts+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  id="'+products[index].book_id+'_wish_image" style="width:24px;height:24px; "  />&nbsp;&nbsp;'
           if (products[index].num_of_units>0) {
-            allproducts+='<button class="Addtocart" id="'+products[index].book_id+'_cart_button">Add to Cart</button>'
+            allproducts+='<button className="category_buttons" class="Addtocart" id="'+products[index].book_id+'_cart_button">Add to Cart</button>'
           }else{
             allproducts+='Out of Stock'
           }
@@ -144,6 +144,35 @@ export default function Store() {
     
      <div className='MainDiv' >
           <Header/>
+        <div className='categories_div' id='categories'>
+       
+    <button className='categories'><a className="category" href="Store?query=Music">Music</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Biographs">Biographs</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Business">Business</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Comics">Comics</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Computer">Computer & Tech</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Cooking">Cooking</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Education">Education</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Entertainment">Entertainment</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Health&Fitness">Health & Fitness</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=History">History</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Hobbies&Craft">Hobbies & Craft</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Home&Garden">Home & Garden</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Kids">Kids</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Medical">Medical</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Mysteries">Mysteries</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Parenting">Parenting</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Religion">Religion</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Romance">Romance</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Science&Math">Science & Math</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=SocialScience">Social Science</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Sports">Sports</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Travel">Travel</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=TrueCrime">True Crime</a></button><br/>
+    <button className='categories'><a className="category" href="Store?query=Westerns">Westerns</a></button><br/>
+
+
+        </div>
       
      <div className='productsDiv'>
       <span id='Addproducts'></span>
