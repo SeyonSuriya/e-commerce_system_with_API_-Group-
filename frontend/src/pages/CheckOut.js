@@ -10,6 +10,7 @@ import "../components/checkout.css";
 export default function CheckOut(props) {
   const [cookies, setCookie] = useCookies(['user']);
   setCookie('pricearray', [], { path: '/checkout'});
+  console.log(cookies.selectedBooks)
 
   var newaddress=cookies.newaddress
   
@@ -141,6 +142,7 @@ export default function CheckOut(props) {
       function addUnits(available_units,index,book_id) {
         if (available_units>productquantities[index].quantity) {
           productquantities[index].quantity+=1
+          //console.log(productquantities)
          axios.post(
           'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
           ).then(response=>{
@@ -170,14 +172,13 @@ export default function CheckOut(props) {
     var purchaceitems=[]
 function ChangeTotal() {
 
-
   purchaceitems=[]
   var Total=0
   for (let index = 0; index < cookies.selectedBooks.length; index++) {
-    console.log('1')
- 
+  //  console.log('1')
+
     for(let i=0;i<productquantities.length;i++){
-      console.log('*')
+    //  console.log('*')
       for (let m = 0; m < pricearray.length; m++) {
 
     if (productquantities[i].item_id===pricearray[m].id) {
