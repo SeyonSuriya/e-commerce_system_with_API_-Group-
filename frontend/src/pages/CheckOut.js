@@ -195,8 +195,9 @@ function ChangeTotal() {
         if (productquantities[i].id===cookies.selectedBooks[index]) {
 
     if (productquantities[i].item_id===pricearray[m].id) {
+      console.log(index)
  
-          Total+=productquantities[index].quantity*pricearray[m].price
+          Total+=productquantities[i].quantity*pricearray[m].price
           m=pricearray.length
           i=productquantities.length
           break;
