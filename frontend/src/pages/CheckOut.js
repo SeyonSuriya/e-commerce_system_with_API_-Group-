@@ -141,8 +141,14 @@ export default function CheckOut(props) {
       
       function addUnits(available_units,index,book_id) {
         if (available_units>productquantities[index].quantity) {
-          productquantities[index].quantity+=1
-          //console.log(productquantities)
+          for (let i = 0; i < productquantities.length; i++) {
+            if (productquantities[i].item_id===book_id) {
+              productquantities[i].quantity+=1
+            }
+            
+          }
+          console.log(productquantities[2].id)
+          console.log(productquantities)
          axios.post(
           'http://localhost:8080/ecommerce/books/addtocart?book_id='+book_id+'&units='+1+'&userid='+cookies.userid,
           ).then(response=>{
@@ -155,7 +161,12 @@ export default function CheckOut(props) {
     }
     function RemoveUnits(index,book_id) {
      if (productquantities[index].quantity!==1) {
-      productquantities[index].quantity-=1
+      for (let i = 0; i < productquantities.length; i++) {
+        if (productquantities[i].item_id===book_id) {
+          productquantities[i].quantity-=1
+        }
+        
+      }
       // console.log(book_id)
       // console.log(cookies.productquantities[index].quantity)
       // console.log(cookies.userid)
@@ -181,8 +192,9 @@ function ChangeTotal() {
     //  console.log('*')
       for (let m = 0; m < pricearray.length; m++) {
 
+        if (productquantities[i].id===cookies.selectedBooks[index]) {
+
     if (productquantities[i].item_id===pricearray[m].id) {
-         if (productquantities[i].id===cookies.selectedBooks[index]) {
  
           Total+=productquantities[index].quantity*pricearray[m].price
           m=pricearray.length
