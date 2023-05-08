@@ -32,6 +32,9 @@ export default function Store() {
     ).then(response=>{
         var products=response.data
         var allproducts=' '
+        if (products.length>0) {
+          
+      
         for (let index = 0; index < products.length; index++) {
           if ((index%4===0)&(index!==0)) {
             allproducts+='</br>'
@@ -63,8 +66,14 @@ export default function Store() {
           window.location.href = "/product?bookid="+products[index].book_id;
         }
       }
+    }else{
+      document.getElementById('Addproducts').innerHTML="<span class='no_products'>Sorry no product avilable Try different category</span>"
+
+    
     }
+  }
     )
+  
   
     function changeWishListImage(book_id) {
       axios.post(

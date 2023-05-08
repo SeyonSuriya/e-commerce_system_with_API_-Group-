@@ -55,3 +55,10 @@
     color: black;
     
 }
+.no_products{
+    font-size:1cm;
+    text-align: center;
+    padding-left: 3cm;
+    padding-top: 2cm;
+    color: red;
+}
