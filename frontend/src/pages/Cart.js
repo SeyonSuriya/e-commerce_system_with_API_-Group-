@@ -11,6 +11,7 @@ import "./cart.css";
 export default function Cart() {
   const [cookies, setCookie] = useCookies(['user']);
   setCookie('pricearray', [], { path: '/cart'});
+  setCookie('selectedBooks', [], { path: '/checkout'});
   if (cookies.userid<1) {
     window.location.href = "/login";
   }
@@ -34,8 +35,7 @@ export default function Cart() {
             row+='<table class="productrow"><tr style="border-color: 1px solid #11324d;"><td ><div class="product_selecter_div"></div>'
 
            }
-           //console.log(tmpproduct[0].book_title+'_wish_image')
-           //console.log(tmpproduct[0].book_id)
+          
            row+='<div class="product_image_div"><img class="product_image"  style="width:100%;height:100%;" id="'+tmpproduct[0].book_id+'_image" /></div><span id='+tmpproduct[0].book_id+'></span>'
            row+='<div class="productInfo"><div style="font-size:15px"><b>'+tmpproduct[0].book_title+'</b></div></br><div class="long_description">'+tmpproduct[0].long_description+'</div><br>'
            row+=' <div style="; bottom;font-size: 18px"><b>US $'+tmpproduct[0].book_price+' </b></div></div>'

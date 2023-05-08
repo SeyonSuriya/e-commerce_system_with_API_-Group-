@@ -64,8 +64,7 @@ export default function CheckOut(props) {
               
               //cookies.product+='CartID : '+cookies.selectedBooks[index]
               for (let i = 0; i < response.data.length; i++) {
-                var addproduct=' '
-                
+                var addproduct=' '    
                 if (response.data[i].id===cookies.selectedBooks[index]) {
                   addproduct+='<span id="'+response.data[i].item_id+'"></span>'
                   GetProduct(response.data[i].item_id,i,cookies.selectedBooks[index])
